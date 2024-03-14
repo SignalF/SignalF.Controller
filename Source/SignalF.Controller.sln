@@ -3,67 +3,67 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Controller.Abstractions", "SignalF.Controller.Abstractions\SignalF.Controller.Abstractions.csproj", "{5D3F6ABD-3F0C-4EC0-8F69-1B9337EE4337}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Controller.Abstractions", "Controller\SignalF.Controller.Abstractions\SignalF.Controller.Abstractions.csproj", "{5D3F6ABD-3F0C-4EC0-8F69-1B9337EE4337}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataModel", "DataModel", "{E76E4F68-0186-45FE-8FAC-9FF2423BC8C3}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\Build\GenerateBusinessObjects.proj = ..\..\Build\GenerateBusinessObjects.proj
+		..\Build\GenerateBusinessObjects.proj = ..\Build\GenerateBusinessObjects.proj
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Base", "..\Datamodel\SignalF.Datamodel.Base\SignalF.Datamodel.Base.csproj", "{DDE291BD-8530-4C66-BEAA-22E34D7C8F8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Base", "Datamodel\SignalF.Datamodel.Base\SignalF.Datamodel.Base.csproj", "{DDE291BD-8530-4C66-BEAA-22E34D7C8F8A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Calculation", "..\Datamodel\SignalF.Datamodel.Calculation\SignalF.Datamodel.Calculation.csproj", "{A6F90E1D-0426-4891-8720-A038F2019475}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Calculation", "Datamodel\SignalF.Datamodel.Calculation\SignalF.Datamodel.Calculation.csproj", "{A6F90E1D-0426-4891-8720-A038F2019475}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Configuration", "..\Datamodel\SignalF.Datamodel.Configuration\SignalF.Datamodel.Configuration.csproj", "{B5BDFC6B-2754-435C-96F2-AA15440D31F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Configuration", "Datamodel\SignalF.Datamodel.Configuration\SignalF.Datamodel.Configuration.csproj", "{B5BDFC6B-2754-435C-96F2-AA15440D31F5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Hardware", "..\Datamodel\SignalF.Datamodel.Hardware\SignalF.Datamodel.Hardware.csproj", "{B4F75B74-F723-4658-A2F9-33EDF7022C1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Hardware", "Datamodel\SignalF.Datamodel.Hardware\SignalF.Datamodel.Hardware.csproj", "{B4F75B74-F723-4658-A2F9-33EDF7022C1B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Signals", "..\Datamodel\SignalF.Datamodel.Signals\SignalF.Datamodel.Signals.csproj", "{975024D0-EE5A-49C3-81F9-57E2F18CF811}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Signals", "Datamodel\SignalF.Datamodel.Signals\SignalF.Datamodel.Signals.csproj", "{975024D0-EE5A-49C3-81F9-57E2F18CF811}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Units", "..\Datamodel\SignalF.Datamodel.Units\SignalF.Datamodel.Units.csproj", "{24EBD5A5-0124-46E7-B8F5-32D42B58FB01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Units", "Datamodel\SignalF.Datamodel.Units\SignalF.Datamodel.Units.csproj", "{24EBD5A5-0124-46E7-B8F5-32D42B58FB01}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.DataOutput", "..\DataModel\SignalF.Datamodel.DataOutput\SignalF.Datamodel.DataOutput.csproj", "{5C380591-9A3A-46A8-A744-E8E3CA3A05DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.DataOutput", "Datamodel\SignalF.Datamodel.DataOutput\SignalF.Datamodel.DataOutput.csproj", "{5C380591-9A3A-46A8-A744-E8E3CA3A05DF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Controller", "SignalF.Controller\SignalF.Controller.csproj", "{C81592D3-961B-4E6B-9A8E-410163FC72DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Controller", "Controller\SignalF.Controller\SignalF.Controller.csproj", "{C81592D3-961B-4E6B-9A8E-410163FC72DB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Base.Abstractions", "..\DataModel\SignalF.Datamodel.Base.Abstractions\SignalF.Datamodel.Base.Abstractions.csproj", "{778E10DC-7BCC-46A7-A688-2C484B11BDE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Base.Abstractions", "Datamodel\SignalF.Datamodel.Base.Abstractions\SignalF.Datamodel.Base.Abstractions.csproj", "{778E10DC-7BCC-46A7-A688-2C484B11BDE5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Calculation.Abstractions", "..\DataModel\SignalF.Datamodel.Calculation.Abstractions\SignalF.Datamodel.Calculation.Abstractions.csproj", "{54A54D30-714E-45AE-B672-7F51E7737E96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Calculation.Abstractions", "Datamodel\SignalF.Datamodel.Calculation.Abstractions\SignalF.Datamodel.Calculation.Abstractions.csproj", "{54A54D30-714E-45AE-B672-7F51E7737E96}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.DataOutput.Abstractions", "..\DataModel\SignalF.Datamodel.DataOutput.Abstractions\SignalF.Datamodel.DataOutput.Abstractions.csproj", "{B11F41D1-7EF1-4C00-AE83-800ACED788D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.DataOutput.Abstractions", "Datamodel\SignalF.Datamodel.DataOutput.Abstractions\SignalF.Datamodel.DataOutput.Abstractions.csproj", "{B11F41D1-7EF1-4C00-AE83-800ACED788D9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Hardware.Abstractions", "..\DataModel\SignalF.Datamodel.Hardware.Abstractions\SignalF.Datamodel.Hardware.Abstractions.csproj", "{71A3CCFE-BB35-45AB-ADDA-9EB1F37EF2D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Hardware.Abstractions", "Datamodel\SignalF.Datamodel.Hardware.Abstractions\SignalF.Datamodel.Hardware.Abstractions.csproj", "{71A3CCFE-BB35-45AB-ADDA-9EB1F37EF2D6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Signals.Abstractions", "..\DataModel\SignalF.Datamodel.Signals.Abstractions\SignalF.Datamodel.Signals.Abstractions.csproj", "{38601171-342B-4121-9B65-73BE90053DB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Signals.Abstractions", "Datamodel\SignalF.Datamodel.Signals.Abstractions\SignalF.Datamodel.Signals.Abstractions.csproj", "{38601171-342B-4121-9B65-73BE90053DB8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Units.Abstractions", "..\DataModel\SignalF.Datamodel.Units.Abstractions\SignalF.Datamodel.Units.Abstractions.csproj", "{7A29A1A4-E955-40B3-9E8B-BB48B68502F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Units.Abstractions", "Datamodel\SignalF.Datamodel.Units.Abstractions\SignalF.Datamodel.Units.Abstractions.csproj", "{7A29A1A4-E955-40B3-9E8B-BB48B68502F8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Configuration.Abstractions", "..\DataModel\SignalF.Datamodel.Configuration.Abstractions\SignalF.Datamodel.Configuration.Abstractions.csproj", "{7629C6B0-B655-4DCD-B9CD-3E4696E8A020}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Configuration.Abstractions", "Datamodel\SignalF.Datamodel.Configuration.Abstractions\SignalF.Datamodel.Configuration.Abstractions.csproj", "{7629C6B0-B655-4DCD-B9CD-3E4696E8A020}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Devices.Abstractions", "..\DataModel\SignalF.Datamodel.Devices.Abstractions\SignalF.Datamodel.Devices.Abstractions.csproj", "{21556B4F-B02B-4753-969C-6E0701F15B6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Devices.Abstractions", "Datamodel\SignalF.Datamodel.Devices.Abstractions\SignalF.Datamodel.Devices.Abstractions.csproj", "{21556B4F-B02B-4753-969C-6E0701F15B6F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Devices", "..\DataModel\SignalF.Datamodel.Devices\SignalF.Datamodel.Devices.csproj", "{311BBE59-DE3B-4ADB-B3D1-3FD85DC5F70A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Devices", "Datamodel\SignalF.Datamodel.Devices\SignalF.Datamodel.Devices.csproj", "{311BBE59-DE3B-4ADB-B3D1-3FD85DC5F70A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Configuration", "SignalF.Configuration\SignalF.Configuration.csproj", "{016136A8-9FBA-487D-B45D-ED0B04643AD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Configuration", "Controller\SignalF.Configuration\SignalF.Configuration.csproj", "{016136A8-9FBA-487D-B45D-ED0B04643AD6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Configuration.Abstractions", "SignalF.Configuration.Abstractions\SignalF.Configuration.Abstractions.csproj", "{7FAB274E-4964-4B54-8757-14E57E9878CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Configuration.Abstractions", "Controller\SignalF.Configuration.Abstractions\SignalF.Configuration.Abstractions.csproj", "{7FAB274E-4964-4B54-8757-14E57E9878CC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{01D4C683-DE9A-4BC3-89A7-0853136A12D8}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Abstractions", "..\Datamodel\SignalF.Datamodel.Abstractions\SignalF.Datamodel.Abstractions.csproj", "{1A709B11-D82F-43FD-B336-2074232C7D6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Abstractions", "Datamodel\SignalF.Datamodel.Abstractions\SignalF.Datamodel.Abstractions.csproj", "{1A709B11-D82F-43FD-B336-2074232C7D6A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel", "..\Datamodel\SignalF.Datamodel\SignalF.Datamodel.csproj", "{413E5665-808C-4E7C-9E06-03595EF743DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel", "Datamodel\SignalF.Datamodel\SignalF.Datamodel.csproj", "{413E5665-808C-4E7C-9E06-03595EF743DE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Extensions.Controller", "SignalF.Extensions.Controller\SignalF.Extensions.Controller.csproj", "{B57D79B9-5DB2-481A-A470-DD2DFE0FC352}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Extensions.Controller", "Controller\SignalF.Extensions.Controller\SignalF.Extensions.Controller.csproj", "{B57D79B9-5DB2-481A-A470-DD2DFE0FC352}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Extensions.Configuration", "SignalF.Extensions.Configuration\SignalF.Extensions.Configuration.csproj", "{A746E775-1386-45A0-8CFF-EA236358BC5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Extensions.Configuration", "Controller\SignalF.Extensions.Configuration\SignalF.Extensions.Configuration.csproj", "{A746E775-1386-45A0-8CFF-EA236358BC5B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.ProcessControl.Abstractions", "..\Datamodel\SignalF.Datamodel.ProcessControl.Abstractions\SignalF.Datamodel.ProcessControl.Abstractions.csproj", "{657D1A67-3435-408F-AEB6-E9527EA5EF83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.ProcessControl.Abstractions", "Datamodel\SignalF.Datamodel.ProcessControl.Abstractions\SignalF.Datamodel.ProcessControl.Abstractions.csproj", "{657D1A67-3435-408F-AEB6-E9527EA5EF83}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.ProcessControl", "..\Datamodel\SignalF.Datamodel.ProcessControl\SignalF.Datamodel.ProcessControl.csproj", "{A6EA07F2-8BAF-4A86-9754-48CFFE433556}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.ProcessControl", "Datamodel\SignalF.Datamodel.ProcessControl\SignalF.Datamodel.ProcessControl.csproj", "{A6EA07F2-8BAF-4A86-9754-48CFFE433556}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
