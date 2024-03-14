@@ -14,7 +14,7 @@
 		<releaseNotes></releaseNotes>
 		<copyright>$Copyright$</copyright>
 		<tags></tags>
-		<readme>$PackageReadme$</readme>
+		<readme>$PackageReadmeFile$</readme>
 		<dependencies>
 			<group targetFramework="net8.0">
 				<dependency id="SignalF.Datamodel.Abstractions" version="$PackageVersion$" />
@@ -32,7 +32,7 @@
 	</metadata>
 	<files>
 		<file src="$ImagePath$\$PackageIcon$" target="" />
-		<file src="$ReadmePath$\$PackageReadme$"  target="" />
+		<file src="$PackageReadmePath$\$PackageReadmeFile$"  target="" />
 		<file src="DefaultConfiguration.xml" target="contentFiles\any\any" />
 		<file src="bin\$Configuration$\net8.0\SignalF.Controller.dll" target="lib\net8.0" />
 	</files>
