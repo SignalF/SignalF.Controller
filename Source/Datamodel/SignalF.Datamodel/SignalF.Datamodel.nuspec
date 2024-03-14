@@ -14,6 +14,7 @@
 		<releaseNotes></releaseNotes>
 		<copyright>$Copyright$</copyright>
 		<tags></tags>
+		<readme>$PackageReadme$</readme>
 		<dependencies>
 			<group targetFramework="netstandard2.1">
 				<dependency id="SignalF.Datamodel.Abstractions" version="$PackageVersion$" />
@@ -27,6 +28,7 @@
 	</metadata>
 	<files>
 		<file src="$ImagePath$\$PackageIcon$" target="" />
+		<file src="$ReadmePath$\$PackageReadme$"  target="" />
 		<file src="..\..\..\Schemas\Configuration\*.*" target="contentFiles\any\any\Schemas" />
 		<file src="bin\$Configuration$\netstandard2.1\SignalF.*.dll" target="lib\netstandard2.1"
 		      exclude="**\*.Abstractions.dll" />

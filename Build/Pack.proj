@@ -5,6 +5,7 @@
 
 	<ItemGroup>
 		<None Include="$(ImagePath)\$(PackageIcon)" Pack="true" PackagePath="" />
+		<None Include="$(ReadmePath)\$(PackageReadme)" Pack="true" PackagePath="" />
 		<!--<Content Include="..\..\..\license.txt" Link="license.txt" Pack="true" PackagePath="license.txt"/>-->
 	</ItemGroup>
 
