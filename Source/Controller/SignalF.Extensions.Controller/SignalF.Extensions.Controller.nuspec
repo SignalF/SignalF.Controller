@@ -14,7 +14,7 @@
 		<releaseNotes></releaseNotes>
 		<copyright>$Copyright$</copyright>
 		<tags></tags>
-		<readme>$PackageReadme$</readme>
+		<readme>$PackageReadmeFile$</readme>
 		<dependencies>
 			<group targetFramework="net8.0">
 				<dependency id="Autofac.Extensions.DependencyInjection" version="9.0.0" />
@@ -27,7 +27,7 @@
 	</metadata>
 	<files>
 		<file src="$ImagePath$\$PackageIcon$" target="" />
-		<file src="$ReadmePath$\$PackageReadme$"  target="" />
+		<file src="$PackageReadmePath$\$PackageReadmeFile$"  target="" />
 		<file src="bin\$Configuration$\net8.0\SignalF.Extensions.Controller.dll" target="lib\net8.0" />
 	</files>
 </package>

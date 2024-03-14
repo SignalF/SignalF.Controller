@@ -9,13 +9,13 @@
 		<InformationalVersion Condition="'$(InformationalVersion)' == ''">0.0.0</InformationalVersion>
 		<Version Condition="'$(Version)' == ''">0.0.0</Version>
 		<ImagePath>..\..\..\Images</ImagePath>
-		<ReadmePath>..\..</ReadmePath>
+		<PackageReadmePath>..\..</PackageReadmePath>
 	</PropertyGroup>
 	
 	<PropertyGroup>
 		<License>MIT</License>
 		<PackageIcon>logo.png</PackageIcon>
-		<PackageReadme>README.md</PackageReadme>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageOutputPath>..\..\..\LocalPackages</PackageOutputPath>
 		<PackageProjectUrl>https://github.com/SignalF</PackageProjectUrl>

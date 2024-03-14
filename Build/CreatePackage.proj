@@ -9,7 +9,7 @@
 
 	<Target Name="CustomBeforeGenerateNuspec" BeforeTargets="GenerateNuspec">
 		<PropertyGroup>
-			<NuspecProperties>Authors=$(Authors);Configuration=$(Configuration);Copyright=$(Copyright);Description=$(Description);License=$(License);ImagePath=$(ImagePath);PackageIcon=$(PackageIcon);PackageReadme=$(PackageReadme);PackageVersion=$(PackageVersion);ProjectName=$(MSBuildProjectName);ProjectUrl=$(ProjectUrl);ReadmePath=$(ReadmePath);RepositoryType=$(RepositoryType);RepositoryUrl=$(RepositoryUrl);RequireLicenseAcceptance=$(RequireLicenseAcceptance);</NuspecProperties>
+			<NuspecProperties>Authors=$(Authors);Configuration=$(Configuration);Copyright=$(Copyright);Description=$(Description);License=$(License);ImagePath=$(ImagePath);PackageIcon=$(PackageIcon);PackageReadmeFile=$(PackageReadmeFile);PackageReadmePath=$(PackageReadmePath);PackageVersion=$(PackageVersion);ProjectName=$(MSBuildProjectName);ProjectUrl=$(ProjectUrl);RepositoryType=$(RepositoryType);RepositoryUrl=$(RepositoryUrl);RequireLicenseAcceptance=$(RequireLicenseAcceptance);</NuspecProperties>
 		</PropertyGroup>
     </Target>
 
