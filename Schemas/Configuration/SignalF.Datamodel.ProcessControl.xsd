@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Name: Name of the project to generate with business object generator
+		 TargetPath: The path where to create the project
+     Version: The version of the generated project	-->
+<?XMLDatabase Name="SignalF.Datamodel.ProcessControl" Namespace="SignalF.Datamodel.ProcessControl" ProjectFolder="" Version="1.3.1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:SignalF.1.0" targetNamespace="urn:SignalF.1.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="SignalF.Datamodel.Base.xsd"/>
+	<xs:include schemaLocation="SignalF.Datamodel.Signals.xsd"/>
+	<xs:complexType name="SignalF.Datamodel.Workflow.ProcessControlTemplateType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Signals.SignalProcessorTemplateType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Workflow.ProcessControlDefinitionType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Signals.SignalProcessorDefinitionType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Workflow.ProcessControlConfigurationType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Signals.SignalProcessorConfigurationType"/>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

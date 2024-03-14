@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Name: Name of the project to generate with business object generator
+		 TargetPath: The path where to create the project
+     Version: The version of the generated project	-->
+<?XMLDatabase Name="SignalF.Datamodel.Base" Namespace="SignalF.Datamodel.Base" ProjectFolder="SignalF.Datamodel.Base" Version="1.3.1.0"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:SignalF.1.0"
+           targetNamespace="urn:SignalF.1.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:simpleType name="SignalF.Datamodel.Base.AnnotationType">
+		<xs:annotation>
+			<xs:documentation>Used for annotations</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="SignalF.Datamodel.Base.StringType" />
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.AnyURIType">
+		<xs:restriction base="xs:anyURI" />
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.Base64BinaryType">
+		<xs:restriction base="xs:base64Binary" />
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.BooleanType">
+		<xs:restriction base="xs:boolean" />
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.ByteType">
+		<xs:restriction base="xs:byte" />
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.ContentType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="Binary" />
+			<xs:enumeration value="Definition" />
+			<xs:enumeration value="Description" />
+			<xs:enumeration value="Documentation" />
+			<xs:enumeration value="Execution" />
+			<xs:enumeration value="Graphic" />
+			<xs:enumeration value="Implementation" />
+			<xs:enumeration value="Information" />
+			<xs:enumeration value="Library" />
+			<xs:enumeration value="Model" />
+			<xs:enumeration value="Object" />
+			<xs:enumeration value="Text" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.DateType">
+		<xs:restriction base="xs:date" />
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.DateTimeType">
+		<xs:restriction base="xs:dateTime" />
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.DecimalType">
+		<xs:restriction base="xs:decimal" />
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.DoubleType">
+		<xs:restriction base="xs:double" />
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.FloatType">
+		<xs:restriction base="xs:float" />
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.GuidType" id="SignalF.Datamodel.Base.GuidType">
+		<xs:restriction base="SignalF.Datamodel.Base.UserDefinedType" />
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.IdentifierType">
+		<xs:annotation>
+			<xs:documentation>Identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:ID" />
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.IdentifierRefType">
+		<xs:annotation>
+			<xs:documentation>Reference to an identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:IDREF" />
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.IntType">
+		<xs:restriction base="xs:int" />
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.IntegerType">
+		<xs:restriction base="xs:integer" />
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.LongType">
+		<xs:restriction base="xs:long" />
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.NCNameType">
+		<xs:restriction base="xs:NCName" />
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.NameType">
+		<xs:restriction base="xs:Name" />
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.ShortType">
+		<xs:restriction base="xs:short" />
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.StringType">
+		<xs:restriction base="xs:string" />
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.TimeType">
+		<xs:restriction base="xs:time" />
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.TokenType">
+		<xs:restriction base="xs:token" />
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.UByteType">
+		<xs:restriction base="xs:unsignedByte" />
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.UIntType">
+		<xs:restriction base="xs:unsignedInt" />
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.ULongType">
+		<xs:restriction base="xs:unsignedLong" />
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.UserDefinedType">
+		<xs:restriction base="xs:string" />
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.UShortType">
+		<xs:restriction base="xs:unsignedShort" />
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Base.VendorType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType" />
+	</xs:simpleType>
+	<xs:complexType name="SignalF.Datamodel.Base.ReferenceType">
+		<xs:annotation>
+			<xs:documentation>Contains a reference to an object. If this reference object contains a null reference (there is an instance of the reference object, but it does not reference another object) the idRef attribute must be removed. The idRef attribute cannot be set to an empty ID ("") because this is not allowed in the schema.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="idRef" type="SignalF.Datamodel.Base.IdentifierRefType">
+			<xs:annotation>
+				<xs:documentation>Reference ID to an referencable object.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="location" type="SignalF.Datamodel.Base.StringType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Unused.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Base.ConfigurationType">
+		<xs:attribute name="Data" type="SignalF.Datamodel.Base.StringType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Configuration in Json format.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Base.CoreObjectType" abstract="true">
+		<xs:sequence>
+			<xs:element name="Configuration" type="SignalF.Datamodel.Base.ConfigurationType" />
+		</xs:sequence>
+		<xs:attribute name="id" type="SignalF.Datamodel.Base.IdentifierType" use="required" />
+		<xs:attribute name="Name" type="SignalF.Datamodel.Base.StringType" use="required" />
+		<xs:attribute name="Type" type="SignalF.Datamodel.Base.StringType" use="optional" />
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Project DefaultTargets="GenerateBusinessObjects" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+         ToolsVersion="15.0">
+
+	<PropertyGroup>
+
+		<!-- Absolute path of the root directory. -->
+		<RootDir>$(MSBuildProjectDirectory)\..</RootDir>
+
+		<!-- Contains build files-->
+		<BuildDir>$(RootDir)\Build</BuildDir>
+
+		<!-- Contains schema files.-->
+		<!-- <SchemaDir>$(RootDir)\Schemas</SchemaDir> -->
+
+		<!-- Contains the sources. -->
+		<SourceDir>$(RootDir)\Source</SourceDir>
+
+		<!-- Contains the schema files. -->
+		<SchemaDir>$(RootDir)\Schemas\Configuration</SchemaDir>
+
+	</PropertyGroup>
+
+	<Target Name="GenerateBusinessObjects">
+
+		<!-- XML Database -->
+		<PropertyGroup>
+			<XmlDatabaseGenerator>"$(BuildDir)\BO-Generator\Scotec.XMLDatabase.BOGenerator.exe"</XmlDatabaseGenerator>
+			<XmlDatabaseSchema>"$(SchemaDir)\SignalF.Datamodel.Configuration.xsd"</XmlDatabaseSchema>
+			<XmlDatabaseOutput>"$(SourceDir)\Datamodel"</XmlDatabaseOutput>
+			<XmlDatabaseReferences>"$(SourceDir)"</XmlDatabaseReferences>
+			<XmlDatabaseTargetFramework>"netstandard2.1"</XmlDatabaseTargetFramework>
+		</PropertyGroup>
+
+		<Exec
+			Command="$(XmlDatabaseGenerator) -s $(XmlDatabaseSchema) -o $(XmlDatabaseOutput) -r $(XmlDatabaseReferences) -v $(XmlDatabaseTargetFramework)" />
+	</Target>
+
+</Project>

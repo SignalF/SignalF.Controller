@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Name: Name of the project to generate with business object generator
+		 TargetPath: The path where to create the project
+     Version: The version of the generated project	-->
+<?XMLDatabase Name="SignalF.Datamodel.Hardware" Namespace="SignalF.Datamodel.Hardware" ProjectFolder="" Version="1.3.1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:SignalF.1.0" targetNamespace="urn:SignalF.1.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="SignalF.Datamodel.Base.xsd"/>
+	<xs:include schemaLocation="SignalF.Datamodel.Units.xsd"/>
+	<xs:include schemaLocation="SignalF.Datamodel.Signals.xsd"/>
+	<xs:simpleType name="SignalF.Datamodel.Hardware.I2cBusSpeedType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="StandardMode">
+				<xs:annotation>
+					<xs:documentation>The standard speed of 100 kilohertz (kHz). This speed is the default.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FastMode">
+				<xs:annotation>
+					<xs:documentation>A fast speed of 400 kHz.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Hardware.ConnectionTypeType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="None"/>
+			<xs:enumeration value="I2c"/>
+			<xs:enumeration value="Spi"/>
+			<xs:enumeration value="OneWire"/>
+			<xs:enumeration value="USB"/>
+			<xs:enumeration value="Tcp"/>
+			<xs:enumeration value="UDP"/>
+			<xs:enumeration value="RS232"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Hardware.SpiModeType">
+		<xs:annotation>
+			<xs:documentation>Defines the Spi communication mode. The communication mode defines the clock edge on which the master out line toggles, the master in line samples, and the signal clock's signal steady level (named SCLK). Each mode is defined with a pair of parameters called clock polarity (CPOL) and clock phase (CPHA).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="Mode0">
+				<xs:annotation>
+					<xs:documentation>CPOL = 0, CPHA = 0</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Mode1">
+				<xs:annotation>
+					<xs:documentation>CPOL = 0, CPHA = 1</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Mode2">
+				<xs:annotation>
+					<xs:documentation>CPOL = 1, CPHA = 0</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Mode3">
+				<xs:annotation>
+					<xs:documentation>CPOL = 1, CPHA = 1</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Hardware.SpiDataFlowType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="MsbFirst">
+				<xs:annotation>
+					<xs:documentation>Most significant bit will be sent first (most of the devices use this value).</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LsbFirst">
+				<xs:annotation>
+					<xs:documentation>Least significant bit will be sent first.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:annotation>
+		<xs:documentation>Hardware</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="SignalF.Datamodel.Hardware.HardwareConfigurationType">
+		<xs:annotation>
+			<xs:documentation>Root node of hardware configuration. TODO: Check abstaction</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ChannelGroups" type="SignalF.Datamodel.Hardware.ChannelGroupConfigurationListType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.SignalChannelMappingType">
+		<xs:annotation>
+			<xs:documentation>Maps a signal definition to a physical device channel.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="SignalEndpointDefinition" type="SignalF.Datamodel.Signals.SignalEndpointDefinitionRefType"/>
+		</xs:sequence>
+		<xs:attribute name="ChannelNumber" type="SignalF.Datamodel.Base.IntType" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.SignalChannelMappingListType">
+		<xs:annotation>
+			<xs:documentation>List of signal/channel mappings.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="SignalChannelMapping" type="SignalF.Datamodel.Hardware.SignalChannelMappingType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:annotation>
+		<xs:documentation>Devices</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="SignalF.Datamodel.Hardware.DeviceTemplateType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Signals.SignalProcessorTemplateType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.DeviceDefinitionType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Signals.SignalProcessorDefinitionType">
+				<xs:attribute name="ConnectionType" type="SignalF.Datamodel.Hardware.ConnectionTypeType" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.DeviceConfigurationType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Signals.SignalProcessorConfigurationType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.DeviceConfigurationRefType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Base.ReferenceType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.DeviceConfigurationRefListType">
+		<xs:sequence>
+			<xs:element name="Device" type="SignalF.Datamodel.Hardware.DeviceConfigurationRefType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:annotation>
+		<xs:documentation>Gpio</xs:documentation>
+	</xs:annotation>
+	<xs:simpleType name="SignalF.Datamodel.Hardware.GpioPinDriveModeType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="Input">
+				<xs:annotation>
+					<xs:documentation>Configures the Gpio pin in floating mode, with high impedance.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Output">
+				<xs:annotation>
+					<xs:documentation>Configures the Gpio pin in strong drive mode, with low impedance.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="InputPullUp">
+				<xs:annotation>
+					<xs:documentation>Configures the Gpio pin as high impedance with a pull-up resistor to the voltage charge connection (VCC).</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="InputPullDown">
+				<xs:annotation>
+					<xs:documentation>Configures the Gpio pin as high impedance with a pull-down resistor to ground.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="OutputOpenDrain">
+				<xs:annotation>
+					<xs:documentation>Configures the Gpio in open drain mode.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="OutputOpenDrainPullUp">
+				<xs:annotation>
+					<xs:documentation>Configures the Gpio pin in open drain mode with resistive pull-up mode.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="OutputOpenSource">
+				<xs:annotation>
+					<xs:documentation>Configures the Gpio pin in open collector mode.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="OutputOpenSourcePullDown">
+				<xs:annotation>
+					<xs:documentation>Configures the Gpio pin in open collector mode with resistive pull-down mode.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Hardware.GpioPinValueType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="Low"/>
+			<xs:enumeration value="High"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Hardware.GpioSharingModeType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="Exclusive">
+				<xs:annotation>
+					<xs:documentation>Opens the Gpio pin exclusively, so that no other connection to the pin can be opened.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SharedReadOnly">
+				<xs:annotation>
+					<xs:documentation>Opens the Gpio pin as shared, so that other connections in **SharedReadOnly** mode to the pin can be opened.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.GpioPinType">
+		<xs:sequence>
+			<xs:element name="Configuration" type="SignalF.Datamodel.Hardware.GpioPinConfigurationType"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="SignalF.Datamodel.Base.IdentifierType" use="required"/>
+		<xs:attribute name="Designation" type="SignalF.Datamodel.Base.StringType" use="required"/>
+		<xs:attribute name="PinNumber" type="SignalF.Datamodel.Base.IntType" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.GpioPinListType">
+		<xs:sequence>
+			<xs:element name="GpioPin" type="SignalF.Datamodel.Hardware.GpioPinType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.GpioPinRefType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Base.ReferenceType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.GpioPinConfigurationType">
+		<xs:attribute name="id" type="SignalF.Datamodel.Base.IdentifierType" use="required"/>
+		<xs:attribute name="DriveMode" type="SignalF.Datamodel.Hardware.GpioPinDriveModeType" use="required"/>
+		<xs:attribute name="SharingMode" type="SignalF.Datamodel.Hardware.GpioSharingModeType" use="required"/>
+		<xs:attribute name="InitialValue" type="SignalF.Datamodel.Hardware.GpioPinValueType" use="optional"/>
+	</xs:complexType>
+	<xs:annotation>
+		<xs:documentation>GPIO Port Access</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="SignalF.Datamodel.Hardware.GpioPinAccessTemplateType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Hardware.DeviceTemplateType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.GpioPinAccessDefinitionType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Hardware.DeviceDefinitionType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.GpioPinAccessConfigurationType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Hardware.DeviceConfigurationType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:annotation>
+		<xs:documentation>Device bindings</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="SignalF.Datamodel.Hardware.DeviceBindingConfigurationType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Base.CoreObjectType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.DeviceBindingConfigurationListType">
+		<xs:sequence>
+			<xs:element name="DeviceBinding" type="SignalF.Datamodel.Hardware.DeviceBindingConfigurationType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.DeviceBindingConfigurationRefType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Base.ReferenceType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.GpioDeviceBindingConfigurationType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Hardware.DeviceBindingConfigurationType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.I2cDeviceBindingConfigurationType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Hardware.DeviceBindingConfigurationType">
+				<xs:attribute name="BusId" type="SignalF.Datamodel.Base.IntType" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.OneWireDeviceBindingConfigurationType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Hardware.DeviceBindingConfigurationType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.SpiDeviceBindingConfigurationType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Hardware.DeviceBindingConfigurationType">
+				<xs:attribute name="BusId" type="SignalF.Datamodel.Base.IntType" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.TcpDeviceBindingConfigurationType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Hardware.DeviceBindingConfigurationType">
+				<xs:attribute name="IpAddress" type="SignalF.Datamodel.Base.StringType" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:annotation>
+		<xs:documentation>Channel groups</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="SignalF.Datamodel.Hardware.ChannelGroupConfigurationType" abstract="true">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Base.CoreObjectType">
+				<xs:sequence>
+					<xs:element name="Channels" type="SignalF.Datamodel.Hardware.ChannelConfigurationListType"/>
+					<xs:element name="DeviceBinding" type="SignalF.Datamodel.Hardware.DeviceBindingConfigurationRefType"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.ChannelGroupConfigurationListType">
+		<xs:sequence>
+			<xs:element name="ChannelGroup" type="SignalF.Datamodel.Hardware.ChannelGroupConfigurationType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.ChannelConfigurationListType">
+		<xs:sequence>
+			<xs:element name="Channel" type="SignalF.Datamodel.Hardware.ChannelConfigurationType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.ChannelConfigurationType" abstract="true">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Base.CoreObjectType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.ChannelConfigurationRefType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Base.ReferenceType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:annotation>
+		<xs:documentation>GPIO ChannelGroup</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="SignalF.Datamodel.Hardware.GpioChannelGroupConfigurationType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Hardware.ChannelGroupConfigurationType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.GpioChannelConfigurationType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Hardware.ChannelConfigurationType">
+				<xs:attribute name="DriveMode" type="SignalF.Datamodel.Hardware.GpioPinDriveModeType" use="required"/>
+				<xs:attribute name="PinNumber" type="SignalF.Datamodel.Base.IntType" use="required"/>
+				<xs:attribute name="SharingMode" type="SignalF.Datamodel.Hardware.GpioSharingModeType" use="required"/>
+				<xs:attribute name="InitialValue" type="SignalF.Datamodel.Hardware.GpioPinValueType" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.GpioChannelGroupConfigurationRefType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Base.ReferenceType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:annotation>
+		<xs:documentation>Spi ChannelGroup</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="SignalF.Datamodel.Hardware.SpiChannelGroupConfigurationType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Hardware.ChannelGroupConfigurationType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.SpiChannelConfigurationType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Hardware.ChannelConfigurationType">
+				<xs:attribute name="ChipSelectLine" type="SignalF.Datamodel.Base.IntType" use="required"/>
+				<xs:attribute name="Mode" type="SignalF.Datamodel.Hardware.SpiModeType" use="required"/>
+				<xs:attribute name="ClockFrequency" type="SignalF.Datamodel.Base.IntType" use="optional"/>
+				<xs:attribute name="ChipSelectLineActiveState" type="SignalF.Datamodel.Hardware.GpioPinValueType" use="optional"/>
+				<xs:attribute name="DataBitLength" type="SignalF.Datamodel.Base.IntType" use="optional"/>
+				<xs:attribute name="DataFlow" type="SignalF.Datamodel.Hardware.SpiDataFlowType" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.SpiChannelGroupConfigurationRefType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Base.ReferenceType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:annotation>
+		<xs:documentation>I2c ChannelGroup</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="SignalF.Datamodel.Hardware.I2cChannelGroupConfigurationType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Hardware.ChannelGroupConfigurationType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.I2cChannelConfigurationType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Hardware.ChannelConfigurationType">
+				<xs:attribute name="DeviceAddress" type="SignalF.Datamodel.Base.IntType" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.I2cChannelGroupConfigurationRefType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Base.ReferenceType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:annotation>
+		<xs:documentation>One Wire ChannelGroups</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="SignalF.Datamodel.Hardware.OneWireChannelGroupConfigurationType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Hardware.ChannelGroupConfigurationType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.OneWireChannelConfigurationType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Hardware.ChannelConfigurationType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.OneWireChannelGroupConfigurationRefType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Base.ReferenceType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:annotation>
+		<xs:documentation>Tcp ChannelGroup</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="SignalF.Datamodel.Hardware.TcpChannelGroupConfigurationType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Hardware.ChannelGroupConfigurationType">
+				<xs:attribute name="IpAddress" type="SignalF.Datamodel.Base.StringType" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.TcpChannelConfigurationType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Hardware.ChannelConfigurationType">
+				<xs:attribute name="Port" type="SignalF.Datamodel.Base.IntType" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.TcpChannelGroupConfigurationRefType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Base.ReferenceType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:annotation>
+		<xs:documentation>Channel mappings</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="SignalF.Datamodel.Hardware.ChannelToDevicesMappingType">
+		<xs:sequence>
+			<xs:element name="Channel" type="SignalF.Datamodel.Hardware.ChannelConfigurationRefType"/>
+			<xs:element name="Devices" type="SignalF.Datamodel.Hardware.DeviceConfigurationRefListType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.ChannelToDevicesMappingListType">
+		<xs:sequence>
+			<xs:element name="Mapping" type="SignalF.Datamodel.Hardware.ChannelToDevicesMappingType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.ChannelToSignalEndpointsMappingType">
+		<xs:sequence>
+			<xs:element name="Channel" type="SignalF.Datamodel.Hardware.ChannelConfigurationRefType"/>
+			<xs:element name="SignalEndpoints" type="SignalF.Datamodel.Signals.SignalEndpointConfigurationRefListType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Hardware.ChannelToSignalEndpointsMappingListType">
+		<xs:sequence>
+			<xs:element name="Mapping" type="SignalF.Datamodel.Hardware.ChannelToSignalEndpointsMappingType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

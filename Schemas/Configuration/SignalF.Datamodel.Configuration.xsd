@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Name: Name of the project to generate with business object generator
+		 TargetPath: The path where to create the project
+     Version: The version of the generated project	-->
+<?XMLDatabase Name="SignalF.Datamodel.Configuration" Namespace="SignalF.Datamodel.Configuration" ProjectFolder="" Version="1.3.1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:SignalF.1.0" targetNamespace="urn:SignalF.1.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="SignalF.Datamodel.Base.xsd"/>
+	<xs:include schemaLocation="SignalF.Datamodel.Units.xsd"/>
+	<xs:include schemaLocation="SignalF.Datamodel.Signals.xsd"/>
+	<xs:include schemaLocation="SignalF.Datamodel.Calculation.xsd"/>
+	<xs:include schemaLocation="SignalF.Datamodel.Devices.xsd"/>
+	<xs:include schemaLocation="SignalF.Datamodel.Hardware.xsd"/>
+	<xs:include schemaLocation="SignalF.Datamodel.ProcessControl.xsd"/>
+	<xs:include schemaLocation="SignalF.Datamodel.DataOutput.xsd"/>
+	<xs:element name="ControllerConfiguration" type="SignalF.Datamodel.Configuration.ControllerConfigurationType"/>
+	<xs:complexType name="SignalF.Datamodel.Configuration.ControllerConfigurationType">
+		<xs:sequence>
+			<xs:element name="SignalProcessorTemplates" type="SignalF.Datamodel.Signals.SignalProcessorTemplateListType"/>
+			<xs:element name="SignalProcessorDefinitions" type="SignalF.Datamodel.Signals.SignalProcessorDefinitionListType"/>
+			<xs:element name="SignalProcessorConfigurations" type="SignalF.Datamodel.Signals.SignalProcessorConfigurationListType"/>
+			<xs:element name="HardwareConfiguration" type="SignalF.Datamodel.Hardware.HardwareConfigurationType"/>
+			<xs:element name="TaskConfigurations" type="SignalF.Datamodel.Configuration.TaskConfigurationListType"/>
+			<xs:element name="DataOutputConfigurations" type="SignalF.Datamodel.DataOutput.DataOutputConfigurationListType"/>
+			<xs:element name="DataOutputSenderConfigurations" type="SignalF.Datamodel.DataOutput.DataOutputSenderConfigurationListType"/>
+			<xs:element name="Connections" type="SignalF.Datamodel.Signals.SignalConnectionListType"/>
+			<xs:element name="ChannelToDeviceMappings" type="SignalF.Datamodel.Hardware.ChannelToDevicesMappingListType"/>
+			<xs:element name="ChannelToSignalEndpointsMappings" type="SignalF.Datamodel.Hardware.ChannelToSignalEndpointsMappingListType"/>
+			<xs:element name="DeviceBindings" type="SignalF.Datamodel.Hardware.DeviceBindingConfigurationListType"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="SignalF.Datamodel.Base.IdentifierType" use="required"/>
+	</xs:complexType>
+	<xs:annotation>
+		<xs:documentation>Tasks</xs:documentation>
+	</xs:annotation>
+	<xs:simpleType name="SignalF.Datamodel.Configuration.TaskTypeType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="Init"/>
+			<xs:enumeration value="Read"/>
+			<xs:enumeration value="Calculate"/>
+			<xs:enumeration value="Write"/>
+			<xs:enumeration value="Exit"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="SignalF.Datamodel.Configuration.TaskConfigurationType">
+		<xs:sequence>
+			<xs:element name="Raster" type="SignalF.Datamodel.Units.TimeValueType">
+				<xs:annotation>
+					<xs:documentation>Raster in seconds.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SignalProcessorConfigurations" type="SignalF.Datamodel.Signals.SignalProcessorConfigurationRefListType">
+				<xs:annotation>
+					<xs:documentation>List of signal processors that shall run within this raster.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="id" type="SignalF.Datamodel.Base.IdentifierType" use="required"/>
+		<xs:attribute name="Name" type="SignalF.Datamodel.Base.StringType" use="required">
+			<xs:annotation>
+				<xs:documentation>Name of the task.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Priority" type="SignalF.Datamodel.Base.UByteType" use="required">
+			<xs:annotation>
+				<xs:documentation>
+					Task priority. Value should be between 0 and 255.
+					0 is the highest priority.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Type" type="SignalF.Datamodel.Configuration.TaskTypeType" use="required">
+			<xs:annotation>
+				<xs:documentation>Task type</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Configuration.TaskConfigurationListType">
+		<xs:sequence>
+			<xs:element name="TaskConfiguration" type="SignalF.Datamodel.Configuration.TaskConfigurationType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>List of task configurations.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

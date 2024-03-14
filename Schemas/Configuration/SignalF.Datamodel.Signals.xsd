@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Name: Name of the project to generate with business object generator
+		 TargetPath: The path where to create the project
+     Version: The version of the generated project	-->
+<?XMLDatabase Name="SignalF.Datamodel.Signals" Namespace="SignalF.Datamodel.Signals" ProjectFolder="" Version="1.3.1.0"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:SignalF.1.0"
+           targetNamespace="urn:SignalF.1.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="SignalF.Datamodel.Base.xsd" />
+	<xs:include schemaLocation="SignalF.Datamodel.Units.xsd" />
+	<xs:simpleType name="SignalF.Datamodel.Signals.UnitTypeType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="None" />
+			<xs:enumeration value="Acceleration" />
+			<xs:enumeration value="Angle" />
+			<xs:enumeration value="Area" />
+			<xs:enumeration value="Capacity" />
+			<xs:enumeration value="Current" />
+			<xs:enumeration value="Density" />
+			<xs:enumeration value="DynamicViscosity" />
+			<xs:enumeration value="Force" />
+			<xs:enumeration value="KinematicViscosity" />
+			<xs:enumeration value="Length" />
+			<xs:enumeration value="Loudness" />
+			<xs:enumeration value="Mass" />
+			<xs:enumeration value="MassFlowrate" />
+			<xs:enumeration value="MassFlux" />
+			<xs:enumeration value="MolarMass" />
+			<xs:enumeration value="Power" />
+			<xs:enumeration value="Pressure" />
+			<xs:enumeration value="Sensitivity" />
+			<xs:enumeration value="SpecificEnthalpy" />
+			<xs:enumeration value="SpecificVolume" />
+			<xs:enumeration value="SpecificWeight" />
+			<xs:enumeration value="Temperature" />
+			<xs:enumeration value="Time" />
+			<xs:enumeration value="Velocity" />
+			<xs:enumeration value="Voltage" />
+			<xs:enumeration value="Volume" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:annotation>
+		<xs:documentation>Signals end points</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalEndpointConfigurationType" abstract="true">
+		<xs:sequence>
+			<xs:element name="Definition" type="SignalF.Datamodel.Signals.SignalEndpointDefinitionRefType" />
+		</xs:sequence>
+		<xs:attribute name="id" type="SignalF.Datamodel.Base.IdentifierType" use="required" />
+		<xs:attribute name="Name" type="SignalF.Datamodel.Base.StringType" use="required" />
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalEndpointConfigurationRefType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Base.ReferenceType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalEndpointConfigurationRefListType">
+		<xs:sequence>
+			<xs:element name="SignalEndpoint" type="SignalF.Datamodel.Signals.SignalEndpointConfigurationRefType"
+			            minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalEndpointDefinitionType">
+		<xs:attribute name="id" type="SignalF.Datamodel.Base.IdentifierType" use="required" />
+		<xs:attribute name="Name" type="SignalF.Datamodel.Base.StringType" use="required" />
+		<xs:attribute name="UnitType" type="SignalF.Datamodel.Signals.UnitTypeType" use="required" />
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalEndpointDefinitionListType">
+		<xs:sequence>
+			<xs:element name="SignalEndpointDefinition" type="SignalF.Datamodel.Signals.SignalEndpointDefinitionType"
+			            minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalEndpointDefinitionRefType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Base.ReferenceType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalConfigurationType" abstract="true">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Signals.SignalEndpointConfigurationType">
+				<xs:sequence>
+					<xs:element name="Unit" type="SignalF.Datamodel.Units.UnitType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Unit that shall be displayed in an graphical user interface. </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalSourceConfigurationType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Signals.SignalConfigurationType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalSourceConfigurationRefType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Base.ReferenceType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalSourceConfigurationListType">
+		<xs:sequence>
+			<xs:element name="SignalSource" type="SignalF.Datamodel.Signals.SignalSourceConfigurationType" minOccurs="0"
+			            maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalSourceConfigurationRefListType">
+		<xs:sequence>
+			<xs:element name="SignalSource" type="SignalF.Datamodel.Signals.SignalSourceConfigurationRefType" minOccurs="0"
+			            maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalSinkConfigurationType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Signals.SignalConfigurationType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalSinkConfigurationRefType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Base.ReferenceType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalSinkConfigurationListType">
+		<xs:sequence>
+			<xs:element name="SignalSink" type="SignalF.Datamodel.Signals.SignalSinkConfigurationType" minOccurs="0"
+			            maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalSinkConfigurationRefListType">
+		<xs:sequence>
+			<xs:element name="SignalSink" type="SignalF.Datamodel.Signals.SignalSinkConfigurationRefType" minOccurs="0"
+			            maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:annotation>
+		<xs:documentation>Signal Processor Configuration</xs:documentation>
+	</xs:annotation>
+	<xs:annotation>
+		<xs:documentation>Signal Processor Template</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalProcessorTemplateType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Base.CoreObjectType">
+				<xs:sequence>
+					<xs:element name="SignalSourceDefinitions" type="SignalF.Datamodel.Signals.SignalEndpointDefinitionListType" />
+					<xs:element name="SignalSinkDefinitions" type="SignalF.Datamodel.Signals.SignalEndpointDefinitionListType" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalProcessorTemplateRefType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Base.ReferenceType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalProcessorTemplateListType">
+		<xs:sequence>
+			<xs:element name="SignalProcessorTemplate" type="SignalF.Datamodel.Signals.SignalProcessorTemplateType"
+			            minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:annotation>
+		<xs:documentation>Signal Processor Definition</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalProcessorDefinitionType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Base.CoreObjectType">
+				<xs:sequence>
+					<xs:element name="Template" type="SignalF.Datamodel.Signals.SignalProcessorTemplateRefType" />
+					<xs:element name="SignalSourceDefinitions" type="SignalF.Datamodel.Signals.SignalEndpointDefinitionListType" />
+					<xs:element name="SignalSinkDefinitions" type="SignalF.Datamodel.Signals.SignalEndpointDefinitionListType" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalProcessorDefinitionRefType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Base.ReferenceType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalProcessorDefinitionListType">
+		<xs:sequence>
+			<xs:element name="SignalProcessorDefinition" type="SignalF.Datamodel.Signals.SignalProcessorDefinitionType"
+			            minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:annotation>
+		<xs:documentation>Signal Processor Configuration</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalProcessorConfigurationType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Base.CoreObjectType">
+				<xs:sequence>
+					<xs:element name="Definition" type="SignalF.Datamodel.Signals.SignalProcessorDefinitionRefType" />
+					<xs:element name="SignalSources" type="SignalF.Datamodel.Signals.SignalSourceConfigurationListType" />
+					<xs:element name="SignalSinks" type="SignalF.Datamodel.Signals.SignalSinkConfigurationListType" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalProcessorConfigurationRefType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Base.ReferenceType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalProcessorConfigurationListType">
+		<xs:sequence>
+			<xs:element name="SignalProcessorConfiguration"
+			            type="SignalF.Datamodel.Signals.SignalProcessorConfigurationType" minOccurs="0"
+			            maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalProcessorConfigurationRefListType">
+		<xs:sequence>
+			<xs:element name="SignalProcessorConfiguration"
+			            type="SignalF.Datamodel.Signals.SignalProcessorConfigurationRefType" minOccurs="0"
+			            maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:annotation>
+		<xs:documentation>Static signals</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="SignalF.Datamodel.Signals.StaticSignalProviderTemplateType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Signals.SignalProcessorTemplateType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Signals.StaticSignalProviderConfigurationType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Signals.SignalProcessorConfigurationType">
+				<xs:sequence>
+					<xs:element name="SignalValues" type="SignalF.Datamodel.Signals.SignalValueListType" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Signals.StaticSignalProviderDefinitionType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Signals.SignalProcessorDefinitionType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalValueType">
+		<xs:sequence>
+			<xs:element name="SignalSource" type="SignalF.Datamodel.Signals.SignalSourceConfigurationRefType" />
+			<xs:element name="Value" type="SignalF.Datamodel.Units.ValueType" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="UnitType" type="SignalF.Datamodel.Signals.UnitTypeType" use="required" />
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalValueListType">
+		<xs:sequence>
+			<xs:element name="SignalValue" type="SignalF.Datamodel.Signals.SignalValueType" minOccurs="0"
+			            maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:annotation>
+		<xs:documentation>Connections</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalConnectionType">
+		<xs:sequence>
+			<xs:element name="SignalSource" type="SignalF.Datamodel.Signals.SignalSourceConfigurationRefType" />
+			<xs:element name="SignalSink" type="SignalF.Datamodel.Signals.SignalSinkConfigurationRefType" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalConnectionListType">
+		<xs:sequence>
+			<xs:element name="Connection" type="SignalF.Datamodel.Signals.SignalConnectionType" minOccurs="0"
+			            maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

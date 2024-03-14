@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<Import Project="..\..\..\Build\CreatePackage.proj" />
+
+	<PropertyGroup>
+		<TargetFrameworks>net8.0</TargetFrameworks>
+		<LangVersion>latest</LangVersion>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<Description>SignalF controller.</Description>
+		<Title>SignalF.Controller</Title>
+	</PropertyGroup>
+
+
+	<ItemGroup>
+		<Compile Remove="Hardware\Channels\I2c\I2cDeviceBinding.cs" />
+		<Compile Remove="Hardware\Channels\Tcp\TcpDeviceBinding.cs" />
+		<Compile Remove="ScotecStopwatch.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="Hardware\DeviceBindings\I2cDeviceBinding.cs" />
+		<None Include="Hardware\DeviceBindings\TcpDeviceBinding.cs" />
+		<None Include="Timer\ScotecStopwatch.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
+		<PackageReference Include="Mono.Options" Version="6.12.0.148" />
+		<PackageReference Include="Scotec.Extensions.Linq" Version="1.0.0" />
+		<PackageReference Include="Scotec.RingBuffer" Version="1.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Datamodel\SignalF.Datamodel.Abstractions\SignalF.Datamodel.Abstractions.csproj" />
+		<ProjectReference Include="..\SignalF.Controller.Abstractions\SignalF.Controller.Abstractions.csproj" />
+	</ItemGroup>
+
+</Project>

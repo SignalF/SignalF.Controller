@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Name: Name of the project to generate with business object generator
+		 TargetPath: The path where to create the project
+     Version: The version of the generated project	-->
+<?XMLDatabase Name="SignalF.Datamodel.DataOutput" Namespace="SignalF.Datamodel.DataOutput" ProjectFolder="" Version="1.3.1.0"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:SignalF.1.0"
+           targetNamespace="urn:SignalF.1.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="SignalF.Datamodel.Base.xsd" />
+	<xs:include schemaLocation="SignalF.Datamodel.Signals.xsd" />
+	<xs:annotation>
+		<xs:documentation>Data Output</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="SignalF.Datamodel.DataOutput.DataOutputConfigurationType">
+		<xs:sequence>
+			<xs:element name="SignalSources" type="SignalF.Datamodel.Signals.SignalSourceConfigurationRefListType" />
+			<xs:element name="DataOutputSenders"
+			            type="SignalF.Datamodel.DataOutput.DataOutputSenderConfigurationRefListType" />
+		</xs:sequence>
+		<xs:attribute name="id" type="SignalF.Datamodel.Base.IdentifierType" use="required" />
+		<xs:attribute name="Name" type="SignalF.Datamodel.Base.StringType" use="required" />
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.DataOutput.DataOutputConfigurationListType">
+		<xs:sequence>
+			<xs:element name="DataOutput" type="SignalF.Datamodel.DataOutput.DataOutputConfigurationType" minOccurs="0"
+			            maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:annotation>
+		<xs:documentation>Data Output Sender</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="SignalF.Datamodel.DataOutput.DataOutputSenderConfigurationType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Base.CoreObjectType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.DataOutput.DataOutputSenderConfigurationRefType" abstract="true">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Base.ReferenceType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.DataOutput.DataOutputSenderConfigurationListType">
+		<xs:sequence>
+			<xs:element name="DataOutputSender" type="SignalF.Datamodel.DataOutput.DataOutputSenderConfigurationType"
+			            minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.DataOutput.DataOutputSenderConfigurationRefListType">
+		<xs:sequence>
+			<xs:element name="DataOutputSender" type="SignalF.Datamodel.DataOutput.DataOutputSenderConfigurationRefType"
+			            minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

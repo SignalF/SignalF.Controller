@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Name: Name of the project to generate with business object generator
+		 TargetPath: The path where to create the project
+     Version: The version of the generated project	-->
+<?XMLDatabase Name="SignalF.Datamodel.Calculation" Namespace="SignalF.Datamodel.Calculation" ProjectFolder="" Version="1.3.1.0"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:SignalF.1.0"
+           targetNamespace="urn:SignalF.1.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="SignalF.Datamodel.Base.xsd" />
+	<xs:include schemaLocation="SignalF.Datamodel.Signals.xsd" />
+	<xs:annotation>
+		<xs:documentation>Calculator</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="SignalF.Datamodel.Calculation.CalculatorTemplateType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Signals.SignalProcessorTemplateType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Calculation.CalculatorDefinitionType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Signals.SignalProcessorDefinitionType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Calculation.CalculatorConfigurationType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Signals.SignalProcessorConfigurationType" />
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

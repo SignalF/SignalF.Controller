@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Name: Name of the project to generate with business object generator
+		 TargetPath: The path where to create the project
+     Version: The version of the generated project	-->
+<?XMLDatabase Name="SignalF.Datamodel.Units" Namespace="SignalF.Datamodel.Units" ProjectFolder="SignalF.Datamodel.Units" Version="4.0.1.0" TemplateType="Units"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:SignalF.1.0"
+           targetNamespace="urn:SignalF.1.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="SignalF.Datamodel.Base.xsd" />
+	<xs:simpleType name="SignalF.Datamodel.Units.AccelerationType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="MeterPerSquareSecond" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Units.AngleType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="Radiant" />
+			<xs:enumeration value="Degree" />
+			<xs:enumeration value="Gon" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Units.AreaType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="SquareMeter" />
+			<xs:enumeration value="SquareMillimeter" />
+			<xs:enumeration value="SquareCentimeter" />
+			<xs:enumeration value="SquareFeet" />
+			<xs:enumeration value="SquareInch" />
+			<xs:enumeration value="SquareYard" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Units.CurrentType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="Ampere" />
+			<xs:enumeration value="KiloAmpere" />
+			<xs:enumeration value="MilliAmpere" />
+			<xs:enumeration value="MicroAmpere" />
+			<xs:enumeration value="NanoAmpere" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Units.DensityType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="KilogramPerCubicMeter" />
+			<xs:enumeration value="GramPerMilliliter" />
+			<xs:enumeration value="GramPerCubicCentimeter" />
+			<xs:enumeration value="GrainPerGallon" />
+			<xs:enumeration value="OuncePerCubicInch" />
+			<xs:enumeration value="PoundPerCubicInch" />
+			<xs:enumeration value="PoundPerCubicFeet" />
+			<xs:enumeration value="GramPerLiter" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Units.DynamicViscosityType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="PascalSeconds" />
+			<xs:enumeration value="MilliPascalSeconds" />
+			<xs:enumeration value="Centipoise" />
+			<xs:enumeration value="Poise" />
+			<xs:enumeration value="KilogramPerMeterHour" />
+			<xs:enumeration value="PoundPerFeetHour" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Units.ForceType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="Newton" />
+			<xs:enumeration value="Dyne" />
+			<xs:enumeration value="PoundForce" />
+			<xs:enumeration value="KilogramForce" />
+			<xs:enumeration value="KiloNewton" />
+			<xs:enumeration value="Kilopond" />
+			<xs:enumeration value="OunceForce" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Units.KinematicViscosityType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="SquareMeterPerSecond" />
+			<xs:enumeration value="SquareMillimeterPerSecond" />
+			<xs:enumeration value="Stokes" />
+			<xs:enumeration value="Centistokes" />
+			<xs:enumeration value="SayboltUniversalSecond" />
+			<xs:enumeration value="SquareFeetPerSecond" />
+			<xs:enumeration value="SquareInchPerSecond" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Units.LengthType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="Meter" />
+			<xs:enumeration value="Millimeter" />
+			<xs:enumeration value="Centimeter" />
+			<xs:enumeration value="Micrometer" />
+			<xs:enumeration value="Feet" />
+			<xs:enumeration value="Inch" />
+			<xs:enumeration value="Yard" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Units.LoudnessType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="dB" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Units.MassType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="Kilogram" />
+			<xs:enumeration value="Gram" />
+			<xs:enumeration value="Milligram" />
+			<xs:enumeration value="Tonne" />
+			<xs:enumeration value="Ounce" />
+			<xs:enumeration value="Pound" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Units.MassFlowRateType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="KilogramPerSecond" />
+			<xs:enumeration value="KilogramPerHour" />
+			<xs:enumeration value="KilogramPerMinute" />
+			<xs:enumeration value="TonnePerHour" />
+			<xs:enumeration value="PoundPerHour" />
+			<xs:enumeration value="PoundPerMinute" />
+			<xs:enumeration value="PoundPerSecond" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Units.MassFluxType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="KilogramPerSecondSquareMeter" />
+			<xs:enumeration value="PoundPerSecondSquareInch" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Units.MolarMassType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="KilogramPerKilomole" />
+			<xs:enumeration value="GramPerMole" />
+			<xs:enumeration value="PoundPerMole" />
+			<xs:enumeration value="PoundPerPoundmole" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Units.NumericType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="Any" />
+			<xs:enumeration value="Ratio" />
+			<xs:enumeration value="Factor" />
+			<xs:enumeration value="Coefficient" />
+			<xs:enumeration value="Percent" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Units.PressureType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="Bar" />
+			<xs:enumeration value="Pascal" />
+			<xs:enumeration value="KiloPascal" />
+			<xs:enumeration value="MegaPascal" />
+			<xs:enumeration value="PoundPerSquareInch" />
+			<xs:enumeration value="PoundPerSquareFeet" />
+			<xs:enumeration value="InchesOfMercury" />
+			<xs:enumeration value="MillimeterOfMercury" />
+			<xs:enumeration value="InchesOfWater" />
+			<xs:enumeration value="FeetOfWater" />
+			<xs:enumeration value="MillimeterOfWater" />
+			<xs:enumeration value="Atmosphere" />
+			<xs:enumeration value="TechnicalAtmosphere" />
+			<xs:enumeration value="Torr" />
+			<xs:enumeration value="KilogramPerSquareCentimeter" />
+			<xs:enumeration value="KipsPerSquareInch" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Units.SensitivityType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="CoulombPerBar" />
+			<xs:enumeration value="PicoCoulombPerBar" />
+			<xs:enumeration value="CoulombPerPascal" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Units.SpecificEnthalpyType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="JoulePerKilogram" />
+			<xs:enumeration value="KiloJoulePerKilogram" />
+			<xs:enumeration value="BtuPerPound" />
+			<xs:enumeration value="CaloriePerGram" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Units.SpecificVolumeType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="CubicMeterPerKilogram" />
+			<xs:enumeration value="CubicCentimeterPerGram" />
+			<xs:enumeration value="CubicInchPerOunce" />
+			<xs:enumeration value="CubicFeetPerPound" />
+			<xs:enumeration value="CubicInchPerPound" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Units.SpecificWeightType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="NewtonPerCubicMeter" />
+			<xs:enumeration value="PoundForcePerCubicFeet" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Units.TemperatureType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="Kelvin" />
+			<xs:enumeration value="DegreeCelsius" />
+			<xs:enumeration value="DegreeFahrenheit" />
+			<xs:enumeration value="DegreeRankine" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Units.TimeType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="Microsecond" />
+			<xs:enumeration value="Millisecond" />
+			<xs:enumeration value="Second" />
+			<xs:enumeration value="Minute" />
+			<xs:enumeration value="Hour" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Units.VelocityType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="MeterPerSecond" />
+			<xs:enumeration value="KilometerPerHour" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Units.VoltageType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="Volt" />
+			<xs:enumeration value="Millivolt" />
+			<xs:enumeration value="Kilovolt" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Units.VolumeType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="CubicMeter" />
+			<xs:enumeration value="Liter" />
+			<xs:enumeration value="Deciliter" />
+			<xs:enumeration value="Centiliter" />
+			<xs:enumeration value="Milliliter" />
+			<xs:enumeration value="CubicFeet" />
+			<xs:enumeration value="CubicInch" />
+			<xs:enumeration value="CubicYard" />
+			<xs:enumeration value="GallonUS" />
+			<xs:enumeration value="GallonUK" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalF.Datamodel.Units.VolumeFlowRateType">
+		<xs:restriction base="SignalF.Datamodel.Base.StringType">
+			<xs:enumeration value="CubicMeterPerSecond" />
+			<xs:enumeration value="CubicMeterPerMinute" />
+			<xs:enumeration value="CubicMeterPerHour" />
+			<xs:enumeration value="LitersPerHour" />
+			<xs:enumeration value="LitersPerMinute" />
+			<xs:enumeration value="MilliliterPerMinute" />
+			<xs:enumeration value="MilliliterPerSecond" />
+			<xs:enumeration value="CubicFeetPerMinute" />
+			<xs:enumeration value="CubicFeetPerHour" />
+			<xs:enumeration value="CubicFeetPerSecond" />
+			<xs:enumeration value="GallonPerMinuteUS" />
+			<xs:enumeration value="GallonPerMinuteUK" />
+			<xs:enumeration value="GallonPerHourUS" />
+			<xs:enumeration value="GallonPerHourUK" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="SignalF.Datamodel.Units.AccelerationValueType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.ValueType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.AccelerationType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.AngleValueType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.ValueType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.AngleType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.AreaValueType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.ValueType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.AreaType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.ValueType" abstract="true">
+		<xs:attribute name="SIValue" type="SignalF.Datamodel.Base.DoubleType" use="optional" />
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.CurrentValueType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.ValueType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.CurrentType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.DensityValueType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.ValueType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.DensityType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.DynamicViscosityValueType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.ValueType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.DynamicViscosityType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.ForceValueType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.ValueType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.ForceType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.KinematicViscosityValueType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.ValueType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.KinematicViscosityType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.LengthValueType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.ValueType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.LengthType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.LoudnessValueType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.ValueType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.LoudnessType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.MassValueType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.ValueType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.MassType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.MassFlowRateValueType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.ValueType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.MassFlowRateType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.MassFluxValueType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.ValueType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.MassFluxType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.MolarMassValueType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.ValueType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.MolarMassType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.NumericValueType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.ValueType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.NumericType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.PressureValueType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.ValueType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.PressureType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.SensitivityValueType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.ValueType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.SensitivityType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.SpecificEnthalpyValueType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.ValueType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.SpecificEnthalpyType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.SpecificVolumeValueType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.ValueType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.SpecificVolumeType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.SpecificWeightValueType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.ValueType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.SpecificWeightType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.TemperatureValueType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.ValueType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.TemperatureType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.TimeValueType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.ValueType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.TimeType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.VelocityValueType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.ValueType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.VelocityType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.VoltageValueType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.ValueType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.VoltageType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.VolumeValueType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.ValueType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.VolumeType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.VolumeFlowRateValueType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.ValueType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.VolumeFlowRateType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.AccelerationUnitType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.UnitType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.AccelerationType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.AngleUnitType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.UnitType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.AngleType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.AreaUnitType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.UnitType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.AreaType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.CurrentUnitType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.UnitType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.CurrentType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.DensityUnitType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.UnitType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.DensityType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.DynamicViscosityUnitType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.UnitType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.DynamicViscosityType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.ForceUnitType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.UnitType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.ForceType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.KinematicViscosityUnitType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.UnitType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.KinematicViscosityType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.LengthUnitType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.UnitType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.LengthType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.LoudnessUnitType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.UnitType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.LoudnessType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.MassUnitType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.UnitType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.MassType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.MassFlowRateUnitType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.UnitType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.MassFlowRateType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.MassFluxUnitType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.UnitType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.MassFluxType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.MolarMassUnitType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.UnitType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.MolarMassType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.NumericUnitType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.UnitType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.NumericType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.PressureUnitType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.UnitType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.PressureType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.SensitivityUnitType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.UnitType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.SensitivityType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.SpecificEnthalpyUnitType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.UnitType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.SpecificEnthalpyType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.SpecificVolumeUnitType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.UnitType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.SpecificVolumeType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.SpecificWeightUnitType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.UnitType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.SpecificWeightType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.TemperatureUnitType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.UnitType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.TemperatureType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.TimeUnitType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.UnitType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.TimeType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.UnitType" abstract="true" />
+	<xs:complexType name="SignalF.Datamodel.Units.VelocityUnitType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.UnitType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.VelocityType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.VoltageUnitType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.UnitType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.VoltageType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.VolumeUnitType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.UnitType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.VolumeType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Units.VolumeFlowRateUnitType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Units.UnitType">
+				<xs:attribute name="Unit" type="SignalF.Datamodel.Units.VolumeFlowRateType" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

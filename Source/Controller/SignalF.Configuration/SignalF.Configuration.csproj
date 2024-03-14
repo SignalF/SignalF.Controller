@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<Import Project="..\..\..\Build\Pack.proj" />
+
+	<PropertyGroup>
+		<Description>SignalF configuration.</Description>
+		<Title>SignalF.Configuration</Title>
+	</PropertyGroup>
+
+	<PropertyGroup>
+	  <TargetFrameworks>net8.0</TargetFrameworks>
+	  <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+	<ItemGroup>
+    <Compile Remove="Element.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Element.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Scotec.Extensions.Linq" Version="1.0.0" />
+  </ItemGroup>
+
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Datamodel\SignalF.Datamodel.Abstractions\SignalF.Datamodel.Abstractions.csproj" />
+	  <ProjectReference Include="..\SignalF.Configuration.Abstractions\SignalF.Configuration.Abstractions.csproj" />
+	</ItemGroup>
+
+</Project>

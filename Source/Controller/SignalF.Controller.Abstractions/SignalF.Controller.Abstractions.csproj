@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<Import Project="..\..\..\Build\Pack.proj" />
+
+	<PropertyGroup>
+		<Description>SignalF controller abstractions.</Description>
+		<Title>SignalF.Controller.Abstractions</Title>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<LangVersion>latest</LangVersion>
+		<RootNamespace>SignalF.Controller</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Remove="Hardware\Channels\OneWire\IOneWireDeviceBinding.cs" />
+		<Compile Remove="Hardware\Channels\Tcp\ITcpDeviceBinding.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="Hardware\Channels\OneWire\IOneWireDeviceBinding.cs" />
+		<None Include="Hardware\Channels\Tcp\ITcpDeviceBinding.cs" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="Iot.Device.Bindings" Version="3.1.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+		<PackageReference Include="Scotec.Queues" Version="1.0.0" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Datamodel\SignalF.Datamodel.Abstractions\SignalF.Datamodel.Abstractions.csproj" />
+	</ItemGroup>
+
+</Project>
