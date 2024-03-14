@@ -1,0 +1,31 @@
+﻿<#@ template language="C#" classname="Scotec.XMLDatabase.BOGenerator.InterfaceProject" #>
+<#@ assembly name="Scotec.XMLDatabase.BOGenerator.dll" #>
+<#@ import namespace="System" #>
+<#@ import namespace="Scotec.XMLDatabase.BOGenerator" #>
+<#@ parameter name="projectDescriptor" type="Scotec.XMLDatabase.BOGenerator.Descriptors.ProjectDescriptor" #>
+<#@ parameter name="targetFramework" type="System.String" #>
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks><#= targetFramework #></TargetFrameworks>
+    <RootNamespace><#= projectDescriptor.Name #></RootNamespace>
+  </PropertyGroup>
+
+    <ItemGroup>
+    <PackageReference Include="Scotec.Math.Units" Version="1.0.0" />
+    <PackageReference Include="Scotec.XmlDatabase" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+<#
+	foreach(var project in projectDescriptor.ReferencedProjects)
+	{
+#>
+    <ProjectReference Include="..\\<#= project.ProjectFolder #>.Abstractions\\<#= project.Name #>.Abstractions.csproj" />
+<#
+	}
+#>
+  </ItemGroup>
+
+
+</Project>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<package>
+	<metadata>
+		<id>$ProjectName$</id>
+		<version>$PackageVersion$</version>
+		<authors>$Authors$</authors>
+		<requireLicenseAcceptance>$RequireLicenseAcceptance$</requireLicenseAcceptance>
+		<license type="expression">$License$</license>
+		<icon>$PackageIcon$</icon>
+		<projectUrl>$ProjectUrl$</projectUrl>
+		<repository type="$RepositoryType$" url="$RepositoryUrl$" />
+		<description>$Description$</description>
+		<releaseNotes></releaseNotes>
+		<copyright>$Copyright$</copyright>
+		<tags></tags>
+		<dependencies>
+			<group targetFramework="net8.0">
+				<dependency id="Autofac.Extensions.DependencyInjection" version="9.0.0" />
+				<dependency id="SignalF.Controller" version="$PackageVersion$" include="all" />
+				<dependency id="SignalF.Datamodel" version="$PackageVersion$" include="all" />
+			</group>
+		</dependencies>
+		<contentFiles>
+		</contentFiles>
+	</metadata>
+	<files>
+		<file src="$ImagePath$\$PackageIcon$" target="" />
+		<file src="bin\$Configuration$\net8.0\SignalF.Extensions.Controller.dll" target="lib\net8.0" />
+	</files>
+</package>

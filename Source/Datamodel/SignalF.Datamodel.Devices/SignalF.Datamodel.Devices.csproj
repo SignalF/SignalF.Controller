@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.1</TargetFrameworks>
+    <RootNamespace>SignalF.Datamodel.Devices</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Scotec.Math.Units" Version="1.0.0" />
+    <PackageReference Include="Scotec.XmlDatabase" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SignalF.Datamodel.Devices.Abstractions\SignalF.Datamodel.Devices.Abstractions.csproj" />
+    <ProjectReference Include="..\SignalF.Datamodel.Base.Abstractions\SignalF.Datamodel.Base.Abstractions.csproj" />
+    <ProjectReference Include="..\SignalF.Datamodel.Units.Abstractions\SignalF.Datamodel.Units.Abstractions.csproj" />
+    <ProjectReference Include="..\SignalF.Datamodel.Signals.Abstractions\SignalF.Datamodel.Signals.Abstractions.csproj" />
+    <ProjectReference Include="..\SignalF.Datamodel.Hardware.Abstractions\SignalF.Datamodel.Hardware.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SignalF.Datamodel.Base\SignalF.Datamodel.Base.csproj" />
+    <ProjectReference Include="..\SignalF.Datamodel.Units\SignalF.Datamodel.Units.csproj" />
+    <ProjectReference Include="..\SignalF.Datamodel.Signals\SignalF.Datamodel.Signals.csproj" />
+    <ProjectReference Include="..\SignalF.Datamodel.Hardware\SignalF.Datamodel.Hardware.csproj" />
+  </ItemGroup>
+
+
+</Project>

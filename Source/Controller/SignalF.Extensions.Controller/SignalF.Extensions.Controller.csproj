@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	
+	<Import Project="..\..\..\Build\CreatePackage.proj" />
+
+	<PropertyGroup>
+		<Description>SignalF controller extensions.</Description>
+		<Title>SignalF.Extensions.Controller</Title>
+	</PropertyGroup>
+	
+
+	<PropertyGroup>
+		<TargetFrameworks>net8.0</TargetFrameworks>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+
+	<ItemGroup>
+	  <Content Include="DefaultConfiguration.xml">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="9.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Datamodel\SignalF.Datamodel\SignalF.Datamodel.csproj" />
+		<ProjectReference Include="..\SignalF.Controller.Abstractions\SignalF.Controller.Abstractions.csproj" />
+		<ProjectReference Include="..\SignalF.Controller\SignalF.Controller.csproj" />
+	</ItemGroup>
+
+</Project>

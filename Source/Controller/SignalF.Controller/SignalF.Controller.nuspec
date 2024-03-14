@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<package>
+	<metadata>
+		<id>$ProjectName$</id>
+		<version>$PackageVersion$</version>
+		<authors>$Authors$</authors>
+		<requireLicenseAcceptance>$RequireLicenseAcceptance$</requireLicenseAcceptance>
+		<license type="expression">$License$</license>
+		<icon>$PackageIcon$</icon>
+		<projectUrl>$ProjectUrl$</projectUrl>
+		<repository type="$RepositoryType$" url="$RepositoryUrl$" />
+		<description>$Description$</description>
+		<releaseNotes></releaseNotes>
+		<copyright>$Copyright$</copyright>
+		<tags></tags>
+		<dependencies>
+			<group targetFramework="net8.0">
+				<dependency id="SignalF.Datamodel.Abstractions" version="$PackageVersion$" />
+				<dependency id="SignalF.Controller.Abstractions" version="$PackageVersion$" />
+				<dependency id="Microsoft.Extensions.Configuration.Binder" version="8.0.1" />
+				<dependency id="Microsoft.Extensions.Hosting.Abstractions" version="8.0.0" />
+				<dependency id="Mono.Options" version="6.12.0.148" />
+				<dependency id="Scotec.Extensions.Linq" version="1.0.0" />
+				<dependency id="Scotec.RingBuffer" version="1.0.0" />
+			</group>
+		</dependencies>
+		<contentFiles>
+			<files include="**\DefaultConfiguration.xml" buildAction="Content" copyToOutput="true" />
+		</contentFiles>
+	</metadata>
+	<files>
+		<file src="$ImagePath$\$PackageIcon$" target="" />
+		<file src="DefaultConfiguration.xml" target="contentFiles\any\any" />
+		<file src="bin\$Configuration$\net8.0\SignalF.Controller.dll" target="lib\net8.0" />
+	</files>
+</package>
