@@ -1,15 +1,11 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Welcome to the SignalF project
+SignalF is a configurable, modular .NET measurement and control software specially designed for operation on single-board computers such as the Raspberry Pi or the Orange Pi.
+In industry, single-board computers are primarily used in measurement and control technology (MCR), where they often replace the much more expensive programmable logic controllers (PLCs).
+
+SignalF is a soft real-time system. The sensor data is read in, the control algorithms and calculators are executed and the control values are output to the actuator at defined time intervals using configurable tasks. When creating your measurement and control software, you no longer have to worry about the architecture of the application, but can concentrate entirely on connecting the hardware and implementing your algorithms.
 
 # Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
-
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+The (SignalF documentation)[https://signalfdocumentation.readthedocs.io/en/latest/getting-started/getting-started.html#] will guide you through setting up the code and running it on your own system.
 
 # Contribute
 TODO: Explain how other users and developers can contribute to make your code better. 
