@@ -9,7 +9,7 @@ The [SignalF documentation](https://signalfdocumentation.readthedocs.io/en/lates
 
 
 ## Bug Reports
-If you find any bugs, please report them using the [GitHub issue tracker]. A test-case that demonstrates the issue is usually required. 
+If you find any bugs, please report them using the [GitHub issue tracker](https://github.com/Signal-F/SignalF.Controller/issues). A test-case that demonstrates the issue is usually required. 
 
 
 ## Contribute
