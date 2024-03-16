@@ -5,7 +5,7 @@ In industry, single-board computers are primarily used in measurement and contro
 SignalF is a soft real-time system. The sensor data is read in, the control algorithms and calculators are executed and the control values are output to the actuator at defined time intervals using configurable tasks. When creating your measurement and control software, you no longer have to worry about the architecture of the application, but can concentrate entirely on connecting the hardware and implementing your algorithms.
 
 # Getting Started
-The (SignalF documentation)[https://signalfdocumentation.readthedocs.io/en/latest/getting-started/getting-started.html#] will guide you through setting up the code and running it on your own system.
+The [SignalF documentation)](ttps://signalfdocumentation.readthedocs.io/en/latest/getting-started/getting-started.html#) will guide you through setting up the code and running it on your own system.
 
 # Contribute
 TODO: Explain how other users and developers can contribute to make your code better. 
