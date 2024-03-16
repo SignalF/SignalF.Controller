@@ -7,6 +7,9 @@ SignalF is a soft real-time system. The sensor data is read in, the control algo
 # Getting Started
 The [SignalF documentation](https://signalfdocumentation.readthedocs.io/en/latest/getting-started/getting-started.html#) will guide you through setting up the code and running it on your own system.
 
+### Bug Reports
+If you find any bugs, please report them using the (GitHub issue tracker)[]. A test-case that demonstrates the issue is usually required. Instructions on providing a test-case can be found in contributing guidelines or here.
+
 # Contribute
 TODO: Explain how other users and developers can contribute to make your code better. 
 
