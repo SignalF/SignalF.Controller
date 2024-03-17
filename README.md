@@ -11,6 +11,6 @@ The [SignalF documentation](https://signalfdocumentation.readthedocs.io/en/lates
 
 Contributions to Signal are welcome. Here is how you can contribute to ChakraCore:
 
-[Submit bugs](https://signalfdocumentation.readthedocs.io/en/latest/getting-started/getting-started.html#) and help us verify fixes.
-[Submit pull requests](https://github.com/Signal-F/SignalF.Controller/pulls) for bug fixes and features and discuss existing proposals
+[Submit bugs](https://signalfdocumentation.readthedocs.io/en/latest/getting-started/getting-started.html#) and help us verify fixes.<br>
+[Submit pull requests](https://github.com/Signal-F/SignalF.Controller/pulls) for bug fixes and features and discuss existing proposals.<br>
 Please refer to Contribution Guidelines for more details.
