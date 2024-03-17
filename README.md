@@ -7,15 +7,10 @@ SignalF is a soft real-time system. The sensor data is read in, the control algo
 ## Getting Started
 The [SignalF documentation](https://signalfdocumentation.readthedocs.io/en/latest/getting-started/getting-started.html#) will guide you through setting up the code and running it on your own system.
 
-
-## Bug Reports
-If you find any bugs, please report them using the [GitHub issue tracker](https://github.com/Signal-F/SignalF.Controller/issues). A test-case that demonstrates the issue is usually required. 
-
-
 ## Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+Contributions to Signal are welcome. Here is how you can contribute to ChakraCore:
+
+[Submit bugs](https://signalfdocumentation.readthedocs.io/en/latest/getting-started/getting-started.html#) and help us verify fixes.
+[Submit pull requests](https://github.com/Signal-F/SignalF.Controller/pulls) for bug fixes and features and discuss existing proposals
+Please refer to Contribution Guidelines for more details.
