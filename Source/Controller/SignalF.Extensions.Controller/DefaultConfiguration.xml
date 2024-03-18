@@ -1,145 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?XMLDatabase schemaVersion="1.3.1.0"?>
 
-<ControllerConfiguration xsi:type="SignalF.Controller.Configuration.ControllerConfigurationType"
-                         id="ID987e5d78-737a-45e8-afc8-96e821ab8399"
+<ControllerConfiguration xsi:type="SignalF.Datamodel.Configuration.ControllerConfigurationType"
+                         id="ID63922045-3789-41a1-ab33-877fb593760c"
                          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:SignalF.1.0">
-	<SignalProcessorTemplate xsi:type="SignalF.Controller.Signals.SignalProcessorTemplateListType">
-		<SignalProcessorTemplate xsi:type="SignalF.Controller.Workflow.ProcessControlTemplateType"
-		                         id="ID12918921-2b5e-4721-9dd8-d584d9c1c238"
-		                         Type="SignalF.Controller.ProcessControl.ProcessControlAdapter"
-		                         DefaultName="ProcessControlAdapter">
-			<Configuration xsi:type="SignalF.Controller.Signals.ConfigurationType" Data="{&quot;name&quot;: &quot;A&quot;}" />
-			<SignalSourceDefinitions xsi:type="SignalF.Controller.Signals.SignalEndpointDefinitionListType">
-				<SignalEndpointDefinition xsi:type="SignalF.Controller.Signals.SignalEndpointDefinitionType"
-				                          id="IDdedc062a-4201-41cf-80b7-582e4052d72e" Name="SetTemperature" UnitType="Voltage" />
+	<SignalProcessorTemplates xsi:type="SignalF.Datamodel.Signals.SignalProcessorTemplateListType">
+		<SignalProcessorTemplate xsi:type="SignalF.Datamodel.Workflow.ProcessControlTemplateType"
+		                         id="IDafb6bbd7-1cbb-44a6-81da-0e3d7db79510" Name="ProcessControlTemplate"
+		                         Type="SignalF.Controller.Abstractions;SignalF.Controller.Signals.ProcessControl.IProcessControlAdapter">
+			<Configuration xsi:type="SignalF.Datamodel.Base.ConfigurationType" />
+			<SignalSourceDefinitions xsi:type="SignalF.Datamodel.Signals.SignalEndpointDefinitionListType" />
+			<SignalSinkDefinitions xsi:type="SignalF.Datamodel.Signals.SignalEndpointDefinitionListType" />
+		</SignalProcessorTemplate>
+	</SignalProcessorTemplates>
+	<SignalProcessorDefinitions xsi:type="SignalF.Datamodel.Signals.SignalProcessorDefinitionListType">
+		<SignalProcessorDefinition xsi:type="SignalF.Datamodel.Workflow.ProcessControlDefinitionType"
+		                           id="IDeb24a346-dba1-4bc7-84b1-cdf86a86a3e4" Name="ProcessControlDefinition">
+			<Configuration xsi:type="SignalF.Datamodel.Base.ConfigurationType" />
+			<Template xsi:type="SignalF.Datamodel.Signals.SignalProcessorTemplateRefType"
+			          idRef="IDafb6bbd7-1cbb-44a6-81da-0e3d7db79510" />
+			<SignalSourceDefinitions xsi:type="SignalF.Datamodel.Signals.SignalEndpointDefinitionListType">
 			</SignalSourceDefinitions>
-			<SignalSinkDefinitions xsi:type="SignalF.Controller.Signals.SignalEndpointDefinitionListType">
-				<SignalEndpointDefinition xsi:type="SignalF.Controller.Signals.SignalEndpointDefinitionType"
-				                          id="ID2b45aada-b7a4-47f6-9be7-41e2ef0bbeee" Name="CurrentTemperature"
-				                          UnitType="Temperature" />
+			<SignalSinkDefinitions xsi:type="SignalF.Datamodel.Signals.SignalEndpointDefinitionListType">
 			</SignalSinkDefinitions>
-		</SignalProcessorTemplate>
-		<SignalProcessorTemplate xsi:type="SignalF.Controller.Signals.StaticSignalProviderTemplateType"
-		                         id="IDaaa2d065-84b8-48e6-a7ea-d5869afa1c48"
-		                         Type="SignalF.Controller.StaticSignalProvider" DefaultName="Static Signals">
-			<Configuration xsi:type="SignalF.Controller.Signals.ConfigurationType" Data="{&quot;name&quot;: &quot;A&quot;}" />
-			<SignalSourceDefinitions xsi:type="SignalF.Controller.Signals.SignalEndpointDefinitionListType" />
-			<SignalSinkDefinitions xsi:type="SignalF.Controller.Signals.SignalEndpointDefinitionListType" />
-		</SignalProcessorTemplate>
-	</SignalProcessorTemplate>
-	<SignalProcessorDefinitions xsi:type="SignalF.Controller.Signals.SignalProcessorDefinitionListType">
-		<SignalProcessorDefinition xsi:type="SignalF.Controller.Workflow.ProcessControlDefinitionType"
-		                           id="ID9246792b-3e4d-467f-8854-7e3684f4e27f" DefaultName="ProcessControlAdapter">
-			<Configuration xsi:type="SignalF.Controller.Signals.ConfigurationType" Data="{&quot;name&quot;: &quot;B&quot;}" />
-			<Template xsi:type="SignalF.Controller.Signals.SignalProcessorTemplateRefType"
-			          idRef="ID12918921-2b5e-4721-9dd8-d584d9c1c238" />
-			<SignalSourceDefinitions xsi:type="SignalF.Controller.Signals.SignalEndpointDefinitionListType" />
-			<SignalSinkDefinitions xsi:type="SignalF.Controller.Signals.SignalEndpointDefinitionListType" />
-		</SignalProcessorDefinition>
-		<SignalProcessorDefinition xsi:type="SignalF.Controller.Signals.StaticSignalProviderDefinitionType"
-		                           id="IDcfb23070-2628-4c96-988b-189527c5dd4d" DefaultName="Static Signals">
-			<Configuration xsi:type="SignalF.Controller.Signals.ConfigurationType" Data="{&quot;name&quot;: &quot;B&quot;}" />
-			<Template xsi:type="SignalF.Controller.Signals.SignalProcessorTemplateRefType"
-			          idRef="IDaaa2d065-84b8-48e6-a7ea-d5869afa1c48" />
-			<SignalSourceDefinitions xsi:type="SignalF.Controller.Signals.SignalEndpointDefinitionListType">
-				<SignalEndpointDefinition xsi:type="SignalF.Controller.Signals.SignalEndpointDefinitionType"
-				                          id="ID2a77fd3b-24a6-4c0c-9c79-52c1365dc42f" Name="Reference Voltage" UnitType="Voltage" />
-				<SignalEndpointDefinition xsi:type="SignalF.Controller.Signals.SignalEndpointDefinitionType"
-				                          id="ID0bd52902-57a1-4d6b-bd46-6351e68fc373" Name="Output Voltage" UnitType="Voltage" />
-			</SignalSourceDefinitions>
-			<SignalSinkDefinitions xsi:type="SignalF.Controller.Signals.SignalEndpointDefinitionListType" />
 		</SignalProcessorDefinition>
 	</SignalProcessorDefinitions>
-	<SignalProcessorConfigurations xsi:type="SignalF.Controller.Signals.SignalProcessorConfigurationListType">
-		<SignalProcessorConfiguration xsi:type="SignalF.Controller.Workflow.ProcessControlConfigurationType"
-		                              id="IDcf95b1ca-ff48-4fe2-bd0a-35d8946e5c47" Name="DefaultTest">
-			<Configuration xsi:type="SignalF.Controller.Signals.ConfigurationType" Data="{&quot;name&quot;: &quot;C&quot;}" />
-			<Definition xsi:type="SignalF.Controller.Signals.SignalProcessorDefinitionRefType"
-			            idRef="ID9246792b-3e4d-467f-8854-7e3684f4e27f" />
-			<SignalSources xsi:type="SignalF.Controller.Signals.SignalSourceConfigurationListType">
-				<SignalSource xsi:type="SignalF.Controller.Signals.SignalSourceConfigurationType"
-				              id="IDfba0106b-1253-49cc-857f-a876e265eb73" Name="SetTemperature">
-					<Definition xsi:type="SignalF.Controller.Signals.SignalEndpointDefinitionRefType"
-					            idRef="IDdedc062a-4201-41cf-80b7-582e4052d72e" />
-				</SignalSource>
+	<SignalProcessorConfigurations xsi:type="SignalF.Datamodel.Signals.SignalProcessorConfigurationListType">
+		<SignalProcessorConfiguration xsi:type="SignalF.Datamodel.Workflow.ProcessControlConfigurationType"
+		                              id="ID1f8177bc-b7d6-4332-bdb0-563f1d4831fa" Name="DefaultProcedure">
+			<Configuration xsi:type="SignalF.Datamodel.Base.ConfigurationType" />
+			<Definition xsi:type="SignalF.Datamodel.Signals.SignalProcessorDefinitionRefType"
+			            idRef="IDeb24a346-dba1-4bc7-84b1-cdf86a86a3e4" />
+			<SignalSources xsi:type="SignalF.Datamodel.Signals.SignalSourceConfigurationListType">
 			</SignalSources>
-			<SignalSinks xsi:type="SignalF.Controller.Signals.SignalSinkConfigurationListType">
-				<SignalSink xsi:type="SignalF.Controller.Signals.SignalSinkConfigurationType"
-				            id="ID546b786a-3c93-4a55-aa81-b80da37b1d38" Name="CurrentTemperature">
-					<Configuration xsi:type="SignalF.Controller.Signals.ConfigurationType"
-					               Data="{&quot;name&quot;: &quot;C&quot;}" />
-					<Definition xsi:type="SignalF.Controller.Signals.SignalEndpointDefinitionRefType"
-					            idRef="ID2b45aada-b7a4-47f6-9be7-41e2ef0bbeee" />
-				</SignalSink>
+			<SignalSinks xsi:type="SignalF.Datamodel.Signals.SignalSinkConfigurationListType">
 			</SignalSinks>
 		</SignalProcessorConfiguration>
-		<SignalProcessorConfiguration xsi:type="SignalF.Controller.Signals.StaticSignalProviderConfigurationType"
-		                              id="IDaa252566-dbff-4719-bd77-6e7d33d24878" Name="Static Signals">
-			<Configuration xsi:type="SignalF.Controller.Signals.ConfigurationType" Data="{&quot;name&quot;: &quot;C&quot;}" />
-			<Definition xsi:type="SignalF.Controller.Signals.SignalProcessorDefinitionRefType"
-			            idRef="IDcfb23070-2628-4c96-988b-189527c5dd4d" />
-			<SignalSources xsi:type="SignalF.Controller.Signals.SignalSourceConfigurationListType">
-				<SignalSource xsi:type="SignalF.Controller.Signals.SignalSourceConfigurationType"
-				              id="ID9ec92042-f6d6-495b-a750-012da59aee24" Name="Reference Voltage">
-					<Definition xsi:type="SignalF.Controller.Signals.SignalEndpointDefinitionRefType"
-					            idRef="ID2a77fd3b-24a6-4c0c-9c79-52c1365dc42f" />
-				</SignalSource>
-				<SignalSource xsi:type="SignalF.Controller.Signals.SignalSourceConfigurationType"
-				              id="ID5adeae5d-3d41-46ac-a3f0-91ab61f46710" Name="Output Voltage">
-					<Definition xsi:type="SignalF.Controller.Signals.SignalEndpointDefinitionRefType"
-					            idRef="ID0bd52902-57a1-4d6b-bd46-6351e68fc373" />
-				</SignalSource>
-			</SignalSources>
-			<SignalSinks xsi:type="SignalF.Controller.Signals.SignalSinkConfigurationListType" />
-			<SignalValues xsi:type="SignalF.Controller.Signals.SignalValueListType">
-				<SignalValue xsi:type="SignalF.Controller.Signals.SignalValueType" UnitType="Voltage">
-					<SignalSource xsi:type="SignalF.Controller.Signals.SignalSourceConfigurationRefType"
-					              idRef="ID9ec92042-f6d6-495b-a750-012da59aee24" />
-					<Value xsi:type="SignalF.Controller.Units.VoltageValueType" Unit="Volt" SIValue="5" />
-				</SignalValue>
-				<SignalValue xsi:type="SignalF.Controller.Signals.SignalValueType" UnitType="Voltage">
-					<SignalSource xsi:type="SignalF.Controller.Signals.SignalSourceConfigurationRefType"
-					              idRef="ID5adeae5d-3d41-46ac-a3f0-91ab61f46710" />
-					<Value xsi:type="SignalF.Controller.Units.VoltageValueType" Unit="Volt" SIValue="1.5" />
-				</SignalValue>
-			</SignalValues>
-		</SignalProcessorConfiguration>
 	</SignalProcessorConfigurations>
-	<HardwareConfiguration xsi:type="SignalF.Controller.Hardware.HardwareConfigurationType">
-		<Connections xsi:type="SignalF.Controller.Hardware.ConnectionListType" />
-		<GpioControllerConfiguration xsi:type="SignalF.Controller.Hardware.GpioControllerConfigurationType"
-		                             id="ID08d3840d-a9c0-4463-99a5-30518a00cbe3">
-			<GpioPins xsi:type="SignalF.Controller.Hardware.GpioPinListType" />
-		</GpioControllerConfiguration>
+	<HardwareConfiguration xsi:type="SignalF.Datamodel.Hardware.HardwareConfigurationType">
+		<ChannelGroups xsi:type="SignalF.Datamodel.Hardware.ChannelGroupConfigurationListType">
+		</ChannelGroups>
 	</HardwareConfiguration>
-	<TaskConfigurations xsi:type="SignalF.Controller.Configuration.TaskConfigurationListType">
-		<TaskConfiguration xsi:type="SignalF.Controller.Configuration.TaskConfigurationType"
-		                   id="ID41464f5d-36c3-4b37-b441-9f3501a6d073" Name="Init task" Priority="0" Type="Init">
-			<Raster xsi:type="SignalF.Controller.Units.TimeValueType" Unit="Second" SIValue="0" />
-			<SignalProcessorConfigurations xsi:type="SignalF.Controller.Signals.SignalProcessorConfigurationRefListType">
-				<SignalProcessorConfiguration xsi:type="SignalF.Controller.Signals.SignalProcessorConfigurationRefType"
-				                              idRef="IDaa252566-dbff-4719-bd77-6e7d33d24878" />
-			</SignalProcessorConfigurations>
-		</TaskConfiguration>
-		<TaskConfiguration xsi:type="SignalF.Controller.Configuration.TaskConfigurationType"
-		                   id="IDa4eb9369-46a0-4df5-bc7e-11f7bb214fca" Name="10s read task" Priority="0" Type="Read">
-			<Raster xsi:type="SignalF.Controller.Units.TimeValueType" Unit="Second" SIValue="10" />
-			<SignalProcessorConfigurations xsi:type="SignalF.Controller.Signals.SignalProcessorConfigurationRefListType">
-				<SignalProcessorConfiguration xsi:type="SignalF.Controller.Signals.SignalProcessorConfigurationRefType"
-				                              idRef="IDcf95b1ca-ff48-4fe2-bd0a-35d8946e5c47" />
-			</SignalProcessorConfigurations>
-		</TaskConfiguration>
-		<TaskConfiguration xsi:type="SignalF.Controller.Configuration.TaskConfigurationType"
-		                   id="IDecc95b8a-f41c-4bf1-a9c3-2fbcf1ec6ef7" Name="10s write task" Priority="0" Type="Write">
-			<Raster xsi:type="SignalF.Controller.Units.TimeValueType" Unit="Second" SIValue="10" />
-			<SignalProcessorConfigurations xsi:type="SignalF.Controller.Signals.SignalProcessorConfigurationRefListType">
-				<SignalProcessorConfiguration xsi:type="SignalF.Controller.Signals.SignalProcessorConfigurationRefType"
-				                              idRef="IDcf95b1ca-ff48-4fe2-bd0a-35d8946e5c47" />
-			</SignalProcessorConfigurations>
-		</TaskConfiguration>
+	<TaskConfigurations xsi:type="SignalF.Datamodel.Configuration.TaskConfigurationListType">
 	</TaskConfigurations>
-	<DataOutputConfigurations xsi:type="SignalF.Controller.DataOutput.DataOutputConfigurationListType" />
-	<DataOutputSenderConfigurations xsi:type="SignalF.Controller.DataOutput.DataOutputSenderConfigurationListType" />
-	<Connections xsi:type="SignalF.Controller.Signals.SignalConnectionListType" />
+	<DataOutputConfigurations xsi:type="SignalF.Datamodel.DataOutput.DataOutputConfigurationListType">
+	</DataOutputConfigurations>
+	<DataOutputSenderConfigurations xsi:type="SignalF.Datamodel.DataOutput.DataOutputSenderConfigurationListType">
+	</DataOutputSenderConfigurations>
+	<Connections xsi:type="SignalF.Datamodel.Signals.SignalConnectionListType">
+	</Connections>
+	<ChannelToDeviceMappings xsi:type="SignalF.Datamodel.Hardware.ChannelToDevicesMappingListType">
+	</ChannelToDeviceMappings>
+	<ChannelToSignalEndpointsMappings xsi:type="SignalF.Datamodel.Hardware.ChannelToSignalEndpointsMappingListType">
+	</ChannelToSignalEndpointsMappings>
+	<DeviceBindings xsi:type="SignalF.Datamodel.Hardware.DeviceBindingConfigurationListType">
+	</DeviceBindings>
 </ControllerConfiguration>

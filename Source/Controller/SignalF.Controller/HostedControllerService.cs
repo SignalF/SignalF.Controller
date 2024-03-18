@@ -40,20 +40,19 @@ public class HostedControllerService : IHostedService
 
         _scope = _scopeFactory.CreateScope();
 
-        _controlInterface = _scope.ServiceProvider.GetService<IControlInterface>();
+        _controlInterface = _scope.ServiceProvider.GetRequiredService<IControlInterface>();
         _configurationManager = _scope.ServiceProvider.GetService<ICoreConfigurationManager>();
 
         // Use default configuration.
         //_configurationManager!.Configure(null);
 
-        // execute default procedure if no procedureName is supplied by CLI
-        var procedureName = options.ProcedureName ?? "DefaultProcedure";
         _controlInterface.Start(options.Configuration ?? "DefaultConfiguration");
         _controlInterface.StartMeasurement();
         _controlInterface!.StartProcessControl(new ProcessControlStartInfo
         {
+            // execute default procedure if no procedureName is supplied by CLI
             ProcedureName = options.ProcedureName ?? "DefaultProcedure",
-            // Create a new ID of none is provided.
+            // Create a new ID if none is provided.
             ProcedureId = options.ProcedureId, AssemblyName = string.IsNullOrWhiteSpace(options.AssemblyName) ? "SignalF.Controller" : options.AssemblyName,
             AssemblyDirectory = options.AssemblyDirectory
         });
