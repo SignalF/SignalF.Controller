@@ -6,6 +6,7 @@ namespace SignalF.Controller.Signals.ProcessControl;
 
 public class DefaultProcedure : IProcessControlProcedure
 {
+    /// <inheritdoc/>>
     public async Task Main(IProcessControlAdapter processControlAdapter, CancellationToken cancellationToken)
     {
         Console.WriteLine();

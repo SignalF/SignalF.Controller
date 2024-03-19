@@ -32,7 +32,11 @@ public class ProcessControlHost : IProcessControlHost
     {
         var processControlAdapter = _signalProcessorFactory
                                     .GetSignalProcessors<IProcessControlAdapter>()
-                                    .Single(adapter => adapter.Name == startInfo.ProcedureName);
+                                    .SingleOrDefault(adapter => adapter.Name == startInfo.ProcedureName);
+        if (processControlAdapter == null)
+        {
+            _logger.LogWarning($"No adapter has been configured for the process control procedure '{startInfo.ProcedureName}'. The procedure is not able to read or write signals from or to the signal hub.");
+        }
 
         // create context which creates a new assembly
         var cancellationSource = new CancellationTokenSource();
