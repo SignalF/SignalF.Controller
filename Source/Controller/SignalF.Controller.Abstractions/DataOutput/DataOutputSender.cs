@@ -1,11 +1,14 @@
 ﻿#region
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Scotec.Queues;
 using SignalF.Controller.Signals;
 using SignalF.Datamodel.DataOutput;
+using SignalF.Datamodel.Signals;
 
 #endregion
 
@@ -15,6 +18,7 @@ public abstract class DataOutputSender : IDataOutputSender
 {
     protected readonly TaskQueue<Signal[]> Queue;
     protected readonly ISignalHub SignalHub;
+    private Dictionary<int, string> _indexToSignalNameMapping;
 
     protected bool FirstValue;
 
@@ -37,9 +41,26 @@ public abstract class DataOutputSender : IDataOutputSender
     {
         Id = configuration.Id;
         Name = configuration.Name;
-
+        BuildIndexToSignalNameMapping(configuration);
         DoConfigure(configuration);
     }
+
+    private void BuildIndexToSignalNameMapping(IDataOutputSenderConfiguration configuration)
+    {
+        var dataOutputs = configuration.GetReverseLinks<IDataOutputConfiguration>();
+        _indexToSignalNameMapping = dataOutputs.SelectMany(output => output.SignalSources)
+                                               .Distinct()
+                                               .ToDictionary(item => SignalHub.GetSignalIndex(item), BuildSignalName); ;
+
+        return;
+
+        static string BuildSignalName(ISignalSourceConfiguration signalSource)
+        {
+            var signalProcessor = signalSource.FindParent<ISignalProcessorConfiguration>();
+            return $"{signalProcessor.Name}.{signalSource.Name}";
+        }
+    }
+
 
     /// <inheritdoc />
     public abstract void SendValues(Signal[] values);
@@ -59,4 +80,9 @@ public abstract class DataOutputSender : IDataOutputSender
     protected abstract void DoConfigure(IDataOutputSenderConfiguration configuration);
 
     protected abstract Task ProcessValuesAsync(Signal[] values);
+
+    protected string GetSignalNameFromIndex(int index)
+    {
+        return _indexToSignalNameMapping[index];
+    }
 }
