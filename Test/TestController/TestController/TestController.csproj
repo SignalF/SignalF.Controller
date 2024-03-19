@@ -9,8 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SignalF.Extensions.Configuration" Version="0.0.0" />
-    <PackageReference Include="SignalF.Extensions.Controller" Version="0.0.0" />
+    <ProjectReference Include="..\..\..\Source\Controller\SignalF.Extensions.Configuration\SignalF.Extensions.Configuration.csproj" />
+    <ProjectReference Include="..\..\..\Source\Controller\SignalF.Extensions.Controller\SignalF.Extensions.Controller.csproj" />
   </ItemGroup>
 
 </Project>

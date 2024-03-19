@@ -13,6 +13,12 @@ public class DefaultProcedure : IProcessControlProcedure
 
         while (true)
         {
+            if(cancellationToken.IsCancellationRequested)
+            {
+                return;
+            }
+
+
             if (count++ % 10 == 0)
             {
                 var currentLineCursor = Console.CursorTop;

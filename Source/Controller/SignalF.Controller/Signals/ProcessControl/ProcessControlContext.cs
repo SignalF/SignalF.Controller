@@ -11,7 +11,7 @@ using Microsoft.Extensions.Logging;
 
 namespace SignalF.Controller.Signals.ProcessControl;
 
-// creates collectible assembly and loads assembly into this context, creates TestProgram from loaded assembly
+// creates collectible assembly and loads assembly into this context, creates a process control procedure from loaded assembly
 public class ProcessControlContext : IProcessControlContext
 {
     private readonly string _assemblyPath;
