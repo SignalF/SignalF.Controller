@@ -66,10 +66,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.ProcessControl", "Datamodel\SignalF.Datamodel.ProcessControl\SignalF.Datamodel.ProcessControl.csproj", "{A6EA07F2-8BAF-4A86-9754-48CFFE433556}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestController", "..\Test\TestController\TestController\TestController.csproj", "{3133FBDB-0F41-456B-8644-C9A11F392621}"
-	ProjectSection(ProjectDependencies) = postProject
-		{A746E775-1386-45A0-8CFF-EA236358BC5B} = {A746E775-1386-45A0-8CFF-EA236358BC5B}
-		{B57D79B9-5DB2-481A-A470-DD2DFE0FC352} = {B57D79B9-5DB2-481A-A470-DD2DFE0FC352}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

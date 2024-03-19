@@ -30,6 +30,7 @@ public class DefaultProcedure : IProcessControlProcedure
 
             await Task.Delay(500, cancellationToken);
         }
+        // ReSharper disable once FunctionNeverReturns
     }
 
     public static void ClearCurrentConsoleLine()
