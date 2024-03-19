@@ -14,7 +14,7 @@ using SignalF.Datamodel.Configuration;
 
 namespace SignalF.Controller.Configuration;
 
-public class CoreConfigurationManager : ICoreConfigurationManager
+public class SignalFConfigurationManager : ISignalFConfigurationManager
 {
     private readonly IBusinessDocument _businessDocument;
     private readonly IChannelGroupConfigurator _channelGroupConfigurator;
@@ -30,7 +30,7 @@ public class CoreConfigurationManager : ICoreConfigurationManager
     private readonly string _storageFolderPath = AppDomain.CurrentDomain.BaseDirectory;
     private readonly ITaskConfigurator _taskConfigurator;
 
-    public CoreConfigurationManager(
+    public SignalFConfigurationManager(
         IBusinessDocument businessDocument
         , IDeviceBindingConfigurator deviceBindingConfigurator
         , IChannelGroupConfigurator channelGroupConfigurator

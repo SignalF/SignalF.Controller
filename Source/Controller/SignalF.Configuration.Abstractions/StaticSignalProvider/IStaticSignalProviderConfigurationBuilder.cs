@@ -6,7 +6,7 @@ namespace SignalF.Configuration.StaticSignalProvider;
 
 public interface
     IStaticSignalProviderConfigurationBuilder : IStaticSignalProviderConfigurationBuilder<IStaticSignalProviderConfigurationBuilder,
-        IStaticSignalProviderConfiguration, CoreConfigurationOptions>
+        IStaticSignalProviderConfiguration, SignalFConfigurationOptions>
 {
 }
 
@@ -15,6 +15,6 @@ public interface
         TOptions>
     where TBuilder : IStaticSignalProviderConfigurationBuilder<TBuilder, TConfiguration, TOptions>
     where TConfiguration : IStaticSignalProviderConfiguration
-    where TOptions : CoreConfigurationOptions
+    where TOptions : SignalFConfigurationOptions
 {
 }

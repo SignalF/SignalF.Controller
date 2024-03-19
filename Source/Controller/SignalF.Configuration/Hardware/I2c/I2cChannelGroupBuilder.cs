@@ -6,7 +6,7 @@ namespace SignalF.Configuration.Hardware.I2c;
 public class I2cChannelGroupBuilder
     : ChannelGroupBuilder<I2cChannelGroupBuilder, II2cChannelGroupBuilder, II2cChannelGroupConfiguration, II2CChannelConfigurationBuilder,
           II2cChannelConfiguration,
-          CoreConfigurationOptions>
+          SignalFConfigurationOptions>
       , II2cChannelGroupBuilder
 {
     private readonly List<Action<II2CChannelConfigurationBuilder>> _channels = new();

@@ -25,8 +25,8 @@ public class ConfigurationModule : Autofac.Module
     {
         base.Load(builder);
 
-        builder.RegisterType<CoreConfiguration>()
-               .As<ICoreConfiguration>()
+        builder.RegisterType<SignalFConfiguration>()
+               .As<ISignalFConfiguration>()
                .InstancePerDependency();
 
         builder.RegisterType<TaskConfigurationBuilder>()

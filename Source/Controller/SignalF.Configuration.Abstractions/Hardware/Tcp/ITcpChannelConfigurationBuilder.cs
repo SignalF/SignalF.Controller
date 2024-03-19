@@ -4,7 +4,7 @@ using SignalF.Datamodel.Hardware;
 namespace SignalF.Configuration.Hardware.Tcp;
 
 public interface
-    ITcpChannelConfigurationBuilder : IChannelConfigurationBuilder<ITcpChannelConfigurationBuilder, ITcpChannelConfiguration, CoreConfigurationOptions>
+    ITcpChannelConfigurationBuilder : IChannelConfigurationBuilder<ITcpChannelConfigurationBuilder, ITcpChannelConfiguration, SignalFConfigurationOptions>
 {
     ITcpChannelConfigurationBuilder SetPort(int port);
 }

@@ -4,7 +4,7 @@ using SignalF.Datamodel.Hardware;
 namespace SignalF.Configuration.Hardware.Tcp;
 
 public class TcpDeviceBindingBuilder
-    : DeviceBindingBuilder<TcpDeviceBindingBuilder, ITcpDeviceBindingBuilder, ITcpDeviceBindingConfiguration, CoreConfigurationOptions>
+    : DeviceBindingBuilder<TcpDeviceBindingBuilder, ITcpDeviceBindingBuilder, ITcpDeviceBindingConfiguration, SignalFConfigurationOptions>
       , ITcpDeviceBindingBuilder
 {
     private string _ipAddress = "127.0.0.1";

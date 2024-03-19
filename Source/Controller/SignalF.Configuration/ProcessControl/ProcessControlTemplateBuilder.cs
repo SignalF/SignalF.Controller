@@ -5,7 +5,7 @@ using SignalF.Datamodel.Workflow;
 namespace SignalF.Configuration.ProcessControl;
 
 public class ProcessControlTemplateBuilder
-    : ProcessControlTemplateBuilder<ProcessControlTemplateBuilder, IProcessControlTemplateBuilder, IProcessControlTemplate, CoreConfigurationOptions>,
+    : ProcessControlTemplateBuilder<ProcessControlTemplateBuilder, IProcessControlTemplateBuilder, IProcessControlTemplate, SignalFConfigurationOptions>,
       IProcessControlTemplateBuilder
 {
     protected override IProcessControlTemplateBuilder This => this;
@@ -16,7 +16,7 @@ public abstract class ProcessControlTemplateBuilder<TImpl, TBuilder, TConfigurat
     where TBuilder : IProcessControlTemplateBuilder<TBuilder, TConfiguration, TOptions>
     where TImpl : ProcessControlTemplateBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     where TConfiguration : IProcessControlTemplate
-    where TOptions : CoreConfigurationOptions
+    where TOptions : SignalFConfigurationOptions
 {
     public override void Build(TConfiguration configuration)
     {

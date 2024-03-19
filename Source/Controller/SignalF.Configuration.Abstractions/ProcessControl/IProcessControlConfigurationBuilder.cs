@@ -5,7 +5,7 @@ using SignalF.Datamodel.Workflow;
 namespace SignalF.Configuration.ProcessControl;
 
 public interface IProcessControlConfigurationBuilder : IProcessControlConfigurationBuilder<IProcessControlConfigurationBuilder, IProcessControlConfiguration
-    , CoreConfigurationOptions>
+    , SignalFConfigurationOptions>
 {
 }
 
@@ -14,6 +14,6 @@ public interface
         TOptions>
     where TBuilder : IProcessControlConfigurationBuilder<TBuilder, TConfiguration, TOptions>
     where TConfiguration : IProcessControlConfiguration
-    where TOptions : CoreConfigurationOptions
+    where TOptions : SignalFConfigurationOptions
 {
 }

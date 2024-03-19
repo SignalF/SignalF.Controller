@@ -3,7 +3,7 @@ using SignalF.Controller.Configuration;
 using SignalF.Datamodel.Hardware;
 
 public interface
-    IGpioChannelConfigurationBuilder : IChannelConfigurationBuilder<IGpioChannelConfigurationBuilder, IGpioChannelConfiguration, CoreConfigurationOptions>
+    IGpioChannelConfigurationBuilder : IChannelConfigurationBuilder<IGpioChannelConfigurationBuilder, IGpioChannelConfiguration, SignalFConfigurationOptions>
 {
     IGpioChannelConfigurationBuilder SetChannelOptions(GpioChannelOptions options);
 }

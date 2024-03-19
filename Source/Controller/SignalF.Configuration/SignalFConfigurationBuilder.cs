@@ -3,12 +3,12 @@ using SignalF.Datamodel.Base;
 
 namespace SignalF.Configuration;
 
-public abstract class CoreConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
-    : ICoreConfigurationBuilder<TBuilder, TConfiguration, TOptions>
-    where TImpl : CoreConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
-    where TBuilder : ICoreConfigurationBuilder<TBuilder, TConfiguration, TOptions>
+public abstract class SignalFConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
+    : ISignalFConfigurationBuilder<TBuilder, TConfiguration, TOptions>
+    where TImpl : SignalFConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
+    where TBuilder : ISignalFConfigurationBuilder<TBuilder, TConfiguration, TOptions>
     where TConfiguration : ICoreObject
-    where TOptions : CoreConfigurationOptions
+    where TOptions : SignalFConfigurationOptions
 
 {
     protected TOptions Options { get; private set; }

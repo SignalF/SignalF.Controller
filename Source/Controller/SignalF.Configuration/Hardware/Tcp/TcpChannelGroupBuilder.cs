@@ -6,7 +6,7 @@ namespace SignalF.Configuration.Hardware.Tcp;
 public class TcpChannelGroupBuilder
     : ChannelGroupBuilder<TcpChannelGroupBuilder, ITcpChannelGroupBuilder, ITcpChannelGroupConfiguration, ITcpChannelConfigurationBuilder,
           ITcpChannelConfiguration,
-          CoreConfigurationOptions>
+          SignalFConfigurationOptions>
       , ITcpChannelGroupBuilder
 {
     private string _ipAddress = "127.0.0.1";

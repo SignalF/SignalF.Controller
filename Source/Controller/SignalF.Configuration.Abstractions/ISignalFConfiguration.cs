@@ -2,7 +2,7 @@
 
 namespace SignalF.Configuration;
 
-public partial interface ICoreConfiguration
+public partial interface ISignalFConfiguration
 {
     void Build(IControllerConfiguration configuration);
 }

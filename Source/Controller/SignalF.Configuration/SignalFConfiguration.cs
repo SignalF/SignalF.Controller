@@ -2,7 +2,7 @@
 
 namespace SignalF.Configuration;
 
-public partial class CoreConfiguration : ICoreConfiguration
+public partial class SignalFConfiguration : ISignalFConfiguration
 {
     private readonly List<Action<IControllerConfiguration>> _channelGroups = new();
     private readonly List<Action<IControllerConfiguration>> _channelToDeviceMappings = new();
@@ -18,7 +18,7 @@ public partial class CoreConfiguration : ICoreConfiguration
     private readonly List<Action<IControllerConfiguration>> _taskMappingOptions = new();
     private readonly List<Action<IControllerConfiguration>> _taskOptions = new();
 
-    public CoreConfiguration(IServiceProvider serviceProvider)
+    public SignalFConfiguration(IServiceProvider serviceProvider)
     {
         // TODO: Use Factories instead getting services from service provider.
         _serviceProvider = serviceProvider;

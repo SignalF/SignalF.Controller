@@ -6,7 +6,7 @@ namespace SignalF.Configuration.Hardware.OneWire;
 public class OneWireChannelGroupBuilder
     : ChannelGroupBuilder<OneWireChannelGroupBuilder, IOneWireChannelGroupBuilder, IOneWireChannelGroupConfiguration, IOneWireChannelConfigurationBuilder,
           IOneWireChannelConfiguration,
-          CoreConfigurationOptions>, IOneWireChannelGroupBuilder
+          SignalFConfigurationOptions>, IOneWireChannelGroupBuilder
 {
     public OneWireChannelGroupBuilder(Func<IOneWireChannelConfigurationBuilder> channelBuilderFactory) : base(channelBuilderFactory)
     {

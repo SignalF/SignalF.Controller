@@ -15,7 +15,7 @@ public class HostedControllerService : IHostedService
     private readonly IApplicationArgumentCollection _applicationArgumentCollection;
     private readonly IServiceScopeFactory _scopeFactory;
 
-    private ICoreConfigurationManager _configurationManager;
+    private ISignalFConfigurationManager _configurationManager;
     private IControlInterface _controlInterface;
     private IServiceScope _scope;
 
@@ -43,7 +43,7 @@ public class HostedControllerService : IHostedService
         _scope = _scopeFactory.CreateScope();
 
         _controlInterface = _scope.ServiceProvider.GetRequiredService<IControlInterface>();
-        _configurationManager = _scope.ServiceProvider.GetService<ICoreConfigurationManager>();
+        _configurationManager = _scope.ServiceProvider.GetService<ISignalFConfigurationManager>();
 
         var configuration = options.Configuration ?? DefaultConfiguration;
         var procedureName = options.ProcedureName ?? nameof(DefaultProcedure);

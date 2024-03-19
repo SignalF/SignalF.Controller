@@ -5,14 +5,14 @@ namespace SignalF.Configuration.SignalConfiguration;
 
 public interface
     ISignalProcessorDefinitionBuilder : ISignalProcessorDefinitionBuilder<ISignalProcessorDefinitionBuilder, ISignalProcessorDefinition,
-        CoreConfigurationOptions>
+        SignalFConfigurationOptions>
 {
 }
 
-public interface ISignalProcessorDefinitionBuilder<out TBuilder, in TConfiguration, in TOptions> : ICoreConfigurationBuilder<TBuilder, TConfiguration, TOptions>
+public interface ISignalProcessorDefinitionBuilder<out TBuilder, in TConfiguration, in TOptions> : ISignalFConfigurationBuilder<TBuilder, TConfiguration, TOptions>
     where TBuilder : ISignalProcessorDefinitionBuilder<TBuilder, TConfiguration, TOptions>
     where TConfiguration : ISignalProcessorDefinition
-    where TOptions : CoreConfigurationOptions
+    where TOptions : SignalFConfigurationOptions
 {
     TBuilder AddSignalSourceDefinition(string defaultName);
 

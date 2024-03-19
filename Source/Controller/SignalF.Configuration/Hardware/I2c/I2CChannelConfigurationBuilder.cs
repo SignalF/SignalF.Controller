@@ -4,7 +4,7 @@ using SignalF.Datamodel.Hardware;
 namespace SignalF.Configuration.Hardware.I2c;
 
 public class I2CChannelConfigurationBuilder :
-    ChannelConfigurationBuilder<I2CChannelConfigurationBuilder, II2CChannelConfigurationBuilder, II2cChannelConfiguration, CoreConfigurationOptions>,
+    ChannelConfigurationBuilder<I2CChannelConfigurationBuilder, II2CChannelConfigurationBuilder, II2cChannelConfiguration, SignalFConfigurationOptions>,
     II2CChannelConfigurationBuilder
 {
     private int _deviceAddress;

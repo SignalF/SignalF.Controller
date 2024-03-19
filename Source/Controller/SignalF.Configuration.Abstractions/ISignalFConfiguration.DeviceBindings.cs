@@ -6,18 +6,18 @@ using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Configuration;
 
-public partial interface ICoreConfiguration
+public partial interface ISignalFConfiguration
 {
     //ICoreConfiguration AddDeviceBinding(Action<IDeviceBindingBuilder> builder);
 
-    ICoreConfiguration AddDeviceBinding<TBuilder, TConfiguration, TOptions>(Action<TBuilder> builder)
+    ISignalFConfiguration AddDeviceBinding<TBuilder, TConfiguration, TOptions>(Action<TBuilder> builder)
         where TBuilder : IDeviceBindingBuilder<TBuilder, TConfiguration, TOptions>
         where TConfiguration : IDeviceBindingConfiguration
-        where TOptions : CoreConfigurationOptions;
+        where TOptions : SignalFConfigurationOptions;
 
-    ICoreConfiguration AddDeviceBinding<TBuilder, TConfiguration, TOptions, TType>(Action<TBuilder> builder)
+    ISignalFConfiguration AddDeviceBinding<TBuilder, TConfiguration, TOptions, TType>(Action<TBuilder> builder)
         where TBuilder : IDeviceBindingBuilder<TBuilder, TConfiguration, TOptions>
         where TConfiguration : IDeviceBindingConfiguration
-        where TOptions : CoreConfigurationOptions
+        where TOptions : SignalFConfigurationOptions
         where TType : class, IDeviceBinding;
 }

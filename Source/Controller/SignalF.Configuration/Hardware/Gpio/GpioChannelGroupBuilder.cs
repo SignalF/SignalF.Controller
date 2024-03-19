@@ -6,7 +6,7 @@ namespace SignalF.Configuration.Hardware.Gpio;
 public class GpioChannelGroupBuilder
     : ChannelGroupBuilder<GpioChannelGroupBuilder, IGpioChannelGroupBuilder, IGpioChannelGroupConfiguration, IGpioChannelConfigurationBuilder,
           IGpioChannelConfiguration,
-          CoreConfigurationOptions>
+          SignalFConfigurationOptions>
       , IGpioChannelGroupBuilder
 {
     public GpioChannelGroupBuilder(Func<IGpioChannelConfigurationBuilder> channelBuilderFactory) : base(channelBuilderFactory)

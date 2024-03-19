@@ -6,7 +6,7 @@ using System.IO;
 
 namespace SignalF.Controller.Configuration;
 
-public interface ICoreConfigurationManager
+public interface ISignalFConfigurationManager
 {
     /// <summary>
     ///     Reads configuration file and configures the application.

@@ -6,7 +6,7 @@ namespace SignalF.Configuration.StaticSignalProvider;
 
 public class StaticSignalProviderConfigurationBuilder
     : StaticSignalProviderConfigurationBuilder<StaticSignalProviderConfigurationBuilder, IStaticSignalProviderConfigurationBuilder,
-          IStaticSignalProviderConfiguration, CoreConfigurationOptions>, IStaticSignalProviderConfigurationBuilder
+          IStaticSignalProviderConfiguration, SignalFConfigurationOptions>, IStaticSignalProviderConfigurationBuilder
 {
     protected override IStaticSignalProviderConfigurationBuilder This => this;
 }
@@ -17,7 +17,7 @@ public abstract class StaticSignalProviderConfigurationBuilder<TImpl, TBuilder, 
     where TBuilder : IStaticSignalProviderConfigurationBuilder<TBuilder, TConfiguration, TOptions>
     where TImpl : StaticSignalProviderConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     where TConfiguration : IStaticSignalProviderConfiguration
-    where TOptions : CoreConfigurationOptions
+    where TOptions : SignalFConfigurationOptions
 {
     public override TBuilder AddSignalSinkConfiguration(string signalName, string signalDefinition, Enum unit)
     {

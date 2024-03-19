@@ -4,7 +4,7 @@ using SignalF.Datamodel.Devices;
 namespace SignalF.Configuration.Devices;
 
 public class GenericDeviceTemplateBuilder
-    : GenericDeviceTemplateBuilder<GenericDeviceTemplateBuilder, IGenericDeviceTemplateBuilder, IGenericDeviceTemplate, CoreConfigurationOptions>,
+    : GenericDeviceTemplateBuilder<GenericDeviceTemplateBuilder, IGenericDeviceTemplateBuilder, IGenericDeviceTemplate, SignalFConfigurationOptions>,
       IGenericDeviceTemplateBuilder
 {
     protected override IGenericDeviceTemplateBuilder This => this;
@@ -15,7 +15,7 @@ public abstract class GenericDeviceTemplateBuilder<TImpl, TBuilder, TConfigurati
     where TBuilder : IGenericDeviceTemplateBuilder<TBuilder, TConfiguration, TOptions>
     where TImpl : GenericDeviceTemplateBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     where TConfiguration : IGenericDeviceTemplate
-    where TOptions : CoreConfigurationOptions
+    where TOptions : SignalFConfigurationOptions
 {
     public override void Build(TConfiguration configuration)
     {

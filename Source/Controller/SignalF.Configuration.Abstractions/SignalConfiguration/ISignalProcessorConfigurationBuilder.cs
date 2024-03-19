@@ -5,15 +5,15 @@ using SignalF.Datamodel.Signals;
 namespace SignalF.Configuration.SignalConfiguration;
 
 public interface ISignalProcessorConfigurationBuilder : ISignalProcessorConfigurationBuilder<ISignalProcessorConfigurationBuilder, ISignalProcessorConfiguration
-    , CoreConfigurationOptions>
+    , SignalFConfigurationOptions>
 {
 }
 
 public interface ISignalProcessorConfigurationBuilder<out TBuilder, in TConfiguration, in TOptions>
-    : ICoreConfigurationBuilder<TBuilder, TConfiguration, TOptions>
+    : ISignalFConfigurationBuilder<TBuilder, TConfiguration, TOptions>
     where TBuilder : ISignalProcessorConfigurationBuilder<TBuilder, TConfiguration, TOptions>
     where TConfiguration : ISignalProcessorConfiguration
-    where TOptions : CoreConfigurationOptions
+    where TOptions : SignalFConfigurationOptions
 {
     TBuilder UseDefinition(string definitionName);
 

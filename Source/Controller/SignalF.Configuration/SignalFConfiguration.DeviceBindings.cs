@@ -6,12 +6,12 @@ using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Configuration;
 
-public partial class CoreConfiguration : ICoreConfiguration
+public partial class SignalFConfiguration : ISignalFConfiguration
 {
-    public ICoreConfiguration AddDeviceBinding<TBuilder, TConfiguration, TOptions>(Action<TBuilder> builder)
+    public ISignalFConfiguration AddDeviceBinding<TBuilder, TConfiguration, TOptions>(Action<TBuilder> builder)
         where TBuilder : IDeviceBindingBuilder<TBuilder, TConfiguration, TOptions>
         where TConfiguration : IDeviceBindingConfiguration
-        where TOptions : CoreConfigurationOptions
+        where TOptions : SignalFConfigurationOptions
     {
         _deviceBindings.Add(configuration =>
         {
@@ -22,10 +22,10 @@ public partial class CoreConfiguration : ICoreConfiguration
         return this;
     }
 
-    public ICoreConfiguration AddDeviceBinding<TBuilder, TConfiguration, TOptions, TType>(Action<TBuilder> builder)
+    public ISignalFConfiguration AddDeviceBinding<TBuilder, TConfiguration, TOptions, TType>(Action<TBuilder> builder)
         where TBuilder : IDeviceBindingBuilder<TBuilder, TConfiguration, TOptions>
         where TConfiguration : IDeviceBindingConfiguration
-        where TOptions : CoreConfigurationOptions
+        where TOptions : SignalFConfigurationOptions
         where TType : class, IDeviceBinding
     {
         _deviceBindings.Add(configuration =>

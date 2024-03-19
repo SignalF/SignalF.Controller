@@ -6,7 +6,7 @@ namespace SignalF.Configuration.ProcessControl;
 
 public interface
     IProcessControlDefinitionBuilder : IProcessControlDefinitionBuilder<IProcessControlDefinitionBuilder, IProcessControlDefinition,
-        CoreConfigurationOptions>
+        SignalFConfigurationOptions>
 {
 }
 
@@ -14,6 +14,6 @@ public interface
     IProcessControlDefinitionBuilder<out TBuilder, in TConfiguration, in TOptions> : ISignalProcessorDefinitionBuilder<TBuilder, TConfiguration, TOptions>
     where TBuilder : IProcessControlDefinitionBuilder<TBuilder, TConfiguration, TOptions>
     where TConfiguration : IProcessControlDefinition
-    where TOptions : CoreConfigurationOptions
+    where TOptions : SignalFConfigurationOptions
 {
 }

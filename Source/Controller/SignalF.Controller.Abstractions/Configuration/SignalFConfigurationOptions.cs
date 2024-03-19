@@ -1,5 +1,5 @@
 ﻿namespace SignalF.Controller.Configuration;
 
-public class CoreConfigurationOptions
+public class SignalFConfigurationOptions
 {
 }

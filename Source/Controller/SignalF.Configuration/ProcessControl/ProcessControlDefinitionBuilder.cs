@@ -6,7 +6,7 @@ namespace SignalF.Configuration.ProcessControl;
 
 public class ProcessControlDefinitionBuilder
     : ProcessControlDefinitionBuilder<ProcessControlDefinitionBuilder, IProcessControlDefinitionBuilder, IProcessControlDefinition,
-          CoreConfigurationOptions>,
+          SignalFConfigurationOptions>,
       IProcessControlDefinitionBuilder
 {
     protected override IProcessControlDefinitionBuilder This => this;
@@ -17,7 +17,7 @@ public abstract class ProcessControlDefinitionBuilder<TImpl, TBuilder, TConfigur
     where TBuilder : IProcessControlDefinitionBuilder<TBuilder, TConfiguration, TOptions>
     where TImpl : ProcessControlDefinitionBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     where TConfiguration : IProcessControlDefinition
-    where TOptions : CoreConfigurationOptions
+    where TOptions : SignalFConfigurationOptions
 {
     public override void Build(TConfiguration configuration)
     {

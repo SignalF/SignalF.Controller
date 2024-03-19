@@ -4,10 +4,10 @@ using SignalF.Datamodel.Base;
 
 namespace SignalF.Configuration;
 
-public interface ICoreConfigurationBuilder<out TBuilder, in TConfiguration, in TOptions>
-    where TBuilder : ICoreConfigurationBuilder<TBuilder, TConfiguration, TOptions>
+public interface ISignalFConfigurationBuilder<out TBuilder, in TConfiguration, in TOptions>
+    where TBuilder : ISignalFConfigurationBuilder<TBuilder, TConfiguration, TOptions>
     where TConfiguration : ICoreObject
-    where TOptions : CoreConfigurationOptions
+    where TOptions : SignalFConfigurationOptions
 {
     void Build(TConfiguration configuration);
 

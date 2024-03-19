@@ -6,17 +6,17 @@ namespace SignalF.Configuration.SignalConfiguration;
 
 public class SignalProcessorDefinitionBuilder
     : SignalProcessorDefinitionBuilder<SignalProcessorDefinitionBuilder, ISignalProcessorDefinitionBuilder, ISignalProcessorDefinition,
-          CoreConfigurationOptions>, ISignalProcessorDefinitionBuilder
+          SignalFConfigurationOptions>, ISignalProcessorDefinitionBuilder
 {
     protected override ISignalProcessorDefinitionBuilder This => this;
 }
 
 public abstract class SignalProcessorDefinitionBuilder<TImpl, TBuilder, TConfiguration, TOptions>
-    : CoreConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>, ISignalProcessorDefinitionBuilder<TBuilder, TConfiguration, TOptions>
+    : SignalFConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>, ISignalProcessorDefinitionBuilder<TBuilder, TConfiguration, TOptions>
     where TBuilder : ISignalProcessorDefinitionBuilder<TBuilder, TConfiguration, TOptions>
     where TImpl : SignalProcessorDefinitionBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     where TConfiguration : ISignalProcessorDefinition
-    where TOptions : CoreConfigurationOptions
+    where TOptions : SignalFConfigurationOptions
 {
     private readonly List<SignalEndpointDefinitionBuilder> _signalSinks = new();
     private readonly List<SignalEndpointDefinitionBuilder> _signalSources = new();

@@ -5,6 +5,6 @@ namespace SignalF.Configuration.Hardware.OneWire;
 
 public interface
     IOneWireChannelConfigurationBuilder : IChannelConfigurationBuilder<IOneWireChannelConfigurationBuilder, IOneWireChannelConfiguration,
-        CoreConfigurationOptions>
+        SignalFConfigurationOptions>
 {
 }

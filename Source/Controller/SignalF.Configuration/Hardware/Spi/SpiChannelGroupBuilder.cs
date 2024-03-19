@@ -6,7 +6,7 @@ using SignalF.Datamodel.Hardware;
 public class SpiChannelGroupBuilder
     : ChannelGroupBuilder<SpiChannelGroupBuilder, ISpiChannelGroupBuilder, ISpiChannelGroupConfiguration, ISpiChannelConfigurationBuilder,
           ISpiChannelConfiguration,
-          CoreConfigurationOptions>
+          SignalFConfigurationOptions>
       , ISpiChannelGroupBuilder
 {
     public SpiChannelGroupBuilder(Func<ISpiChannelConfigurationBuilder> channelBuilderFactory) : base(channelBuilderFactory)

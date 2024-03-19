@@ -4,14 +4,14 @@ using SignalF.Datamodel.Signals;
 namespace SignalF.Configuration.SignalConfiguration;
 
 public interface
-    ISignalProcessorTemplateBuilder : ISignalProcessorTemplateBuilder<ISignalProcessorTemplateBuilder, ISignalProcessorTemplate, CoreConfigurationOptions>
+    ISignalProcessorTemplateBuilder : ISignalProcessorTemplateBuilder<ISignalProcessorTemplateBuilder, ISignalProcessorTemplate, SignalFConfigurationOptions>
 {
 }
 
-public interface ISignalProcessorTemplateBuilder<out TBuilder, in TConfiguration, in TOptions> : ICoreConfigurationBuilder<TBuilder, TConfiguration, TOptions>
+public interface ISignalProcessorTemplateBuilder<out TBuilder, in TConfiguration, in TOptions> : ISignalFConfigurationBuilder<TBuilder, TConfiguration, TOptions>
     where TBuilder : ISignalProcessorTemplateBuilder<TBuilder, TConfiguration, TOptions>
     where TConfiguration : ISignalProcessorTemplate
-    where TOptions : CoreConfigurationOptions
+    where TOptions : SignalFConfigurationOptions
 {
     TBuilder AddSignalSourceDefinition(string defaultName);
 

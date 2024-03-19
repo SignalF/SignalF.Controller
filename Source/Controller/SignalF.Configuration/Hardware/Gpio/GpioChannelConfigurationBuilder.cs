@@ -4,7 +4,7 @@ using SignalF.Datamodel.Hardware;
 namespace SignalF.Configuration.Hardware.Gpio;
 
 public class GpioChannelConfigurationBuilder : ChannelConfigurationBuilder<GpioChannelConfigurationBuilder, IGpioChannelConfigurationBuilder,
-                                                   IGpioChannelConfiguration, CoreConfigurationOptions>
+                                                   IGpioChannelConfiguration, SignalFConfigurationOptions>
                                                , IGpioChannelConfigurationBuilder
 {
     private GpioChannelOptions _options;

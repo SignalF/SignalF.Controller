@@ -3,9 +3,9 @@ using SignalF.Configuration.TaskConfiguration;
 
 namespace SignalF.Configuration;
 
-public partial class CoreConfiguration : ICoreConfiguration
+public partial class SignalFConfiguration : ISignalFConfiguration
 {
-    public ICoreConfiguration AddTasks(Action<ITaskConfigurationBuilder> action)
+    public ISignalFConfiguration AddTasks(Action<ITaskConfigurationBuilder> action)
     {
         _taskOptions.Add(configuration =>
         {
@@ -16,7 +16,7 @@ public partial class CoreConfiguration : ICoreConfiguration
         return this;
     }
 
-    public ICoreConfiguration AddTaskMappings(Action<ITaskMappingBuilder> action)
+    public ISignalFConfiguration AddTaskMappings(Action<ITaskMappingBuilder> action)
     {
         _taskMappingOptions.Add(configuration =>
         {

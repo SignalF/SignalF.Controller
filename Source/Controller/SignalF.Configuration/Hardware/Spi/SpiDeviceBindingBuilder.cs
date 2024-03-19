@@ -4,7 +4,7 @@ using SignalF.Datamodel.Hardware;
 namespace SignalF.Configuration.Hardware.Spi;
 
 public class SpiDeviceBindingBuilder
-    : DeviceBindingBuilder<SpiDeviceBindingBuilder, ISpiDeviceBindingBuilder, ISpiDeviceBindingConfiguration, CoreConfigurationOptions>
+    : DeviceBindingBuilder<SpiDeviceBindingBuilder, ISpiDeviceBindingBuilder, ISpiDeviceBindingConfiguration, SignalFConfigurationOptions>
       , ISpiDeviceBindingBuilder
 {
     private int _busId;

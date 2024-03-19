@@ -8,7 +8,7 @@ namespace SignalF.Configuration;
 public static class DataModelExtensions
 {
     public static void Set<TConfiguration>(this IConfiguration configuration, TConfiguration data)
-        where TConfiguration : CoreConfigurationOptions
+        where TConfiguration : SignalFConfigurationOptions
     {
         if (configuration == null)
         {
@@ -26,7 +26,7 @@ public static class DataModelExtensions
     }
 
     public static TConfiguration Get<TConfiguration>(this IConfiguration configuration)
-        where TConfiguration : CoreConfigurationOptions
+        where TConfiguration : SignalFConfigurationOptions
     {
         if (configuration == null)
         {

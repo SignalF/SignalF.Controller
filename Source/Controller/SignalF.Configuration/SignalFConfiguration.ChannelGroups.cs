@@ -6,15 +6,15 @@ using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Configuration;
 
-public partial class CoreConfiguration : ICoreConfiguration
+public partial class SignalFConfiguration : ISignalFConfiguration
 {
     //TODO: Add additional generic parameter "TChannelOptions" to AddChannelGroup<>(), Currently fixed type "CoreConfigurationOptions" is used.
-    public ICoreConfiguration AddChannelGroup<TBuilder, TConfiguration, TChannelBuilder, TChannel, TOptions>(Action<TBuilder> builder)
+    public ISignalFConfiguration AddChannelGroup<TBuilder, TConfiguration, TChannelBuilder, TChannel, TOptions>(Action<TBuilder> builder)
         where TBuilder : IChannelGroupBuilder<TBuilder, TConfiguration, TChannelBuilder, TChannel, TOptions>
         where TConfiguration : IChannelGroupConfiguration
-        where TChannelBuilder : IChannelConfigurationBuilder<TChannelBuilder, TChannel, CoreConfigurationOptions>
+        where TChannelBuilder : IChannelConfigurationBuilder<TChannelBuilder, TChannel, SignalFConfigurationOptions>
         where TChannel : IChannelConfiguration
-        where TOptions : CoreConfigurationOptions
+        where TOptions : SignalFConfigurationOptions
     {
         _channelGroups.Add(configuration =>
         {
@@ -26,12 +26,12 @@ public partial class CoreConfiguration : ICoreConfiguration
     }
 
     //TODO: Add additional generic parameter "TChannelOptions" to AddChannelGroup<>(), Currently fixed type "CoreConfigurationOptions" is used.
-    public ICoreConfiguration AddChannelGroup<TBuilder, TConfiguration, TChannelBuilder, TChannel, TOptions, TType>(Action<TBuilder> builder)
+    public ISignalFConfiguration AddChannelGroup<TBuilder, TConfiguration, TChannelBuilder, TChannel, TOptions, TType>(Action<TBuilder> builder)
         where TBuilder : IChannelGroupBuilder<TBuilder, TConfiguration, TChannelBuilder, TChannel, TOptions>
         where TConfiguration : IChannelGroupConfiguration
-        where TChannelBuilder : IChannelConfigurationBuilder<TChannelBuilder, TChannel, CoreConfigurationOptions>
+        where TChannelBuilder : IChannelConfigurationBuilder<TChannelBuilder, TChannel, SignalFConfigurationOptions>
         where TChannel : IChannelConfiguration
-        where TOptions : CoreConfigurationOptions
+        where TOptions : SignalFConfigurationOptions
         where TType : class, IChannelGroup
     {
         _channelGroups.Add(configuration =>
@@ -44,7 +44,7 @@ public partial class CoreConfiguration : ICoreConfiguration
         return this;
     }
 
-    public ICoreConfiguration AddChannelToDeviceMapping(Action<IChannelToDeviceMappingBuilder> builder)
+    public ISignalFConfiguration AddChannelToDeviceMapping(Action<IChannelToDeviceMappingBuilder> builder)
     {
         _channelToDeviceMappings.Add(configuration =>
         {
@@ -55,7 +55,7 @@ public partial class CoreConfiguration : ICoreConfiguration
         return this;
     }
 
-    public ICoreConfiguration AddChannelToSignalEndpointMapping(Action<IChannelToSignalEndpointMappingBuilder> builder)
+    public ISignalFConfiguration AddChannelToSignalEndpointMapping(Action<IChannelToSignalEndpointMappingBuilder> builder)
     {
         _channelToSignalEndpointMappings.Add(configuration =>
         {

@@ -111,8 +111,8 @@ public class ControllerModule : Autofac.Module
                .As<IStaticSignalProvider>()
                .InstancePerDependency();
 
-        builder.RegisterType<CoreConfigurationManager>()
-               .As<ICoreConfigurationManager>()
+        builder.RegisterType<SignalFConfigurationManager>()
+               .As<ISignalFConfigurationManager>()
                .InstancePerLifetimeScope();
 
         builder.RegisterType<TaskScheduler>()

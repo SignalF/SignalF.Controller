@@ -6,11 +6,11 @@ using SignalF.Datamodel.Signals;
 
 namespace SignalF.Configuration;
 
-public partial class CoreConfiguration : ICoreConfiguration
+public partial class SignalFConfiguration : ISignalFConfiguration
 {
-    public ICoreConfiguration AddStaticSignalProviderConfiguration<TBuilder, TOptions>(Action<TBuilder> action)
+    public ISignalFConfiguration AddStaticSignalProviderConfiguration<TBuilder, TOptions>(Action<TBuilder> action)
         where TBuilder : IStaticSignalProviderConfigurationBuilder
-        where TOptions : CoreConfigurationOptions
+        where TOptions : SignalFConfigurationOptions
     {
         _signalProcessorConfigurations.Add(configuration =>
         {
@@ -21,9 +21,9 @@ public partial class CoreConfiguration : ICoreConfiguration
         return this;
     }
 
-    public ICoreConfiguration AddStaticSignalProviderConfiguration<TBuilder, TOptions, TType>(Action<TBuilder> action)
+    public ISignalFConfiguration AddStaticSignalProviderConfiguration<TBuilder, TOptions, TType>(Action<TBuilder> action)
         where TBuilder : IStaticSignalProviderConfigurationBuilder
-        where TOptions : CoreConfigurationOptions
+        where TOptions : SignalFConfigurationOptions
         where TType : class, IStaticSignalProvider
     {
         _signalProcessorConfigurations.Add(configuration =>
@@ -36,9 +36,9 @@ public partial class CoreConfiguration : ICoreConfiguration
         return this;
     }
 
-    public ICoreConfiguration AddStaticSignalProviderDefinition<TBuilder, TOptions>(Action<TBuilder> action)
+    public ISignalFConfiguration AddStaticSignalProviderDefinition<TBuilder, TOptions>(Action<TBuilder> action)
         where TBuilder : IStaticSignalProviderDefinitionBuilder
-        where TOptions : CoreConfigurationOptions
+        where TOptions : SignalFConfigurationOptions
     {
         _signalProcessorDefinitions.Add(configuration =>
         {
@@ -49,9 +49,9 @@ public partial class CoreConfiguration : ICoreConfiguration
         return this;
     }
 
-    public ICoreConfiguration AddStaticSignalProviderDefinition<TBuilder, TOptions, TType>(Action<TBuilder> action)
+    public ISignalFConfiguration AddStaticSignalProviderDefinition<TBuilder, TOptions, TType>(Action<TBuilder> action)
         where TBuilder : IStaticSignalProviderDefinitionBuilder
-        where TOptions : CoreConfigurationOptions
+        where TOptions : SignalFConfigurationOptions
         where TType : class, IStaticSignalProvider
     {
         _signalProcessorDefinitions.Add(configuration =>
@@ -64,9 +64,9 @@ public partial class CoreConfiguration : ICoreConfiguration
         return this;
     }
 
-    public ICoreConfiguration AddStaticSignalProviderTemplate<TBuilder, TOptions>(Action<TBuilder> action)
+    public ISignalFConfiguration AddStaticSignalProviderTemplate<TBuilder, TOptions>(Action<TBuilder> action)
         where TBuilder : IStaticSignalProviderTemplateBuilder
-        where TOptions : CoreConfigurationOptions
+        where TOptions : SignalFConfigurationOptions
     {
         _signalProcessorTemplates.Add(configuration =>
         {
@@ -77,9 +77,9 @@ public partial class CoreConfiguration : ICoreConfiguration
         return this;
     }
 
-    public ICoreConfiguration AddStaticSignalProviderTemplate<TBuilder, TOptions, TType>(Action<TBuilder> action)
+    public ISignalFConfiguration AddStaticSignalProviderTemplate<TBuilder, TOptions, TType>(Action<TBuilder> action)
         where TBuilder : IStaticSignalProviderTemplateBuilder
-        where TOptions : CoreConfigurationOptions
+        where TOptions : SignalFConfigurationOptions
         where TType : class, IStaticSignalProvider
     {
         _signalProcessorTemplates.Add(configuration =>

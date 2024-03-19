@@ -6,9 +6,9 @@ using SignalF.Datamodel.DataOutput;
 
 namespace SignalF.Configuration;
 
-public partial class CoreConfiguration : ICoreConfiguration
+public partial class SignalFConfiguration : ISignalFConfiguration
 {
-    public ICoreConfiguration AddDataOutputConfiguration(Action<IDataOutputConfigurationBuilder> builder)
+    public ISignalFConfiguration AddDataOutputConfiguration(Action<IDataOutputConfigurationBuilder> builder)
     {
         _dataOutputs.Add(configuration =>
         {
@@ -19,9 +19,9 @@ public partial class CoreConfiguration : ICoreConfiguration
         return this;
     }
 
-    public ICoreConfiguration AddDataOutputSenderConfiguration<TBuilder, TOptions>(Action<TBuilder> builder)
+    public ISignalFConfiguration AddDataOutputSenderConfiguration<TBuilder, TOptions>(Action<TBuilder> builder)
         where TBuilder : IDataOutputSenderConfigurationBuilder
-        where TOptions : CoreConfigurationOptions
+        where TOptions : SignalFConfigurationOptions
     {
         _dataOutputSenders.Add(configuration =>
         {
@@ -32,9 +32,9 @@ public partial class CoreConfiguration : ICoreConfiguration
         return this;
     }
 
-    public ICoreConfiguration AddDataOutputSenderConfiguration<TBuilder, TOptions, TType>(Action<TBuilder> builder)
+    public ISignalFConfiguration AddDataOutputSenderConfiguration<TBuilder, TOptions, TType>(Action<TBuilder> builder)
         where TBuilder : IDataOutputSenderConfigurationBuilder
-        where TOptions : CoreConfigurationOptions
+        where TOptions : SignalFConfigurationOptions
         where TType : class, IDataOutputSender
     {
         _dataOutputSenders.Add(configuration =>

@@ -4,7 +4,7 @@ using SignalF.Datamodel.Hardware;
 namespace SignalF.Configuration.Hardware.Spi;
 
 public class SpiChannelConfigurationBuilder :
-    ChannelConfigurationBuilder<SpiChannelConfigurationBuilder, ISpiChannelConfigurationBuilder, ISpiChannelConfiguration, CoreConfigurationOptions>,
+    ChannelConfigurationBuilder<SpiChannelConfigurationBuilder, ISpiChannelConfigurationBuilder, ISpiChannelConfiguration, SignalFConfigurationOptions>,
     ISpiChannelConfigurationBuilder
 {
     private EGpioPinValue _activeState;

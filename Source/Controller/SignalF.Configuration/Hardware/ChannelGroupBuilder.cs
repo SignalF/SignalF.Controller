@@ -6,7 +6,7 @@ using SignalF.Datamodel.Hardware;
 namespace SignalF.Configuration.Hardware;
 
 public class ChannelGroupBuilder : ChannelGroupBuilder<ChannelGroupBuilder, IChannelGroupBuilder, IChannelGroupConfiguration, IChannelConfigurationBuilder,
-                                       IChannelConfiguration, CoreConfigurationOptions>, IChannelGroupBuilder
+                                       IChannelConfiguration, SignalFConfigurationOptions>, IChannelGroupBuilder
 {
     public ChannelGroupBuilder(Func<IChannelConfigurationBuilder> channelBuilderFactory) : base(channelBuilderFactory)
     {
@@ -16,14 +16,14 @@ public class ChannelGroupBuilder : ChannelGroupBuilder<ChannelGroupBuilder, ICha
 }
 
 public abstract class ChannelGroupBuilder<TImpl, TBuilder, TConfiguration, TChannelBuilder, TChannel, TOptions>
-    : CoreConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>,
+    : SignalFConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>,
       IChannelGroupBuilder<TBuilder, TConfiguration, TChannelBuilder, TChannel, TOptions>
     where TImpl : ChannelGroupBuilder<TImpl, TBuilder, TConfiguration, TChannelBuilder, TChannel, TOptions>
     where TBuilder : IChannelGroupBuilder<TBuilder, TConfiguration, TChannelBuilder, TChannel, TOptions>
     where TConfiguration : IChannelGroupConfiguration
-    where TChannelBuilder : IChannelConfigurationBuilder<TChannelBuilder, TChannel, CoreConfigurationOptions>
+    where TChannelBuilder : IChannelConfigurationBuilder<TChannelBuilder, TChannel, SignalFConfigurationOptions>
     where TChannel : IChannelConfiguration
-    where TOptions : CoreConfigurationOptions
+    where TOptions : SignalFConfigurationOptions
 {
     private readonly List<Tuple<Action<TChannelBuilder>, Type>> _channels = new();
     private string _deviceBinding;

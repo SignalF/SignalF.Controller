@@ -20,7 +20,7 @@ namespace SignalF.Controller;
 public sealed class ControlInterface : IControlInterface
 {
     private readonly IConfiguration _configuration;
-    private readonly ICoreConfigurationManager _configurationManager;
+    private readonly ISignalFConfigurationManager _configurationManager;
     private readonly IDataOutputManager _dataOutputManager;
     private readonly IProcessControlHost _processControlHost;
     private readonly IEnumerable<IService> _services;
@@ -35,7 +35,7 @@ public sealed class ControlInterface : IControlInterface
     /// <param name="configuration"></param>
     /// <param name="logger"></param>
     public ControlInterface(IEnumerable<IService> services,
-                            ICoreConfigurationManager configurationManager,
+                            ISignalFConfigurationManager configurationManager,
                             IDataOutputManager dataOutputManager,
                             IProcessControlHost processControlHost,
                             IConfiguration configuration,

@@ -2,9 +2,9 @@
 
 namespace SignalF.Configuration;
 
-public partial class CoreConfiguration : ICoreConfiguration
+public partial class SignalFConfiguration : ISignalFConfiguration
 {
-    public ICoreConfiguration AddConnections(Action<SignalConnectionBuilder> builder)
+    public ISignalFConfiguration AddConnections(Action<SignalConnectionBuilder> builder)
     {
         _signalProcessorConnections.Add(configuration =>
         {

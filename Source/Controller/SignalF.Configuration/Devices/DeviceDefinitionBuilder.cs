@@ -5,7 +5,7 @@ using SignalF.Datamodel.Hardware;
 namespace SignalF.Configuration.Devices;
 
 public class DeviceDefinitionBuilder
-    : DeviceDefinitionBuilder<DeviceDefinitionBuilder, IDeviceDefinitionBuilder, IDeviceDefinition, CoreConfigurationOptions>,
+    : DeviceDefinitionBuilder<DeviceDefinitionBuilder, IDeviceDefinitionBuilder, IDeviceDefinition, SignalFConfigurationOptions>,
       IDeviceDefinitionBuilder
 {
     protected override IDeviceDefinitionBuilder This => this;
@@ -16,7 +16,7 @@ public abstract class DeviceDefinitionBuilder<TImpl, TBuilder, TConfiguration, T
     where TBuilder : IDeviceDefinitionBuilder<TBuilder, TConfiguration, TOptions>
     where TImpl : DeviceDefinitionBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     where TConfiguration : IDeviceDefinition
-    where TOptions : CoreConfigurationOptions
+    where TOptions : SignalFConfigurationOptions
 {
     public override void Build(TConfiguration configuration)
     {

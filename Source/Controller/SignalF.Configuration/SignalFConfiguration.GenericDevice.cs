@@ -6,11 +6,11 @@ using SignalF.Datamodel.Devices;
 
 namespace SignalF.Configuration;
 
-public partial class CoreConfiguration : ICoreConfiguration
+public partial class SignalFConfiguration : ISignalFConfiguration
 {
-    public ICoreConfiguration AddGenericDeviceConfiguration<TBuilder, TOptions>(Action<TBuilder> action)
+    public ISignalFConfiguration AddGenericDeviceConfiguration<TBuilder, TOptions>(Action<TBuilder> action)
         where TBuilder : IGenericDeviceConfigurationBuilder
-        where TOptions : CoreConfigurationOptions
+        where TOptions : SignalFConfigurationOptions
     {
         _signalProcessorConfigurations.Add(configuration =>
         {
@@ -21,9 +21,9 @@ public partial class CoreConfiguration : ICoreConfiguration
         return this;
     }
 
-    public ICoreConfiguration AddGenericDeviceConfiguration<TBuilder, TOptions, TType>(Action<TBuilder> action)
+    public ISignalFConfiguration AddGenericDeviceConfiguration<TBuilder, TOptions, TType>(Action<TBuilder> action)
         where TBuilder : IGenericDeviceConfigurationBuilder
-        where TOptions : CoreConfigurationOptions
+        where TOptions : SignalFConfigurationOptions
         where TType : class, IGenericDevice
     {
         _signalProcessorConfigurations.Add(configuration =>
@@ -36,9 +36,9 @@ public partial class CoreConfiguration : ICoreConfiguration
         return this;
     }
 
-    public ICoreConfiguration AddGenericDeviceDefinition<TBuilder, TOptions>(Action<TBuilder> action)
+    public ISignalFConfiguration AddGenericDeviceDefinition<TBuilder, TOptions>(Action<TBuilder> action)
         where TBuilder : IGenericDeviceDefinitionBuilder
-        where TOptions : CoreConfigurationOptions
+        where TOptions : SignalFConfigurationOptions
     {
         _signalProcessorDefinitions.Add(configuration =>
         {
@@ -49,9 +49,9 @@ public partial class CoreConfiguration : ICoreConfiguration
         return this;
     }
 
-    public ICoreConfiguration AddGenericDeviceDefinition<TBuilder, TOptions, TType>(Action<TBuilder> action)
+    public ISignalFConfiguration AddGenericDeviceDefinition<TBuilder, TOptions, TType>(Action<TBuilder> action)
         where TBuilder : IGenericDeviceDefinitionBuilder
-        where TOptions : CoreConfigurationOptions
+        where TOptions : SignalFConfigurationOptions
         where TType : class, IGenericDevice
     {
         _signalProcessorDefinitions.Add(configuration =>
@@ -64,9 +64,9 @@ public partial class CoreConfiguration : ICoreConfiguration
         return this;
     }
 
-    public ICoreConfiguration AddGenericDeviceTemplate<TBuilder, TOptions>(Action<TBuilder> action)
+    public ISignalFConfiguration AddGenericDeviceTemplate<TBuilder, TOptions>(Action<TBuilder> action)
         where TBuilder : IGenericDeviceTemplateBuilder
-        where TOptions : CoreConfigurationOptions
+        where TOptions : SignalFConfigurationOptions
     {
         _signalProcessorTemplates.Add(configuration =>
         {
@@ -77,9 +77,9 @@ public partial class CoreConfiguration : ICoreConfiguration
         return this;
     }
 
-    public ICoreConfiguration AddGenericDeviceTemplate<TBuilder, TOptions, TType>(Action<TBuilder> action)
+    public ISignalFConfiguration AddGenericDeviceTemplate<TBuilder, TOptions, TType>(Action<TBuilder> action)
         where TBuilder : IGenericDeviceTemplateBuilder
-        where TOptions : CoreConfigurationOptions
+        where TOptions : SignalFConfigurationOptions
         where TType : class, IGenericDevice
     {
         _signalProcessorTemplates.Add(configuration =>

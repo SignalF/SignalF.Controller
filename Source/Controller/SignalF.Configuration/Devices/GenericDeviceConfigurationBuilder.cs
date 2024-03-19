@@ -5,7 +5,7 @@ namespace SignalF.Configuration.Devices;
 
 public class GenericDeviceConfigurationBuilder
     : GenericDeviceConfigurationBuilder<GenericDeviceConfigurationBuilder, IGenericDeviceConfigurationBuilder, IGenericDeviceConfiguration,
-          CoreConfigurationOptions>, IGenericDeviceConfigurationBuilder
+          SignalFConfigurationOptions>, IGenericDeviceConfigurationBuilder
 {
     protected override IGenericDeviceConfigurationBuilder This => this;
 }
@@ -15,7 +15,7 @@ public abstract class GenericDeviceConfigurationBuilder<TImpl, TBuilder, TConfig
     where TBuilder : IGenericDeviceConfigurationBuilder<TBuilder, TConfiguration, TOptions>
     where TImpl : GenericDeviceConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     where TConfiguration : IGenericDeviceConfiguration
-    where TOptions : CoreConfigurationOptions
+    where TOptions : SignalFConfigurationOptions
 {
     public override void Build(TConfiguration configuration)
     {
