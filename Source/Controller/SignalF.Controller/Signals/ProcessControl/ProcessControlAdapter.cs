@@ -43,7 +43,7 @@ public class ProcessControlAdapter : SignalProcessor<IProcessControlConfiguratio
 
                 for (var i = 0; i < _readSignalCount; i++)
                 {
-                    atomicRead[i] = SignalHub.GetValue(_signalReadIndexes[i]);
+                    atomicRead[i] = SignalHub.GetSignal(_signalReadIndexes[i]).Value;
                 }
 
                 _readValues = atomicRead;
@@ -52,11 +52,12 @@ public class ProcessControlAdapter : SignalProcessor<IProcessControlConfiguratio
 
             case ETaskType.Write:
             {
+                var timestamp = SignalHub.GetTimestamp();
                 var atomicWrite = _writeValues;
 
                 for (var i = 0; i < _writeSignalCount; i++)
                 {
-                    SignalHub.SetValue(_signalWriteIndexes[i], atomicWrite[i]);
+                    SignalHub.SetSignal(new Signal(_signalWriteIndexes[i], atomicWrite[i], timestamp));
                 }
 
                 break;

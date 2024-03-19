@@ -27,9 +27,11 @@ public class StaticSignalProvider : SignalProcessor<IStaticSignalProviderConfigu
             return;
         }
 
+        var timestamp = SignalHub.GetTimestamp();
+
         for (var i = 0; i < _indexes.Length; i++)
         {
-            SignalHub.SetValue(_indexes[i], _values[i]);
+            SignalHub.SetSignal(new Signal(_indexes[i], _values[i], timestamp));
         }
     }
 

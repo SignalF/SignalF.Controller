@@ -14,7 +14,7 @@ public interface IProcessControlAdapter : ISignalProcessor
     long Timestamp { get; }
 
     /// <summary>
-    ///     Reads all signal values currently stored in the ExecutionAdapter.
+    ///     Reads all signal values currently stored in the process control adapter.
     /// </summary>
     /// <returns>Array containing the double values.</returns>
     double[] ReadValues();
@@ -22,7 +22,7 @@ public interface IProcessControlAdapter : ISignalProcessor
     /// <summary>
     ///     Writes the given signal values to the ExecutionAdapter.
     /// </summary>
-    /// <param name="values">A Dictionary containing the signal indexes and values to be written.</param>
+    /// <param name="values">An array containing the signal indexes and values to be written.</param>
     void WriteValues(double[] values);
 
     /// <summary>

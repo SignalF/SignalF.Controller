@@ -35,8 +35,8 @@ public class TaskMappingBuilder : ITaskMappingBuilder
             TaskName = taskName;
         }
 
-        public string SignalProcessorName { get; }
-        public string TaskName { get; }
+        private string SignalProcessorName { get; }
+        private string TaskName { get; }
 
         public void Build(IControllerConfiguration configuration)
         {

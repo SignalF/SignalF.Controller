@@ -21,7 +21,7 @@ public class SignalHub : ISignalHub
     private Thread _dataAvailableWatcher;
     private bool _isStopping;
     private int _numberOfValues;
-    private double[] _signalValues;
+    private Signal[] _signals;
 
     private Signal[] _updatedSignalValues;
     private int _updatedSignalValuesPointer;
@@ -39,42 +39,44 @@ public class SignalHub : ISignalHub
     public event EventHandler DataAvailable;
 
     /// <inheritdoc />
-    public double GetValue(int index)
+    public Signal GetSignal(int index)
     {
-        return index >= 0 ? _signalValues[index] : double.NaN;
+        return _signals[index];
     }
 
     /// <inheritdoc />
-    public void GetValues(Span<Signal> signals)
+    public void GetSignals(Span<Signal> signals)
     {
-        var signalValues = _signalValues.AsSpan();
+        //var signalValues = _signals.AsSpan();
         var length = signals.Length;
         for (var i = 0; i < length; i++)
         {
-            var signal = signals[i];
-            signal.Value = signalValues[signal.SignalIndex];
-            signalValues[signal.SignalIndex] = signal.Value;
-            signals[i] = signal;
+            //var signal = signals[i];
+            //signal.Value = signalValues[signal.SignalIndex];
+            //signalValues[signal.SignalIndex] = signal.Value;
+            //signals[i] = signal;
+            var signalIndex = signals[i].SignalIndex;
+            signals[i] = _signals[signalIndex];
         }
     }
 
     /// <inheritdoc />
-    public void SetValue(int index, double value)
+    public void SetSignal(Signal signal)
     {
-        _signalValues[index] = value;
+        _signals[signal.SignalIndex] = signal;
 
-        UpdateSignalValue(index, value);
+        UpdateSignalValue(signal);
     }
 
     /// <inheritdoc />
     public void SetValues(ReadOnlySpan<Signal> signals)
     {
-        var signalValues = _signalValues.AsSpan();
+        var signalValues = _signals.AsSpan();
         var length = signals.Length;
         for (var i = 0; i < length; i++)
         {
             var signal = signals[i];
-            signalValues[signal.SignalIndex] = signal.Value;
+            signalValues[signal.SignalIndex] = signal;
         }
     }
 
@@ -125,7 +127,7 @@ public class SignalHub : ISignalHub
         }
 
         // Set the timestamp at the end of the cycle so we have the most accurate time.
-        _updatedSignalValues[0] = new Signal(-1, Timestamp);
+        _updatedSignalValues[0] = new Signal(-1, Timestamp, Timestamp);
         _buffer.Write(_updatedSignalValues, _updatedSignalValuesPointer + 1);
         _updatedSignalValuesPointer = 0;
 
@@ -144,11 +146,12 @@ public class SignalHub : ISignalHub
         // Add one additional signal for the timestamp. This will be hold in the first item of the array.
         // Timestamps always have an index of -1.
         var result = new Signal[_numberOfValues + 1];
-        result[0] = new Signal(-1, GetTimestamp());
+        var timestamp = GetTimestamp();
+        result[0] = new Signal(-1, timestamp, timestamp);
 
         for (var index = 0; index < _numberOfValues; ++index)
         {
-            result[index + 1] = new Signal(index, _signalValues[index]);
+            result[index + 1] = _signals[index];
         }
 
         return result;
@@ -176,7 +179,7 @@ public class SignalHub : ISignalHub
         _dataAvailableWatcher.Join();
     }
 
-    private double GetTimestamp()
+    public long GetTimestamp()
     {
         return DateTime.UtcNow.Ticks;
     }
@@ -188,13 +191,13 @@ public class SignalHub : ISignalHub
 
         _numberOfValues = SignalIndexes.Count;
 
-        _signalValues = new double[_numberOfValues];
+        _signals = new Signal[_numberOfValues];
         _updatedSignalValues = new Signal[_numberOfValues + 1]; // plus 1 for the timestamp
     }
 
-    private void UpdateSignalValue(int index, double value)
+    private void UpdateSignalValue(Signal signal)
     {
-        _updatedSignalValues[++_updatedSignalValuesPointer] = new Signal(index, value);
+        _updatedSignalValues[++_updatedSignalValuesPointer] = signal;
     }
 
     private void DataAvailableWatcher()

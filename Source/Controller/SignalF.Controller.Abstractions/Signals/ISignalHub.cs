@@ -35,30 +35,33 @@ public interface ISignalHub : IService
     long Timestamp { get; set; }
 
     /// <summary>
+    /// Returns the current timestamp.
+    /// </summary>
+    long GetTimestamp();
+
+    /// <summary>
     ///     Fires when new data is available in the buffer.
     /// </summary>
     event EventHandler DataAvailable;
 
     /// <summary>
-    ///     Gets value of a signal.
+    ///     Gets a signal from the hub.
     /// </summary>
     /// <param name="index">Index of signal to return</param>
     /// <returns>Requested value</returns>
-    double GetValue(int index);
+    Signal GetSignal(int index);
 
     /// <summary>
-    ///     Gets values of signals.
+    ///     Gets signals from the hub.
     /// </summary>
     /// <param name="signals">Signals to read values for.</param>
     /// <returns>Requested values</returns>
-    void GetValues(Span<Signal> signals);
+    void GetSignals(Span<Signal> signals);
 
     /// <summary>
-    ///     Reads signals from the hub.
+    ///     Writes a signal to the hub.
     /// </summary>
-    /// <param name="index">Index of the signal</param>
-    /// <param name="value">The signal value.</param>
-    void SetValue(int index, double value);
+    void SetSignal(Signal signal);
 
     /// <summary>
     ///     Writes signals to the hub.
@@ -111,4 +114,29 @@ public interface ISignalHub : IService
     Signal[] GetCurrentValues();
 }
 
-public record struct Signal(int SignalIndex, double Value);
+public record struct Signal
+{
+    public int SignalIndex { get; }
+    public double Value { get; }
+    public long? Timestamp { get; }
+
+    public Signal(int signalIndex, double value, long? timestamp)
+    {
+        SignalIndex = signalIndex;
+        Value = value;
+        Timestamp = timestamp;
+    }
+
+    public Signal(int signalIndex)
+    {
+        SignalIndex = signalIndex;
+        Value = double.NaN;
+        Timestamp = null;
+    }
+    public Signal()
+    {
+        SignalIndex = -2;
+        Value = double.NaN;
+        Timestamp = null;
+    }
+};

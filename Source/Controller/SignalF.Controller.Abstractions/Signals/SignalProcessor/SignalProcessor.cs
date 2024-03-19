@@ -113,13 +113,13 @@ public abstract class SignalProcessor<TConfiguration> : ISignalProcessor
         }
     }
 
-    protected double ReadSignal(int index)
+    protected Signal ReadSignal(int index)
     {
-        return SignalHub.GetValue(_readSignals[index]);
+        return SignalHub.GetSignal(_readSignals[index]);
     }
 
-    protected void WriteSignal(int index, double value)
+    protected void WriteSignal(Signal signal)
     {
-        SignalHub.SetValue(_writeSignals[index], value);
+        SignalHub.SetSignal(signal);
     }
 }
