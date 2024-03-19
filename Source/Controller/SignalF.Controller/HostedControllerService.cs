@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Data.Common;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,6 +11,7 @@ namespace SignalF.Controller;
 
 public class HostedControllerService : IHostedService
 {
+    private const string DefaultConfiguration = "DefaultConfiguration";
     private readonly IApplicationArgumentCollection _applicationArgumentCollection;
     private readonly IServiceScopeFactory _scopeFactory;
 
@@ -43,21 +45,27 @@ public class HostedControllerService : IHostedService
         _controlInterface = _scope.ServiceProvider.GetRequiredService<IControlInterface>();
         _configurationManager = _scope.ServiceProvider.GetService<ICoreConfigurationManager>();
 
-        // Use default configuration.
-        //_configurationManager!.Configure(null);
-
-        _controlInterface.Start(options.Configuration ?? "DefaultConfiguration");
+        var configuration = options.Configuration ?? DefaultConfiguration;
+        var procedureName = options.ProcedureName ?? nameof(DefaultProcedure);
+        var assemblyName = string.IsNullOrWhiteSpace(options.AssemblyName) ? GetAssenblyName() : options.AssemblyName;
+        
+        _controlInterface.Start(configuration);
         _controlInterface.StartMeasurement();
         _controlInterface!.StartProcessControl(new ProcessControlStartInfo
         {
             // execute default procedure if no procedureName is supplied by CLI
-            ProcedureName = options.ProcedureName ?? "DefaultProcedure",
+            ProcedureName = procedureName,
             // Create a new ID if none is provided.
-            ProcedureId = options.ProcedureId, AssemblyName = string.IsNullOrWhiteSpace(options.AssemblyName) ? "SignalF.Controller" : options.AssemblyName,
+            ProcedureId = options.ProcedureId, AssemblyName = assemblyName,
             AssemblyDirectory = options.AssemblyDirectory
         });
 
         return Task.CompletedTask;
+
+        string GetAssenblyName()
+        {
+            return typeof(DefaultProcedure).Assembly.GetName().Name;
+        }
     }
 
     public Task StopAsync(CancellationToken cancellationToken)

@@ -2,7 +2,7 @@
   "profiles": {
     "ConsoleApp3": {
       "commandName": "Project",
-      "commandLineArgs": "",
+      "commandLineArgs": "-a SignalF.Controller -c DefaultConfiguration -p DefaultProcedure",
       "launchBrowser": false,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

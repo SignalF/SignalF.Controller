@@ -91,7 +91,7 @@ public class ProcessControlHost : IProcessControlHost
             }
             catch (Exception e)
             {
-                _logger.LogError(e, "Exception occurred while trying to create test.");
+                _logger.LogError(e, "Exception occurred while trying to create process control procedure.");
                 return;
             }
 
