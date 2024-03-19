@@ -3,6 +3,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Intrinsics.X86;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
@@ -54,6 +55,9 @@ public class ProcessControlContext : IProcessControlContext
 
         _logger.LogInformation($"Loaded control process procedure '{procedureName}' from assembly {_assembly}.");
 
+        // Use the activator to create a new instance of the process control procedure. The type of procedure is only
+        // known after the configuration has been loaded and therefore cannot be registered on the IoC container.
+        // However, within the main method, the use of a custom IoC container can be implemented.
         _processControlProcedure = (IProcessControlProcedure)Activator.CreateInstance(processControlType);
     }
 

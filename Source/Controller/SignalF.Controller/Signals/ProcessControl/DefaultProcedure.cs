@@ -8,31 +8,36 @@ public class DefaultProcedure : IProcessControlProcedure
 {
     public async Task Main(IProcessControlAdapter processControlAdapter, CancellationToken cancellationToken)
     {
-        var count = 0;
         Console.WriteLine();
 
+        int count = 0;
         while (true)
         {
-            if(cancellationToken.IsCancellationRequested)
+            if (cancellationToken.IsCancellationRequested)
             {
-                return;
+                break;
             }
-
 
             if (count++ % 10 == 0)
             {
-                var currentLineCursor = Console.CursorTop;
-                Console.SetCursorPosition(0, Console.CursorTop);
-                Console.Write(new string(' ', Console.WindowWidth));
-                Console.SetCursorPosition(0, currentLineCursor);
-                Console.Write("\rDefault process is running " );
+                ClearCurrentConsoleLine();
+                Console.Write("Default process is running ");
             }
             else
             {
                 Console.Write(".");
             }
+
             await Task.Delay(500, cancellationToken);
         }
         // ReSharper disable once FunctionNeverReturns
+    }
+
+    public static void ClearCurrentConsoleLine()
+    {
+        int currentLineCursor = Console.CursorTop;
+        Console.SetCursorPosition(0, Console.CursorTop);
+        Console.Write(new string(' ', Console.WindowWidth));
+        Console.SetCursorPosition(0, currentLineCursor);
     }
 }

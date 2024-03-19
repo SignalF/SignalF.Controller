@@ -14,7 +14,7 @@ public class ConfigurationFactory : IConfigurationFactory
     {
         _document = document;
 
-        // Currently only one configuration is supported.
+        // Todo: Currently only one configuration is supported.
         _configuration = configurations.FirstOrDefault();
     }
 
