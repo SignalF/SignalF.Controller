@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Scotec.Queues;
+using Scotec.XMLDatabase;
 using SignalF.Controller.Signals;
 using SignalF.Datamodel.DataOutput;
 using SignalF.Datamodel.Signals;
@@ -47,7 +48,7 @@ public abstract class DataOutputSender : IDataOutputSender
 
     private void BuildIndexToSignalNameMapping(IDataOutputSenderConfiguration configuration)
     {
-        var dataOutputs = configuration.GetReverseLinks<IDataOutputConfiguration>();
+        var dataOutputs = configuration.GetReverseLinks<IDataOutputConfiguration>(ESearchType.Deep);
         _indexToSignalNameMapping = dataOutputs.SelectMany(output => output.SignalSources)
                                                .Distinct()
                                                .ToDictionary(item => SignalHub.GetSignalIndex(item), BuildSignalName); ;
