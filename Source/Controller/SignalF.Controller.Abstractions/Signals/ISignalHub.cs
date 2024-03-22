@@ -114,29 +114,31 @@ public interface ISignalHub : IService
     Signal[] GetCurrentValues();
 }
 
-public record struct Signal
+public readonly record struct Signal
 {
-    public int SignalIndex { get; }
-    public double Value { get; }
-    public long? Timestamp { get; }
-
     public Signal(int signalIndex, double value, long? timestamp)
     {
         SignalIndex = signalIndex;
         Value = value;
         Timestamp = timestamp;
     }
+    
+    public Signal(int signalIndex) : this(signalIndex, double.NaN, null)
+    {
+    }
 
-    public Signal(int signalIndex)
+    public Signal() : this(-1, double.NaN, null)
     {
-        SignalIndex = signalIndex;
-        Value = double.NaN;
-        Timestamp = null;
     }
-    public Signal()
+
+    public int SignalIndex { get; }
+    public double Value { get; init; }
+    public long? Timestamp { get; init; }
+
+    public void Deconstruct(out int signalIndex, out double value, out long? timestamp)
     {
-        SignalIndex = -2;
-        Value = double.NaN;
-        Timestamp = null;
+        signalIndex = SignalIndex;
+        value = Value;
+        timestamp = Timestamp;
     }
-};
+}
