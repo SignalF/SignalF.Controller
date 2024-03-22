@@ -18,98 +18,72 @@ public class ProcessControlAdapter : SignalProcessor<IProcessControlConfiguratio
 
     private Dictionary<string, int> _indexNameMapping;
     private int _readSignalCount;
-    private volatile double[] _readValues;
-    private int[] _signalReadIndexes;
+    private volatile Signal[] _readValues;
 
-    private int[] _signalWriteIndexes;
     private int _writeSignalCount;
 
-    private volatile double[] _writeValues;
+    private volatile Signal[] _writeValues;
 
     public ProcessControlAdapter(ISignalHub signalHub, ILogger<ProcessControlAdapter> logger)
         : base(signalHub, logger)
     {
     }
 
-    /// <inheritdoc />
-    public override void Execute(ETaskType taskType)
+    protected override void OnRead()
     {
-        switch (taskType)
-        {
-            case ETaskType.Read:
-            {
-                Timestamp = SignalHub.Timestamp;
-                var atomicRead = Enumerable.Repeat(double.NaN, _readSignalCount).ToArray(); //new double[_readSignalCount];
+        _readValues = SignalSinks.ToArray();
+    }
 
-                for (var i = 0; i < _readSignalCount; i++)
-                {
-                    atomicRead[i] = SignalHub.GetSignal(_signalReadIndexes[i]).Value;
-                }
+    protected override void OnWrite()
+    {
+        _writeValues.CopyTo(SignalSources);
+    }
 
-                _readValues = atomicRead;
-                break;
-            }
 
-            case ETaskType.Write:
-            {
-                var timestamp = SignalHub.GetTimestamp();
-                var atomicWrite = _writeValues;
-
-                for (var i = 0; i < _writeSignalCount; i++)
-                {
-                    SignalHub.SetSignal(new Signal(_signalWriteIndexes[i], atomicWrite[i], timestamp));
-                }
-
-                break;
-            }
-        }
+    /// <inheritdoc />
+    public ReadOnlySpan<Signal> ReadValues()
+    {
+        return _readValues;
     }
 
     /// <inheritdoc />
-    public double[] ReadValues()
+    public void WriteValues(ReadOnlySpan<Signal> signals)
     {
-        var values = new double[_readSignalCount];
-        Array.Copy(_readValues, values, _readSignalCount);
-
-        return values;
-    }
-
-    /// <inheritdoc />
-    public void WriteValues(double[] values)
-    {
-        if (values.Length != _writeSignalCount)
+        if (signals.Length != _writeSignalCount)
         {
-            throw new ArgumentException($"Length of values array must match the write signal count. Length: {values.Length}, expected: {_writeSignalCount}");
+            throw new ArgumentException($"Length of values array must match the write signal count. Length: {signals.Length}, expected: {_writeSignalCount}");
         }
 
-        var buffer = new double[_writeSignalCount];
-        Array.Copy(_writeValues, buffer, _writeSignalCount);
+        var buffer = new Signal[_writeSignalCount];
+
+        var spanBuffer = new Span<Signal>(buffer);
+        signals.CopyTo(spanBuffer);
 
         _writeValues = buffer;
     }
 
     /// <inheritdoc />
-    public double GetValue(string signalName)
+    public Signal GetValue(string signalName)
     {
         if (_configured)
         {
             return _indexNameMapping.TryGetValue(signalName, out var index)
                 ? _readValues[index]
-                : double.NaN;
+                : new Signal(-1);
         }
 
         Logger.LogWarning("No signals in ProcessControlAdapter configured! Check provided configuration!");
-        return double.NaN;
+        return new Signal(-1);
     }
 
     /// <inheritdoc />
-    public void SetValue(string signalName, double value)
+    public void SetValue(string signalName, double value, long? timestamp)
     {
         if (_configured)
         {
             if (_indexNameMapping.TryGetValue(signalName, out var index))
             {
-                _writeValues[index] = value;
+                _writeValues[index] = _writeValues[index] with{Value = value, Timestamp = timestamp ??SignalHub.GetTimestamp()};
             }
 
             return;
@@ -118,44 +92,28 @@ public class ProcessControlAdapter : SignalProcessor<IProcessControlConfiguratio
         Logger.LogWarning("No signals in ProcessControlAdapter configured! Check provided configuration!");
     }
 
-    public long Timestamp { get; private set; }
+    public long Timestamp => SignalHub.GetTimestamp();
 
     protected override void OnConfigure(IProcessControlConfiguration configuration)
     {
         base.OnConfigure(configuration);
 
-        _readSignalCount = configuration.SignalSinks.Count;
-        _writeSignalCount = configuration.SignalSources.Count;
+        int readSignalCount = configuration.SignalSinks.Count;
+        int writeSignalCount = configuration.SignalSources.Count;
 
         _indexNameMapping = new Dictionary<string, int>();
 
-        _signalReadIndexes = new int[_readSignalCount];
-        _signalWriteIndexes = new int[_writeSignalCount];
-
         // get all SignalSinks and map index to name
-        for (var i = 0; i < _readSignalCount; i++)
+        for (var i = 0; i < readSignalCount; i++)
         {
-            var index = SignalHub.GetSignalIndex(configuration.SignalSinks[i]);
-            _indexNameMapping.Add(configuration.SignalSinks[i].Name, i);
-
-            _signalReadIndexes[i] = index;
+            _indexNameMapping.Add(configuration.SignalSinks[i].Name, GetSignalIndex(configuration.SignalSinks[i].Name));
         }
 
         // get all SignalSources and map index to name
-        for (var i = 0; i < _writeSignalCount; i++)
+        for (var i = 0; i < writeSignalCount; i++)
         {
-            var index = SignalHub.GetSignalIndex(configuration.SignalSources[i]);
-            _indexNameMapping.Add(configuration.SignalSources[i].Name, i);
-
-            _signalWriteIndexes[i] = index;
+            _indexNameMapping.Add(configuration.SignalSources[i].Name, GetSignalIndex(configuration.SignalSources[i].Name));
         }
-
-        // Initialize all values with NaN.
-        _writeValues = new double[_writeSignalCount];
-        Array.Fill(_writeValues, double.NaN);
-
-        _readValues = new double[_readSignalCount];
-        Array.Fill(_readValues, double.NaN);
 
         _configured = true;
     }

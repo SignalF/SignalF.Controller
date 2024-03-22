@@ -48,26 +48,26 @@ public interface ISignalHub : IService
     ///     Gets a signal from the hub.
     /// </summary>
     /// <param name="index">Index of signal to return</param>
-    /// <returns>Requested value</returns>
-    Signal GetSignal(int index);
+    /// <returns>Requested signal</returns>
+    Signal ReadSignal(int index);
 
     /// <summary>
     ///     Gets signals from the hub.
     /// </summary>
-    /// <param name="signals">Signals to read values for.</param>
-    /// <returns>Requested values</returns>
-    void GetSignals(Span<Signal> signals);
+    /// <param name="signals">Signals to read.</param>
+    /// <returns>Requested signals</returns>
+    void ReadSignals(Span<Signal> signals);
 
     /// <summary>
     ///     Writes a signal to the hub.
     /// </summary>
-    void SetSignal(Signal signal);
+    void WriteSignal(Signal signal);
 
     /// <summary>
     ///     Writes signals to the hub.
     /// </summary>
     /// <param name="signals">The signals to write.</param>
-    void SetValues(ReadOnlySpan<Signal> signals);
+    void WriteSignals(ReadOnlySpan<Signal> signals);
 
     /// <summary>
     ///     Configures SignalHub with given configuration
@@ -108,37 +108,8 @@ public interface ISignalHub : IService
     Signal[] GetCurrentBufferContent();
 
     /// <summary>
-    ///     Returns all current values.
+    ///     Returns all current signals.
     /// </summary>
-    /// <returns>The current values.</returns>
-    Signal[] GetCurrentValues();
-}
-
-public readonly record struct Signal
-{
-    public Signal(int signalIndex, double value, long? timestamp)
-    {
-        SignalIndex = signalIndex;
-        Value = value;
-        Timestamp = timestamp;
-    }
-    
-    public Signal(int signalIndex) : this(signalIndex, double.NaN, null)
-    {
-    }
-
-    public Signal() : this(-1, double.NaN, null)
-    {
-    }
-
-    public int SignalIndex { get; }
-    public double Value { get; init; }
-    public long? Timestamp { get; init; }
-
-    public void Deconstruct(out int signalIndex, out double value, out long? timestamp)
-    {
-        signalIndex = SignalIndex;
-        value = Value;
-        timestamp = Timestamp;
-    }
+    /// <returns>The current signals.</returns>
+    Signal[] GetCurrentSignals();
 }

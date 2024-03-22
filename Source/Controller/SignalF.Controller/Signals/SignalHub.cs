@@ -39,13 +39,13 @@ public class SignalHub : ISignalHub
     public event EventHandler DataAvailable;
 
     /// <inheritdoc />
-    public Signal GetSignal(int index)
+    public Signal ReadSignal(int index)
     {
         return _signals[index];
     }
 
     /// <inheritdoc />
-    public void GetSignals(Span<Signal> signals)
+    public void ReadSignals(Span<Signal> signals)
     {
         //var signalValues = _signals.AsSpan();
         var length = signals.Length;
@@ -61,7 +61,7 @@ public class SignalHub : ISignalHub
     }
 
     /// <inheritdoc />
-    public void SetSignal(Signal signal)
+    public void WriteSignal(Signal signal)
     {
         _signals[signal.SignalIndex] = signal;
 
@@ -69,7 +69,7 @@ public class SignalHub : ISignalHub
     }
 
     /// <inheritdoc />
-    public void SetValues(ReadOnlySpan<Signal> signals)
+    public void WriteSignals(ReadOnlySpan<Signal> signals)
     {
         var signalValues = _signals.AsSpan();
         var length = signals.Length;
@@ -141,7 +141,7 @@ public class SignalHub : ISignalHub
     }
 
     /// <inheritdoc />
-    public Signal[] GetCurrentValues()
+    public Signal[] GetCurrentSignals()
     {
         // Add one additional signal for the timestamp. This will be hold in the first item of the array.
         // Timestamps always have an index of -1.

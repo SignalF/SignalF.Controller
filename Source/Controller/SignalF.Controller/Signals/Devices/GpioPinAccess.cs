@@ -41,7 +41,7 @@ public class GpioPinAccess : Device<IGpioPinAccessConfiguration>, IGpioPinAccess
             {
                 foreach (var (index, channels) in _signalSinkMappings)
                 {
-                    var signal = SignalHub.GetSignal(index);
+                    var signal = SignalHub.ReadSignal(index);
                     if (!double.IsNaN(signal.Value)) // Do not switch state for invalid values.
                     {
                         var state = signal.Value != 0.0 ? EGpioPinValue.High : EGpioPinValue.Low;
@@ -56,7 +56,7 @@ public class GpioPinAccess : Device<IGpioPinAccessConfiguration>, IGpioPinAccess
                 foreach (var (index, channel) in _signalSourceMappings)
                 {
                     var state = channel.ReadPinValue();
-                    SignalHub.SetSignal(new Signal(index, state == EGpioPinValue.Low ? 0.0 : 1.0, SignalHub.GetTimestamp()));
+                    SignalHub.WriteSignal(new Signal(index, state == EGpioPinValue.Low ? 0.0 : 1.0, SignalHub.GetTimestamp()));
                 }
 
                 break;

@@ -20,20 +20,17 @@ public class StaticSignalProvider : SignalProcessor<IStaticSignalProviderConfigu
     {
     }
 
-    public override void Execute(ETaskType taskType)
+    protected override void OnInitialize()
     {
-        if (taskType != ETaskType.Init)
-        {
-            return;
-        }
-
         var timestamp = SignalHub.GetTimestamp();
-
+        var signals = SignalSources;
+        
         for (var i = 0; i < _indexes.Length; i++)
         {
-            SignalHub.SetSignal(new Signal(_indexes[i], _values[i], timestamp));
+            signals[i] = signals[i] with {Value = _values[i], Timestamp = timestamp};
         }
     }
+
 
     protected override void OnConfigure(IStaticSignalProviderConfiguration configuration)
     {
@@ -41,12 +38,11 @@ public class StaticSignalProvider : SignalProcessor<IStaticSignalProviderConfigu
 
         var size = configuration.SignalSources.Count;
         _indexes = new int[size];
-        _values = new double[size];
 
         var tempIndex = 0;
         foreach (var signalSource in configuration.SignalSources)
         {
-            _indexes[tempIndex] = SignalHub.GetSignalIndex(signalSource);
+            _indexes[tempIndex] = GetSignalIndex(signalSource.Name);// SignalHub.GetSignalIndex(signalSource);
             _values[tempIndex] = configuration.SignalValues.SingleOrDefault(value => value.SignalSource == signalSource)?.Value.SIValue ?? double.NaN;
 
             tempIndex++;

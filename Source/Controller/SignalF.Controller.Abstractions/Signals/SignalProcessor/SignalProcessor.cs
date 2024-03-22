@@ -16,10 +16,10 @@ namespace SignalF.Controller.Signals.SignalProcessor;
 public abstract class SignalProcessor<TConfiguration> : ISignalProcessor
     where TConfiguration : ISignalProcessorConfiguration
 {
-    private int _readSignalCount;
-    private int[] _readSignals;
-    private int _writeSignalCount;
-    private int[] _writeSignals;
+    private int _signalSinkCount;
+    private Signal[] _signalSinks;
+    private int _signalSourceCount;
+    private Signal[] _signalSources;
 
     protected SignalProcessor(ISignalHub signalHub, ILogger<SignalProcessor<TConfiguration>> logger)
     {
@@ -39,8 +39,14 @@ public abstract class SignalProcessor<TConfiguration> : ISignalProcessor
     /// </summary>
     protected IConfigurationRoot ConfigurationData { get; private set; }
 
+    /// <summary>
+    /// Get access to the logger.
+    /// </summary>
     protected ILogger Logger { get; }
 
+    /// <summary>
+    /// Get access tothe signal hub.
+    /// </summary>
     protected ISignalHub SignalHub { get; }
 
     /// <inheritdoc />
@@ -56,10 +62,97 @@ public abstract class SignalProcessor<TConfiguration> : ISignalProcessor
         Name = configuration.Name;
 
         ReadConfigurationData(configuration);
+
+        _signalSinkCount = configuration.SignalSinks.Count;
+        _signalSourceCount = configuration.SignalSources.Count;
+
+        _signalSinks = new Signal[_signalSinkCount];
+        _signalSources = new Signal[_signalSourceCount];
+
+        // get all SignalSinks and map index to name
+        for (var i = 0; i < _signalSinkCount; i++)
+        {
+            var signalIndex = SignalHub.GetSignalIndex(configuration.SignalSinks[i]);
+            SignalNameToIndexMapping.Add(configuration.SignalSinks[i].Definition.Name, i);
+            _signalSinks[i] = new Signal(signalIndex);
+        }
+
+        // get all SignalSources and map index to name
+        for (var i = 0; i < _signalSourceCount; i++)
+        {
+            var signalIndex = SignalHub.GetSignalIndex(configuration.SignalSources[i]);
+            SignalNameToIndexMapping.Add(configuration.SignalSources[i].Definition.Name, i);
+            _signalSources[i] = new Signal(signalIndex);
+        }
+        
         OnConfigure((TConfiguration)configuration);
     }
 
-    public abstract void Execute(ETaskType taskType);
+    public virtual void Execute(ETaskType taskType)
+    {
+        switch (taskType)
+        {
+            case ETaskType.Init:
+                Initialize();
+                break;
+            case ETaskType.Read:
+                Read();
+                break;
+            case ETaskType.Write:
+                Write();
+                break;
+            case ETaskType.Calculate:
+                Calculate();
+                break;
+            case ETaskType.Exit:
+                Exit();
+                break;
+            default:
+                throw new ControllerException($"Invalid task type '{taskType}'.");
+        }
+    }
+
+    private void Initialize()
+    {
+        OnInitialize();
+
+        SignalHub.WriteSignals(new ReadOnlySpan<Signal>(_signalSources));
+    }
+    private void Read()
+    {
+        SignalHub.ReadSignals(new Span<Signal>(_signalSinks));
+
+        OnRead();
+    }
+    private void Write()
+    {
+        OnWrite();
+
+        SignalHub.WriteSignals(new ReadOnlySpan<Signal>(_signalSources));
+    }
+    private void Calculate()
+    {
+        OnCalculate();
+    }
+    private void Exit()
+    {
+        OnExit();
+    }
+    protected virtual void OnInitialize()
+    {
+    }
+    protected virtual void OnRead()
+    {
+    }
+    protected virtual void OnWrite()
+    {
+    }
+    protected virtual void OnCalculate()
+    {
+    }
+    protected virtual void OnExit()
+    {
+    }
 
     private void ReadConfigurationData(ISignalProcessorConfiguration configuration)
     {
@@ -87,39 +180,21 @@ public abstract class SignalProcessor<TConfiguration> : ISignalProcessor
         }
     }
 
-//    protected abstract void DoConfigure(TConfiguration configuration);
     protected virtual void OnConfigure(TConfiguration configuration)
     {
-        _readSignalCount = configuration.SignalSinks.Count;
-        _writeSignalCount = configuration.SignalSources.Count;
-
-        _readSignals = new int[_readSignalCount];
-        _writeSignals = new int[_writeSignalCount];
-
-        // get all SignalSinks and map index to name
-        for (var i = 0; i < _readSignalCount; i++)
-        {
-            var index = SignalHub.GetSignalIndex(configuration.SignalSinks[i]);
-            SignalNameToIndexMapping.Add(configuration.SignalSinks[i].Definition.Name, i);
-            _readSignals[i] = index;
-        }
-
-        // get all SignalSources and map index to name
-        for (var i = 0; i < _writeSignalCount; i++)
-        {
-            var index = SignalHub.GetSignalIndex(configuration.SignalSources[i]);
-            SignalNameToIndexMapping.Add(configuration.SignalSources[i].Definition.Name, i);
-            _writeSignals[i] = index;
-        }
     }
 
-    protected Signal ReadSignal(int index)
+
+    /// <summary>
+    /// Gets the signal processor specific index of the requested signal.
+    /// <remarks>This is not the signal index within the signal hub.</remarks> 
+    /// </summary>
+    protected int GetSignalIndex(string signalName)
     {
-        return SignalHub.GetSignal(_readSignals[index]);
+        return SignalNameToIndexMapping[signalName];
     }
 
-    protected void WriteSignal(Signal signal)
-    {
-        SignalHub.SetSignal(signal);
-    }
+    protected ReadOnlySpan<Signal> SignalSinks => new (_signalSinks);
+
+    protected Span<Signal> SignalSources => new (_signalSources);
 }
