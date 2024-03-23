@@ -27,7 +27,7 @@ public class StaticSignalProvider : SignalProcessor<IStaticSignalProviderConfigu
         
         for (var i = 0; i < _indexes.Length; i++)
         {
-            signals[i] = signals[i] with {Value = _values[i], Timestamp = timestamp};
+            signals[i].AssignWith(_values[i], timestamp);
         }
     }
 
@@ -38,6 +38,7 @@ public class StaticSignalProvider : SignalProcessor<IStaticSignalProviderConfigu
 
         var size = configuration.SignalSources.Count;
         _indexes = new int[size];
+        _values = new double[size];
 
         var tempIndex = 0;
         foreach (var signalSource in configuration.SignalSources)

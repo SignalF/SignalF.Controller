@@ -5,7 +5,6 @@ using Scotec.Extensions.Linq;
 using Scotec.XMLDatabase;
 using SignalF.Controller.Hardware.Channels;
 using SignalF.Controller.Hardware.Channels.Gpio;
-using SignalF.Datamodel.Configuration;
 using SignalF.Datamodel.Hardware;
 using SignalF.Datamodel.Signals;
 
@@ -33,34 +32,29 @@ public class GpioPinAccess : Device<IGpioPinAccessConfiguration>, IGpioPinAccess
         _signalSourceMappings = GetSourceMappings(channels, _configuration.SignalSources);
     }
 
-    public override void Execute(ETaskType taskType)
+    protected override void OnRead()
     {
-        switch (taskType)
+        var signals = SignalSinks;
+        foreach (var (index, channels) in _signalSinkMappings)
         {
-            case ETaskType.Read:
+            var value = signals[index].Value;
+            if (!double.IsNaN(value)) // Do not switch state for invalid values.
             {
-                foreach (var (index, channels) in _signalSinkMappings)
-                {
-                    var signal = SignalHub.ReadSignal(index);
-                    if (!double.IsNaN(signal.Value)) // Do not switch state for invalid values.
-                    {
-                        var state = signal.Value != 0.0 ? EGpioPinValue.High : EGpioPinValue.Low;
-                        channels.ForAll(channel => channel.WritePinValue(state));
-                    }
-                }
-
-                break;
+                var state = value != 0.0 ? EGpioPinValue.High : EGpioPinValue.Low;
+                channels.ForAll(channel => channel.WritePinValue(state));
             }
-            case ETaskType.Write:
-            {
-                foreach (var (index, channel) in _signalSourceMappings)
-                {
-                    var state = channel.ReadPinValue();
-                    SignalHub.WriteSignal(new Signal(index, state == EGpioPinValue.Low ? 0.0 : 1.0, SignalHub.GetTimestamp()));
-                }
+        }
+    }
 
-                break;
-            }
+    protected override void OnWrite()
+    {
+        var timestamp = SignalHub.GetTimestamp();
+        var signals = SignalSources;
+        var x = signals[0];
+        foreach (var (index, channel) in _signalSourceMappings)
+        {
+            var state = channel.ReadPinValue();
+            signals[index].AssignWith(state == EGpioPinValue.Low ? 0.0 : 1.0, timestamp);
         }
     }
 
@@ -69,9 +63,8 @@ public class GpioPinAccess : Device<IGpioPinAccessConfiguration>, IGpioPinAccess
         var signalEndpointToChannelMappings = signalEndpoints.SelectMany(signalSink => signalSink
                                                                                        .GetReverseLinks<IChannelToSignalEndpointsMapping>(ESearchType.Deep)
                                                                                        .Select(mapping => (SignalSink: signalSink, mapping.Channel)));
-
         return signalEndpointToChannelMappings
-            .ToDictionary(mapping => SignalHub.GetSignalIndex(mapping.SignalSink)
+            .ToDictionary(mapping => GetSignalIndex(mapping.SignalSink.Name)
                 , mapping => channels.Cast<IGpioChannel>().First(channel => channel.Id == mapping.Channel.Id));
     }
 
@@ -83,7 +76,7 @@ public class GpioPinAccess : Device<IGpioPinAccessConfiguration>, IGpioPinAccess
                                                              .GroupBy(mapping => mapping.SignalSink);
 
         return signalEndpointToChannelMappings
-               .Select(channelMapping => (Index: SignalHub.GetSignalIndex(channelMapping.Key)
+               .Select(channelMapping => (Index: GetSignalIndex(channelMapping.Key.Name)
                    , Channels: channels.Cast<IGpioChannel>()
                                        .Join(channelMapping, channel => channel.Id, mapping => mapping.Channel.Id, (channel, _) => channel)))
                .Where(mapping => mapping.Index >= 0)

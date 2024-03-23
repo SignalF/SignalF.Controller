@@ -2,10 +2,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Extensions.Logging;
 using SignalF.Controller.Signals.SignalProcessor;
-using SignalF.Datamodel.Configuration;
 using SignalF.Datamodel.Workflow;
 
 #endregion
@@ -17,28 +15,13 @@ public class ProcessControlAdapter : SignalProcessor<IProcessControlConfiguratio
     private bool _configured;
 
     private Dictionary<string, int> _indexNameMapping;
-    private int _readSignalCount;
     private volatile Signal[] _readValues;
-
-    private int _writeSignalCount;
-
     private volatile Signal[] _writeValues;
 
     public ProcessControlAdapter(ISignalHub signalHub, ILogger<ProcessControlAdapter> logger)
         : base(signalHub, logger)
     {
     }
-
-    protected override void OnRead()
-    {
-        _readValues = SignalSinks.ToArray();
-    }
-
-    protected override void OnWrite()
-    {
-        _writeValues.CopyTo(SignalSources);
-    }
-
 
     /// <inheritdoc />
     public ReadOnlySpan<Signal> ReadValues()
@@ -49,12 +32,13 @@ public class ProcessControlAdapter : SignalProcessor<IProcessControlConfiguratio
     /// <inheritdoc />
     public void WriteValues(ReadOnlySpan<Signal> signals)
     {
-        if (signals.Length != _writeSignalCount)
+        var length = _writeValues.Length;
+        if (signals.Length != length)
         {
-            throw new ArgumentException($"Length of values array must match the write signal count. Length: {signals.Length}, expected: {_writeSignalCount}");
+            throw new ArgumentException($"Length of values array must match the write signal count. Length: {signals.Length}, expected: {length}");
         }
 
-        var buffer = new Signal[_writeSignalCount];
+        var buffer = new Signal[length];
 
         var spanBuffer = new Span<Signal>(buffer);
         signals.CopyTo(spanBuffer);
@@ -63,27 +47,28 @@ public class ProcessControlAdapter : SignalProcessor<IProcessControlConfiguratio
     }
 
     /// <inheritdoc />
-    public Signal GetValue(string signalName)
+    public double GetValue(string signalName)
     {
         if (_configured)
         {
             return _indexNameMapping.TryGetValue(signalName, out var index)
-                ? _readValues[index]
-                : new Signal(-1);
+                ? _readValues[index].Value
+                : double.NaN;
         }
 
         Logger.LogWarning("No signals in ProcessControlAdapter configured! Check provided configuration!");
-        return new Signal(-1);
+        return double.NaN;
     }
 
     /// <inheritdoc />
-    public void SetValue(string signalName, double value, long? timestamp)
+    public void SetValue(string signalName, double value)
     {
         if (_configured)
         {
+            var timestamp = SignalHub.GetTimestamp();
             if (_indexNameMapping.TryGetValue(signalName, out var index))
             {
-                _writeValues[index] = _writeValues[index] with{Value = value, Timestamp = timestamp ??SignalHub.GetTimestamp()};
+                _writeValues[index].AssignWith(value, timestamp);
             }
 
             return;
@@ -94,12 +79,25 @@ public class ProcessControlAdapter : SignalProcessor<IProcessControlConfiguratio
 
     public long Timestamp => SignalHub.GetTimestamp();
 
+    protected override void OnRead()
+    {
+        _readValues = SignalSinks.ToArray();
+    }
+
+    protected override void OnWrite()
+    {
+        SignalSources.AssignWith(_writeValues);
+    }
+
     protected override void OnConfigure(IProcessControlConfiguration configuration)
     {
         base.OnConfigure(configuration);
 
-        int readSignalCount = configuration.SignalSinks.Count;
-        int writeSignalCount = configuration.SignalSources.Count;
+        var readSignalCount = configuration.SignalSinks.Count;
+        var writeSignalCount = configuration.SignalSources.Count;
+
+        _readValues = SignalSinks.ToArray();
+        _writeValues = SignalSources.ToArray();
 
         _indexNameMapping = new Dictionary<string, int>();
 
