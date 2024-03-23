@@ -189,9 +189,14 @@ public abstract class SignalProcessor<TConfiguration> : ISignalProcessor
     /// Gets the signal processor specific index of the requested signal.
     /// <remarks>This is not the signal index within the signal hub.</remarks> 
     /// </summary>
-    protected int GetSignalIndex(string signalName)
+    //protected int GetSignalIndex(string signalName)
+    //{
+    //    return SignalNameToIndexMapping[signalName];
+    //}
+
+    protected int GetSignalIndex(ISignalEndpointConfiguration endPoint)
     {
-        return SignalNameToIndexMapping[signalName];
+        return SignalNameToIndexMapping[endPoint.Definition.Name];
     }
 
     protected ReadOnlySpan<Signal> SignalSinks => new (_signalSinks);

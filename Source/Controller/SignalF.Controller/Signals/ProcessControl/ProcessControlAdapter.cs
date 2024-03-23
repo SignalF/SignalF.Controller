@@ -104,13 +104,13 @@ public class ProcessControlAdapter : SignalProcessor<IProcessControlConfiguratio
         // get all SignalSinks and map index to name
         for (var i = 0; i < readSignalCount; i++)
         {
-            _indexNameMapping.Add(configuration.SignalSinks[i].Name, GetSignalIndex(configuration.SignalSinks[i].Name));
+            _indexNameMapping.Add(configuration.SignalSinks[i].Name, GetSignalIndex(configuration.SignalSinks[i]));
         }
 
         // get all SignalSources and map index to name
         for (var i = 0; i < writeSignalCount; i++)
         {
-            _indexNameMapping.Add(configuration.SignalSources[i].Name, GetSignalIndex(configuration.SignalSources[i].Name));
+            _indexNameMapping.Add(configuration.SignalSources[i].Name, GetSignalIndex(configuration.SignalSources[i]));
         }
 
         _configured = true;

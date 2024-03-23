@@ -43,7 +43,7 @@ public class StaticSignalProvider : SignalProcessor<IStaticSignalProviderConfigu
         var tempIndex = 0;
         foreach (var signalSource in configuration.SignalSources)
         {
-            _indexes[tempIndex] = GetSignalIndex(signalSource.Name);// SignalHub.GetSignalIndex(signalSource);
+            _indexes[tempIndex] = GetSignalIndex(signalSource);// SignalHub.GetSignalIndex(signalSource);
             _values[tempIndex] = configuration.SignalValues.SingleOrDefault(value => value.SignalSource == signalSource)?.Value.SIValue ?? double.NaN;
 
             tempIndex++;
