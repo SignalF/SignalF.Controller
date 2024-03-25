@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SignalF.Configuration.Calculators;
 using SignalF.Controller.Configuration;
-using SignalF.Controller.Signals.Calculator;
+using SignalF.Controller.Signals.Calculators;
 using SignalF.Datamodel.Calculation;
 
 namespace SignalF.Configuration;

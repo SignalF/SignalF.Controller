@@ -21,7 +21,7 @@ using SignalF.Controller.Hardware.Channels.OneWire;
 using SignalF.Controller.Hardware.Channels.Spi;
 using SignalF.Controller.Hardware.Channels.Tcp;
 using SignalF.Controller.Hardware.DeviceBindings;
-using SignalF.Controller.Signals.Calculator;
+using SignalF.Controller.Signals.Calculators;
 using SignalF.Controller.Signals.Devices;
 using SignalF.Controller.Signals.ProcessControl;
 using SignalF.Controller.Signals.SignalProcessor;

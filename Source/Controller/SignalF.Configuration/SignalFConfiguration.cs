@@ -2,7 +2,7 @@
 using SignalF.Configuration.Devices;
 using SignalF.Configuration.SignalConfiguration;
 using SignalF.Controller.Configuration;
-using SignalF.Controller.Signals.Calculator;
+using SignalF.Controller.Signals.Calculators;
 using SignalF.Controller.Signals.Devices;
 using SignalF.Controller.Signals.SignalProcessor;
 using SignalF.Datamodel.Configuration;

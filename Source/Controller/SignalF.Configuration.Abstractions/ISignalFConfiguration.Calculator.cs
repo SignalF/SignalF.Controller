@@ -1,7 +1,7 @@
 ﻿using System;
 using SignalF.Configuration.Calculators;
 using SignalF.Controller.Configuration;
-using SignalF.Controller.Signals.Calculator;
+using SignalF.Controller.Signals.Calculators;
 
 namespace SignalF.Configuration;
 
