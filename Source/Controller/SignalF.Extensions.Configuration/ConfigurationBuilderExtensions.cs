@@ -1,5 +1,6 @@
 ﻿using System;
 using SignalF.Configuration;
+using SignalF.Configuration.Calculators;
 using SignalF.Configuration.DataOutput;
 using SignalF.Configuration.Devices;
 using SignalF.Configuration.Devices.Gpio;
@@ -20,11 +21,11 @@ using SignalF.Controller.Hardware.Channels.OneWire;
 using SignalF.Controller.Hardware.Channels.Spi;
 using SignalF.Controller.Hardware.Channels.Tcp;
 using SignalF.Controller.Hardware.DeviceBindings;
+using SignalF.Controller.Signals.Calculator;
 using SignalF.Controller.Signals.Devices;
 using SignalF.Controller.Signals.ProcessControl;
 using SignalF.Controller.Signals.SignalProcessor;
 using SignalF.Datamodel.Hardware;
-
 namespace SignalF.Extensions.Configuration;
 
 public static class ConfigurationBuilderExtensions
@@ -81,6 +82,44 @@ public static class ConfigurationBuilderExtensions
 
     #endregion
 
+    #region Calculator
+
+    public static ISignalFConfiguration AddCalculatorConfiguration(this ISignalFConfiguration configuration, Action<ICalculatorConfigurationBuilder> builder)
+    {
+        return configuration.AddCalculatorConfiguration<ICalculatorConfigurationBuilder, SignalFConfigurationOptions>(builder);
+    }
+
+    public static ISignalFConfiguration AddCalculatorConfiguration<TType>(this ISignalFConfiguration configuration, Action<ICalculatorConfigurationBuilder> builder)
+        where TType : class, ICalculator
+    {
+        return configuration.AddCalculatorConfiguration<ICalculatorConfigurationBuilder, SignalFConfigurationOptions, TType>(builder);
+    }
+
+    public static ISignalFConfiguration AddCalculatorDefinition(this ISignalFConfiguration configuration, Action<ICalculatorDefinitionBuilder> builder)
+    {
+        return configuration.AddCalculatorDefinition<ICalculatorDefinitionBuilder, SignalFConfigurationOptions>(builder);
+    }
+
+    public static ISignalFConfiguration AddCalculatorDefinition<TType>(this ISignalFConfiguration configuration, Action<ICalculatorDefinitionBuilder> builder)
+        where TType : class, ICalculator
+    {
+        return configuration.AddCalculatorDefinition<ICalculatorDefinitionBuilder, SignalFConfigurationOptions, TType>(builder);
+    }
+
+    public static ISignalFConfiguration AddCalculatorTemplate(this ISignalFConfiguration configuration, Action<ICalculatorTemplateBuilder> builder)
+    {
+        return configuration.AddCalculatorTemplate<ICalculatorTemplateBuilder, SignalFConfigurationOptions>(builder);
+    }
+
+    public static ISignalFConfiguration AddCalculatorTemplate<TType>(this ISignalFConfiguration configuration, Action<ICalculatorTemplateBuilder> builder)
+        where TType : class, ICalculator
+    {
+        return configuration.AddCalculatorTemplate<ICalculatorTemplateBuilder, SignalFConfigurationOptions, TType>(builder);
+    }
+
+    #endregion
+
+
     #region DeviceBinding
 
     public static ISignalFConfiguration AddDeviceBinding(this ISignalFConfiguration configuration,
@@ -135,7 +174,6 @@ public static class ConfigurationBuilderExtensions
 
     #region ChannelGroups
 
-    // Channel groups
     public static ISignalFConfiguration AddOneWireChannelGroup(this ISignalFConfiguration configuration,
                                                             Action<IOneWireChannelGroupBuilder> builder)
     {
@@ -190,7 +228,6 @@ public static class ConfigurationBuilderExtensions
 
     #region ProcessControl
 
-    // Execution engine
     public static ISignalFConfiguration AddProcessControlConfiguration(this ISignalFConfiguration configuration
                                                                     , Action<IProcessControlConfigurationBuilder> builder)
     {

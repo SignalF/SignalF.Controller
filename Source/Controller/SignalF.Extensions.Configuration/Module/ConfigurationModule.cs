@@ -2,6 +2,7 @@
 
 using Autofac;
 using SignalF.Configuration;
+using SignalF.Configuration.Calculators;
 using SignalF.Configuration.DataOutput;
 using SignalF.Configuration.Devices;
 using SignalF.Configuration.Devices.Gpio;
@@ -100,6 +101,18 @@ public class ConfigurationModule : Autofac.Module
 
         builder.RegisterType<SignalProcessorTemplateBuilder>()
                .As<ISignalProcessorTemplateBuilder>()
+               .InstancePerDependency();
+
+        builder.RegisterType<CalculatorConfigurationBuilder>()
+               .As<ICalculatorConfigurationBuilder>()
+               .InstancePerDependency();
+
+        builder.RegisterType<CalculatorDefinitionBuilder>()
+               .As<ICalculatorDefinitionBuilder>()
+               .InstancePerDependency();
+
+        builder.RegisterType<CalculatorTemplateBuilder>()
+               .As<ICalculatorTemplateBuilder>()
                .InstancePerDependency();
 
         builder.RegisterType<ProcessControlConfigurationBuilder>()

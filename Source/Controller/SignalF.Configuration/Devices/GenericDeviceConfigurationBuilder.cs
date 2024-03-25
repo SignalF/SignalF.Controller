@@ -17,27 +17,4 @@ public abstract class GenericDeviceConfigurationBuilder<TImpl, TBuilder, TConfig
     where TConfiguration : IGenericDeviceConfiguration
     where TOptions : SignalFConfigurationOptions
 {
-    public override void Build(TConfiguration configuration)
-    {
-        base.Build(configuration);
-    }
 }
-
-//public class GenericGenericDeviceConfiguration
-//    : GenericGenericDeviceConfiguration<GenericGenericDeviceConfiguration, Datamodel.GenericDevices.IGenericGenericDeviceConfiguration, IGenericGenericDeviceConfiguration>
-//      , IGenericGenericDeviceConfiguration
-//{
-//    protected override IGenericGenericDeviceConfiguration This => this;
-//}
-
-//public abstract class GenericGenericDeviceConfiguration<TElement, TConfigElement, TInterface>
-//    : GenericDeviceConfiguration<TElement, TConfigElement, TInterface>
-//      , IGenericGenericDeviceConfiguration<TInterface>
-//    where TInterface : IGenericGenericDeviceConfiguration<TInterface>
-//    where TConfigElement : Datamodel.GenericDevices.IGenericGenericDeviceConfiguration
-//    where TElement : GenericGenericDeviceConfiguration<TElement, TConfigElement, TInterface>
-//{
-//    //protected override TConfigElement CreateConfiguration(IControllerConfiguration configuration)
-//    //{
-//    //}
-//}

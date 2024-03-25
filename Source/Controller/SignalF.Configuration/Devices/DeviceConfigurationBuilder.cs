@@ -18,28 +18,4 @@ public abstract class DeviceConfigurationBuilder<TImpl, TBuilder, TConfiguration
     where TConfiguration : IDeviceConfiguration
     where TOptions : SignalFConfigurationOptions
 {
-    public override void Build(TConfiguration configuration)
-    {
-        base.Build(configuration);
-    }
 }
-
-//public class DeviceConfiguration
-//    : DeviceConfiguration<DeviceConfiguration, Datamodel.Hardware.IDeviceConfiguration, IDeviceConfiguration>
-//      , IDeviceConfiguration
-//{
-//    protected override IDeviceConfiguration This => this;
-//}
-
-//public abstract class DeviceConfiguration<TElement, TConfigElement, TInterface>
-//    : SignalProcessorConfiguration<TElement, TConfigElement, TInterface>
-//      , IDeviceConfiguration<TInterface>
-//    where TInterface : IDeviceConfiguration<TInterface>
-//    where TConfigElement : Datamodel.Hardware.IDeviceConfiguration
-//    where TElement : DeviceConfiguration<TElement, TConfigElement, TInterface>
-//{
-//    protected override TConfigElement CreateConfiguration(IControllerConfiguration configuration)
-//    {
-//        return configuration.SignalProcessorConfigurations.Create<TConfigElement>();
-//    }
-//}

@@ -1,5 +1,9 @@
-﻿using SignalF.Configuration.SignalConfiguration;
+﻿using SignalF.Configuration.Calculators;
+using SignalF.Configuration.Devices;
+using SignalF.Configuration.SignalConfiguration;
 using SignalF.Controller.Configuration;
+using SignalF.Controller.Signals.Calculator;
+using SignalF.Controller.Signals.Devices;
 using SignalF.Controller.Signals.SignalProcessor;
 using SignalF.Datamodel.Configuration;
 
@@ -53,12 +57,22 @@ public partial class SignalFConfiguration : ISignalFConfiguration
 
     private void AddDefaultConfigurations()
     {
-        // Add a default template that can be used as a template for all signal processor definitions.
-        // This template must not have any signal sources or sinks. Also no type must be assigned.
-        // Signal sources, signal sinks and the type of the signal processor must be defined in the definition referencing this template.
+        // Add a default templates that can be used as templates for all signal processor definitions.
+        // This templates must not have any signal sources or sinks. Also no type must be assigned.
+        // Signal sources, signal sinks and the type of the signal processors must be defined in the definitions referencing this templates.
         AddSignalProcessorTemplate<ISignalProcessorTemplateBuilder, SignalFConfigurationOptions, ISignalProcessor>(builder =>
         {
             builder.SetName(Names.DefaultTemplate);
+        });
+
+        AddCalculatorTemplate<ICalculatorTemplateBuilder, SignalFConfigurationOptions, ICalculator>(builder =>
+        {
+            builder.SetName(Names.DefaultCalculatorTemplate);
+        });
+
+        AddDeviceTemplate<IDeviceTemplateBuilder, SignalFConfigurationOptions, IDevice>(builder =>
+        {
+            builder.SetName(Names.DefaultDeviceTemplate);
         });
     }
 

@@ -86,7 +86,7 @@ public class SignalConfigurationBuilder
 
         if (endpointDefinition == null)
         {
-            throw new ConfigurationBuilderException($"Unkwon signal endpoint '{signalEndpointName}'.");
+            throw new ConfigurationBuilderException($"Unknown signal source endpoint '{signalEndpointName}'.");
         }
             
         return endpointDefinition;
@@ -111,7 +111,7 @@ public class SignalConfigurationBuilder
 
         if (endpointDefinition == null)
         {
-            throw new ConfigurationBuilderException($"Unkwon signal endpoint '{signalEndpointName}'.");
+            throw new ConfigurationBuilderException($"Unknown signal sink endpoint '{signalEndpointName}'.");
         }
             
         return endpointDefinition;
