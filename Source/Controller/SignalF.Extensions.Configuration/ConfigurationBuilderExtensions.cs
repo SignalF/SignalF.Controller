@@ -29,19 +29,6 @@ namespace SignalF.Extensions.Configuration;
 
 public static class ConfigurationBuilderExtensions
 {
-    #region SignalProcessor
-
-    // Add a default template
-    public static ISignalFConfiguration AddDefaultTemplateTemplate(this ISignalFConfiguration configuration)
-    {
-        return configuration.AddSignalProcessorTemplate(builder =>
-        {
-            builder.SetName(Names.DefaultTemplate);
-        });
-    }
-
-    #endregion
-
     #region DataOutputSender
 
     public static ISignalFConfiguration AddDataOutputSender<TType, TOptions>(this ISignalFConfiguration configuration

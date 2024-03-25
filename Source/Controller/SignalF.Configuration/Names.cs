@@ -1,4 +1,4 @@
-﻿namespace SignalF.Extensions.Configuration;
+﻿namespace SignalF.Configuration;
 
 public class Names
 {

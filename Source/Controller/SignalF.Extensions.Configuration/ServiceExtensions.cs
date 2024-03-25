@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SignalF.Configuration.Module;
+using SignalF.Extensions.Configuration.Module;
 
 namespace SignalF.Extensions.Configuration;
 

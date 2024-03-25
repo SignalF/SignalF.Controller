@@ -2,7 +2,6 @@
 using SignalF.Controller.Configuration;
 using SignalF.Controller.Signals.SignalProcessor;
 using SignalF.Datamodel.Configuration;
-using SignalF.Extensions.Configuration;
 
 namespace SignalF.Configuration;
 
