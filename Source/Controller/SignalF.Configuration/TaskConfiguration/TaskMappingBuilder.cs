@@ -40,9 +40,17 @@ public class TaskMappingBuilder : ITaskMappingBuilder
 
         public void Build(IControllerConfiguration configuration)
         {
-            var taskConfiguration = configuration.TaskConfigurations.First(task => task.Name == TaskName);
-            var signalProcessorConfiguration =
-                configuration.SignalProcessorConfigurations.First(signalProcessor => signalProcessor.Name == SignalProcessorName);
+            var taskConfiguration = configuration.TaskConfigurations.FirstOrDefault(task => task.Name == TaskName);
+            if (taskConfiguration == null)
+            {
+                throw new ConfigurationBuilderException($"Unknown task '{TaskName}' used in task mapping.");
+            }
+            
+            var signalProcessorConfiguration = configuration.SignalProcessorConfigurations.FirstOrDefault(signalProcessor => signalProcessor.Name == SignalProcessorName);
+            if (signalProcessorConfiguration == null)
+            {
+                throw new ConfigurationBuilderException($"Unknown signal processor '{SignalProcessorName}' used in task mapping.");
+            }
 
             taskConfiguration.SignalProcessorConfigurations.Append(signalProcessorConfiguration);
         }

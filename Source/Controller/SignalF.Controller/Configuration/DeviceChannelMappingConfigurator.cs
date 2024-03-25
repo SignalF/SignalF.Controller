@@ -36,7 +36,17 @@ public class DeviceChannelMappingConfigurator : IDeviceChannelMappingConfigurato
         var devices = _signalProcessorFactory.GetSignalProcessors<IDevice>();
         foreach (var group in mappingGroups)
         {
-            var device = devices.First(device => device.Id == group.Key.Id);
+            var device = devices.FirstOrDefault(device => device.Id == group.Key.Id);
+            if (device == null)
+            {
+                throw new ControllerException($"Cannot create device instance. Device name: {group.Key.Name}, device type: {GetDeviceType(group.Key) } ");
+
+                string GetDeviceType(IDeviceConfiguration configuration)
+                {
+                    return configuration.Type ?? configuration.Definition.Type ?? configuration.Definition.Template.Type;
+                }
+            }
+            
             var channels = group.Select(item => _channelGroupFactory.FindChannel(item.Channel.Id));
 
             device.AssignChannels(channels.ToList());

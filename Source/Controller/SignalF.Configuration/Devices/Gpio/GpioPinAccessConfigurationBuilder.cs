@@ -49,11 +49,11 @@ public abstract class GpioPinAccessConfigurationBuilder<TImpl, TBuilder, TConfig
         _channelMappingBuilder.Build(controllerConfiguration);
     }
 
-    private ISignalEndpointConfiguration GetEndPoint(string name, TConfiguration configuration)
-    {
-        return (ISignalEndpointConfiguration)configuration.SignalSinks.FirstOrDefault(signal => signal.Name == name)
-               ?? configuration.SignalSources.First(signal => signal.Name == name);
-    }
+    //private ISignalEndpointConfiguration GetEndPoint(string name, TConfiguration configuration)
+    //{
+    //    return (ISignalEndpointConfiguration)configuration.SignalSinks.FirstOrDefault(signal => signal.Name == name)
+    //           ?? configuration.SignalSources.First(signal => signal.Name == name);
+    //}
 
     private class SignalToChannelMapping
     {

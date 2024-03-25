@@ -63,9 +63,12 @@ public class GpioPinAccess : Device<IGpioPinAccessConfiguration>, IGpioPinAccess
         var signalEndpointToChannelMappings = signalEndpoints.SelectMany(signalSink => signalSink
                                                                                        .GetReverseLinks<IChannelToSignalEndpointsMapping>(ESearchType.Deep)
                                                                                        .Select(mapping => (SignalSink: signalSink, mapping.Channel)));
+        
+        // TODO: Use FirstOrDefault() instead of First() and check for null.
         return signalEndpointToChannelMappings
             .ToDictionary(mapping => GetSignalIndex(mapping.SignalSink)
-                , mapping => channels.Cast<IGpioChannel>().First(channel => channel.Id == mapping.Channel.Id));
+                , mapping => channels.Cast<IGpioChannel>()
+                                     .First(channel => channel.Id == mapping.Channel.Id));
     }
 
     private Dictionary<int, List<IGpioChannel>> GetSinkMappings(IList<IChannel> channels, IEnumerable<ISignalEndpointConfiguration> signalEndpoints)

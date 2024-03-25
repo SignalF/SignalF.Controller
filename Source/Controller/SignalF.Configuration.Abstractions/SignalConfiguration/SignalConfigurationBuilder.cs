@@ -81,9 +81,14 @@ public class SignalConfigurationBuilder
                                  .Definition
                                  .Template
                                  .SignalSourceDefinitions
-                                 .First(endpoint => endpoint.Name == signalEndpointName);
+                                 .FirstOrDefault(endpoint => endpoint.Name == signalEndpointName);
         }
 
+        if (endpointDefinition == null)
+        {
+            throw new ConfigurationBuilderException($"Unkwon signal endpoint '{signalEndpointName}'.");
+        }
+            
         return endpointDefinition;
     }
 
@@ -101,9 +106,14 @@ public class SignalConfigurationBuilder
                                  .Definition
                                  .Template
                                  .SignalSinkDefinitions
-                                 .First(endpoint => endpoint.Name == signalEndpointName);
+                                 .FirstOrDefault(endpoint => endpoint.Name == signalEndpointName);
         }
 
+        if (endpointDefinition == null)
+        {
+            throw new ConfigurationBuilderException($"Unkwon signal endpoint '{signalEndpointName}'.");
+        }
+            
         return endpointDefinition;
     }
 }
