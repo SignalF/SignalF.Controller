@@ -1,4 +1,8 @@
-﻿using SignalF.Datamodel.Configuration;
+﻿using SignalF.Configuration.SignalConfiguration;
+using SignalF.Controller.Configuration;
+using SignalF.Controller.Signals.SignalProcessor;
+using SignalF.Datamodel.Configuration;
+using SignalF.Extensions.Configuration;
 
 namespace SignalF.Configuration;
 
@@ -26,6 +30,8 @@ public partial class SignalFConfiguration : ISignalFConfiguration
 
     public void Build(IControllerConfiguration configuration)
     {
+        AddDefaultConfigurations();
+
         // Hardware must be configured first.
         BuildDeviceBindings(configuration);
         BuildChannelGroups(configuration);
@@ -44,6 +50,17 @@ public partial class SignalFConfiguration : ISignalFConfiguration
         // Tasks will be configured last.
         BuildTaskConfigurations(configuration);
         BuildTaskMappingConfigurations(configuration);
+    }
+
+    private void AddDefaultConfigurations()
+    {
+        // Add a default template that can be used as a template for all signal processor definitions.
+        // This template must not have any signal sources or sinks. Also no type must be assigned.
+        // Signal sources, signal sinks and the type of the signal processor must be defined in the definition referencing this template.
+        AddSignalProcessorTemplate<ISignalProcessorTemplateBuilder, SignalFConfigurationOptions, ISignalProcessor>(builder =>
+        {
+            builder.SetName(Names.DefaultTemplate);
+        });
     }
 
     private void BuildSignalProcessorTemplates(IControllerConfiguration configuration)

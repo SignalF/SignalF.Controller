@@ -1,6 +1,7 @@
 ﻿#region
 
 using Autofac;
+using SignalF.Configuration;
 using SignalF.Configuration.DataOutput;
 using SignalF.Configuration.Devices;
 using SignalF.Configuration.Devices.Gpio;
@@ -17,7 +18,7 @@ using SignalF.Configuration.TaskConfiguration;
 
 #endregion
 
-namespace SignalF.Configuration.Module;
+namespace SignalF.Extensions.Configuration.Module;
 
 public class ConfigurationModule : Autofac.Module
 {
