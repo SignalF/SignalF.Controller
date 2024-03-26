@@ -65,7 +65,7 @@ public class SignalHub : ISignalHub
     {
         _signals[signal.SignalIndex] = signal;
 
-        UpdateSignalValue(signal);
+        UpdateSignalValue(ref signal);
     }
 
     /// <inheritdoc />
@@ -77,6 +77,7 @@ public class SignalHub : ISignalHub
         {
             var signal = signals[i];
             signalValues[signal.SignalIndex] = signal;
+            UpdateSignalValue(ref signal);
         }
     }
 
@@ -195,7 +196,7 @@ public class SignalHub : ISignalHub
         _updatedSignalValues = new Signal[_numberOfValues + 1]; // plus 1 for the timestamp
     }
 
-    private void UpdateSignalValue(Signal signal)
+    private void UpdateSignalValue(ref Signal signal)
     {
         _updatedSignalValues[++_updatedSignalValuesPointer] = signal;
     }
