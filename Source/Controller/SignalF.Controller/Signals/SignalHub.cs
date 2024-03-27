@@ -84,7 +84,12 @@ public class SignalHub : ISignalHub
     /// <inheritdoc />
     public void Configure(IControllerConfiguration configuration)
     {
-        var signalSources = configuration.SignalProcessorConfigurations.SelectMany(signalProcessorConfiguration => signalProcessorConfiguration.SignalSources);
+        var signalProcessorConfigurations = configuration.TaskConfigurations
+                                 .Where(task => task.Type == ETaskType.Calculate || task.Type == ETaskType.Write)
+                                 .SelectMany(task => task.SignalProcessorConfigurations);
+
+        //var signalSources = configuration.SignalProcessorConfigurations.SelectMany(signalProcessorConfiguration => signalProcessorConfiguration.SignalSources);
+        var signalSources = signalProcessorConfigurations.SelectMany(signalProcessorConfiguration => signalProcessorConfiguration.SignalSources);
 
         AddSignalSources(signalSources);
 
