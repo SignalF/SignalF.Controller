@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Microsoft.Extensions.Logging;
+using Scotec.Extensions.Linq;
 using Scotec.RingBuffer;
 using SignalF.Datamodel.Configuration;
 using SignalF.Datamodel.Signals;
@@ -197,7 +198,7 @@ public class SignalHub : ISignalHub
 
         _numberOfValues = SignalIndexes.Count;
 
-        _signals = new Signal[_numberOfValues];
+        _signals = _numberOfValues.Repeat(index => new Signal(index)).ToArray();
         _updatedSignalValues = new Signal[_numberOfValues + 1]; // plus 1 for the timestamp
     }
 
