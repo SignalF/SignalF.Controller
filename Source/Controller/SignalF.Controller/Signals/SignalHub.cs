@@ -21,7 +21,7 @@ public class SignalHub : ISignalHub
     private RingBuffer<Signal> _buffer;
     private Thread _dataAvailableWatcher;
     private bool _isStopping;
-    private int _numberOfValues;
+    private int _numberOfSignals;
     private Signal[] _signals;
 
     private Signal[] _updatedSignalValues;
@@ -152,11 +152,11 @@ public class SignalHub : ISignalHub
     {
         // Add one additional signal for the timestamp. This will be hold in the first item of the array.
         // Timestamps always have an index of -1.
-        var result = new Signal[_numberOfValues + 1];
+        var result = new Signal[_numberOfSignals + 1];
         var timestamp = GetTimestamp();
         result[0] = new Signal(-1, timestamp, timestamp);
 
-        for (var index = 0; index < _numberOfValues; ++index)
+        for (var index = 0; index < _numberOfSignals; ++index)
         {
             result[index + 1] = _signals[index];
         }
@@ -196,10 +196,10 @@ public class SignalHub : ISignalHub
         SignalIndexes = signalSources.Select((item, index) => new { item, index })
                                      .ToDictionary(pair => pair.item.Id, pair => pair.index);
 
-        _numberOfValues = SignalIndexes.Count;
+        _numberOfSignals = SignalIndexes.Count;
 
-        _signals = _numberOfValues.Repeat(index => new Signal(index)).ToArray();
-        _updatedSignalValues = new Signal[_numberOfValues + 1]; // plus 1 for the timestamp
+        _signals = _numberOfSignals.Repeat(index => new Signal(index)).ToArray();
+        _updatedSignalValues = new Signal[_numberOfSignals + 1]; // plus 1 for the timestamp
     }
 
     private void UpdateSignalValue(ref Signal signal)
