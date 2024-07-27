@@ -1,7 +1,5 @@
 ﻿#region
 
-using System;
-using System.Collections.Generic;
 using System.Device.Gpio;
 using SignalF.Datamodel.Hardware;
 

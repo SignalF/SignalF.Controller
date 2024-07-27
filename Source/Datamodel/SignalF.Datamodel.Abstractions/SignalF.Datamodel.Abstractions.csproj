@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<Import Project="..\..\..\Build\CreatePackage.proj" />
-
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<Nullable>enable</Nullable>
-    </PropertyGroup>
+		<UseNuspec>true</UseNuspec>
+	</PropertyGroup>
+
 
 	<ItemGroup>
 		<PackageReference Include="Scotec.Math.Units" Version="1.0.0" />

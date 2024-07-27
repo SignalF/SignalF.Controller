@@ -2,9 +2,6 @@
 
 #endregion
 
-using System;
-using System.Collections.Generic;
-
 namespace SignalF.Controller.Hardware.DeviceBindings;
 
 public interface ISpiDeviceBinding : IDeviceBinding

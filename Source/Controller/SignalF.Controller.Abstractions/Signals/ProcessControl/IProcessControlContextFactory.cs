@@ -1,6 +1,4 @@
-﻿using System.Threading;
-
-namespace SignalF.Controller.Signals.ProcessControl;
+﻿namespace SignalF.Controller.Signals.ProcessControl;
 
 public interface IProcessControlContextFactory
 {

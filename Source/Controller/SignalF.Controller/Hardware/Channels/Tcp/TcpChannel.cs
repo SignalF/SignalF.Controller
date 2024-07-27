@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net.Sockets;
+﻿using System.Net.Sockets;
 using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Controller.Hardware.Channels.Tcp;

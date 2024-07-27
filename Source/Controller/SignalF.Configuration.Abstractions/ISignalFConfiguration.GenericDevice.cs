@@ -1,5 +1,4 @@
-﻿using System;
-using SignalF.Configuration.Devices;
+﻿using SignalF.Configuration.Devices;
 using SignalF.Controller.Configuration;
 using SignalF.Controller.Signals.Devices;
 

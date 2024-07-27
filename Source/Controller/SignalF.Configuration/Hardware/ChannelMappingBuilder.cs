@@ -24,7 +24,7 @@ public abstract class ChannelMappingBuilder
         {
             throw new ConfigurationBuilderException($"Unknown channel name '{channelName}'. Cannot find channel '{parts[0]}'.");
         }
-        
+
         return channel;
     }
 }

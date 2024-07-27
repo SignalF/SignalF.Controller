@@ -8,7 +8,8 @@ public interface
 {
 }
 
-public interface ISignalProcessorTemplateBuilder<out TBuilder, in TConfiguration, in TOptions> : ISignalFConfigurationBuilder<TBuilder, TConfiguration, TOptions>
+public interface
+    ISignalProcessorTemplateBuilder<out TBuilder, in TConfiguration, in TOptions> : ISignalFConfigurationBuilder<TBuilder, TConfiguration, TOptions>
     where TBuilder : ISignalProcessorTemplateBuilder<TBuilder, TConfiguration, TOptions>
     where TConfiguration : ISignalProcessorTemplate
     where TOptions : SignalFConfigurationOptions

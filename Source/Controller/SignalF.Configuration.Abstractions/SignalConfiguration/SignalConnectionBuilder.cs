@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using SignalF.Datamodel.Configuration;
+﻿using SignalF.Datamodel.Configuration;
 using SignalF.Datamodel.Signals;
 
 namespace SignalF.Configuration.SignalConfiguration;

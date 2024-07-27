@@ -1,7 +1,5 @@
 ﻿#region
 
-using System.Collections.Generic;
-using Scotec.XMLDatabase.DAL.DataTypes;
 using SignalF.Controller.Signals.SignalProcessor;
 using SignalF.Datamodel.Configuration;
 

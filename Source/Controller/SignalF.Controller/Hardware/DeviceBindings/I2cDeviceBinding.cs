@@ -1,9 +1,6 @@
 ﻿#region
 
-using System;
-using System.Collections.Generic;
 using System.Device.I2c;
-using System.Linq;
 using Scotec.Extensions.Linq;
 using SignalF.Controller.Hardware.DeviceBindings;
 using SignalF.Datamodel.Hardware;

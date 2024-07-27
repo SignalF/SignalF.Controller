@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SignalF.Controller.Hardware.Channels.OneWire;
+﻿namespace SignalF.Controller.Hardware.Channels.OneWire;
 
 public interface IOneWireChannelGroup : IChannelGroup
 {

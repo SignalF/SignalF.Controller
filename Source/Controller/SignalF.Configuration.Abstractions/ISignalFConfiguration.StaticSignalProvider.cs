@@ -1,5 +1,4 @@
-﻿using System;
-using SignalF.Configuration.StaticSignalProvider;
+﻿using SignalF.Configuration.StaticSignalProvider;
 using SignalF.Controller.Configuration;
 using SignalF.Controller.Signals.SignalProcessor;
 

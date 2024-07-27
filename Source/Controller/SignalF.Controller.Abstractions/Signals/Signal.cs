@@ -1,8 +1,4 @@
-﻿using System;
-using Iot.Device.Bno055;
-using Scotec.Math.Units;
-using System.Runtime.CompilerServices;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using System.Runtime.CompilerServices;
 
 namespace SignalF.Controller.Signals;
 
@@ -14,7 +10,7 @@ public readonly record struct Signal
         Value = value;
         Timestamp = timestamp;
     }
-    
+
     public Signal(int signalIndex) : this(signalIndex, double.NaN, null)
     {
     }
@@ -33,7 +29,6 @@ public readonly record struct Signal
         value = Value;
         timestamp = Timestamp;
     }
-
 }
 
 public static class SignalExtensions
@@ -73,6 +68,7 @@ public static class SignalExtensions
         {
             throw new ControllerException("Spans must have same size.");
         }
+
         for (var i = 0; i < length; i++)
         {
             to[i].AssignWith(from[i]);

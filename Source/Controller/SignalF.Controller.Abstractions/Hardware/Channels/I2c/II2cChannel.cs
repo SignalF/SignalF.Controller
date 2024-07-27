@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SignalF.Controller.Hardware.Channels.I2c;
+﻿namespace SignalF.Controller.Hardware.Channels.I2c;
 
 public interface II2cChannel : IChannel
 {

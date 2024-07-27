@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using SignalF.Controller.Hardware.DeviceBindings;
+﻿using SignalF.Controller.Hardware.DeviceBindings;
 using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Controller.Configuration;

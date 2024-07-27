@@ -1,5 +1,4 @@
-﻿using System;
-using SignalF.Configuration.ProcessControl;
+﻿using SignalF.Configuration.ProcessControl;
 using SignalF.Controller.Configuration;
 using SignalF.Controller.Signals.ProcessControl;
 

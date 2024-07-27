@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
+﻿using System.Collections.Concurrent;
 using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Controller.Hardware.DeviceBindings;

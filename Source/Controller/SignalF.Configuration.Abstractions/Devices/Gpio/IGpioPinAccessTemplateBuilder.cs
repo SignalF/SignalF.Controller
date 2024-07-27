@@ -4,7 +4,8 @@ using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Configuration.Devices.Gpio;
 
-public interface IGpioPinAccessTemplateBuilder : IGpioPinAccessTemplateBuilder<IGpioPinAccessTemplateBuilder, IGpioPinAccessTemplate, SignalFConfigurationOptions>
+public interface
+    IGpioPinAccessTemplateBuilder : IGpioPinAccessTemplateBuilder<IGpioPinAccessTemplateBuilder, IGpioPinAccessTemplate, SignalFConfigurationOptions>
 {
 }
 

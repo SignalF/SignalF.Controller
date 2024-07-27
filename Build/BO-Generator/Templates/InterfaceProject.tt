@@ -9,6 +9,7 @@
   <PropertyGroup>
     <TargetFrameworks><#= targetFramework #></TargetFrameworks>
     <RootNamespace><#= projectDescriptor.Name #></RootNamespace>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
     <ItemGroup>

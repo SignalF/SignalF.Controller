@@ -1,7 +1,5 @@
 ﻿#region
 
-using System;
-using System.Linq;
 using SignalF.Controller.Signals;
 
 #endregion

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SignalF.Controller.Hardware.Channels.Spi;
+﻿namespace SignalF.Controller.Hardware.Channels.Spi;
 
 public interface ISpiChannelGroup : IChannelGroup
 {

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SignalF.Controller.Timer;
+﻿namespace SignalF.Controller.Timer;
 
 public class SystemTimeTimestampProvider : ITimestampProvider
 {

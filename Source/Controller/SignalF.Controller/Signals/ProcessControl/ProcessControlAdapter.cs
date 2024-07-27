@@ -1,7 +1,5 @@
 ﻿#region
 
-using System;
-using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 using SignalF.Controller.Signals.SignalProcessor;
 using SignalF.Datamodel.Workflow;

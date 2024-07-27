@@ -2,7 +2,6 @@
 
 #endregion
 
-using System.Collections.Generic;
 using SignalF.Datamodel.Configuration;
 
 namespace SignalF.Controller.Configuration;

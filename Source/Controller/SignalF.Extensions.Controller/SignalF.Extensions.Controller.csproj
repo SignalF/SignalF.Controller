@@ -1,23 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	
-	<Import Project="..\..\..\Build\CreatePackage.proj" />
+
+	<PropertyGroup>
+		<TargetFrameworks>net8.0</TargetFrameworks>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseNuspec>true</UseNuspec>
+	</PropertyGroup>
+
 
 	<PropertyGroup>
 		<Description>SignalF controller extensions.</Description>
 		<Title>SignalF.Extensions.Controller</Title>
 	</PropertyGroup>
-	
-
-	<PropertyGroup>
-		<TargetFrameworks>net8.0</TargetFrameworks>
-		<Nullable>enable</Nullable>
-	</PropertyGroup>
-
 
 	<ItemGroup>
-	  <Content Include="DefaultConfiguration.xml">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </Content>
+		<Content Include="DefaultConfiguration.xml">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
 	</ItemGroup>
 
 

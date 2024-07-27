@@ -1,16 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<Import Project="..\..\..\Build\Pack.proj" />
-
-	<PropertyGroup>
-		<Description>SignalF controller abstractions.</Description>
-		<Title>SignalF.Controller.Abstractions</Title>
-	</PropertyGroup>
-
 	<PropertyGroup>
 		<TargetFrameworks>net8.0</TargetFrameworks>
 		<LangVersion>latest</LangVersion>
 		<RootNamespace>SignalF.Controller</RootNamespace>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<Description>SignalF controller abstractions.</Description>
+		<Title>SignalF.Controller.Abstractions</Title>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -32,7 +31,7 @@
 
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\Datamodel\SignalF.Datamodel.Abstractions\SignalF.Datamodel.Abstractions.csproj" />
+		<ProjectReference Include="..\..\Datamodel\SignalF.Datamodel.Abstractions\SignalF.Datamodel.Abstractions.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -1,9 +1,6 @@
 ﻿#region
 
-using System;
-using System.Collections.Generic;
 using System.Device.Spi;
-using System.Linq;
 using Scotec.Extensions.Linq;
 using SignalF.Controller.Hardware.Channels.Spi;
 using SignalF.Datamodel.Hardware;

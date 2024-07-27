@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using SignalF.Datamodel.Signals;
+﻿using SignalF.Datamodel.Signals;
 using SignalF.Datamodel.Units;
 
 namespace SignalF.Configuration.SignalConfiguration;
@@ -88,7 +86,7 @@ public class SignalConfigurationBuilder
         {
             throw new ConfigurationBuilderException($"Unknown signal source endpoint '{signalEndpointName}'.");
         }
-            
+
         return endpointDefinition;
     }
 
@@ -113,7 +111,7 @@ public class SignalConfigurationBuilder
         {
             throw new ConfigurationBuilderException($"Unknown signal sink endpoint '{signalEndpointName}'.");
         }
-            
+
         return endpointDefinition;
     }
 }

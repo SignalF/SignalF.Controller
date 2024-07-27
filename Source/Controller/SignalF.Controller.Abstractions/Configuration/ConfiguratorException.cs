@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SignalF.Controller.Configuration;
+﻿namespace SignalF.Controller.Configuration;
 
 public class ConfiguratorException : ApplicationException
 {

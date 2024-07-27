@@ -1,6 +1,5 @@
 ﻿#region
 
-using System;
 using SignalF.Controller.Signals;
 using SignalF.Datamodel.DataOutput;
 

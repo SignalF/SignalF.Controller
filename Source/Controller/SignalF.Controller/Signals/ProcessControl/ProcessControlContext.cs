@@ -1,11 +1,6 @@
 ﻿#region
 
-using System;
-using System.Linq;
 using System.Reflection;
-using System.Runtime.Intrinsics.X86;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
 #endregion

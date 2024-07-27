@@ -1,5 +1,4 @@
-﻿using System;
-using SignalF.Controller.Configuration;
+﻿using SignalF.Controller.Configuration;
 using SignalF.Datamodel.Signals;
 
 namespace SignalF.Configuration.SignalConfiguration;

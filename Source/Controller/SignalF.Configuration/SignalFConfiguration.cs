@@ -70,10 +70,7 @@ public partial class SignalFConfiguration : ISignalFConfiguration
             builder.SetName(Names.DefaultCalculatorTemplate);
         });
 
-        AddDeviceTemplate<IDeviceTemplateBuilder, SignalFConfigurationOptions, IDevice>(builder =>
-        {
-            builder.SetName(Names.DefaultDeviceTemplate);
-        });
+        AddDeviceTemplate<IDeviceTemplateBuilder, SignalFConfigurationOptions, IDevice>(builder => { builder.SetName(Names.DefaultDeviceTemplate); });
     }
 
     private void BuildSignalProcessorTemplates(IControllerConfiguration configuration)

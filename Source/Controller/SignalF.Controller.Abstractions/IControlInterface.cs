@@ -1,7 +1,5 @@
 ﻿#region
 
-using System;
-using System.IO;
 using SignalF.Controller.Signals.ProcessControl;
 
 #endregion

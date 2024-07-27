@@ -1,10 +1,5 @@
 ﻿#region
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Scotec.Queues;
 using Scotec.XMLDatabase;
 using SignalF.Controller.Signals;
@@ -46,23 +41,6 @@ public abstract class DataOutputSender : IDataOutputSender
         DoConfigure(configuration);
     }
 
-    private void BuildIndexToSignalNameMapping(IDataOutputSenderConfiguration configuration)
-    {
-        var dataOutputs = configuration.GetReverseLinks<IDataOutputConfiguration>(ESearchType.Deep);
-        _indexToSignalNameMapping = dataOutputs.SelectMany(output => output.SignalSources)
-                                               .Distinct()
-                                               .ToDictionary(item => SignalHub.GetSignalIndex(item), BuildSignalName); ;
-
-        return;
-
-        static string BuildSignalName(ISignalSourceConfiguration signalSource)
-        {
-            var signalProcessor = signalSource.FindParent<ISignalProcessorConfiguration>();
-            return $"{signalProcessor.Name}.{signalSource.Name}";
-        }
-    }
-
-
     /// <inheritdoc />
     public abstract void SendValues(Signal[] values);
 
@@ -76,6 +54,23 @@ public abstract class DataOutputSender : IDataOutputSender
     public void Stop()
     {
         Queue.Stop();
+    }
+
+    private void BuildIndexToSignalNameMapping(IDataOutputSenderConfiguration configuration)
+    {
+        var dataOutputs = configuration.GetReverseLinks<IDataOutputConfiguration>(ESearchType.Deep);
+        _indexToSignalNameMapping = dataOutputs.SelectMany(output => output.SignalSources)
+                                               .Distinct()
+                                               .ToDictionary(item => SignalHub.GetSignalIndex(item), BuildSignalName);
+        ;
+
+        return;
+
+        static string BuildSignalName(ISignalSourceConfiguration signalSource)
+        {
+            var signalProcessor = signalSource.FindParent<ISignalProcessorConfiguration>();
+            return $"{signalProcessor.Name}.{signalSource.Name}";
+        }
     }
 
     protected abstract void DoConfigure(IDataOutputSenderConfiguration configuration);

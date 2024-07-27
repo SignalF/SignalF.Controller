@@ -1,6 +1,5 @@
 ﻿#region
 
-using System;
 using System.Device.Gpio;
 using SignalF.Datamodel.Hardware;
 

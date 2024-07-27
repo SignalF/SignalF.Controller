@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Scotec.XMLDatabase;
+﻿using Scotec.XMLDatabase;
 using SignalF.Datamodel.Configuration;
 
 namespace SignalF.Controller.Configuration;

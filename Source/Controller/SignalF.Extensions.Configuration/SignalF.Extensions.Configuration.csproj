@@ -1,6 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<Import Project="..\..\..\Build\Pack.proj" />
+	<PropertyGroup>
+		<TargetFrameworks>net8.0</TargetFrameworks>
+		<LangVersion>latest</LangVersion>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
 	<PropertyGroup>
 		<Description>SignalF configuration extensions.</Description>
@@ -8,18 +13,18 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-    <TargetFrameworks>net8.0</TargetFrameworks>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+		<TargetFrameworks>net8.0</TargetFrameworks>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
 	<ItemGroup>
-    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="9.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
-  </ItemGroup>
+		<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\SignalF.Configuration.Abstractions\SignalF.Configuration.Abstractions.csproj" />
-    <ProjectReference Include="..\SignalF.Configuration\SignalF.Configuration.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\SignalF.Configuration.Abstractions\SignalF.Configuration.Abstractions.csproj" />
+		<ProjectReference Include="..\SignalF.Configuration\SignalF.Configuration.csproj" />
+	</ItemGroup>
 
 </Project>

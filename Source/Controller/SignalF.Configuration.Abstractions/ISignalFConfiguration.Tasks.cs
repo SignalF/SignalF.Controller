@@ -1,5 +1,4 @@
-﻿using System;
-using SignalF.Configuration.TaskConfiguration;
+﻿using SignalF.Configuration.TaskConfiguration;
 
 namespace SignalF.Configuration;
 

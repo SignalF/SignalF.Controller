@@ -46,13 +46,12 @@ public class ChannelToSignalEndpointMappingBuilder
     private static IDeviceConfiguration GetDevice(IControllerConfiguration configuration, string deviceName)
     {
         var device = configuration.SignalProcessorConfigurations
-                            .OfType<IDeviceConfiguration>()
-                            .FirstOrDefault(device => device.Name == deviceName);
+                                  .OfType<IDeviceConfiguration>()
+                                  .FirstOrDefault(device => device.Name == deviceName);
         if (device == null)
         {
             throw new ConfigurationBuilderException($"Unknown device '{deviceName}'.");
         }
-
 
         return device;
     }

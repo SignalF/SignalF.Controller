@@ -1,8 +1,5 @@
 ﻿#region
 
-using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -40,14 +37,18 @@ public abstract class SignalProcessor<TConfiguration> : ISignalProcessor
     protected IConfigurationRoot ConfigurationData { get; private set; }
 
     /// <summary>
-    /// Get access to the logger.
+    ///     Get access to the logger.
     /// </summary>
     protected ILogger Logger { get; }
 
     /// <summary>
-    /// Get access tothe signal hub.
+    ///     Get access tothe signal hub.
     /// </summary>
     protected ISignalHub SignalHub { get; }
+
+    protected ReadOnlySpan<Signal> SignalSinks => new(_signalSinks);
+
+    protected Span<Signal> SignalSources => new(_signalSources);
 
     /// <inheritdoc />
     public Guid Id { get; private set; }
@@ -84,7 +85,7 @@ public abstract class SignalProcessor<TConfiguration> : ISignalProcessor
             SignalNameToIndexMapping.Add(configuration.SignalSources[i].Definition.Name, i);
             _signalSources[i] = new Signal(signalIndex);
         }
-        
+
         OnConfigure((TConfiguration)configuration);
     }
 
@@ -118,38 +119,47 @@ public abstract class SignalProcessor<TConfiguration> : ISignalProcessor
 
         SignalHub.WriteSignals(new ReadOnlySpan<Signal>(_signalSources));
     }
+
     private void Read()
     {
         SignalHub.ReadSignals(new Span<Signal>(_signalSinks));
 
         OnRead();
     }
+
     private void Write()
     {
         OnWrite();
 
         SignalHub.WriteSignals(new ReadOnlySpan<Signal>(_signalSources));
     }
+
     private void Calculate()
     {
         OnCalculate();
     }
+
     private void Exit()
     {
         OnExit();
     }
+
     protected virtual void OnInitialize()
     {
     }
+
     protected virtual void OnRead()
     {
     }
+
     protected virtual void OnWrite()
     {
     }
+
     protected virtual void OnCalculate()
     {
     }
+
     protected virtual void OnExit()
     {
     }
@@ -184,22 +194,16 @@ public abstract class SignalProcessor<TConfiguration> : ISignalProcessor
     {
     }
 
-
     /// <summary>
-    /// Gets the signal processor specific index of the requested signal.
-    /// <remarks>This is not the signal index within the signal hub.</remarks> 
+    ///     Gets the signal processor specific index of the requested signal.
+    ///     <remarks>This is not the signal index within the signal hub.</remarks>
     /// </summary>
     //protected int GetSignalIndex(string signalName)
     //{
     //    return SignalNameToIndexMapping[signalName];
     //}
-
     protected int GetSignalIndex(ISignalEndpointConfiguration endPoint)
     {
         return SignalNameToIndexMapping[endPoint.Definition.Name];
     }
-
-    protected ReadOnlySpan<Signal> SignalSinks => new (_signalSinks);
-
-    protected Span<Signal> SignalSources => new (_signalSources);
 }

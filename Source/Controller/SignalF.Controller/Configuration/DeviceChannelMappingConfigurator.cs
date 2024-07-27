@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using SignalF.Controller.Hardware.Channels;
+﻿using SignalF.Controller.Hardware.Channels;
 using SignalF.Controller.Signals.Devices;
 using SignalF.Controller.Signals.SignalProcessor;
 using SignalF.Datamodel.Configuration;
@@ -39,14 +38,14 @@ public class DeviceChannelMappingConfigurator : IDeviceChannelMappingConfigurato
             var device = devices.FirstOrDefault(device => device.Id == group.Key.Id);
             if (device == null)
             {
-                throw new ControllerException($"Cannot create device instance. Device name: {group.Key.Name}, device type: {GetDeviceType(group.Key) } ");
+                throw new ControllerException($"Cannot create device instance. Device name: {group.Key.Name}, device type: {GetDeviceType(group.Key)} ");
 
                 string GetDeviceType(IDeviceConfiguration configuration)
                 {
                     return configuration.Type ?? configuration.Definition.Type ?? configuration.Definition.Template.Type;
                 }
             }
-            
+
             var channels = group.Select(item => _channelGroupFactory.FindChannel(item.Channel.Id));
 
             device.AssignChannels(channels.ToList());

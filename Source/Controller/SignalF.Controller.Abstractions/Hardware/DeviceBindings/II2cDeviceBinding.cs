@@ -1,6 +1,5 @@
 ﻿#region
 
-using System;
 using System.Device.I2c;
 
 #endregion

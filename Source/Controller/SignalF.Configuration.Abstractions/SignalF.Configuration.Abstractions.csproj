@@ -1,21 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<Import Project="..\..\..\Build\Pack.proj" />
+	<PropertyGroup>
+		<TargetFrameworks>net8.0</TargetFrameworks>
+		<LangVersion>latest</LangVersion>
+		<RootNamespace>SignalF.Configuration</RootNamespace>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
 	<PropertyGroup>
 		<Description>SignalF configuration abstractions.</Description>
 		<Title>SignalF.Configuration.Abstraction</Title>
 	</PropertyGroup>
 
-	<PropertyGroup>
-		<TargetFrameworks>net8.0</TargetFrameworks>
-		<LangVersion>latest</LangVersion>
-		<RootNamespace>SignalF.Configuration</RootNamespace>
-	</PropertyGroup>
-
 	<ItemGroup>
-    <ProjectReference Include="..\..\Datamodel\SignalF.Datamodel.Abstractions\SignalF.Datamodel.Abstractions.csproj" />
-    <ProjectReference Include="..\SignalF.Controller.Abstractions\SignalF.Controller.Abstractions.csproj" />
- </ItemGroup>
+		<ProjectReference Include="..\..\Datamodel\SignalF.Datamodel.Abstractions\SignalF.Datamodel.Abstractions.csproj" />
+		<ProjectReference Include="..\SignalF.Controller.Abstractions\SignalF.Controller.Abstractions.csproj" />
+	</ItemGroup>
 
 </Project>

@@ -3,7 +3,8 @@ using SignalF.Datamodel.Devices;
 
 namespace SignalF.Configuration.Devices;
 
-public interface IGenericDeviceTemplateBuilder : IGenericDeviceTemplateBuilder<IGenericDeviceTemplateBuilder, IGenericDeviceTemplate, SignalFConfigurationOptions>
+public interface
+    IGenericDeviceTemplateBuilder : IGenericDeviceTemplateBuilder<IGenericDeviceTemplateBuilder, IGenericDeviceTemplate, SignalFConfigurationOptions>
 {
 }
 

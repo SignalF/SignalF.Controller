@@ -27,7 +27,7 @@
 	</metadata>
 	<files>
 		<file src="$ImagePath$\$PackageIcon$" target="" />
-		<file src="$PackageReadmePath$\$PackageReadmeFile$"  target="" />
+		<file src="$PackageReadmePath$\$PackageReadmeFile$" target="" />
 		<file src="bin\$Configuration$\net8.0\SignalF.Extensions.Controller.dll" target="lib\net8.0" />
 	</files>
 </package>

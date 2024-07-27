@@ -1,5 +1,4 @@
-﻿using System;
-using SignalF.Configuration.DataOutput;
+﻿using SignalF.Configuration.DataOutput;
 using SignalF.Controller.Configuration;
 using SignalF.Controller.DataOutput;
 

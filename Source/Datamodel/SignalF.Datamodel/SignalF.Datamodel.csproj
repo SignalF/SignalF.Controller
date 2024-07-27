@@ -1,10 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<Import Project="..\..\..\Build\CreatePackage.proj" />
-
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<RootNamespace>SignalF.Datamodel</RootNamespace>
+		<UseNuspec>true</UseNuspec>
 	</PropertyGroup>
 
 	<ItemGroup>

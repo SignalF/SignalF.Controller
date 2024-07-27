@@ -1,8 +1,5 @@
 ﻿#region
 
-using System;
-using System.Collections.Generic;
-
 #endregion
 
 namespace SignalF.Controller.Signals.SignalProcessor;

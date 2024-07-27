@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using SignalF.Datamodel.Hardware;
+﻿using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Controller.Hardware.Channels;
 

@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.1</TargetFrameworks>
     <RootNamespace>SignalF.Datamodel.Configuration</RootNamespace>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
     <ItemGroup>

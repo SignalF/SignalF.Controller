@@ -1,5 +1,4 @@
-﻿using System;
-using SignalF.Datamodel.Hardware;
+﻿using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Controller.Hardware.Channels.OneWire;
 

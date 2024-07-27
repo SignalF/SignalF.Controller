@@ -1,7 +1,5 @@
 ﻿#region
 
-using System.IO;
-
 #endregion
 
 namespace SignalF.Controller.Configuration;

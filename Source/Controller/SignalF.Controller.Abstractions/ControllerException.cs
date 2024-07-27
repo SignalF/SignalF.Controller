@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SignalF.Controller;
+﻿namespace SignalF.Controller;
 
 public class ControllerException : ApplicationException
 {

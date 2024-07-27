@@ -1,6 +1,5 @@
 ﻿#region
 
-using System;
 using System.Runtime.Versioning;
 using Autofac;
 using SignalF.Controller;
@@ -19,6 +18,7 @@ using SignalF.Controller.Signals.Devices;
 using SignalF.Controller.Signals.ProcessControl;
 using SignalF.Controller.Signals.SignalProcessor;
 using SignalF.Controller.Timer;
+using TaskScheduler = SignalF.Controller.Schedule.TaskScheduler;
 
 #endregion
 

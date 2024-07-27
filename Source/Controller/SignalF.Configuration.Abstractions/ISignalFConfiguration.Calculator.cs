@@ -1,5 +1,4 @@
-﻿using System;
-using SignalF.Configuration.Calculators;
+﻿using SignalF.Configuration.Calculators;
 using SignalF.Controller.Configuration;
 using SignalF.Controller.Signals.Calculators;
 

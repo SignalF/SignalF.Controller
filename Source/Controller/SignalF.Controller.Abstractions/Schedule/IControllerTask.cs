@@ -1,6 +1,5 @@
 ﻿#region
 
-using Scotec.XMLDatabase.DAL.DataTypes;
 using SignalF.Datamodel.Configuration;
 
 #endregion

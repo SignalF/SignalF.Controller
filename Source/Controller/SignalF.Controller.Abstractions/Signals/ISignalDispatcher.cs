@@ -12,8 +12,6 @@ using SignalF.Controller.Signals;
 using SignalF.Controller.Signals;
 using SignalF.Controller.Signals.SignalProcessor;
 */
-using System;
-
 #endregion
 
 namespace SignalF.Controller.Signals;

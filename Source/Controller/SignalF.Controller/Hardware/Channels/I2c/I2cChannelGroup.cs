@@ -1,7 +1,5 @@
 ﻿#region
 
-using System;
-using System.Linq;
 using SignalF.Controller.Hardware.DeviceBindings;
 using SignalF.Datamodel.Hardware;
 

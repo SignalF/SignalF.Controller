@@ -1,8 +1,5 @@
 ﻿#region
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using SignalF.Controller.Hardware.Channels;
 using SignalF.Controller.Signals.SignalProcessor;
 using SignalF.Datamodel.Signals;

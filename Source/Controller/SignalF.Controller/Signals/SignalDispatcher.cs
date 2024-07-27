@@ -1,7 +1,5 @@
 ﻿#region
 
-using System;
-
 #endregion
 
 namespace SignalF.Controller.Signals;

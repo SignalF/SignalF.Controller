@@ -1,7 +1,5 @@
 ﻿#region
 
-using System;
-using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 using SignalF.Controller.Hardware.Channels;
 using SignalF.Datamodel.Hardware;

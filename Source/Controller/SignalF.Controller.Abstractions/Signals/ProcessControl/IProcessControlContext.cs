@@ -1,12 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
-
-namespace SignalF.Controller.Signals.ProcessControl;
+﻿namespace SignalF.Controller.Signals.ProcessControl;
 
 public interface IProcessControlContext : IDisposable
 {
     /// <summary>
-    /// Return true if the process control procedure is running.
+    ///     Return true if the process control procedure is running.
     /// </summary>
     bool ProcedureIsExecuting { get; }
 

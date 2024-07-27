@@ -1,9 +1,5 @@
 ﻿#region
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
 using Microsoft.Extensions.Logging;
 using Scotec.Extensions.Linq;
 using Scotec.RingBuffer;
@@ -86,8 +82,8 @@ public class SignalHub : ISignalHub
     public void Configure(IControllerConfiguration configuration)
     {
         var signalProcessorConfigurations = configuration.TaskConfigurations
-                                 .Where(task => task.Type == ETaskType.Calculate || task.Type == ETaskType.Write)
-                                 .SelectMany(task => task.SignalProcessorConfigurations);
+                                                         .Where(task => task.Type == ETaskType.Calculate || task.Type == ETaskType.Write)
+                                                         .SelectMany(task => task.SignalProcessorConfigurations);
 
         //var signalSources = configuration.SignalProcessorConfigurations.SelectMany(signalProcessorConfiguration => signalProcessorConfiguration.SignalSources);
         var signalSources = signalProcessorConfigurations.SelectMany(signalProcessorConfiguration => signalProcessorConfiguration.SignalSources);

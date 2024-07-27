@@ -9,7 +9,8 @@ public interface
 {
 }
 
-public interface ISignalProcessorDefinitionBuilder<out TBuilder, in TConfiguration, in TOptions> : ISignalFConfigurationBuilder<TBuilder, TConfiguration, TOptions>
+public interface
+    ISignalProcessorDefinitionBuilder<out TBuilder, in TConfiguration, in TOptions> : ISignalFConfigurationBuilder<TBuilder, TConfiguration, TOptions>
     where TBuilder : ISignalProcessorDefinitionBuilder<TBuilder, TConfiguration, TOptions>
     where TConfiguration : ISignalProcessorDefinition
     where TOptions : SignalFConfigurationOptions

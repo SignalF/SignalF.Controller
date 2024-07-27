@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Scotec.Extensions.Linq;
 using Scotec.XMLDatabase;
 using SignalF.Controller.Hardware.Channels;
@@ -63,7 +61,7 @@ public class GpioPinAccess : Device<IGpioPinAccessConfiguration>, IGpioPinAccess
         var signalEndpointToChannelMappings = signalEndpoints.SelectMany(signalSink => signalSink
                                                                                        .GetReverseLinks<IChannelToSignalEndpointsMapping>(ESearchType.Deep)
                                                                                        .Select(mapping => (SignalSink: signalSink, mapping.Channel)));
-        
+
         // TODO: Use FirstOrDefault() instead of First() and check for null.
         return signalEndpointToChannelMappings
             .ToDictionary(mapping => GetSignalIndex(mapping.SignalSink)

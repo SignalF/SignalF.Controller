@@ -1,8 +1,4 @@
-﻿using System.Data.Common;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SignalF.Controller.Configuration;
 using SignalF.Controller.Signals.ProcessControl;
@@ -48,7 +44,7 @@ public class HostedControllerService : IHostedService
         var configuration = options.Configuration ?? DefaultConfiguration;
         var procedureName = options.ProcedureName ?? nameof(DefaultProcedure);
         var assemblyName = string.IsNullOrWhiteSpace(options.AssemblyName) ? GetAssenblyName() : options.AssemblyName;
-        
+
         _controlInterface.Start(configuration);
         _controlInterface.StartMeasurement();
         _controlInterface!.StartProcessControl(new ProcessControlStartInfo

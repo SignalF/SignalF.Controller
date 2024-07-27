@@ -1,6 +1,5 @@
 ﻿#region
 
-using System;
 using System.Device.Spi;
 using SignalF.Controller.Hardware.Channels.Spi;
 using SignalF.Datamodel.Hardware;

@@ -63,7 +63,7 @@ public abstract class SignalProcessorDefinitionBuilder<TImpl, TBuilder, TConfigu
     private ISignalProcessorTemplate FindTemplateByName(string name, TConfiguration configuration)
     {
         var template = configuration.FindParent<IControllerConfiguration>()
-                            .SignalProcessorTemplates.FirstOrDefault(template => template.Name == name);
+                                    .SignalProcessorTemplates.FirstOrDefault(template => template.Name == name);
         if (template == null)
         {
             throw new ConfigurationBuilderException($"Unknown signal processor template '{name}';");

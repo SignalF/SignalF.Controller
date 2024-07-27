@@ -1,6 +1,5 @@
 ﻿#region
 
-using System;
 using System.Net.Sockets;
 using SignalF.Controller.Hardware.DeviceBindings;
 using SignalF.Datamodel.Hardware;

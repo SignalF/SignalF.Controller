@@ -1,8 +1,6 @@
 ﻿#region
 
-using System.Linq;
 using Microsoft.Extensions.Logging;
-using SignalF.Datamodel.Configuration;
 using SignalF.Datamodel.Signals;
 
 #endregion
@@ -24,13 +22,12 @@ public class StaticSignalProvider : SignalProcessor<IStaticSignalProviderConfigu
     {
         var timestamp = SignalHub.GetTimestamp();
         var signals = SignalSources;
-        
+
         for (var i = 0; i < _indexes.Length; i++)
         {
             signals[i].AssignWith(_values[i], timestamp);
         }
     }
-
 
     protected override void OnConfigure(IStaticSignalProviderConfiguration configuration)
     {
@@ -43,7 +40,7 @@ public class StaticSignalProvider : SignalProcessor<IStaticSignalProviderConfigu
         var tempIndex = 0;
         foreach (var signalSource in configuration.SignalSources)
         {
-            _indexes[tempIndex] = GetSignalIndex(signalSource);// SignalHub.GetSignalIndex(signalSource);
+            _indexes[tempIndex] = GetSignalIndex(signalSource); // SignalHub.GetSignalIndex(signalSource);
             _values[tempIndex] = configuration.SignalValues.SingleOrDefault(value => value.SignalSource == signalSource)?.Value.SIValue ?? double.NaN;
 
             tempIndex++;

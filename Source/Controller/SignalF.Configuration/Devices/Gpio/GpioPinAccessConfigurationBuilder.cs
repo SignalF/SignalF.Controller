@@ -3,7 +3,6 @@ using SignalF.Configuration.SignalConfiguration;
 using SignalF.Controller.Configuration;
 using SignalF.Datamodel.Configuration;
 using SignalF.Datamodel.Hardware;
-using SignalF.Datamodel.Signals;
 
 namespace SignalF.Configuration.Devices.Gpio;
 

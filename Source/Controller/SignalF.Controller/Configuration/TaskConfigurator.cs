@@ -1,7 +1,5 @@
 ﻿#region
 
-using System.Collections.Generic;
-using System.Linq;
 using SignalF.Controller.Schedule;
 using SignalF.Datamodel.Configuration;
 

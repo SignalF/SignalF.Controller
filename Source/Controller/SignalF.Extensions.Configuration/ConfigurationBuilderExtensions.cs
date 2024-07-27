@@ -1,5 +1,4 @@
-﻿using System;
-using SignalF.Configuration;
+﻿using SignalF.Configuration;
 using SignalF.Configuration.Calculators;
 using SignalF.Configuration.DataOutput;
 using SignalF.Configuration.Devices;
@@ -26,6 +25,7 @@ using SignalF.Controller.Signals.Devices;
 using SignalF.Controller.Signals.ProcessControl;
 using SignalF.Controller.Signals.SignalProcessor;
 using SignalF.Datamodel.Hardware;
+
 namespace SignalF.Extensions.Configuration;
 
 public static class ConfigurationBuilderExtensions
@@ -33,7 +33,7 @@ public static class ConfigurationBuilderExtensions
     #region DataOutputSender
 
     public static ISignalFConfiguration AddDataOutputSender<TType, TOptions>(this ISignalFConfiguration configuration
-                                                                          , Action<IDataOutputSenderConfigurationBuilder> builder)
+                                                                             , Action<IDataOutputSenderConfigurationBuilder> builder)
         where TType : class, IDataOutputSender
         where TOptions : SignalFConfigurationOptions
     {
@@ -45,25 +45,26 @@ public static class ConfigurationBuilderExtensions
     #region SignalProcessor
 
     public static ISignalFConfiguration AddSignalProcessorConfiguration(this ISignalFConfiguration configuration
-                                                                     , Action<ISignalProcessorConfigurationBuilder> builder)
+                                                                        , Action<ISignalProcessorConfigurationBuilder> builder)
     {
         return configuration.AddSignalProcessorConfiguration<ISignalProcessorConfigurationBuilder, SignalFConfigurationOptions>(builder);
     }
 
     public static ISignalFConfiguration AddSignalProcessorConfiguration<TType>(this ISignalFConfiguration configuration
-                                                                            , Action<ISignalProcessorConfigurationBuilder> builder)
+                                                                               , Action<ISignalProcessorConfigurationBuilder> builder)
         where TType : class, ISignalProcessor
     {
         return configuration.AddSignalProcessorConfiguration<ISignalProcessorConfigurationBuilder, SignalFConfigurationOptions, TType>(builder);
     }
 
-    public static ISignalFConfiguration AddSignalProcessorDefinition(this ISignalFConfiguration configuration, Action<ISignalProcessorDefinitionBuilder> builder)
+    public static ISignalFConfiguration AddSignalProcessorDefinition(this ISignalFConfiguration configuration,
+                                                                     Action<ISignalProcessorDefinitionBuilder> builder)
     {
         return configuration.AddSignalProcessorDefinition<ISignalProcessorDefinitionBuilder, SignalFConfigurationOptions>(builder);
     }
 
     public static ISignalFConfiguration AddSignalProcessorDefinition<TType>(this ISignalFConfiguration configuration
-                                                                         , Action<ISignalProcessorDefinitionBuilder> builder)
+                                                                            , Action<ISignalProcessorDefinitionBuilder> builder)
         where TType : class, ISignalProcessor
     {
         return configuration.AddSignalProcessorDefinition<ISignalProcessorDefinitionBuilder, SignalFConfigurationOptions, TType>(builder);
@@ -74,7 +75,8 @@ public static class ConfigurationBuilderExtensions
         return configuration.AddSignalProcessorTemplate<ISignalProcessorTemplateBuilder, SignalFConfigurationOptions, ISignalProcessor>(builder);
     }
 
-    public static ISignalFConfiguration AddSignalProcessorTemplate<TType>(this ISignalFConfiguration configuration, Action<ISignalProcessorTemplateBuilder> builder)
+    public static ISignalFConfiguration AddSignalProcessorTemplate<TType>(this ISignalFConfiguration configuration,
+                                                                          Action<ISignalProcessorTemplateBuilder> builder)
         where TType : class, ISignalProcessor
     {
         return configuration.AddSignalProcessorTemplate<ISignalProcessorTemplateBuilder, SignalFConfigurationOptions, TType>(builder);
@@ -89,7 +91,8 @@ public static class ConfigurationBuilderExtensions
         return configuration.AddCalculatorConfiguration<ICalculatorConfigurationBuilder, SignalFConfigurationOptions>(builder);
     }
 
-    public static ISignalFConfiguration AddCalculatorConfiguration<TType>(this ISignalFConfiguration configuration, Action<ICalculatorConfigurationBuilder> builder)
+    public static ISignalFConfiguration AddCalculatorConfiguration<TType>(this ISignalFConfiguration configuration,
+                                                                          Action<ICalculatorConfigurationBuilder> builder)
         where TType : class, ICalculator
     {
         return configuration.AddCalculatorConfiguration<ICalculatorConfigurationBuilder, SignalFConfigurationOptions, TType>(builder);
@@ -119,11 +122,10 @@ public static class ConfigurationBuilderExtensions
 
     #endregion
 
-
     #region DeviceBinding
 
     public static ISignalFConfiguration AddDeviceBinding(this ISignalFConfiguration configuration,
-                                                      Action<IDeviceBindingBuilder> builder)
+                                                         Action<IDeviceBindingBuilder> builder)
     {
         return configuration
             .AddDeviceBinding<IDeviceBindingBuilder, IDeviceBindingConfiguration,
@@ -131,7 +133,7 @@ public static class ConfigurationBuilderExtensions
     }
 
     public static ISignalFConfiguration AddGpioDeviceBinding(this ISignalFConfiguration configuration,
-                                                          Action<IGpioDeviceBindingBuilder> builder)
+                                                             Action<IGpioDeviceBindingBuilder> builder)
     {
         return configuration
             .AddDeviceBinding<IGpioDeviceBindingBuilder, IGpioDeviceBindingConfiguration,
@@ -139,7 +141,7 @@ public static class ConfigurationBuilderExtensions
     }
 
     public static ISignalFConfiguration AddI2cDeviceBinding(this ISignalFConfiguration configuration,
-                                                         Action<II2cDeviceBindingBuilder> builder)
+                                                            Action<II2cDeviceBindingBuilder> builder)
     {
         return configuration
             .AddDeviceBinding<II2cDeviceBindingBuilder, II2cDeviceBindingConfiguration,
@@ -147,7 +149,7 @@ public static class ConfigurationBuilderExtensions
     }
 
     public static ISignalFConfiguration AddSpiDeviceBinding(this ISignalFConfiguration configuration,
-                                                         Action<ISpiDeviceBindingBuilder> builder)
+                                                            Action<ISpiDeviceBindingBuilder> builder)
     {
         return configuration
             .AddDeviceBinding<ISpiDeviceBindingBuilder, ISpiDeviceBindingConfiguration,
@@ -155,7 +157,7 @@ public static class ConfigurationBuilderExtensions
     }
 
     public static ISignalFConfiguration AddOneWireDeviceBinding(this ISignalFConfiguration configuration,
-                                                             Action<IOneWireDeviceBindingBuilder> builder)
+                                                                Action<IOneWireDeviceBindingBuilder> builder)
     {
         return configuration
             .AddDeviceBinding<IOneWireDeviceBindingBuilder, IOneWireDeviceBindingConfiguration,
@@ -163,7 +165,7 @@ public static class ConfigurationBuilderExtensions
     }
 
     public static ISignalFConfiguration AddTcpDeviceBinding(this ISignalFConfiguration configuration,
-                                                         Action<ITcpDeviceBindingBuilder> builder)
+                                                            Action<ITcpDeviceBindingBuilder> builder)
     {
         return configuration
             .AddDeviceBinding<ITcpDeviceBindingBuilder, ITcpDeviceBindingConfiguration,
@@ -175,7 +177,7 @@ public static class ConfigurationBuilderExtensions
     #region ChannelGroups
 
     public static ISignalFConfiguration AddOneWireChannelGroup(this ISignalFConfiguration configuration,
-                                                            Action<IOneWireChannelGroupBuilder> builder)
+                                                               Action<IOneWireChannelGroupBuilder> builder)
     {
         return configuration
             .AddChannelGroup<IOneWireChannelGroupBuilder, IOneWireChannelGroupConfiguration, IOneWireChannelConfigurationBuilder, IOneWireChannelConfiguration,
@@ -183,7 +185,7 @@ public static class ConfigurationBuilderExtensions
     }
 
     public static ISignalFConfiguration AddI2cChannelGroup(this ISignalFConfiguration configuration,
-                                                        Action<II2cChannelGroupBuilder> builder)
+                                                           Action<II2cChannelGroupBuilder> builder)
     {
         return configuration
             .AddChannelGroup<II2cChannelGroupBuilder, II2cChannelGroupConfiguration, II2CChannelConfigurationBuilder, II2cChannelConfiguration,
@@ -196,7 +198,7 @@ public static class ConfigurationBuilderExtensions
     }
 
     public static ISignalFConfiguration AddSpiChannelGroup(this ISignalFConfiguration configuration,
-                                                        Action<ISpiChannelGroupBuilder> builder)
+                                                           Action<ISpiChannelGroupBuilder> builder)
     {
         return configuration
             .AddChannelGroup<ISpiChannelGroupBuilder, ISpiChannelGroupConfiguration, ISpiChannelConfigurationBuilder, ISpiChannelConfiguration,
@@ -204,7 +206,7 @@ public static class ConfigurationBuilderExtensions
     }
 
     public static ISignalFConfiguration AddTcpChannelGroup(this ISignalFConfiguration configuration,
-                                                        Action<ITcpChannelGroupBuilder> builder)
+                                                           Action<ITcpChannelGroupBuilder> builder)
     {
         return configuration
             .AddChannelGroup<ITcpChannelGroupBuilder, ITcpChannelGroupConfiguration, ITcpChannelConfigurationBuilder, ITcpChannelConfiguration,
@@ -212,7 +214,7 @@ public static class ConfigurationBuilderExtensions
     }
 
     public static ISignalFConfiguration AddGpioChannelGroup(this ISignalFConfiguration configuration,
-                                                         Action<IGpioChannelGroupBuilder> builder)
+                                                            Action<IGpioChannelGroupBuilder> builder)
     {
         return configuration
             .AddChannelGroup<IGpioChannelGroupBuilder, IGpioChannelGroupConfiguration, IGpioChannelConfigurationBuilder, IGpioChannelConfiguration,
@@ -229,13 +231,13 @@ public static class ConfigurationBuilderExtensions
     #region ProcessControl
 
     public static ISignalFConfiguration AddProcessControlConfiguration(this ISignalFConfiguration configuration
-                                                                    , Action<IProcessControlConfigurationBuilder> builder)
+                                                                       , Action<IProcessControlConfigurationBuilder> builder)
     {
         return configuration.AddProcessControlConfiguration<IProcessControlConfigurationBuilder, SignalFConfigurationOptions>(builder);
     }
 
     public static ISignalFConfiguration AddProcessControlConfiguration<TType>(this ISignalFConfiguration configuration
-                                                                           , Action<IProcessControlConfigurationBuilder> builder)
+                                                                              , Action<IProcessControlConfigurationBuilder> builder)
         where TType : class, IProcessControlAdapter
     {
         return configuration.AddProcessControlConfiguration<IProcessControlConfigurationBuilder, SignalFConfigurationOptions, TType>(builder);
@@ -247,7 +249,7 @@ public static class ConfigurationBuilderExtensions
     }
 
     public static ISignalFConfiguration AddProcessControlDefinition<TType>(this ISignalFConfiguration configuration
-                                                                        , Action<IProcessControlDefinitionBuilder> builder)
+                                                                           , Action<IProcessControlDefinitionBuilder> builder)
         where TType : class, IProcessControlAdapter
     {
         return configuration.AddProcessControlDefinition<IProcessControlDefinitionBuilder, SignalFConfigurationOptions, TType>(builder);
@@ -258,7 +260,8 @@ public static class ConfigurationBuilderExtensions
         return configuration.AddProcessControlTemplate<IProcessControlTemplateBuilder, SignalFConfigurationOptions, IProcessControlAdapter>(builder);
     }
 
-    public static ISignalFConfiguration AddProcessControlTemplate<TType>(this ISignalFConfiguration configuration, Action<IProcessControlTemplateBuilder> builder)
+    public static ISignalFConfiguration AddProcessControlTemplate<TType>(this ISignalFConfiguration configuration,
+                                                                         Action<IProcessControlTemplateBuilder> builder)
         where TType : class, IProcessControlAdapter
     {
         return configuration.AddProcessControlTemplate<IProcessControlTemplateBuilder, SignalFConfigurationOptions, TType>(builder);
@@ -270,39 +273,39 @@ public static class ConfigurationBuilderExtensions
 
     // Static signal provider
     public static ISignalFConfiguration AddStaticSignalProviderConfiguration(this ISignalFConfiguration configuration
-                                                                          , Action<IStaticSignalProviderConfigurationBuilder> builder)
+                                                                             , Action<IStaticSignalProviderConfigurationBuilder> builder)
     {
         return configuration.AddStaticSignalProviderConfiguration<IStaticSignalProviderConfigurationBuilder, SignalFConfigurationOptions>(builder);
     }
 
     public static ISignalFConfiguration AddStaticSignalProviderConfiguration<TType>(this ISignalFConfiguration configuration
-                                                                                 , Action<IStaticSignalProviderConfigurationBuilder> builder)
+                                                                                    , Action<IStaticSignalProviderConfigurationBuilder> builder)
         where TType : class, IStaticSignalProvider
     {
         return configuration.AddStaticSignalProviderConfiguration<IStaticSignalProviderConfigurationBuilder, SignalFConfigurationOptions, TType>(builder);
     }
 
     public static ISignalFConfiguration AddStaticSignalProviderDefinition(this ISignalFConfiguration configuration
-                                                                       , Action<IStaticSignalProviderDefinitionBuilder> builder)
+                                                                          , Action<IStaticSignalProviderDefinitionBuilder> builder)
     {
         return configuration.AddStaticSignalProviderDefinition<IStaticSignalProviderDefinitionBuilder, SignalFConfigurationOptions>(builder);
     }
 
     public static ISignalFConfiguration AddStaticSignalProviderDefinition<TType>(this ISignalFConfiguration configuration
-                                                                              , Action<IStaticSignalProviderDefinitionBuilder> builder)
+                                                                                 , Action<IStaticSignalProviderDefinitionBuilder> builder)
         where TType : class, IStaticSignalProvider
     {
         return configuration.AddStaticSignalProviderDefinition<IStaticSignalProviderDefinitionBuilder, SignalFConfigurationOptions, TType>(builder);
     }
 
     public static ISignalFConfiguration AddStaticSignalProviderTemplate(this ISignalFConfiguration configuration
-                                                                     , Action<IStaticSignalProviderTemplateBuilder> builder)
+                                                                        , Action<IStaticSignalProviderTemplateBuilder> builder)
     {
         return configuration.AddStaticSignalProviderTemplate<IStaticSignalProviderTemplateBuilder, SignalFConfigurationOptions, IStaticSignalProvider>(builder);
     }
 
     public static ISignalFConfiguration AddStaticSignalProviderTemplate<TType>(this ISignalFConfiguration configuration
-                                                                            , Action<IStaticSignalProviderTemplateBuilder> builder)
+                                                                               , Action<IStaticSignalProviderTemplateBuilder> builder)
         where TType : class, IStaticSignalProvider
     {
         return configuration.AddStaticSignalProviderTemplate<IStaticSignalProviderTemplateBuilder, SignalFConfigurationOptions, TType>(builder);
@@ -313,13 +316,14 @@ public static class ConfigurationBuilderExtensions
     #region GpioPinAccess
 
     // GPIO pin access
-    public static ISignalFConfiguration AddGpioPinAccessConfiguration(this ISignalFConfiguration configuration, Action<IGpioPinAccessConfigurationBuilder> builder)
+    public static ISignalFConfiguration AddGpioPinAccessConfiguration(this ISignalFConfiguration configuration,
+                                                                      Action<IGpioPinAccessConfigurationBuilder> builder)
     {
         return configuration.AddGpioPinAccessConfiguration<IGpioPinAccessConfigurationBuilder, SignalFConfigurationOptions>(builder);
     }
 
     public static ISignalFConfiguration AddGpioPinAccessConfiguration<TType>(this ISignalFConfiguration configuration
-                                                                          , Action<IGpioPinAccessConfigurationBuilder> builder)
+                                                                             , Action<IGpioPinAccessConfigurationBuilder> builder)
         where TType : class, IGpioPinAccess
     {
         return configuration.AddGpioPinAccessConfiguration<IGpioPinAccessConfigurationBuilder, SignalFConfigurationOptions, TType>(builder);
@@ -330,7 +334,8 @@ public static class ConfigurationBuilderExtensions
         return configuration.AddGpioPinAccessDefinition<IGpioPinAccessDefinitionBuilder, SignalFConfigurationOptions>(builder);
     }
 
-    public static ISignalFConfiguration AddGpioPinAccessDefinition<TType>(this ISignalFConfiguration configuration, Action<IGpioPinAccessDefinitionBuilder> builder)
+    public static ISignalFConfiguration AddGpioPinAccessDefinition<TType>(this ISignalFConfiguration configuration,
+                                                                          Action<IGpioPinAccessDefinitionBuilder> builder)
         where TType : class, IGpioPinAccess
     {
         return configuration.AddGpioPinAccessDefinition<IGpioPinAccessDefinitionBuilder, SignalFConfigurationOptions, TType>(builder);
@@ -390,13 +395,14 @@ public static class ConfigurationBuilderExtensions
     #region GenericDevice
 
     // GenericDevice
-    public static ISignalFConfiguration AddGenericDeviceConfiguration(this ISignalFConfiguration configuration, Action<IGenericDeviceConfigurationBuilder> builder)
+    public static ISignalFConfiguration AddGenericDeviceConfiguration(this ISignalFConfiguration configuration,
+                                                                      Action<IGenericDeviceConfigurationBuilder> builder)
     {
         return configuration.AddGenericDeviceConfiguration<IGenericDeviceConfigurationBuilder, SignalFConfigurationOptions>(builder);
     }
 
     public static ISignalFConfiguration AddGenericDeviceConfiguration<TType>(this ISignalFConfiguration configuration
-                                                                          , Action<IGenericDeviceConfigurationBuilder> builder)
+                                                                             , Action<IGenericDeviceConfigurationBuilder> builder)
         where TType : class, IGenericDevice
     {
         return configuration.AddGenericDeviceConfiguration<IGenericDeviceConfigurationBuilder, SignalFConfigurationOptions, TType>(builder);
@@ -407,7 +413,8 @@ public static class ConfigurationBuilderExtensions
         return configuration.AddGenericDeviceDefinition<IGenericDeviceDefinitionBuilder, SignalFConfigurationOptions>(builder);
     }
 
-    public static ISignalFConfiguration AddGenericDeviceDefinition<TType>(this ISignalFConfiguration configuration, Action<IGenericDeviceDefinitionBuilder> builder)
+    public static ISignalFConfiguration AddGenericDeviceDefinition<TType>(this ISignalFConfiguration configuration,
+                                                                          Action<IGenericDeviceDefinitionBuilder> builder)
         where TType : class, IGenericDevice
     {
         return configuration.AddGenericDeviceDefinition<IGenericDeviceDefinitionBuilder, SignalFConfigurationOptions, TType>(builder);

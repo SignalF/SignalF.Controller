@@ -1,9 +1,5 @@
 ﻿#region
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
 using Scotec.Queues;
 using SignalF.Controller.Signals;
 using SignalF.Datamodel.DataOutput;

@@ -45,8 +45,9 @@ public class TaskMappingBuilder : ITaskMappingBuilder
             {
                 throw new ConfigurationBuilderException($"Unknown task '{TaskName}' used in task mapping.");
             }
-            
-            var signalProcessorConfiguration = configuration.SignalProcessorConfigurations.FirstOrDefault(signalProcessor => signalProcessor.Name == SignalProcessorName);
+
+            var signalProcessorConfiguration =
+                configuration.SignalProcessorConfigurations.FirstOrDefault(signalProcessor => signalProcessor.Name == SignalProcessorName);
             if (signalProcessorConfiguration == null)
             {
                 throw new ConfigurationBuilderException($"Unknown signal processor '{SignalProcessorName}' used in task mapping.");

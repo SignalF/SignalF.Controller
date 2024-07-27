@@ -1,7 +1,5 @@
 ﻿#region
 
-using System;
-using System.Collections.Generic;
 using SignalF.Datamodel.Configuration;
 using SignalF.Datamodel.Signals;
 
@@ -35,7 +33,7 @@ public interface ISignalHub : IService
     long Timestamp { get; set; }
 
     /// <summary>
-    /// Returns the current timestamp.
+    ///     Returns the current timestamp.
     /// </summary>
     long GetTimestamp();
 
