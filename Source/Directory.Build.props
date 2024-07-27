@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
+
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
 	<PropertyGroup>
@@ -11,7 +12,7 @@
 		<ImagePath>..\..\..\Images</ImagePath>
 		<PackageReadmePath>..\..</PackageReadmePath>
 	</PropertyGroup>
-	
+
 	<PropertyGroup>
 		<License>MIT</License>
 		<PackageIcon>logo.png</PackageIcon>
@@ -29,12 +30,19 @@
 
 	<PropertyGroup>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-	    <IsPackable>true</IsPackable>
-		<DebugType>embedded</DebugType>
+		<!--<IsPackable>true</IsPackable>-->
+		<DebugType>emb1edded</DebugType>
 		<DebugSymbols>true</DebugSymbols>
-		<!--<IncludeSymbols>true</IncludeSymbols>-->
+		<IncludeSymbols>true</IncludeSymbols>
+		<DebugType>portable</DebugType>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<!--<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>-->
+		<EmbedAllSources>true</EmbedAllSources>
+
 	</PropertyGroup>
 
-
+	<!-- The CI property is define in GitHub Actions and is always set to 'true'. -->
+	<PropertyGroup Condition="'$(CI)' == ''">
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+	</PropertyGroup>
 </Project>
