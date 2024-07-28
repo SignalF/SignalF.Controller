@@ -16,11 +16,19 @@ public interface ISignalProcessorConfigurationBuilder<out TBuilder, in TConfigur
 {
     TBuilder UseDefinition(string definitionName);
 
-    TBuilder AddSignalSourceConfiguration(string signalName, string signalDefinition);
+    TBuilder AddSignalSourceConfiguration(string signalDefinition);
 
-    TBuilder AddSignalSourceConfiguration(string signalName, string signalDefinition, Enum unit);
+    TBuilder AddSignalSourceConfiguration(string signalDefinition, Enum unit);
 
-    TBuilder AddSignalSinkConfiguration(string signalName, string signalDefinition);
+    TBuilder AddSignalSourceConfiguration(string signalDefinition, string signalName);
 
-    TBuilder AddSignalSinkConfiguration(string signalName, string signalDefinition, Enum unit);
+    TBuilder AddSignalSourceConfiguration(string signalDefinition, string signalName, Enum unit);
+
+    TBuilder AddSignalSinkConfiguration(string signalDefinition);
+
+    TBuilder AddSignalSinkConfiguration(string signalDefinition, Enum unit);
+
+    TBuilder AddSignalSinkConfiguration(string signalDefinition, string signalName);
+
+    TBuilder AddSignalSinkConfiguration(string signalDefinition, string signalName, Enum unit);
 }

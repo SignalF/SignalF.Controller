@@ -30,25 +30,45 @@ public abstract class SignalProcessorConfigurationBuilder<TImpl, TBuilder, TConf
         return This;
     }
 
-    public virtual TBuilder AddSignalSourceConfiguration(string signalName, string signalDefinition)
+    public virtual TBuilder AddSignalSourceConfiguration(string signalDefinition)
     {
-        return AddSignalSourceConfiguration(signalName, signalDefinition, Numeric.Units.Any);
+        return AddSignalSourceConfiguration(signalDefinition, signalDefinition, Numeric.Units.Any);
     }
 
-    public virtual TBuilder AddSignalSourceConfiguration(string signalName, string signalDefinition, Enum unit)
+    public virtual TBuilder AddSignalSourceConfiguration(string signalDefinition, Enum unit)
     {
-        _signalSources.Add(new SignalConfigurationBuilder(signalName, signalDefinition, unit));
+        return AddSignalSourceConfiguration(signalDefinition, signalDefinition, unit);
+    }
+
+    public virtual TBuilder AddSignalSourceConfiguration(string signalDefinition, string signalName)
+    {
+        return AddSignalSourceConfiguration(signalDefinition, signalName, Numeric.Units.Any);
+    }
+
+    public virtual TBuilder AddSignalSourceConfiguration(string signalDefinition, string signalName, Enum unit)
+    {
+        _signalSources.Add(new SignalConfigurationBuilder(signalDefinition, signalName, unit));
         return This;
     }
 
-    public virtual TBuilder AddSignalSinkConfiguration(string signalName, string signalDefinition)
+    public virtual TBuilder AddSignalSinkConfiguration(string signalDefinition)
     {
-        return AddSignalSinkConfiguration(signalName, signalDefinition, Numeric.Units.Any);
+        return AddSignalSinkConfiguration(signalDefinition, signalDefinition, Numeric.Units.Any);
     }
 
-    public virtual TBuilder AddSignalSinkConfiguration(string signalName, string signalDefinition, Enum unit)
+    public virtual TBuilder AddSignalSinkConfiguration(string signalDefinition, Enum unit)
     {
-        _signalSinks.Add(new SignalConfigurationBuilder(signalName, signalDefinition, unit));
+        return AddSignalSinkConfiguration(signalDefinition, signalDefinition, unit);
+    }
+
+    public virtual TBuilder AddSignalSinkConfiguration(string signalDefinition, string signalName)
+    {
+        return AddSignalSinkConfiguration(signalDefinition, signalName, Numeric.Units.Any);
+    }
+
+    public virtual TBuilder AddSignalSinkConfiguration(string signalDefinition, string signalName, Enum unit)
+    {
+        _signalSinks.Add(new SignalConfigurationBuilder(signalDefinition, signalName, unit));
         return This;
     }
 

@@ -11,9 +11,9 @@ public class SignalConfigurationBuilder
         SignalEndpointName = signalEndpointName;
     }
 
-    public SignalConfigurationBuilder(string name, string signalEndpointName, Enum unit)
+    public SignalConfigurationBuilder(string signalEndpointName, string signalName, Enum unit)
     {
-        Name = name;
+        Name = signalName;
         SignalEndpointName = signalEndpointName;
         Unit = unit;
     }
