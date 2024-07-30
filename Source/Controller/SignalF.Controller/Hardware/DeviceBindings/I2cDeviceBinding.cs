@@ -26,7 +26,7 @@ public class I2cDeviceBinding : DeviceBinding<II2cDeviceBindingConfiguration>, I
         return _devices[deviceAddress].ReadByte();
     }
 
-    public void Write(int deviceAddress, Span<byte> buffer)
+    public void Write(int deviceAddress, ReadOnlySpan<byte> buffer)
     {
         _devices[deviceAddress].Write(buffer);
     }
@@ -36,7 +36,7 @@ public class I2cDeviceBinding : DeviceBinding<II2cDeviceBindingConfiguration>, I
         _devices[deviceAddress].WriteByte(data);
     }
 
-    public void WriteRead(int deviceAddress, Span<byte> writeBuffer, Span<byte> readBuffer)
+    public void WriteRead(int deviceAddress, ReadOnlySpan<byte> writeBuffer, Span<byte> readBuffer)
     {
         _devices[deviceAddress].WriteRead(writeBuffer, readBuffer);
     }

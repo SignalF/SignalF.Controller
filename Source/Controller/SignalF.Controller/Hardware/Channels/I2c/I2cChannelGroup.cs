@@ -39,7 +39,7 @@ public sealed class I2cChannelGroup : ChannelGroup<II2cChannelGroupConfiguration
         return I2CDeviceBinding.ReadByte(deviceAddress);
     }
 
-    public void Write(int deviceAddress, Span<byte> buffer)
+    public void Write(int deviceAddress, ReadOnlySpan<byte> buffer)
     {
         I2CDeviceBinding.Write(deviceAddress, buffer);
     }
@@ -49,7 +49,7 @@ public sealed class I2cChannelGroup : ChannelGroup<II2cChannelGroupConfiguration
         I2CDeviceBinding.WriteByte(deviceAddress, data);
     }
 
-    public void WriteRead(int deviceAddress, Span<byte> writeBuffer, Span<byte> readBuffer)
+    public void WriteRead(int deviceAddress, ReadOnlySpan<byte> writeBuffer, Span<byte> readBuffer)
     {
         I2CDeviceBinding.WriteRead(deviceAddress, writeBuffer, readBuffer);
     }

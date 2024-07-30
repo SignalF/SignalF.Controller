@@ -17,7 +17,7 @@ public class I2cChannel : Channel<II2cChannelConfiguration>, II2cChannel
         return I2cChannelGroup.ReadByte(_deviceAddress);
     }
 
-    public void Write(Span<byte> buffer)
+    public void Write(ReadOnlySpan<byte> buffer)
     {
         I2cChannelGroup.Write(_deviceAddress, buffer);
     }
@@ -27,7 +27,7 @@ public class I2cChannel : Channel<II2cChannelConfiguration>, II2cChannel
         I2cChannelGroup.WriteByte(_deviceAddress, data);
     }
 
-    public void WriteRead(Span<byte> writeBuffer, Span<byte> readBuffer)
+    public void WriteRead(ReadOnlySpan<byte> writeBuffer, Span<byte> readBuffer)
     {
         I2cChannelGroup.WriteRead(_deviceAddress, writeBuffer, readBuffer);
     }

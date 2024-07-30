@@ -9,17 +9,17 @@ public class SpiChannel : Channel<ISpiChannelConfiguration>, ISpiChannel
         throw new NotImplementedException();
     }
 
-    public void TransferFullDuplex(Span<byte> writeBuffer, Span<byte> readBuffer)
+    public void TransferFullDuplex(ReadOnlySpan<byte> writeBuffer, Span<byte> readBuffer)
     {
         throw new NotImplementedException();
     }
 
-    public void TransferSequential(Span<byte> writeBuffer, Span<byte> readBuffer)
+    public void TransferSequential(ReadOnlySpan<byte> writeBuffer, Span<byte> readBuffer)
     {
         throw new NotImplementedException();
     }
 
-    public void Write(Span<byte> buffer)
+    public void Write(ReadOnlySpan<byte> buffer)
     {
         throw new NotImplementedException();
     }

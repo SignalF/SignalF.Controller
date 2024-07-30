@@ -41,7 +41,7 @@ public interface II2cDeviceBinding : IDeviceBinding
     ///     A buffer that contains the data that you want to write to the I2c device. This data should not
     ///     include the bus address.
     /// </param>
-    void Write(int deviceAddress, Span<byte> buffer);
+    void Write(int deviceAddress, ReadOnlySpan<byte> buffer);
 
     /// <summary>
     ///     Writes data to the inter-integrated circuit (I2c) bus on which the device is connected, based on the bus address
@@ -66,5 +66,5 @@ public interface II2cDeviceBinding : IDeviceBinding
     ///     The buffer to which you want to read the data from the I2c bus. The length of the buffer
     ///     determines how much data to request from the device.
     /// </param>
-    void WriteRead(int deviceAddress, Span<byte> writeBuffer, Span<byte> readBuffer);
+    void WriteRead(int deviceAddress, ReadOnlySpan<byte> writeBuffer, Span<byte> readBuffer);
 }
