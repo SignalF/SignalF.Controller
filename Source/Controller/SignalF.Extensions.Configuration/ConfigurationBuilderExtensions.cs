@@ -24,6 +24,7 @@ using SignalF.Controller.Signals.Calculators;
 using SignalF.Controller.Signals.Devices;
 using SignalF.Controller.Signals.ProcessControl;
 using SignalF.Controller.Signals.SignalProcessor;
+using SignalF.Datamodel.DataOutput;
 using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Extensions.Configuration;
@@ -37,7 +38,7 @@ public static class ConfigurationBuilderExtensions
         where TType : class, IDataOutputSender
         where TOptions : SignalFConfigurationOptions
     {
-        return configuration.AddDataOutputSenderConfiguration<IDataOutputSenderConfigurationBuilder, TOptions, TType>(builder);
+        return configuration.AddDataOutputSenderConfiguration<IDataOutputSenderConfigurationBuilder<TOptions>, TOptions, TType>(builder);
     }
 
     #endregion
