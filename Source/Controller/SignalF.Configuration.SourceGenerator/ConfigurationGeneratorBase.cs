@@ -28,7 +28,7 @@ public abstract class ConfigurationGeneratorBase : IncrementalGenerator
 
     private void Execute(SourceProductionContext sourceContext, GeneratorAttributeSyntaxContext syntaxContext)
     {
-        Debugger.Launch();
+        //Debugger.Launch();
         var symbol = syntaxContext.TargetSymbol;
         var className = syntaxContext.TargetSymbol.Name;
         var @namespace = symbol.ContainingNamespace.ToDisplayString();
@@ -37,7 +37,7 @@ public abstract class ConfigurationGeneratorBase : IncrementalGenerator
         var template = LoadTemplate(GetTemplateName());
         if (!string.IsNullOrEmpty(template))
         {
-            var content = string.Format(template, @namespace, className, globalNamespace);
+            var content = string.Format(template, className);
             sourceContext.AddSource($"{className}Factory.g.cs", content);
         }
     }
