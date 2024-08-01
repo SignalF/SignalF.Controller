@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SignalF.Configuration.SourceGenerator": {
+      "commandName": "DebugRoslynComponent",
+      "targetProject": "..\\GeneratorTest\\GeneratorTest.csproj"
+    }
+  }
+}
