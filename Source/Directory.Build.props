@@ -31,7 +31,6 @@
 	<PropertyGroup>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<!--<IsPackable>true</IsPackable>-->
-		<DebugType>emb1edded</DebugType>
 		<DebugSymbols>true</DebugSymbols>
 		<IncludeSymbols>true</IncludeSymbols>
 		<DebugType>portable</DebugType>

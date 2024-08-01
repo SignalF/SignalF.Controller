@@ -9,7 +9,7 @@ namespace SignalF.Configuration;
 public partial class SignalFConfiguration : ISignalFConfiguration
 {
     public ISignalFConfiguration AddDeviceConfiguration<TBuilder, TOptions>(Action<TBuilder> action)
-        where TBuilder : IDeviceConfigurationBuilder
+        where TBuilder : IDeviceConfigurationBuilder<TBuilder, IDeviceConfiguration, TOptions>
         where TOptions : SignalFConfigurationOptions
     {
         _signalProcessorConfigurations.Add(configuration =>
@@ -22,7 +22,7 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddDeviceConfiguration<TBuilder, TOptions, TType>(Action<TBuilder> action)
-        where TBuilder : IDeviceConfigurationBuilder
+        where TBuilder : IDeviceConfigurationBuilder<TBuilder, IDeviceConfiguration, TOptions>
         where TOptions : SignalFConfigurationOptions
         where TType : class, IDevice
     {
@@ -37,7 +37,7 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddDeviceDefinition<TBuilder, TOptions>(Action<TBuilder> action)
-        where TBuilder : IDeviceDefinitionBuilder
+        where TBuilder : IDeviceDefinitionBuilder<TBuilder, IDeviceDefinition, TOptions>
         where TOptions : SignalFConfigurationOptions
     {
         _signalProcessorDefinitions.Add(configuration =>
@@ -50,7 +50,7 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddDeviceDefinition<TBuilder, TOptions, TType>(Action<TBuilder> action)
-        where TBuilder : IDeviceDefinitionBuilder
+        where TBuilder : IDeviceDefinitionBuilder<TBuilder, IDeviceDefinition, TOptions>
         where TOptions : SignalFConfigurationOptions
         where TType : class, IDevice
     {
@@ -65,7 +65,7 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddDeviceTemplate<TBuilder, TOptions>(Action<TBuilder> action)
-        where TBuilder : IDeviceTemplateBuilder
+        where TBuilder : IDeviceTemplateBuilder<TBuilder, IDeviceTemplate, TOptions>
         where TOptions : SignalFConfigurationOptions
     {
         _signalProcessorTemplates.Add(configuration =>
@@ -78,7 +78,7 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddDeviceTemplate<TBuilder, TOptions, TType>(Action<TBuilder> action)
-        where TBuilder : IDeviceTemplateBuilder
+        where TBuilder : IDeviceTemplateBuilder<TBuilder, IDeviceTemplate, TOptions>
         where TOptions : SignalFConfigurationOptions
         where TType : class, IDevice
     {
