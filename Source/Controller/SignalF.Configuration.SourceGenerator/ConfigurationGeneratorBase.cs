@@ -28,7 +28,7 @@ public abstract class ConfigurationGeneratorBase : IncrementalGenerator
 
     private void Execute(SourceProductionContext sourceContext, GeneratorAttributeSyntaxContext syntaxContext)
     {
-        Debugger.Launch();
+        //Debugger.Launch();
         var symbol = syntaxContext.TargetSymbol;
         var className = syntaxContext.TargetSymbol.Name;
         var @namespace = symbol.ContainingNamespace.ToDisplayString();
