@@ -33,7 +33,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\Datamodel\SignalF.Datamodel.Abstractions\SignalF.Datamodel.Abstractions.csproj" />
-		<ProjectReference Include="..\..\SignalF.Configuration.SourceGenerator\SignalF.Configuration.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" PrivateAssets="All" />
 		<ProjectReference Include="..\SignalF.Configuration.Abstractions\SignalF.Configuration.Abstractions.csproj" />
 		<ProjectReference Include="..\SignalF.Configuration.SourceGenerator\SignalF.Configuration.SourceGenerator.csproj" />
 	</ItemGroup>

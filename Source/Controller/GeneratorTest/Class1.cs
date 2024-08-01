@@ -2,7 +2,7 @@
 
 namespace GeneratorTest
 {
-    [Device(OptionsType=typeof(Test))]
+   // [Device(OptionsType=typeof(Test))]
     public class Class1
     {
 
