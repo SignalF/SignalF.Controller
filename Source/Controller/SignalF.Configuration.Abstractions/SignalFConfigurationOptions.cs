@@ -1,4 +1,4 @@
-﻿namespace SignalF.Controller;
+﻿namespace SignalF.Configuration;
 
 public class SignalFConfigurationOptions
 {
