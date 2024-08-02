@@ -26,11 +26,19 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\DeviceConfiguration.template" />
+	  <None Remove="Resources\ConfigurationBuilder.template" />
+	  <None Remove="Resources\DefinitionBuilder.template" />
+	  <None Remove="Resources\DeviceExtensions.template" />
+	  <None Remove="Resources\DeviceOptions.template" />
+	  <None Remove="Resources\TemplateBuilder.template" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="Resources\DeviceConfiguration.template" />
+	  <EmbeddedResource Include="Resources\TemplateBuilder.template" />
+	  <EmbeddedResource Include="Resources\DefinitionBuilder.template" />
+	  <EmbeddedResource Include="Resources\DeviceOptions.template" />
+	  <EmbeddedResource Include="Resources\DeviceExtensions.template" />
+	  <EmbeddedResource Include="Resources\ConfigurationBuilder.template" />
 	</ItemGroup>
 
 

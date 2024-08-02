@@ -1,0 +1,39 @@
+﻿using Microsoft.Extensions.DependencyInjection;
+using SignalF.Configuration;
+using SignalF.Configuration.Devices;
+using SignalF.Controller.Configuration;
+using SignalF.Datamodel.Hardware;
+
+namespace {0};
+
+public partial interface
+    I{1}TemplateBuilder : I{1}TemplateBuilder<I{1}TemplateBuilder,
+        IDeviceTemplate, {1}DeviceOptions>
+{{
+}}
+
+public partial interface
+    I{1}TemplateBuilder<out TBuilder, in TConfiguration, in TOptions> : IDeviceTemplateBuilder<TBuilder, TConfiguration,
+        TOptions>
+    where TBuilder : IDeviceTemplateBuilder<TBuilder, TConfiguration, TOptions>
+    where TConfiguration : IDeviceTemplate
+    where TOptions : {1}DeviceOptions
+{{
+}}
+
+public partial class {1}TemplateBuilder
+    : {1}TemplateBuilder<{1}TemplateBuilder, I{1}TemplateBuilder,
+          IDeviceTemplate, {1}DeviceOptions>, I{1}TemplateBuilder
+{{
+    protected override I{1}TemplateBuilder This => this;
+}}
+
+public abstract partial class {1}TemplateBuilder<TImpl, TBuilder, TConfiguration, TOptions>
+    : DeviceTemplateBuilder<TImpl, TBuilder, TConfiguration, TOptions>
+      , I{1}TemplateBuilder<TBuilder, TConfiguration, TOptions>
+    where TBuilder : I{1}TemplateBuilder<TBuilder, TConfiguration, TOptions>
+    where TImpl : {1}TemplateBuilder<TImpl, TBuilder, TConfiguration, TOptions>
+    where TConfiguration : IDeviceTemplate
+    where TOptions : {1}DeviceOptions
+{{
+}}
