@@ -60,6 +60,6 @@ public static partial class {1}Extensions
     public static IServiceCollection Add{1}(this IServiceCollection services)
     {{
         return services.AddTransient<{1}>()
-                       .AddTransient<I{1}ConfigurationBuilder, {1}ConfigurationBuilder>;
+                       .AddTransient<I{1}ConfigurationBuilder, {1}ConfigurationBuilder>();
     }}
 }}
