@@ -1,9 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SignalF.Configuration.Devices.Gpio;
-using SignalF.Controller;
-using SignalF.Controller.Configuration;
 using SignalF.Controller.Signals.Devices;
-using SignalF.Datamodel.Devices;
 using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Configuration;
@@ -81,7 +78,7 @@ public partial class SignalFConfiguration : ISignalFConfiguration
 
     public ISignalFConfiguration AddGpioPinAccessTemplate<TBuilder, TOptions, TType>(Action<TBuilder> action)
         where TBuilder : IGpioPinAccessTemplateBuilder<TBuilder, IGpioPinAccessTemplate, TOptions>
-        where TOptions : SignalFConfigurationOptions
+        where TOptions : GpioPinAccessOptions
         where TType : class, IGpioPinAccess
     {
         _signalProcessorTemplates.Add(configuration =>

@@ -1,10 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SignalF.Configuration.SignalConfiguration;
-using SignalF.Controller;
-using SignalF.Controller.Configuration;
 using SignalF.Controller.Signals.SignalProcessor;
 using SignalF.Datamodel.Signals;
-using SignalF.Datamodel.Workflow;
 
 namespace SignalF.Configuration;
 
@@ -40,7 +37,7 @@ public partial class SignalFConfiguration : ISignalFConfiguration
 
     public ISignalFConfiguration AddSignalProcessorDefinition<TBuilder, TOptions>(Action<TBuilder> action)
         where TBuilder : ISignalProcessorDefinitionBuilder<TBuilder, ISignalProcessorDefinition, TOptions>
-        where TOptions : SignalFConfigurationOptions
+        where TOptions : SignalProcessorOptions
     {
         _signalProcessorDefinitions.Add(configuration =>
         {
@@ -53,7 +50,7 @@ public partial class SignalFConfiguration : ISignalFConfiguration
 
     public ISignalFConfiguration AddSignalProcessorDefinition<TBuilder, TOptions, TType>(Action<TBuilder> action)
         where TBuilder : ISignalProcessorDefinitionBuilder<TBuilder, ISignalProcessorDefinition, TOptions>
-        where TOptions : SignalFConfigurationOptions
+        where TOptions : SignalProcessorOptions
         where TType : class, ISignalProcessor
     {
         _signalProcessorDefinitions.Add(configuration =>
@@ -68,7 +65,7 @@ public partial class SignalFConfiguration : ISignalFConfiguration
 
     public ISignalFConfiguration AddSignalProcessorTemplate<TBuilder, TOptions>(Action<TBuilder> action)
         where TBuilder : ISignalProcessorTemplateBuilder<TBuilder, ISignalProcessorTemplate, TOptions>
-        where TOptions : SignalFConfigurationOptions
+        where TOptions : SignalProcessorOptions
     {
         _signalProcessorTemplates.Add(configuration =>
         {
@@ -81,7 +78,7 @@ public partial class SignalFConfiguration : ISignalFConfiguration
 
     public ISignalFConfiguration AddSignalProcessorTemplate<TBuilder, TOptions, TType>(Action<TBuilder> action)
         where TBuilder : ISignalProcessorTemplateBuilder<TBuilder, ISignalProcessorTemplate, TOptions>
-        where TOptions : SignalFConfigurationOptions
+        where TOptions : SignalProcessorOptions
         where TType : class, ISignalProcessor
     {
         {

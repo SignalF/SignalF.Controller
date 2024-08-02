@@ -1,11 +1,9 @@
-﻿using SignalF.Controller;
-using SignalF.Controller.Configuration;
-using SignalF.Datamodel.Hardware;
+﻿using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Configuration.Hardware.I2c;
 
 public class I2CChannelConfigurationBuilder :
-    ChannelConfigurationBuilder<I2CChannelConfigurationBuilder, II2CChannelConfigurationBuilder, II2cChannelConfiguration, SignalFConfigurationOptions>,
+    ChannelConfigurationBuilder<I2CChannelConfigurationBuilder, II2CChannelConfigurationBuilder, II2cChannelConfiguration, I2cChannelOptions>,
     II2CChannelConfigurationBuilder
 {
     private int _deviceAddress;

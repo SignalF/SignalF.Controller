@@ -1,12 +1,10 @@
 ﻿using SignalF.Configuration.SignalConfiguration;
-using SignalF.Controller;
-using SignalF.Controller.Configuration;
 using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Configuration.Devices.Gpio;
 
 public class GpioPinAccessTemplateBuilder
-    : GpioPinAccessTemplateBuilder<GpioPinAccessTemplateBuilder, IGpioPinAccessTemplateBuilder, IGpioPinAccessTemplate, SignalFConfigurationOptions>,
+    : GpioPinAccessTemplateBuilder<GpioPinAccessTemplateBuilder, IGpioPinAccessTemplateBuilder, IGpioPinAccessTemplate, GpioPinAccessOptions>,
       IGpioPinAccessTemplateBuilder
 {
     protected override IGpioPinAccessTemplateBuilder This => this;
@@ -17,7 +15,7 @@ public abstract class GpioPinAccessTemplateBuilder<TImpl, TBuilder, TConfigurati
     where TBuilder : IGpioPinAccessTemplateBuilder<TBuilder, TConfiguration, TOptions>
     where TImpl : GpioPinAccessTemplateBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     where TConfiguration : IGpioPinAccessTemplate
-    where TOptions : SignalFConfigurationOptions
+    where TOptions : GpioPinAccessOptions
 {
     public override void Build(TConfiguration configuration)
     {

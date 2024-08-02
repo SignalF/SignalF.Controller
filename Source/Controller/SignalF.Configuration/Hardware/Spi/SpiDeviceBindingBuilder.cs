@@ -1,11 +1,9 @@
-﻿using SignalF.Controller;
-using SignalF.Controller.Configuration;
-using SignalF.Datamodel.Hardware;
+﻿using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Configuration.Hardware.Spi;
 
 public class SpiDeviceBindingBuilder
-    : DeviceBindingBuilder<SpiDeviceBindingBuilder, ISpiDeviceBindingBuilder, ISpiDeviceBindingConfiguration, SignalFConfigurationOptions>
+    : DeviceBindingBuilder<SpiDeviceBindingBuilder, ISpiDeviceBindingBuilder, ISpiDeviceBindingConfiguration, SpiDeviceBindingOptions>
       , ISpiDeviceBindingBuilder
 {
     private int _busId;

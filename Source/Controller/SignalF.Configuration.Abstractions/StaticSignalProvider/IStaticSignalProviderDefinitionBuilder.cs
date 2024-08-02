@@ -1,13 +1,11 @@
 ﻿using SignalF.Configuration.SignalConfiguration;
-using SignalF.Controller;
-using SignalF.Controller.Configuration;
 using SignalF.Datamodel.Signals;
 
 namespace SignalF.Configuration.StaticSignalProvider;
 
 public interface
     IStaticSignalProviderDefinitionBuilder : IStaticSignalProviderDefinitionBuilder<IStaticSignalProviderDefinitionBuilder, IStaticSignalProviderDefinition,
-    StaticSignalProviderOptions>
+        StaticSignalProviderOptions>
 {
 }
 

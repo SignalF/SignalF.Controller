@@ -1,11 +1,9 @@
-﻿using SignalF.Controller;
-using SignalF.Controller.Configuration;
-using SignalF.Datamodel.Hardware;
+﻿using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Configuration.Hardware.Spi;
 
 public interface
-    ISpiChannelConfigurationBuilder : IChannelConfigurationBuilder<ISpiChannelConfigurationBuilder, ISpiChannelConfiguration, SignalFConfigurationOptions>
+    ISpiChannelConfigurationBuilder : IChannelConfigurationBuilder<ISpiChannelConfigurationBuilder, ISpiChannelConfiguration, SpiChannelOptions>
 {
     ISpiChannelConfigurationBuilder SetClockFrequency(int clockFrequency);
 

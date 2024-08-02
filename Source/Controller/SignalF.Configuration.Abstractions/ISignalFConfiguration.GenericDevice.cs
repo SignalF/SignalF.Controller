@@ -1,8 +1,5 @@
 ﻿using SignalF.Configuration.Devices;
-using SignalF.Controller;
-using SignalF.Controller.Configuration;
 using SignalF.Controller.Signals.Devices;
-using SignalF.Datamodel.DataOutput;
 using SignalF.Datamodel.Devices;
 
 namespace SignalF.Configuration;

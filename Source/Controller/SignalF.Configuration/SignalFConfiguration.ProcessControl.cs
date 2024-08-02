@@ -1,9 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SignalF.Configuration.ProcessControl;
-using SignalF.Controller;
-using SignalF.Controller.Configuration;
 using SignalF.Controller.Signals.ProcessControl;
-using SignalF.Datamodel.Hardware;
 using SignalF.Datamodel.Workflow;
 
 namespace SignalF.Configuration;
@@ -53,7 +50,7 @@ public partial class SignalFConfiguration : ISignalFConfiguration
 
     public ISignalFConfiguration AddProcessControlDefinition<TBuilder, TOptions, TType>(Action<TBuilder> action)
         where TBuilder : IProcessControlDefinitionBuilder<TBuilder, IProcessControlDefinition, TOptions>
-        where TOptions : SignalFConfigurationOptions
+        where TOptions : ProcessControlOptions
         where TType : class, IProcessControlAdapter
     {
         _signalProcessorDefinitions.Add(configuration =>

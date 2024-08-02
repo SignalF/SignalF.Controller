@@ -1,11 +1,9 @@
-﻿using SignalF.Controller;
-using SignalF.Controller.Configuration;
-using SignalF.Datamodel.Hardware;
+﻿using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Configuration.Hardware.Tcp;
 
 public class TcpChannelConfigurationBuilder :
-    ChannelConfigurationBuilder<TcpChannelConfigurationBuilder, ITcpChannelConfigurationBuilder, ITcpChannelConfiguration, SignalFConfigurationOptions>,
+    ChannelConfigurationBuilder<TcpChannelConfigurationBuilder, ITcpChannelConfigurationBuilder, ITcpChannelConfiguration, TcpChannelOptions>,
     ITcpChannelConfigurationBuilder
 {
     private int _port;

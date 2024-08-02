@@ -1,11 +1,9 @@
-﻿using SignalF.Controller;
-using SignalF.Controller.Configuration;
-using SignalF.Datamodel.Hardware;
+﻿using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Configuration.Hardware.Tcp;
 
 public class TcpDeviceBindingBuilder
-    : DeviceBindingBuilder<TcpDeviceBindingBuilder, ITcpDeviceBindingBuilder, ITcpDeviceBindingConfiguration, SignalFConfigurationOptions>
+    : DeviceBindingBuilder<TcpDeviceBindingBuilder, ITcpDeviceBindingBuilder, ITcpDeviceBindingConfiguration, TcpDeviceBindingOptions>
       , ITcpDeviceBindingBuilder
 {
     private string _ipAddress = "127.0.0.1";

@@ -1,10 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SignalF.Configuration.Devices;
-using SignalF.Configuration.Devices.Gpio;
-using SignalF.Controller;
-using SignalF.Controller.Configuration;
 using SignalF.Controller.Signals.Devices;
-using SignalF.Datamodel.DataOutput;
 using SignalF.Datamodel.Devices;
 
 namespace SignalF.Configuration;
@@ -69,7 +65,7 @@ public partial class SignalFConfiguration : ISignalFConfiguration
 
     public ISignalFConfiguration AddGenericDeviceTemplate<TBuilder, TOptions>(Action<TBuilder> action)
         where TBuilder : IGenericDeviceTemplateBuilder<TBuilder, IGenericDeviceTemplate, TOptions>
-        where TOptions : SignalFConfigurationOptions
+        where TOptions : GenericDeviceOptions
     {
         _signalProcessorTemplates.Add(configuration =>
         {
@@ -82,7 +78,7 @@ public partial class SignalFConfiguration : ISignalFConfiguration
 
     public ISignalFConfiguration AddGenericDeviceTemplate<TBuilder, TOptions, TType>(Action<TBuilder> action)
         where TBuilder : IGenericDeviceTemplateBuilder<TBuilder, IGenericDeviceTemplate, TOptions>
-        where TOptions : SignalFConfigurationOptions
+        where TOptions : GenericDeviceOptions
         where TType : class, IGenericDevice
     {
         _signalProcessorTemplates.Add(configuration =>

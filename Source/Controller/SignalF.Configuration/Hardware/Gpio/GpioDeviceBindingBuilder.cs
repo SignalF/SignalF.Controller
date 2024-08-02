@@ -1,11 +1,9 @@
-﻿using SignalF.Controller;
-using SignalF.Controller.Configuration;
-using SignalF.Datamodel.Hardware;
+﻿using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Configuration.Hardware.Gpio;
 
 public class GpioDeviceBindingBuilder
-    : DeviceBindingBuilder<GpioDeviceBindingBuilder, IGpioDeviceBindingBuilder, IGpioDeviceBindingConfiguration, SignalFConfigurationOptions>
+    : DeviceBindingBuilder<GpioDeviceBindingBuilder, IGpioDeviceBindingBuilder, IGpioDeviceBindingConfiguration, GpioDeviceBindingOptions>
       , IGpioDeviceBindingBuilder
 {
     protected override IGpioDeviceBindingBuilder This => this;

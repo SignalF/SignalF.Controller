@@ -1,13 +1,7 @@
 ﻿using SignalF.Controller;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SignalF.Configuration.SignalConfiguration
+namespace SignalF.Configuration.SignalConfiguration;
+
+public class SignalProcessorOptions : SignalFConfigurationOptions
 {
-    public class SignalProcessorOptions : SignalFConfigurationOptions
-    {
-    }
 }

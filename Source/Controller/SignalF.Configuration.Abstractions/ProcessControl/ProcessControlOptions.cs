@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SignalF.Configuration.SignalConfiguration;
-using SignalF.Configuration.StaticSignalProvider;
+﻿using SignalF.Configuration.SignalConfiguration;
 
-namespace SignalF.Configuration.ProcessControl
+namespace SignalF.Configuration.ProcessControl;
+
+public class ProcessControlOptions : SignalProcessorOptions
 {
-    public class ProcessControlOptions : SignalProcessorOptions
-    {
-    }
 }

@@ -1,8 +1,5 @@
 ﻿using SignalF.Configuration.ProcessControl;
-using SignalF.Controller;
-using SignalF.Controller.Configuration;
 using SignalF.Controller.Signals.ProcessControl;
-using SignalF.Datamodel.Hardware;
 using SignalF.Datamodel.Workflow;
 
 namespace SignalF.Configuration;

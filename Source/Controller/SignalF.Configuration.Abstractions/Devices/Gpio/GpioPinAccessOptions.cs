@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace SignalF.Configuration.Devices.Gpio;
 
-namespace SignalF.Configuration.Devices.Gpio
+public class GpioPinAccessOptions : DeviceOptions
 {
-    public class GpioPinAccessOptions : DeviceOptions
-    {
-    }
 }

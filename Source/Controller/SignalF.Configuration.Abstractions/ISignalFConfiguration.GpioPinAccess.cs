@@ -1,8 +1,5 @@
 ﻿using SignalF.Configuration.Devices.Gpio;
-using SignalF.Controller;
-using SignalF.Controller.Configuration;
 using SignalF.Controller.Signals.Devices;
-using SignalF.Datamodel.Devices;
 using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Configuration;

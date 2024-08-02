@@ -1,13 +1,10 @@
-﻿using SignalF.Controller;
-using SignalF.Controller.Configuration;
-using SignalF.Datamodel.Hardware;
+﻿using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Configuration.Hardware.Gpio;
 
 public class GpioChannelGroupBuilder
     : ChannelGroupBuilder<GpioChannelGroupBuilder, IGpioChannelGroupBuilder, IGpioChannelGroupConfiguration, IGpioChannelConfigurationBuilder,
-          IGpioChannelConfiguration,
-          SignalFConfigurationOptions>
+          IGpioChannelConfiguration, GpioChannelOptions>
       , IGpioChannelGroupBuilder
 {
     public GpioChannelGroupBuilder(Func<IGpioChannelConfigurationBuilder> channelBuilderFactory) : base(channelBuilderFactory)

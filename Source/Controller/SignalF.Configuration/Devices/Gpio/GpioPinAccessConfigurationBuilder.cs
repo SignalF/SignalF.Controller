@@ -1,7 +1,5 @@
 ﻿using SignalF.Configuration.Hardware;
 using SignalF.Configuration.SignalConfiguration;
-using SignalF.Controller;
-using SignalF.Controller.Configuration;
 using SignalF.Datamodel.Configuration;
 using SignalF.Datamodel.Hardware;
 
@@ -9,7 +7,7 @@ namespace SignalF.Configuration.Devices.Gpio;
 
 public class GpioPinAccessConfigurationBuilder
     : GpioPinAccessConfigurationBuilder<GpioPinAccessConfigurationBuilder, IGpioPinAccessConfigurationBuilder, IGpioPinAccessConfiguration,
-          SignalFConfigurationOptions>, IGpioPinAccessConfigurationBuilder
+          GpioPinAccessOptions>, IGpioPinAccessConfigurationBuilder
 {
     public GpioPinAccessConfigurationBuilder(IChannelToSignalEndpointMappingBuilder channelMappingBuilder)
         : base(channelMappingBuilder)
@@ -24,7 +22,7 @@ public abstract class GpioPinAccessConfigurationBuilder<TImpl, TBuilder, TConfig
     where TBuilder : IGpioPinAccessConfigurationBuilder<TBuilder, TConfiguration, TOptions>
     where TImpl : GpioPinAccessConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     where TConfiguration : IGpioPinAccessConfiguration
-    where TOptions : SignalFConfigurationOptions
+    where TOptions : GpioPinAccessOptions
 {
     private readonly IChannelToSignalEndpointMappingBuilder _channelMappingBuilder;
     private readonly List<SignalToChannelMapping> _mappings = new();

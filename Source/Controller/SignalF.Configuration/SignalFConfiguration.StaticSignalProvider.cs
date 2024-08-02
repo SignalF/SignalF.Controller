@@ -1,7 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SignalF.Configuration.StaticSignalProvider;
-using SignalF.Controller;
-using SignalF.Controller.Configuration;
 using SignalF.Controller.Signals.SignalProcessor;
 using SignalF.Datamodel.Signals;
 

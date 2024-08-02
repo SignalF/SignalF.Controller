@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SignalF.Controller;
+﻿using SignalF.Controller;
 
-namespace SignalF.Configuration.DataOutput
+namespace SignalF.Configuration.DataOutput;
+
+public class DataOutputSenderOptions : SignalFConfigurationOptions
 {
-    public class DataOutputSenderOptions : SignalFConfigurationOptions
-    {
-    }
 }

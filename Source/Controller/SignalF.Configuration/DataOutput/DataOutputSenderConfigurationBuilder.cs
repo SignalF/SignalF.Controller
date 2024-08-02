@@ -1,11 +1,9 @@
-﻿using SignalF.Controller;
-using SignalF.Controller.Configuration;
-using SignalF.Datamodel.DataOutput;
+﻿using SignalF.Datamodel.DataOutput;
 
 namespace SignalF.Configuration.DataOutput;
 
 public class DataOutputSenderConfigurationBuilder
-    : DataOutputSenderConfigurationBuilder<SignalFConfigurationOptions>, IDataOutputSenderConfigurationBuilder
+    : DataOutputSenderConfigurationBuilder<DataOutputSenderOptions>, IDataOutputSenderConfigurationBuilder
 {
     protected override IDataOutputSenderConfigurationBuilder This => this;
 }
@@ -14,7 +12,7 @@ public class DataOutputSenderConfigurationBuilder<TOptions>
     : DataOutputSenderConfigurationBuilder<DataOutputSenderConfigurationBuilder<TOptions>, IDataOutputSenderConfigurationBuilder<TOptions>,
           IDataOutputSenderConfiguration,
           TOptions>, IDataOutputSenderConfigurationBuilder<TOptions>
-    where TOptions : SignalFConfigurationOptions
+    where TOptions : DataOutputSenderOptions
 {
     protected override IDataOutputSenderConfigurationBuilder<TOptions> This => this;
 }
@@ -25,6 +23,6 @@ public abstract class DataOutputSenderConfigurationBuilder<TImpl, TBuilder, TCon
     where TBuilder : IDataOutputSenderConfigurationBuilder<TBuilder, TConfiguration, TOptions>
     where TImpl : DataOutputSenderConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     where TConfiguration : IDataOutputSenderConfiguration
-    where TOptions : SignalFConfigurationOptions
+    where TOptions : DataOutputSenderOptions
 {
 }

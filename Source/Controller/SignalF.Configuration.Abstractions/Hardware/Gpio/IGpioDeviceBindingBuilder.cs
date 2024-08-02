@@ -3,6 +3,6 @@
 namespace SignalF.Configuration.Hardware.Gpio;
 
 public interface IGpioDeviceBindingBuilder
-    : IDeviceBindingBuilder<IGpioDeviceBindingBuilder, IGpioDeviceBindingConfiguration>
+    : IDeviceBindingBuilder<IGpioDeviceBindingBuilder, IGpioDeviceBindingConfiguration, GpioDeviceBindingOptions>
 {
 }

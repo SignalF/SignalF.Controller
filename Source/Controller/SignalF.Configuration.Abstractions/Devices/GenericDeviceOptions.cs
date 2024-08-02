@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace SignalF.Configuration.Devices;
 
-namespace SignalF.Configuration.Devices
+public class GenericDeviceOptions : DeviceOptions
 {
-    public class GenericDeviceOptions : DeviceOptions
-    {
-    }
 }

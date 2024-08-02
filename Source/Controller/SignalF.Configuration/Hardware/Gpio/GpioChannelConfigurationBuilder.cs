@@ -1,29 +1,27 @@
-﻿using SignalF.Controller;
-using SignalF.Controller.Configuration;
-using SignalF.Datamodel.Hardware;
+﻿using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Configuration.Hardware.Gpio;
 
 public class GpioChannelConfigurationBuilder : ChannelConfigurationBuilder<GpioChannelConfigurationBuilder, IGpioChannelConfigurationBuilder,
-                                                   IGpioChannelConfiguration, SignalFConfigurationOptions>
+                                                   IGpioChannelConfiguration, GpioChannelOptions>
                                                , IGpioChannelConfigurationBuilder
 {
-    private GpioChannelOptions _options;
+    //private GpioChannelOptions _options;
     protected override IGpioChannelConfigurationBuilder This => this;
 
     public override void Build(IGpioChannelConfiguration configuration)
     {
         base.Build(configuration);
 
-        configuration.DriveMode = _options.DriveMode;
-        configuration.PinNumber = _options.PinNumber;
-        configuration.SharingMode = _options.SharingMode;
-        configuration.InitialValue = _options.InitialValue;
+        configuration.DriveMode = Options.DriveMode;
+        configuration.PinNumber = Options.PinNumber;
+        configuration.SharingMode = Options.SharingMode;
+        configuration.InitialValue = Options.InitialValue;
     }
 
-    public IGpioChannelConfigurationBuilder SetChannelOptions(GpioChannelOptions options)
-    {
-        _options = options;
-        return this;
-    }
+    //public IGpioChannelConfigurationBuilder SetChannelOptions(GpioChannelOptions2 options)
+    //{
+    //    _options = options;
+    //    return this;
+    //}
 }

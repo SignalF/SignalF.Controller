@@ -1,10 +1,8 @@
-﻿using SignalF.Controller;
-using SignalF.Controller.Configuration;
-using SignalF.Datamodel.Hardware;
+﻿using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Configuration.Hardware;
 
-public class DeviceBindingBuilder : DeviceBindingBuilder<DeviceBindingBuilder, IDeviceBindingBuilder, IDeviceBindingConfiguration, SignalFConfigurationOptions>,
+public class DeviceBindingBuilder : DeviceBindingBuilder<DeviceBindingBuilder, IDeviceBindingBuilder, IDeviceBindingConfiguration, DeviceBindingOptions>,
                                     IDeviceBindingBuilder
 {
     protected override IDeviceBindingBuilder This => this;
@@ -16,7 +14,7 @@ public abstract class DeviceBindingBuilder<TImpl, TBuilder, TConfiguration, TOpt
     where TImpl : DeviceBindingBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     where TBuilder : IDeviceBindingBuilder<TBuilder, TConfiguration, TOptions>
     where TConfiguration : IDeviceBindingConfiguration
-    where TOptions : SignalFConfigurationOptions
+    where TOptions : DeviceBindingOptions
 {
     public override void Build(TConfiguration configuration)
     {

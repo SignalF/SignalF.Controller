@@ -1,6 +1,4 @@
 ﻿using SignalF.Configuration.Hardware;
-using SignalF.Controller;
-using SignalF.Controller.Configuration;
 using SignalF.Controller.Hardware.Channels;
 using SignalF.Datamodel.Hardware;
 
@@ -11,16 +9,16 @@ public partial interface ISignalFConfiguration
     ISignalFConfiguration AddChannelGroup<TBuilder, TConfiguration, TChannelBuilder, TChannel, TOptions>(Action<TBuilder> builder)
         where TBuilder : IChannelGroupBuilder<TBuilder, TConfiguration, TChannelBuilder, TChannel, TOptions>
         where TConfiguration : IChannelGroupConfiguration
-        where TChannelBuilder : IChannelConfigurationBuilder<TChannelBuilder, TChannel, SignalFConfigurationOptions>
+        where TChannelBuilder : IChannelConfigurationBuilder<TChannelBuilder, TChannel, TOptions>
         where TChannel : IChannelConfiguration
-        where TOptions : SignalFConfigurationOptions;
+        where TOptions : ChannelOptions;
 
     ISignalFConfiguration AddChannelGroup<TBuilder, TConfiguration, TChannelBuilder, TChannel, TOptions, TType>(Action<TBuilder> builder)
         where TBuilder : IChannelGroupBuilder<TBuilder, TConfiguration, TChannelBuilder, TChannel, TOptions>
         where TConfiguration : IChannelGroupConfiguration
-        where TChannelBuilder : IChannelConfigurationBuilder<TChannelBuilder, TChannel, SignalFConfigurationOptions>
+        where TChannelBuilder : IChannelConfigurationBuilder<TChannelBuilder, TChannel, TOptions>
         where TChannel : IChannelConfiguration
-        where TOptions : SignalFConfigurationOptions
+        where TOptions : ChannelOptions
         where TType : class, IChannelGroup;
 
     ISignalFConfiguration AddChannelToDeviceMapping(Action<IChannelToDeviceMappingBuilder> builder);

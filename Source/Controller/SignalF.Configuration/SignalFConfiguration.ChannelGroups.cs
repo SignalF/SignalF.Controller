@@ -1,7 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SignalF.Configuration.Hardware;
-using SignalF.Controller;
-using SignalF.Controller.Configuration;
 using SignalF.Controller.Hardware.Channels;
 using SignalF.Datamodel.Hardware;
 
@@ -13,9 +11,9 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     public ISignalFConfiguration AddChannelGroup<TBuilder, TConfiguration, TChannelBuilder, TChannel, TOptions>(Action<TBuilder> builder)
         where TBuilder : IChannelGroupBuilder<TBuilder, TConfiguration, TChannelBuilder, TChannel, TOptions>
         where TConfiguration : IChannelGroupConfiguration
-        where TChannelBuilder : IChannelConfigurationBuilder<TChannelBuilder, TChannel, SignalFConfigurationOptions>
+        where TChannelBuilder : IChannelConfigurationBuilder<TChannelBuilder, TChannel, TOptions>
         where TChannel : IChannelConfiguration
-        where TOptions : SignalFConfigurationOptions
+        where TOptions : ChannelOptions
     {
         _channelGroups.Add(configuration =>
         {
@@ -30,9 +28,9 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     public ISignalFConfiguration AddChannelGroup<TBuilder, TConfiguration, TChannelBuilder, TChannel, TOptions, TType>(Action<TBuilder> builder)
         where TBuilder : IChannelGroupBuilder<TBuilder, TConfiguration, TChannelBuilder, TChannel, TOptions>
         where TConfiguration : IChannelGroupConfiguration
-        where TChannelBuilder : IChannelConfigurationBuilder<TChannelBuilder, TChannel, SignalFConfigurationOptions>
+        where TChannelBuilder : IChannelConfigurationBuilder<TChannelBuilder, TChannel, TOptions>
         where TChannel : IChannelConfiguration
-        where TOptions : SignalFConfigurationOptions
+        where TOptions : ChannelOptions
         where TType : class, IChannelGroup
     {
         _channelGroups.Add(configuration =>

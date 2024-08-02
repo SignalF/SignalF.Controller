@@ -1,13 +1,11 @@
-﻿using SignalF.Controller;
-using SignalF.Controller.Configuration;
-using SignalF.Datamodel.Configuration;
+﻿using SignalF.Datamodel.Configuration;
 using SignalF.Datamodel.Signals;
 
 namespace SignalF.Configuration.SignalConfiguration;
 
 public class SignalProcessorDefinitionBuilder
     : SignalProcessorDefinitionBuilder<SignalProcessorDefinitionBuilder, ISignalProcessorDefinitionBuilder, ISignalProcessorDefinition,
-          SignalFConfigurationOptions>, ISignalProcessorDefinitionBuilder
+          SignalProcessorOptions>, ISignalProcessorDefinitionBuilder
 {
     protected override ISignalProcessorDefinitionBuilder This => this;
 }
@@ -17,7 +15,7 @@ public abstract class SignalProcessorDefinitionBuilder<TImpl, TBuilder, TConfigu
     where TBuilder : ISignalProcessorDefinitionBuilder<TBuilder, TConfiguration, TOptions>
     where TImpl : SignalProcessorDefinitionBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     where TConfiguration : ISignalProcessorDefinition
-    where TOptions : SignalFConfigurationOptions
+    where TOptions : SignalProcessorOptions
 {
     private readonly List<SignalEndpointDefinitionBuilder> _signalSinks = new();
     private readonly List<SignalEndpointDefinitionBuilder> _signalSources = new();

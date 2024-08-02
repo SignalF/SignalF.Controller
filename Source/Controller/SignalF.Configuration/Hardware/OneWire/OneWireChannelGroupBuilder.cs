@@ -1,13 +1,10 @@
-﻿using SignalF.Controller;
-using SignalF.Controller.Configuration;
-using SignalF.Datamodel.Hardware;
+﻿using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Configuration.Hardware.OneWire;
 
 public class OneWireChannelGroupBuilder
     : ChannelGroupBuilder<OneWireChannelGroupBuilder, IOneWireChannelGroupBuilder, IOneWireChannelGroupConfiguration, IOneWireChannelConfigurationBuilder,
-          IOneWireChannelConfiguration,
-          SignalFConfigurationOptions>, IOneWireChannelGroupBuilder
+          IOneWireChannelConfiguration, OneWireChannelOptions>, IOneWireChannelGroupBuilder
 {
     public OneWireChannelGroupBuilder(Func<IOneWireChannelConfigurationBuilder> channelBuilderFactory) : base(channelBuilderFactory)
     {
