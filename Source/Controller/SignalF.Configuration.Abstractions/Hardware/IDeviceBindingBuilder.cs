@@ -1,16 +1,15 @@
-﻿using SignalF.Controller.Configuration;
-using SignalF.Datamodel.Hardware;
+﻿using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Configuration.Hardware;
 
 public interface IDeviceBindingBuilder
-    : IDeviceBindingBuilder<IDeviceBindingBuilder, IDeviceBindingConfiguration, SignalFConfigurationOptions>
+    : IDeviceBindingBuilder<IDeviceBindingBuilder, IDeviceBindingConfiguration, DeviceBindingOptions>
 {
 }
 
 public interface IDeviceBindingBuilder<out TBuilder, in TConfiguration>
-    : IDeviceBindingBuilder<TBuilder, TConfiguration, SignalFConfigurationOptions>
-    where TBuilder : IDeviceBindingBuilder<TBuilder, TConfiguration, SignalFConfigurationOptions>
+    : IDeviceBindingBuilder<TBuilder, TConfiguration, DeviceBindingOptions>
+    where TBuilder : IDeviceBindingBuilder<TBuilder, TConfiguration, DeviceBindingOptions>
     where TConfiguration : IDeviceBindingConfiguration
 {
 }
@@ -19,6 +18,6 @@ public interface IDeviceBindingBuilder<out TBuilder, in TConfiguration, in TOpti
     : ISignalFConfigurationBuilder<TBuilder, TConfiguration, TOptions>
     where TBuilder : IDeviceBindingBuilder<TBuilder, TConfiguration, TOptions>
     where TConfiguration : IDeviceBindingConfiguration
-    where TOptions : SignalFConfigurationOptions
+    where TOptions : DeviceBindingOptions
 {
 }

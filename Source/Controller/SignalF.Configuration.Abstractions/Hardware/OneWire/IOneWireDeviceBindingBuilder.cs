@@ -2,6 +2,7 @@
 
 namespace SignalF.Configuration.Hardware.OneWire;
 
-public interface IOneWireDeviceBindingBuilder : IDeviceBindingBuilder<IOneWireDeviceBindingBuilder, IOneWireDeviceBindingConfiguration>
+public interface
+    IOneWireDeviceBindingBuilder : IDeviceBindingBuilder<IOneWireDeviceBindingBuilder, IOneWireDeviceBindingConfiguration, OneWireDeviceBindingOptions>
 {
 }

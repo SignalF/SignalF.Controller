@@ -1,21 +1,17 @@
 ﻿using Microsoft.CodeAnalysis;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace SignalF.Configuration.SourceGenerator
+namespace SignalF.Configuration.SourceGenerator;
+
+[Generator(LanguageNames.CSharp)]
+public class DeviceConfigurationGenerator : ConfigurationGeneratorBase
 {
-    [Generator(LanguageNames.CSharp)]
-    public class DeviceConfigurationGenerator : ConfigurationGeneratorBase
+    protected override string GetTemplateName()
     {
-        protected override string GetTemplateName()
-        {
-            return "DeviceConfiguration";
-        }
+        return "DeviceConfiguration";
+    }
 
-        protected override string[] GetAttributes()
-        {
-            return new[]{ "SignalF.Configuration.DeviceAttribute" };
-        }
+    protected override string[] GetAttributes()
+    {
+        return new[] { "SignalF.Configuration.DeviceAttribute" };
     }
 }

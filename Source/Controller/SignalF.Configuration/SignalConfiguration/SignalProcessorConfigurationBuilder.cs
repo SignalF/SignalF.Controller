@@ -1,5 +1,4 @@
 ﻿using Scotec.Math.Units;
-using SignalF.Controller.Configuration;
 using SignalF.Datamodel.Configuration;
 using SignalF.Datamodel.Signals;
 
@@ -7,7 +6,7 @@ namespace SignalF.Configuration.SignalConfiguration;
 
 public class SignalProcessorConfigurationBuilder
     : SignalProcessorConfigurationBuilder<SignalProcessorConfigurationBuilder, ISignalProcessorConfigurationBuilder, ISignalProcessorConfiguration,
-          SignalFConfigurationOptions>, ISignalProcessorConfigurationBuilder
+          SignalProcessorOptions>, ISignalProcessorConfigurationBuilder
 {
     protected override ISignalProcessorConfigurationBuilder This => this;
 }
@@ -17,7 +16,7 @@ public abstract class SignalProcessorConfigurationBuilder<TImpl, TBuilder, TConf
     where TBuilder : ISignalProcessorConfigurationBuilder<TBuilder, TConfiguration, TOptions>
     where TImpl : SignalProcessorConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     where TConfiguration : ISignalProcessorConfiguration
-    where TOptions : SignalFConfigurationOptions
+    where TOptions : SignalProcessorOptions
 {
     private readonly List<SignalConfigurationBuilder> _signalSinks = new();
     private readonly List<SignalConfigurationBuilder> _signalSources = new();

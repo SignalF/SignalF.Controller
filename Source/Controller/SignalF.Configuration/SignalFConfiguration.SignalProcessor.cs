@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SignalF.Configuration.SignalConfiguration;
-using SignalF.Controller.Configuration;
 using SignalF.Controller.Signals.SignalProcessor;
 using SignalF.Datamodel.Signals;
 
@@ -9,8 +8,8 @@ namespace SignalF.Configuration;
 public partial class SignalFConfiguration : ISignalFConfiguration
 {
     public ISignalFConfiguration AddSignalProcessorConfiguration<TBuilder, TOptions>(Action<TBuilder> action)
-        where TBuilder : ISignalProcessorConfigurationBuilder
-        where TOptions : SignalFConfigurationOptions
+        where TBuilder : ISignalProcessorConfigurationBuilder<TBuilder, ISignalProcessorConfiguration, TOptions>
+        where TOptions : SignalProcessorOptions
     {
         _signalProcessorConfigurations.Add(configuration =>
         {
@@ -22,8 +21,8 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddSignalProcessorConfiguration<TBuilder, TOptions, TType>(Action<TBuilder> action)
-        where TBuilder : ISignalProcessorConfigurationBuilder
-        where TOptions : SignalFConfigurationOptions
+        where TBuilder : ISignalProcessorConfigurationBuilder<TBuilder, ISignalProcessorConfiguration, TOptions>
+        where TOptions : SignalProcessorOptions
         where TType : class, ISignalProcessor
     {
         _signalProcessorConfigurations.Add(configuration =>
@@ -37,8 +36,8 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddSignalProcessorDefinition<TBuilder, TOptions>(Action<TBuilder> action)
-        where TBuilder : ISignalProcessorDefinitionBuilder
-        where TOptions : SignalFConfigurationOptions
+        where TBuilder : ISignalProcessorDefinitionBuilder<TBuilder, ISignalProcessorDefinition, TOptions>
+        where TOptions : SignalProcessorOptions
     {
         _signalProcessorDefinitions.Add(configuration =>
         {
@@ -50,8 +49,8 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddSignalProcessorDefinition<TBuilder, TOptions, TType>(Action<TBuilder> action)
-        where TBuilder : ISignalProcessorDefinitionBuilder
-        where TOptions : SignalFConfigurationOptions
+        where TBuilder : ISignalProcessorDefinitionBuilder<TBuilder, ISignalProcessorDefinition, TOptions>
+        where TOptions : SignalProcessorOptions
         where TType : class, ISignalProcessor
     {
         _signalProcessorDefinitions.Add(configuration =>
@@ -65,8 +64,8 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddSignalProcessorTemplate<TBuilder, TOptions>(Action<TBuilder> action)
-        where TBuilder : ISignalProcessorTemplateBuilder
-        where TOptions : SignalFConfigurationOptions
+        where TBuilder : ISignalProcessorTemplateBuilder<TBuilder, ISignalProcessorTemplate, TOptions>
+        where TOptions : SignalProcessorOptions
     {
         _signalProcessorTemplates.Add(configuration =>
         {
@@ -78,8 +77,8 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddSignalProcessorTemplate<TBuilder, TOptions, TType>(Action<TBuilder> action)
-        where TBuilder : ISignalProcessorTemplateBuilder
-        where TOptions : SignalFConfigurationOptions
+        where TBuilder : ISignalProcessorTemplateBuilder<TBuilder, ISignalProcessorTemplate, TOptions>
+        where TOptions : SignalProcessorOptions
         where TType : class, ISignalProcessor
     {
         {

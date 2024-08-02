@@ -1,10 +1,9 @@
-﻿using SignalF.Controller.Configuration;
-using SignalF.Datamodel.Hardware;
+﻿using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Configuration.Hardware.Spi;
 
 public class SpiChannelConfigurationBuilder :
-    ChannelConfigurationBuilder<SpiChannelConfigurationBuilder, ISpiChannelConfigurationBuilder, ISpiChannelConfiguration, SignalFConfigurationOptions>,
+    ChannelConfigurationBuilder<SpiChannelConfigurationBuilder, ISpiChannelConfigurationBuilder, ISpiChannelConfiguration, SpiChannelOptions>,
     ISpiChannelConfigurationBuilder
 {
     private EGpioPinValue _activeState;

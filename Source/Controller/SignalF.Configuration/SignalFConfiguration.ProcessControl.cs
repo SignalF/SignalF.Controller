@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SignalF.Configuration.ProcessControl;
-using SignalF.Controller.Configuration;
 using SignalF.Controller.Signals.ProcessControl;
 using SignalF.Datamodel.Workflow;
 
@@ -9,8 +8,8 @@ namespace SignalF.Configuration;
 public partial class SignalFConfiguration : ISignalFConfiguration
 {
     public ISignalFConfiguration AddProcessControlConfiguration<TBuilder, TOptions>(Action<TBuilder> action)
-        where TBuilder : IProcessControlConfigurationBuilder
-        where TOptions : SignalFConfigurationOptions
+        where TBuilder : IProcessControlConfigurationBuilder<TBuilder, IProcessControlConfiguration, TOptions>
+        where TOptions : ProcessControlOptions
     {
         _signalProcessorConfigurations.Add(configuration =>
         {
@@ -22,8 +21,8 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddProcessControlConfiguration<TBuilder, TOptions, TType>(Action<TBuilder> action)
-        where TBuilder : IProcessControlConfigurationBuilder
-        where TOptions : SignalFConfigurationOptions
+        where TBuilder : IProcessControlConfigurationBuilder<TBuilder, IProcessControlConfiguration, TOptions>
+        where TOptions : ProcessControlOptions
         where TType : class, IProcessControlAdapter
     {
         _signalProcessorConfigurations.Add(configuration =>
@@ -37,8 +36,8 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddProcessControlDefinition<TBuilder, TOptions>(Action<TBuilder> action)
-        where TBuilder : IProcessControlDefinitionBuilder
-        where TOptions : SignalFConfigurationOptions
+        where TBuilder : IProcessControlDefinitionBuilder<TBuilder, IProcessControlDefinition, TOptions>
+        where TOptions : ProcessControlOptions
     {
         _signalProcessorDefinitions.Add(configuration =>
         {
@@ -50,8 +49,8 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddProcessControlDefinition<TBuilder, TOptions, TType>(Action<TBuilder> action)
-        where TBuilder : IProcessControlDefinitionBuilder
-        where TOptions : SignalFConfigurationOptions
+        where TBuilder : IProcessControlDefinitionBuilder<TBuilder, IProcessControlDefinition, TOptions>
+        where TOptions : ProcessControlOptions
         where TType : class, IProcessControlAdapter
     {
         _signalProcessorDefinitions.Add(configuration =>
@@ -65,8 +64,8 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddProcessControlTemplate<TBuilder, TOptions>(Action<TBuilder> action)
-        where TBuilder : IProcessControlTemplateBuilder
-        where TOptions : SignalFConfigurationOptions
+        where TBuilder : IProcessControlTemplateBuilder<TBuilder, IProcessControlTemplate, TOptions>
+        where TOptions : ProcessControlOptions
     {
         _signalProcessorTemplates.Add(configuration =>
         {
@@ -78,8 +77,8 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddProcessControlTemplate<TBuilder, TOptions, TType>(Action<TBuilder> action)
-        where TBuilder : IProcessControlTemplateBuilder
-        where TOptions : SignalFConfigurationOptions
+        where TBuilder : IProcessControlTemplateBuilder<TBuilder, IProcessControlTemplate, TOptions>
+        where TOptions : ProcessControlOptions
         where TType : class, IProcessControlAdapter
     {
         _signalProcessorTemplates.Add(configuration =>

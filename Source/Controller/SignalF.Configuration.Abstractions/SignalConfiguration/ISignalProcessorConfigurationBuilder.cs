@@ -1,10 +1,9 @@
-﻿using SignalF.Controller.Configuration;
-using SignalF.Datamodel.Signals;
+﻿using SignalF.Datamodel.Signals;
 
 namespace SignalF.Configuration.SignalConfiguration;
 
 public interface ISignalProcessorConfigurationBuilder : ISignalProcessorConfigurationBuilder<ISignalProcessorConfigurationBuilder, ISignalProcessorConfiguration
-    , SignalFConfigurationOptions>
+    , SignalProcessorOptions>
 {
 }
 
@@ -12,7 +11,7 @@ public interface ISignalProcessorConfigurationBuilder<out TBuilder, in TConfigur
     : ISignalFConfigurationBuilder<TBuilder, TConfiguration, TOptions>
     where TBuilder : ISignalProcessorConfigurationBuilder<TBuilder, TConfiguration, TOptions>
     where TConfiguration : ISignalProcessorConfiguration
-    where TOptions : SignalFConfigurationOptions
+    where TOptions : SignalProcessorOptions
 {
     TBuilder UseDefinition(string definitionName);
 

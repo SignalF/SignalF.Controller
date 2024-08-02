@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using Microsoft.CodeAnalysis;
+﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace SignalF.Configuration.SourceGenerator;
@@ -37,7 +36,7 @@ public abstract class ConfigurationGeneratorBase : IncrementalGenerator
         var template = LoadTemplate(GetTemplateName());
         if (!string.IsNullOrEmpty(template))
         {
-            var content = string.Format(template, className);
+            var content = string.Format(template, @namespace, className, globalNamespace);
             sourceContext.AddSource($"{className}Factory.g.cs", content);
         }
     }

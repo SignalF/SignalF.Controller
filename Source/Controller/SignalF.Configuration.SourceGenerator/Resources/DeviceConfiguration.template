@@ -4,61 +4,62 @@ using SignalF.Configuration.Devices;
 using SignalF.Controller.Configuration;
 using SignalF.Datamodel.Hardware;
 
-namespace SignalF.Extensions.IotDevices.{0};
+namespace {0};
 
-public partial class {0}Options : SignalFConfigurationOptions
+public partial class {1}Options : SignalFConfigurationOptions
 {{
 }}
 
-public interface
-    I{0}ConfigurationBuilder : I{0}ConfigurationBuilder<I{0}ConfigurationBuilder,
-        IDeviceConfiguration, {0}Options>
+public partial interface
+    I{1}ConfigurationBuilder : I{1}ConfigurationBuilder<I{1}ConfigurationBuilder,
+        IDeviceConfiguration, {1}Options>
 {{
 }}
 
-public interface
-    I{0}ConfigurationBuilder<out TBuilder, in TConfiguration, in TOptions> : IDeviceConfigurationBuilder<TBuilder, TConfiguration,
+public partial interface
+    I{1}ConfigurationBuilder<out TBuilder, in TConfiguration, in TOptions> : IDeviceConfigurationBuilder<TBuilder, TConfiguration,
         TOptions>
     where TBuilder : IDeviceConfigurationBuilder<TBuilder, TConfiguration, TOptions>
     where TConfiguration : IDeviceConfiguration
-    where TOptions : {0}Options
+    where TOptions : {1}Options
 {{
 }}
 
-public class {0}ConfigurationBuilder
-    : {0}ConfigurationBuilder<{0}ConfigurationBuilder, I{0}ConfigurationBuilder,
-          IDeviceConfiguration, {0}Options>, I{0}ConfigurationBuilder
+public partial class {1}ConfigurationBuilder
+    : {1}ConfigurationBuilder<{1}ConfigurationBuilder, I{1}ConfigurationBuilder,
+          IDeviceConfiguration, {1}Options>, I{1}ConfigurationBuilder
 {{
-    protected override I{0}ConfigurationBuilder This => this;
+    protected override I{1}ConfigurationBuilder This => this;
 }}
 
-public abstract class {0}ConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
+public abstract partial class {1}ConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     : DeviceConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
-      , I{0}ConfigurationBuilder<TBuilder, TConfiguration, TOptions>
-    where TBuilder : I{0}ConfigurationBuilder<TBuilder, TConfiguration, TOptions>
-    where TImpl : {0}ConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
+      , I{1}ConfigurationBuilder<TBuilder, TConfiguration, TOptions>
+    where TBuilder : I{1}ConfigurationBuilder<TBuilder, TConfiguration, TOptions>
+    where TImpl : {1}ConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     where TConfiguration : IDeviceConfiguration
-    where TOptions : {0}Options
+    where TOptions : {1}Options
 {{
 }}
 
-public static class {0}Extensions
+public static partial class {1}Extensions
 {{
-    public static ISignalFConfiguration Add{0}Configuration(this ISignalFConfiguration configuration,
-                                                               Action<I{0}ConfigurationBuilder> builder)
+    public static ISignalFConfiguration Add{1}Configuration(this ISignalFConfiguration configuration,
+                                                               Action<I{1}ConfigurationBuilder> builder)
     {{
-        return configuration.AddDeviceConfiguration<I{0}ConfigurationBuilder, {0}Options>(builder);
+        return configuration.AddDeviceConfiguration<I{1}ConfigurationBuilder, {1}Options>(builder);
     }}
 
-    public static ISignalFConfiguration Add{0}Configuration<TType>(this ISignalFConfiguration configuration
-                                                                      , Action<I{0}ConfigurationBuilder> builder)
-        where TType : {0}
+    public static ISignalFConfiguration Add{1}Configuration<TType>(this ISignalFConfiguration configuration
+                                                                      , Action<I{1}ConfigurationBuilder> builder)
+        where TType : {1}
     {{
-        return configuration.AddDeviceConfiguration<I{0}ConfigurationBuilder, {0}Options, TType>(builder);
+        return configuration.AddDeviceConfiguration<I{1}ConfigurationBuilder, {1}Options, TType>(builder);
     }}
 
-    public static IServiceCollection Add{0}(this IServiceCollection services)
+    public static IServiceCollection Add{1}(this IServiceCollection services)
     {{
-        return services.AddTransient<{0}>();
+        return services.AddTransient<{1}>()
+                       .AddTransient<I{1}ConfigurationBuilder, {1}ConfigurationBuilder>;
     }}
 }}

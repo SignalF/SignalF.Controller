@@ -2,7 +2,7 @@
 
 namespace SignalF.Configuration.Hardware.Spi;
 
-public interface ISpiDeviceBindingBuilder : IDeviceBindingBuilder<ISpiDeviceBindingBuilder, ISpiDeviceBindingConfiguration>
+public interface ISpiDeviceBindingBuilder : IDeviceBindingBuilder<ISpiDeviceBindingBuilder, ISpiDeviceBindingConfiguration, SpiDeviceBindingOptions>
 {
     ISpiDeviceBindingBuilder SetBusId(int busId);
 }

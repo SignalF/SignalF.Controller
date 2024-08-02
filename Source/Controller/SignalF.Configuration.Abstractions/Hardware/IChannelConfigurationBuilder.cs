@@ -1,9 +1,8 @@
-﻿using SignalF.Controller.Configuration;
-using SignalF.Datamodel.Hardware;
+﻿using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Configuration.Hardware;
 
-public interface IChannelConfigurationBuilder : IChannelConfigurationBuilder<IChannelConfigurationBuilder, IChannelConfiguration, SignalFConfigurationOptions>
+public interface IChannelConfigurationBuilder : IChannelConfigurationBuilder<IChannelConfigurationBuilder, IChannelConfiguration, ChannelOptions>
 {
 }
 
@@ -11,6 +10,6 @@ public interface IChannelConfigurationBuilder<out TBuilder, in TConfiguration, i
     : ISignalFConfigurationBuilder<TBuilder, TConfiguration, TOptions>
     where TBuilder : IChannelConfigurationBuilder<TBuilder, TConfiguration, TOptions>
     where TConfiguration : IChannelConfiguration
-    where TOptions : SignalFConfigurationOptions
+    where TOptions : ChannelOptions
 {
 }

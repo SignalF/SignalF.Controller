@@ -3,7 +3,6 @@
 namespace SignalF.Configuration.Hardware.OneWire;
 
 public interface IOneWireChannelGroupBuilder : IChannelGroupBuilder<IOneWireChannelGroupBuilder, IOneWireChannelGroupConfiguration,
-    IOneWireChannelConfigurationBuilder,
-    IOneWireChannelConfiguration>
+    IOneWireChannelConfigurationBuilder, IOneWireChannelConfiguration, OneWireChannelOptions>
 {
 }

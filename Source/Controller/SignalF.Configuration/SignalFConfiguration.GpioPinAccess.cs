@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SignalF.Configuration.Devices.Gpio;
-using SignalF.Controller.Configuration;
 using SignalF.Controller.Signals.Devices;
 using SignalF.Datamodel.Hardware;
 
@@ -9,8 +8,8 @@ namespace SignalF.Configuration;
 public partial class SignalFConfiguration : ISignalFConfiguration
 {
     public ISignalFConfiguration AddGpioPinAccessConfiguration<TBuilder, TOptions>(Action<TBuilder> action)
-        where TBuilder : IGpioPinAccessConfigurationBuilder
-        where TOptions : SignalFConfigurationOptions
+        where TBuilder : IGpioPinAccessConfigurationBuilder<TBuilder, IGpioPinAccessConfiguration, TOptions>
+        where TOptions : GpioPinAccessOptions
     {
         _signalProcessorConfigurations.Add(configuration =>
         {
@@ -22,8 +21,8 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddGpioPinAccessConfiguration<TBuilder, TOptions, TType>(Action<TBuilder> action)
-        where TBuilder : IGpioPinAccessConfigurationBuilder
-        where TOptions : SignalFConfigurationOptions
+        where TBuilder : IGpioPinAccessConfigurationBuilder<TBuilder, IGpioPinAccessConfiguration, TOptions>
+        where TOptions : GpioPinAccessOptions
         where TType : class, IGpioPinAccess
     {
         _signalProcessorConfigurations.Add(configuration =>
@@ -37,8 +36,8 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddGpioPinAccessDefinition<TBuilder, TOptions>(Action<TBuilder> action)
-        where TBuilder : IGpioPinAccessDefinitionBuilder
-        where TOptions : SignalFConfigurationOptions
+        where TBuilder : IGpioPinAccessDefinitionBuilder<TBuilder, IGpioPinAccessDefinition, TOptions>
+        where TOptions : GpioPinAccessOptions
     {
         _signalProcessorDefinitions.Add(configuration =>
         {
@@ -50,8 +49,8 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddGpioPinAccessDefinition<TBuilder, TOptions, TType>(Action<TBuilder> action)
-        where TBuilder : IGpioPinAccessDefinitionBuilder
-        where TOptions : SignalFConfigurationOptions
+        where TBuilder : IGpioPinAccessDefinitionBuilder<TBuilder, IGpioPinAccessDefinition, TOptions>
+        where TOptions : GpioPinAccessOptions
         where TType : class, IGpioPinAccess
     {
         _signalProcessorDefinitions.Add(configuration =>
@@ -65,8 +64,8 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddGpioPinAccessTemplate<TBuilder, TOptions>(Action<TBuilder> action)
-        where TBuilder : IGpioPinAccessTemplateBuilder
-        where TOptions : SignalFConfigurationOptions
+        where TBuilder : IGpioPinAccessTemplateBuilder<TBuilder, IGpioPinAccessTemplate, TOptions>
+        where TOptions : GpioPinAccessOptions
     {
         _signalProcessorTemplates.Add(configuration =>
         {
@@ -78,8 +77,8 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddGpioPinAccessTemplate<TBuilder, TOptions, TType>(Action<TBuilder> action)
-        where TBuilder : IGpioPinAccessTemplateBuilder
-        where TOptions : SignalFConfigurationOptions
+        where TBuilder : IGpioPinAccessTemplateBuilder<TBuilder, IGpioPinAccessTemplate, TOptions>
+        where TOptions : GpioPinAccessOptions
         where TType : class, IGpioPinAccess
     {
         _signalProcessorTemplates.Add(configuration =>

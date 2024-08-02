@@ -1,12 +1,10 @@
-﻿using SignalF.Controller.Configuration;
-using SignalF.Datamodel.Hardware;
+﻿using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Configuration.Hardware.I2c;
 
 public class I2cChannelGroupBuilder
     : ChannelGroupBuilder<I2cChannelGroupBuilder, II2cChannelGroupBuilder, II2cChannelGroupConfiguration, II2CChannelConfigurationBuilder,
-          II2cChannelConfiguration,
-          SignalFConfigurationOptions>
+          II2cChannelConfiguration, I2cChannelOptions>
       , II2cChannelGroupBuilder
 {
     private readonly List<Action<II2CChannelConfigurationBuilder>> _channels = new();

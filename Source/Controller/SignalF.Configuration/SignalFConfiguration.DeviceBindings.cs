@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SignalF.Configuration.Hardware;
-using SignalF.Controller.Configuration;
 using SignalF.Controller.Hardware.DeviceBindings;
 using SignalF.Datamodel.Hardware;
 
@@ -11,7 +10,7 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     public ISignalFConfiguration AddDeviceBinding<TBuilder, TConfiguration, TOptions>(Action<TBuilder> builder)
         where TBuilder : IDeviceBindingBuilder<TBuilder, TConfiguration, TOptions>
         where TConfiguration : IDeviceBindingConfiguration
-        where TOptions : SignalFConfigurationOptions
+        where TOptions : DeviceBindingOptions
     {
         _deviceBindings.Add(configuration =>
         {
@@ -25,7 +24,7 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     public ISignalFConfiguration AddDeviceBinding<TBuilder, TConfiguration, TOptions, TType>(Action<TBuilder> builder)
         where TBuilder : IDeviceBindingBuilder<TBuilder, TConfiguration, TOptions>
         where TConfiguration : IDeviceBindingConfiguration
-        where TOptions : SignalFConfigurationOptions
+        where TOptions : DeviceBindingOptions
         where TType : class, IDeviceBinding
     {
         _deviceBindings.Add(configuration =>

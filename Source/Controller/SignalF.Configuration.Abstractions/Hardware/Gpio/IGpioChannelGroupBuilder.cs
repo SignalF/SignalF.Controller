@@ -3,6 +3,7 @@
 namespace SignalF.Configuration.Hardware.Gpio;
 
 public interface IGpioChannelGroupBuilder
-    : IChannelGroupBuilder<IGpioChannelGroupBuilder, IGpioChannelGroupConfiguration, IGpioChannelConfigurationBuilder, IGpioChannelConfiguration>
+    : IChannelGroupBuilder<IGpioChannelGroupBuilder, IGpioChannelGroupConfiguration, IGpioChannelConfigurationBuilder, IGpioChannelConfiguration,
+        GpioChannelOptions>
 {
 }

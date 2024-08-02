@@ -1,11 +1,10 @@
 ﻿using SignalF.Configuration.SignalConfiguration;
-using SignalF.Controller.Configuration;
 using SignalF.Datamodel.Calculation;
 
 namespace SignalF.Configuration.Calculators;
 
 public class CalculatorDefinitionBuilder
-    : CalculatorDefinitionBuilder<CalculatorDefinitionBuilder, ICalculatorDefinitionBuilder, ICalculatorDefinition, SignalFConfigurationOptions>,
+    : CalculatorDefinitionBuilder<CalculatorDefinitionBuilder, ICalculatorDefinitionBuilder, ICalculatorDefinition, CalculatorOptions>,
       ICalculatorDefinitionBuilder
 {
     protected override ICalculatorDefinitionBuilder This => this;
@@ -16,6 +15,6 @@ public abstract class CalculatorDefinitionBuilder<TImpl, TBuilder, TConfiguratio
     where TBuilder : ICalculatorDefinitionBuilder<TBuilder, TConfiguration, TOptions>
     where TImpl : CalculatorDefinitionBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     where TConfiguration : ICalculatorDefinition
-    where TOptions : SignalFConfigurationOptions
+    where TOptions : CalculatorOptions
 {
 }

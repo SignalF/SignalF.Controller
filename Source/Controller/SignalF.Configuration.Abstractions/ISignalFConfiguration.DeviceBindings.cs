@@ -1,5 +1,4 @@
 ﻿using SignalF.Configuration.Hardware;
-using SignalF.Controller.Configuration;
 using SignalF.Controller.Hardware.DeviceBindings;
 using SignalF.Datamodel.Hardware;
 
@@ -12,11 +11,11 @@ public partial interface ISignalFConfiguration
     ISignalFConfiguration AddDeviceBinding<TBuilder, TConfiguration, TOptions>(Action<TBuilder> builder)
         where TBuilder : IDeviceBindingBuilder<TBuilder, TConfiguration, TOptions>
         where TConfiguration : IDeviceBindingConfiguration
-        where TOptions : SignalFConfigurationOptions;
+        where TOptions : DeviceBindingOptions;
 
     ISignalFConfiguration AddDeviceBinding<TBuilder, TConfiguration, TOptions, TType>(Action<TBuilder> builder)
         where TBuilder : IDeviceBindingBuilder<TBuilder, TConfiguration, TOptions>
         where TConfiguration : IDeviceBindingConfiguration
-        where TOptions : SignalFConfigurationOptions
+        where TOptions : DeviceBindingOptions
         where TType : class, IDeviceBinding;
 }
