@@ -7,13 +7,13 @@ public class DeviceGenerator : GeneratorBase
 {
     protected override string[] GetTemplateNames()
     {
-        return new string[]
+        return new[]
         {
             "DeviceOptions",
             "ConfigurationBuilder",
             "DefinitionBuilder",
             "TemplateBuilder",
-            "DeviceExtensions",
+            "DeviceExtensions"
         };
     }
 
