@@ -1,5 +1,6 @@
 ﻿using SignalF.Configuration.Hardware;
 using SignalF.Configuration.Hardware.Spi;
+using SignalF.Controller;
 using SignalF.Controller.Configuration;
 using SignalF.Datamodel.Hardware;
 

@@ -7,7 +7,6 @@
 		<UseNuspec>true</UseNuspec>
 	</PropertyGroup>
 
-
 	<PropertyGroup>
 		<Description>SignalF controller extensions.</Description>
 		<Title>SignalF.Extensions.Controller</Title>

@@ -1,35 +1,38 @@
 ﻿using SignalF.Configuration.ProcessControl;
+using SignalF.Controller;
 using SignalF.Controller.Configuration;
 using SignalF.Controller.Signals.ProcessControl;
+using SignalF.Datamodel.Hardware;
+using SignalF.Datamodel.Workflow;
 
 namespace SignalF.Configuration;
 
 public partial interface ISignalFConfiguration
 {
     ISignalFConfiguration AddProcessControlConfiguration<TBuilder, TOptions>(Action<TBuilder> builder)
-        where TBuilder : IProcessControlConfigurationBuilder
-        where TOptions : SignalFConfigurationOptions;
+        where TBuilder : IProcessControlConfigurationBuilder<TBuilder, IProcessControlConfiguration, TOptions>
+        where TOptions : ProcessControlOptions;
 
     ISignalFConfiguration AddProcessControlConfiguration<TBuilder, TOptions, TType>(Action<TBuilder> builder)
-        where TBuilder : IProcessControlConfigurationBuilder
-        where TOptions : SignalFConfigurationOptions
+        where TBuilder : IProcessControlConfigurationBuilder<TBuilder, IProcessControlConfiguration, TOptions>
+        where TOptions : ProcessControlOptions
         where TType : class, IProcessControlAdapter;
 
     ISignalFConfiguration AddProcessControlDefinition<TBuilder, TOptions>(Action<TBuilder> builder)
-        where TBuilder : IProcessControlDefinitionBuilder
-        where TOptions : SignalFConfigurationOptions;
+        where TBuilder : IProcessControlDefinitionBuilder<TBuilder, IProcessControlDefinition, TOptions>
+        where TOptions : ProcessControlOptions;
 
     ISignalFConfiguration AddProcessControlDefinition<TBuilder, TOptions, TType>(Action<TBuilder> builder)
-        where TBuilder : IProcessControlDefinitionBuilder
-        where TOptions : SignalFConfigurationOptions
+        where TBuilder : IProcessControlDefinitionBuilder<TBuilder, IProcessControlDefinition, TOptions>
+        where TOptions : ProcessControlOptions
         where TType : class, IProcessControlAdapter;
 
     ISignalFConfiguration AddProcessControlTemplate<TBuilder, TOptions>(Action<TBuilder> builder)
-        where TBuilder : IProcessControlTemplateBuilder
-        where TOptions : SignalFConfigurationOptions;
+        where TBuilder : IProcessControlTemplateBuilder<TBuilder, IProcessControlTemplate, TOptions>
+        where TOptions : ProcessControlOptions;
 
     ISignalFConfiguration AddProcessControlTemplate<TBuilder, TOptions, TType>(Action<TBuilder> builder)
-        where TBuilder : IProcessControlTemplateBuilder
-        where TOptions : SignalFConfigurationOptions
+        where TBuilder : IProcessControlTemplateBuilder<TBuilder, IProcessControlTemplate, TOptions>
+        where TOptions : ProcessControlOptions
         where TType : class, IProcessControlAdapter;
 }

@@ -1,4 +1,5 @@
-﻿using SignalF.Controller.Configuration;
+﻿using SignalF.Controller;
+using SignalF.Controller.Configuration;
 using SignalF.Datamodel.DataOutput;
 
 namespace SignalF.Configuration.DataOutput;

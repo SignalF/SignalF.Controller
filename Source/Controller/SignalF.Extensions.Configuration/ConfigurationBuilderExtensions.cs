@@ -12,6 +12,7 @@ using SignalF.Configuration.Hardware.Tcp;
 using SignalF.Configuration.ProcessControl;
 using SignalF.Configuration.SignalConfiguration;
 using SignalF.Configuration.StaticSignalProvider;
+using SignalF.Controller;
 using SignalF.Controller.Configuration;
 using SignalF.Controller.DataOutput;
 using SignalF.Controller.Hardware.Channels.Gpio;
@@ -24,7 +25,6 @@ using SignalF.Controller.Signals.Calculators;
 using SignalF.Controller.Signals.Devices;
 using SignalF.Controller.Signals.ProcessControl;
 using SignalF.Controller.Signals.SignalProcessor;
-using SignalF.Datamodel.DataOutput;
 using SignalF.Datamodel.Hardware;
 
 namespace SignalF.Extensions.Configuration;
@@ -34,7 +34,7 @@ public static class ConfigurationBuilderExtensions
     #region DataOutputSender
 
     public static ISignalFConfiguration AddDataOutputSender<TType, TOptions>(this ISignalFConfiguration configuration
-                                                                             , Action<IDataOutputSenderConfigurationBuilder> builder)
+                                                                             , Action<IDataOutputSenderConfigurationBuilder<TOptions>> builder)
         where TType : class, IDataOutputSender
         where TOptions : SignalFConfigurationOptions
     {

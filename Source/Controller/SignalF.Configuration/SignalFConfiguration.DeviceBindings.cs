@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SignalF.Configuration.Hardware;
+using SignalF.Controller;
 using SignalF.Controller.Configuration;
 using SignalF.Controller.Hardware.DeviceBindings;
 using SignalF.Datamodel.Hardware;

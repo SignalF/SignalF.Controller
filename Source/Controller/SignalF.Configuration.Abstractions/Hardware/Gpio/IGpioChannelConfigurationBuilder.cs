@@ -1,9 +1,9 @@
-﻿using SignalF.Configuration.Hardware;
-using SignalF.Controller.Configuration;
+﻿using SignalF.Controller;
 using SignalF.Datamodel.Hardware;
 
-public interface
-    IGpioChannelConfigurationBuilder : IChannelConfigurationBuilder<IGpioChannelConfigurationBuilder, IGpioChannelConfiguration, SignalFConfigurationOptions>
+namespace SignalF.Configuration.Hardware.Gpio;
+
+public interface IGpioChannelConfigurationBuilder : IChannelConfigurationBuilder<IGpioChannelConfigurationBuilder, IGpioChannelConfiguration, SignalFConfigurationOptions>
 {
     IGpioChannelConfigurationBuilder SetChannelOptions(GpioChannelOptions options);
 }

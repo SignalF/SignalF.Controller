@@ -1,6 +1,7 @@
 ﻿using SignalF.Configuration.Calculators;
 using SignalF.Configuration.Devices;
 using SignalF.Configuration.SignalConfiguration;
+using SignalF.Controller;
 using SignalF.Controller.Configuration;
 using SignalF.Controller.Signals.Calculators;
 using SignalF.Controller.Signals.Devices;

@@ -1,15 +1,17 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SignalF.Configuration.Calculators;
+using SignalF.Controller;
 using SignalF.Controller.Configuration;
 using SignalF.Controller.Signals.Calculators;
 using SignalF.Datamodel.Calculation;
+using SignalF.Datamodel.Signals;
 
 namespace SignalF.Configuration;
 
 public partial class SignalFConfiguration : ISignalFConfiguration
 {
     public ISignalFConfiguration AddCalculatorConfiguration<TBuilder, TOptions>(Action<TBuilder> action)
-        where TBuilder : ICalculatorConfigurationBuilder
+        where TBuilder : ICalculatorConfigurationBuilder<TBuilder, ICalculatorConfiguration, TOptions>
         where TOptions : SignalFConfigurationOptions
     {
         _signalProcessorConfigurations.Add(configuration =>
@@ -22,7 +24,7 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddCalculatorConfiguration<TBuilder, TOptions, TType>(Action<TBuilder> action)
-        where TBuilder : ICalculatorConfigurationBuilder
+        where TBuilder : ICalculatorConfigurationBuilder<TBuilder, ICalculatorConfiguration, TOptions>
         where TOptions : SignalFConfigurationOptions
         where TType : class, ICalculator
     {
@@ -37,7 +39,7 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddCalculatorDefinition<TBuilder, TOptions>(Action<TBuilder> action)
-        where TBuilder : ICalculatorDefinitionBuilder
+        where TBuilder : ICalculatorDefinitionBuilder<TBuilder, ICalculatorDefinition, TOptions>
         where TOptions : SignalFConfigurationOptions
     {
         _signalProcessorDefinitions.Add(configuration =>
@@ -50,7 +52,7 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddCalculatorDefinition<TBuilder, TOptions, TType>(Action<TBuilder> action)
-        where TBuilder : ICalculatorDefinitionBuilder
+        where TBuilder : ICalculatorDefinitionBuilder<TBuilder, ICalculatorDefinition, TOptions>
         where TOptions : SignalFConfigurationOptions
         where TType : class, ICalculator
     {
@@ -65,7 +67,7 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddCalculatorTemplate<TBuilder, TOptions>(Action<TBuilder> action)
-        where TBuilder : ICalculatorTemplateBuilder
+        where TBuilder : ICalculatorTemplateBuilder<TBuilder, ICalculatorTemplate, TOptions>
         where TOptions : SignalFConfigurationOptions
     {
         _signalProcessorTemplates.Add(configuration =>
@@ -78,7 +80,7 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddCalculatorTemplate<TBuilder, TOptions, TType>(Action<TBuilder> action)
-        where TBuilder : ICalculatorTemplateBuilder
+        where TBuilder : ICalculatorTemplateBuilder<TBuilder, ICalculatorTemplate, TOptions>
         where TOptions : SignalFConfigurationOptions
         where TType : class, ICalculator
     {

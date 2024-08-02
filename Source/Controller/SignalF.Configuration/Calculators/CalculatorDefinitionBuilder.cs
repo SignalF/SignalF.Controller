@@ -1,4 +1,5 @@
 ﻿using SignalF.Configuration.SignalConfiguration;
+using SignalF.Controller;
 using SignalF.Controller.Configuration;
 using SignalF.Datamodel.Calculation;
 

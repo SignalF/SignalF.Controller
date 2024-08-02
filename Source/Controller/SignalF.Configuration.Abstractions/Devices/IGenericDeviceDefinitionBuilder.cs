@@ -1,16 +1,17 @@
-﻿using SignalF.Controller.Configuration;
+﻿using SignalF.Controller;
+using SignalF.Controller.Configuration;
 using SignalF.Datamodel.Devices;
 
 namespace SignalF.Configuration.Devices;
 
 public interface
-    IGenericDeviceDefinitionBuilder : IGenericDeviceDefinitionBuilder<IGenericDeviceDefinitionBuilder, IGenericDeviceDefinition, SignalFConfigurationOptions>
+    IGenericDeviceDefinitionBuilder : IGenericDeviceDefinitionBuilder<IGenericDeviceDefinitionBuilder, IGenericDeviceDefinition, GenericDeviceOptions>
 {
 }
 
 public interface IGenericDeviceDefinitionBuilder<out TBuilder, in TConfiguration, in TOptions> : IDeviceDefinitionBuilder<TBuilder, TConfiguration, TOptions>
     where TBuilder : IGenericDeviceDefinitionBuilder<TBuilder, TConfiguration, TOptions>
     where TConfiguration : IGenericDeviceDefinition
-    where TOptions : SignalFConfigurationOptions
+    where TOptions : GenericDeviceOptions
 {
 }

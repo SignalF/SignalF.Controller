@@ -1,7 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SignalF.Configuration.DataOutput;
+using SignalF.Controller;
 using SignalF.Controller.Configuration;
 using SignalF.Controller.DataOutput;
+using SignalF.Datamodel.Calculation;
 using SignalF.Datamodel.DataOutput;
 
 namespace SignalF.Configuration;
@@ -20,7 +22,7 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddDataOutputSenderConfiguration<TBuilder, TOptions>(Action<TBuilder> builder)
-        where TBuilder : IDataOutputSenderConfigurationBuilder
+        where TBuilder : IDataOutputSenderConfigurationBuilder<TBuilder, IDataOutputSenderConfiguration, TOptions>
         where TOptions : SignalFConfigurationOptions
     {
         _dataOutputSenders.Add(configuration =>
@@ -33,7 +35,7 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddDataOutputSenderConfiguration<TBuilder, TOptions, TType>(Action<TBuilder> builder)
-        where TBuilder : IDataOutputSenderConfigurationBuilder
+        where TBuilder : IDataOutputSenderConfigurationBuilder<TBuilder, IDataOutputSenderConfiguration, TOptions>
         where TOptions : SignalFConfigurationOptions
         where TType : class, IDataOutputSender
     {

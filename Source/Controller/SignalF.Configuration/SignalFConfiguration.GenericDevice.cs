@@ -1,7 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SignalF.Configuration.Devices;
+using SignalF.Configuration.Devices.Gpio;
+using SignalF.Controller;
 using SignalF.Controller.Configuration;
 using SignalF.Controller.Signals.Devices;
+using SignalF.Datamodel.DataOutput;
 using SignalF.Datamodel.Devices;
 
 namespace SignalF.Configuration;
@@ -9,8 +12,8 @@ namespace SignalF.Configuration;
 public partial class SignalFConfiguration : ISignalFConfiguration
 {
     public ISignalFConfiguration AddGenericDeviceConfiguration<TBuilder, TOptions>(Action<TBuilder> action)
-        where TBuilder : IGenericDeviceConfigurationBuilder
-        where TOptions : SignalFConfigurationOptions
+        where TBuilder : IGenericDeviceConfigurationBuilder<TBuilder, IGenericDeviceConfiguration, TOptions>
+        where TOptions : GenericDeviceOptions
     {
         _signalProcessorConfigurations.Add(configuration =>
         {
@@ -22,8 +25,8 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddGenericDeviceConfiguration<TBuilder, TOptions, TType>(Action<TBuilder> action)
-        where TBuilder : IGenericDeviceConfigurationBuilder
-        where TOptions : SignalFConfigurationOptions
+        where TBuilder : IGenericDeviceConfigurationBuilder<TBuilder, IGenericDeviceConfiguration, TOptions>
+        where TOptions : GenericDeviceOptions
         where TType : class, IGenericDevice
     {
         _signalProcessorConfigurations.Add(configuration =>
@@ -37,8 +40,8 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddGenericDeviceDefinition<TBuilder, TOptions>(Action<TBuilder> action)
-        where TBuilder : IGenericDeviceDefinitionBuilder
-        where TOptions : SignalFConfigurationOptions
+        where TBuilder : IGenericDeviceDefinitionBuilder<TBuilder, IGenericDeviceDefinition, TOptions>
+        where TOptions : GenericDeviceOptions
     {
         _signalProcessorDefinitions.Add(configuration =>
         {
@@ -50,8 +53,8 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddGenericDeviceDefinition<TBuilder, TOptions, TType>(Action<TBuilder> action)
-        where TBuilder : IGenericDeviceDefinitionBuilder
-        where TOptions : SignalFConfigurationOptions
+        where TBuilder : IGenericDeviceDefinitionBuilder<TBuilder, IGenericDeviceDefinition, TOptions>
+        where TOptions : GenericDeviceOptions
         where TType : class, IGenericDevice
     {
         _signalProcessorDefinitions.Add(configuration =>
@@ -65,7 +68,7 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddGenericDeviceTemplate<TBuilder, TOptions>(Action<TBuilder> action)
-        where TBuilder : IGenericDeviceTemplateBuilder
+        where TBuilder : IGenericDeviceTemplateBuilder<TBuilder, IGenericDeviceTemplate, TOptions>
         where TOptions : SignalFConfigurationOptions
     {
         _signalProcessorTemplates.Add(configuration =>
@@ -78,7 +81,7 @@ public partial class SignalFConfiguration : ISignalFConfiguration
     }
 
     public ISignalFConfiguration AddGenericDeviceTemplate<TBuilder, TOptions, TType>(Action<TBuilder> action)
-        where TBuilder : IGenericDeviceTemplateBuilder
+        where TBuilder : IGenericDeviceTemplateBuilder<TBuilder, IGenericDeviceTemplate, TOptions>
         where TOptions : SignalFConfigurationOptions
         where TType : class, IGenericDevice
     {

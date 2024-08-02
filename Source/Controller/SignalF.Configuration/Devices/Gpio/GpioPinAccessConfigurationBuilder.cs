@@ -1,5 +1,6 @@
 ﻿using SignalF.Configuration.Hardware;
 using SignalF.Configuration.SignalConfiguration;
+using SignalF.Controller;
 using SignalF.Controller.Configuration;
 using SignalF.Datamodel.Configuration;
 using SignalF.Datamodel.Hardware;
