@@ -8,22 +8,47 @@ namespace {0};
 
 public static partial class {1}DeviceExtensions
 {{
-    public static ISignalFConfiguration Add{1}Configuration(this ISignalFConfiguration configuration,
-                                                               Action<I{1}ConfigurationBuilder> builder)
+    // Configuration
+    public static ISignalFConfiguration Add{1}DeviceConfiguration(this ISignalFConfiguration configuration, Action<I{1}ConfigurationBuilder> builder)
     {{
         return configuration.AddDeviceConfiguration<I{1}ConfigurationBuilder, {1}DeviceOptions>(builder);
     }}
 
-    public static ISignalFConfiguration Add{1}Configuration<TType>(this ISignalFConfiguration configuration
-                                                                      , Action<I{1}ConfigurationBuilder> builder)
+    public static ISignalFConfiguration Add{1}DeviceConfiguration<TType>(this ISignalFConfiguration configuration, Action<I{1}ConfigurationBuilder> builder)
         where TType : {1}
     {{
         return configuration.AddDeviceConfiguration<I{1}ConfigurationBuilder, {1}DeviceOptions, TType>(builder);
     }}
 
+    // Definition
+    public static ISignalFConfiguration Add{1}DeviceDefinition(this ISignalFConfiguration configuration, Action<I{1}DefinitionBuilder> builder)
+    {{
+        return configuration.AddDeviceDefinition<I{1}DefinitionBuilder, {1}DeviceOptions>(builder);
+    }}
+
+    public static ISignalFConfiguration Add{1}DeviceDefinition<TType>(this ISignalFConfiguration configuration, Action<I{1}DefinitionBuilder> builder)
+        where TType : {1}
+    {{
+        return configuration.AddDeviceDefinition<I{1}DefinitionBuilder, {1}DeviceOptions, TType>(builder);
+    }}
+
+    // Template
+    public static ISignalFConfiguration Add{1}DeviceTemplate(this ISignalFConfiguration configuration, Action<I{1}TemplateBuilder> builder)
+    {{
+        return configuration.AddDeviceTemplate<I{1}TemplateBuilder, {1}DeviceOptions>(builder);
+    }}
+
+    public static ISignalFConfiguration Add{1}DeviceTemplate<TType>(this ISignalFConfiguration configuration, Action<I{1}TemplateBuilder> builder)
+        where TType : {1}
+    {{
+        return configuration.AddDeviceTemplate<I{1}TemplateBuilder, {1}DeviceOptions, TType>(builder);
+    }}
+
     public static IServiceCollection Add{1}(this IServiceCollection services)
     {{
         return services.AddTransient<{1}>()
-                       .AddTransient<I{1}ConfigurationBuilder, {1}ConfigurationBuilder>();
+                       .AddTransient<I{1}ConfigurationBuilder, {1}ConfigurationBuilder>()
+                       .AddTransient<I{1}DefinitionBuilder, {1}DefinitionBuilder>()
+                       .AddTransient<I{1}TemplateBuilder, {1}TemplateBuilder>();
     }}
 }}
