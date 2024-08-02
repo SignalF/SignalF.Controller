@@ -6,13 +6,13 @@ using SignalF.Datamodel.Hardware;
 
 namespace {0};
 
-public partial class {1}Options : SignalFConfigurationOptions
+public partial class {1}DeviceOptions : DeviceOptions
 {{
 }}
 
 public partial interface
     I{1}ConfigurationBuilder : I{1}ConfigurationBuilder<I{1}ConfigurationBuilder,
-        IDeviceConfiguration, {1}Options>
+        IDeviceConfiguration, {1}DeviceOptions>
 {{
 }}
 
@@ -21,13 +21,13 @@ public partial interface
         TOptions>
     where TBuilder : IDeviceConfigurationBuilder<TBuilder, TConfiguration, TOptions>
     where TConfiguration : IDeviceConfiguration
-    where TOptions : {1}Options
+    where TOptions : {1}DeviceOptions
 {{
 }}
 
 public partial class {1}ConfigurationBuilder
     : {1}ConfigurationBuilder<{1}ConfigurationBuilder, I{1}ConfigurationBuilder,
-          IDeviceConfiguration, {1}Options>, I{1}ConfigurationBuilder
+          IDeviceConfiguration, {1}DeviceOptions>, I{1}ConfigurationBuilder
 {{
     protected override I{1}ConfigurationBuilder This => this;
 }}
@@ -38,7 +38,7 @@ public abstract partial class {1}ConfigurationBuilder<TImpl, TBuilder, TConfigur
     where TBuilder : I{1}ConfigurationBuilder<TBuilder, TConfiguration, TOptions>
     where TImpl : {1}ConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     where TConfiguration : IDeviceConfiguration
-    where TOptions : {1}Options
+    where TOptions : {1}DeviceOptions
 {{
 }}
 
@@ -47,14 +47,14 @@ public static partial class {1}Extensions
     public static ISignalFConfiguration Add{1}Configuration(this ISignalFConfiguration configuration,
                                                                Action<I{1}ConfigurationBuilder> builder)
     {{
-        return configuration.AddDeviceConfiguration<I{1}ConfigurationBuilder, {1}Options>(builder);
+        return configuration.AddDeviceConfiguration<I{1}ConfigurationBuilder, {1}DeviceOptions>(builder);
     }}
 
     public static ISignalFConfiguration Add{1}Configuration<TType>(this ISignalFConfiguration configuration
                                                                       , Action<I{1}ConfigurationBuilder> builder)
         where TType : {1}
     {{
-        return configuration.AddDeviceConfiguration<I{1}ConfigurationBuilder, {1}Options, TType>(builder);
+        return configuration.AddDeviceConfiguration<I{1}ConfigurationBuilder, {1}DeviceOptions, TType>(builder);
     }}
 
     public static IServiceCollection Add{1}(this IServiceCollection services)
