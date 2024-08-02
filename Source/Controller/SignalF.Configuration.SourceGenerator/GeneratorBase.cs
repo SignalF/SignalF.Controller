@@ -3,7 +3,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace SignalF.Configuration.SourceGenerator;
 
-public abstract class ConfigurationGeneratorBase : IncrementalGenerator
+public abstract class GeneratorBase : IncrementalGenerator
 {
     protected override void OnInitialize()
     {
@@ -33,15 +33,19 @@ public abstract class ConfigurationGeneratorBase : IncrementalGenerator
         var @namespace = symbol.ContainingNamespace.ToDisplayString();
         var globalNamespace = syntaxContext.SemanticModel.Compilation.Assembly.Name;
 
-        var template = LoadTemplate(GetTemplateName());
-        if (!string.IsNullOrEmpty(template))
+        foreach (var templateName in GetTemplateNames())
         {
-            var content = string.Format(template, @namespace, className, globalNamespace);
-            sourceContext.AddSource($"{className}Factory.g.cs", content);
+            var template = LoadTemplate(templateName);
+            if (!string.IsNullOrEmpty(template))
+            {
+                var content = string.Format(template, @namespace, className, globalNamespace);
+                sourceContext.AddSource($"{className}{templateName}.g.cs", content);
+            }
+
         }
     }
 
-    protected abstract string GetTemplateName();
+    protected abstract string[] GetTemplateNames();
 
     protected abstract string[] GetAttributes();
 }
