@@ -21,24 +21,24 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-	  <Deterministic>False</Deterministic>
-	  <Optimize>False</Optimize>
+		<Deterministic>False</Deterministic>
+		<Optimize>False</Optimize>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\ConfigurationBuilder.template" />
-	  <None Remove="Resources\DefinitionBuilder.template" />
-	  <None Remove="Resources\DeviceExtensions.template" />
-	  <None Remove="Resources\DeviceOptions.template" />
-	  <None Remove="Resources\TemplateBuilder.template" />
+		<None Remove="Resources\ConfigurationBuilder.template" />
+		<None Remove="Resources\DefinitionBuilder.template" />
+		<None Remove="Resources\DeviceExtensions.template" />
+		<None Remove="Resources\DeviceOptions.template" />
+		<None Remove="Resources\TemplateBuilder.template" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="Resources\TemplateBuilder.template" />
-	  <EmbeddedResource Include="Resources\DefinitionBuilder.template" />
-	  <EmbeddedResource Include="Resources\DeviceOptions.template" />
-	  <EmbeddedResource Include="Resources\DeviceExtensions.template" />
-	  <EmbeddedResource Include="Resources\ConfigurationBuilder.template" />
+		<EmbeddedResource Include="Resources\TemplateBuilder.template" />
+		<EmbeddedResource Include="Resources\DefinitionBuilder.template" />
+		<EmbeddedResource Include="Resources\DeviceOptions.template" />
+		<EmbeddedResource Include="Resources\DeviceExtensions.template" />
+		<EmbeddedResource Include="Resources\ConfigurationBuilder.template" />
 	</ItemGroup>
 
 

@@ -41,7 +41,6 @@ public abstract class GeneratorBase : IncrementalGenerator
                 var content = string.Format(template, @namespace, className, globalNamespace);
                 sourceContext.AddSource($"{className}{templateName}.g.cs", content);
             }
-
         }
     }
 
