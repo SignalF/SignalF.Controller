@@ -31,7 +31,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore ./Source/SignalF.Controller.sln
     - name: Build
-      run: dotnet build --no-restore ./Source/SignalF.Controller.sln -c Release -p:Version=$GITVERSION_ASSEMBLYSEMVER -p:InformationalVersion=$GITVERSION_SEMVER -p:PackageVersion=$GITVERSION_SEMVER -p:CompanyName="scotec Software Solutions AB"
+      run: dotnet build --no-restore ./Source/SignalF.Controller.sln -v diag -c Release -p:Version=$GITVERSION_ASSEMBLYSEMVER -p:InformationalVersion=$GITVERSION_SEMVER -p:PackageVersion=$GITVERSION_SEMVER -p:CompanyName="scotec Software Solutions AB"
 #    - name: Test
 #      run: dotnet test --no-restore --no-build --verbosity normal ./Source/SignalF.Controller.sln
 #    - name: Push project
