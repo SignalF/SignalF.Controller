@@ -10,6 +10,8 @@
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<IncludeBuildOutput>false</IncludeBuildOutput>
 		<NoPackageAnalysis>true</NoPackageAnalysis>
+			<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -52,6 +54,17 @@
 		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="[4.8.0]">
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
+		<PackageReference Include="System.CodeDom" Version="9.0.0-preview.6.24327.7" />
+		<PackageReference Include="T4.SourceGenerator" Version="1.2.0">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+
+
+	<ItemGroup>
+		<AdditionalFiles Include="Test.tt" />
 	</ItemGroup>
 
 </Project>
