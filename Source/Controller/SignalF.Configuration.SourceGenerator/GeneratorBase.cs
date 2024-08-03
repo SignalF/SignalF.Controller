@@ -1,10 +1,13 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Mono.TextTemplating;
 
 namespace SignalF.Configuration.SourceGenerator;
 
 public abstract class GeneratorBase : IncrementalGenerator
-{
+{ 
+    private TemplateGenerator _generator = new ();
+
     protected override void OnInitialize()
     {
         var attributes = GetAttributes();
@@ -38,8 +41,19 @@ public abstract class GeneratorBase : IncrementalGenerator
             var template = LoadTemplate(templateName);
             if (!string.IsNullOrEmpty(template))
             {
-                var content = string.Format(template, @namespace, className, globalNamespace);
-                sourceContext.AddSource($"{className}{templateName}.g.cs", content);
+                //var content = string.Format(template, @namespace, className, globalNamespace);
+
+                var parsed = _generator.ParseTemplate(templateName, template);
+                var settings = TemplatingEngine.GetSettings(_generator, parsed);
+                settings.CompilerOptions = "-nullable:enable";
+
+                var (outputName, content, success) = _generator.ProcessTemplateAsync(templateName, template, $"{className}{templateName}.g")
+                    .GetAwaiter().GetResult();
+
+                if (success)
+                {
+                    sourceContext.AddSource(outputName, content);
+                }
             }
         }
     }

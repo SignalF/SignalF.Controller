@@ -7,7 +7,7 @@ using SignalF.Datamodel.Signals;
 //namespace GeneratorTest
 namespace SignalF.Extensions.IotDevices.Class1
 {
-    [Device(OptionsType=typeof(Test))]
+    [Device]
     public class Class1 : IDevice
     {
         public Guid Id { get; }
