@@ -1,4 +1,6 @@
 ﻿using SignalF.Configuration;
+using SignalF.Configuration.Integration;
+using SignalF.Configuration.Devices;
 using SignalF.Controller.Hardware.Channels;
 using SignalF.Controller.Signals.Devices;
 using SignalF.Datamodel.Configuration;
@@ -8,6 +10,7 @@ using SignalF.Datamodel.Signals;
 namespace SourceGenerator.dev
 {
     [Device]
+    //[Device(OptionsType = typeof(MyOptions))]
     public class Class1 : IDevice
     {
         public Guid Id { get; }
@@ -28,8 +31,7 @@ namespace SourceGenerator.dev
         }
     }
 
-    public class Test
+    public class MyOptions : DeviceOptions
     {
-        private Class1 x;
     }
 }

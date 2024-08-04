@@ -10,7 +10,6 @@
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<IncludeBuildOutput>false</IncludeBuildOutput>
 		<NoPackageAnalysis>true</NoPackageAnalysis>
-		<!--<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>-->
 		<Configurations>Debug;Release;GeneratorTest</Configurations>
 	</PropertyGroup>
 
@@ -22,8 +21,8 @@
 		<Authors>$(CompanyName)</Authors>
 		<Company>$(CompanyName)</Company>
 		<Copyright>$(CompanyName)</Copyright>
-		<Description>Source generator to support assembly load context in Revit add-ins.</Description>
-		<Title>Scotec.Revit.Isolation.SourceGenerator</Title>
+		<Description>Source generator for SignalF component integration.</Description>
+		<Title>SignalF.Configuration.SourceGenerator</Title>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -44,7 +43,8 @@
 		<EmbeddedResource Include="Resources\DefinitionBuilder.template" />
 		<EmbeddedResource Include="Resources\DeviceOptions.template" />
 		<EmbeddedResource Include="Resources\DeviceExtensions.template" />
-		<EmbeddedResource Include="Resources\ConfigurationBuilder.template" />
+		<EmbeddedResource Include="Resources\ConfigurationBuilder.template">
+		</EmbeddedResource>
 	</ItemGroup>
 
 
@@ -65,4 +65,5 @@
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
 	</ItemGroup>
-		</Project>
+
+</Project>

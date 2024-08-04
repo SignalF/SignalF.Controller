@@ -20,6 +20,6 @@ public class DeviceGenerator : GeneratorBase
 
     protected override string[] GetAttributes()
     {
-        return new[] { "SignalF.Configuration.DeviceAttribute" };
+        return new[] { "SignalF.Configuration.Integration.DeviceAttribute" };
     }
 }

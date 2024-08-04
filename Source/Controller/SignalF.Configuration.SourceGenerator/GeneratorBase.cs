@@ -7,7 +7,8 @@ using Mono.TextTemplating;
 namespace SignalF.Configuration.SourceGenerator;
 
 public abstract class GeneratorBase : IncrementalGenerator
-{ 
+{
+    private readonly TemplateGenerator _generator = new();
 
     protected override void OnInitialize()
     {
@@ -31,10 +32,8 @@ public abstract class GeneratorBase : IncrementalGenerator
 
     private void Execute(SourceProductionContext sourceContext, GeneratorAttributeSyntaxContext syntaxContext)
     {
-        TemplateGenerator _generator = new();
-
-    //Debugger.Launch();
-    var symbol = syntaxContext.TargetSymbol;
+        //Debugger.Launch();
+        var symbol = syntaxContext.TargetSymbol;
         var className = syntaxContext.TargetSymbol.Name;
         var classNamespace = symbol.ContainingNamespace.ToDisplayString();
         var globalNamespace = syntaxContext.SemanticModel.Compilation.Assembly.Name;
@@ -62,6 +61,7 @@ public abstract class GeneratorBase : IncrementalGenerator
                 {
                     sourceContext.AddSource(outputName, content);
                 }
+                
                 // sourceContext.AddSource($"{className}{templateName}.g.cs", content);
             }
         }

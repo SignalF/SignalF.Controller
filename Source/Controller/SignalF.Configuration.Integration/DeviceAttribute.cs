@@ -1,4 +1,4 @@
-﻿namespace SignalF.Configuration;
+﻿namespace SignalF.Configuration.Integration;
 
 [AttributeUsage(AttributeTargets.Class)]
 public class DeviceAttribute : Attribute
