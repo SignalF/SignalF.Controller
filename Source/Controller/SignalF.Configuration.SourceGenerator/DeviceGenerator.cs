@@ -5,6 +5,7 @@ namespace SignalF.Configuration.SourceGenerator;
 [Generator(LanguageNames.CSharp)]
 public class DeviceGenerator : GeneratorBase
 {
+
     protected override string[] GetTemplateNames()
     {
         return new[]
@@ -19,6 +20,6 @@ public class DeviceGenerator : GeneratorBase
 
     protected override string[] GetAttributes()
     {
-        return new[] { "SignalF.Configuration.DeviceAttribute" };
+        return new[] { "SignalF.Configuration.Integration.DeviceAttribute" };
     }
 }

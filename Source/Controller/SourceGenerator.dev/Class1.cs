@@ -1,13 +1,16 @@
 ﻿using SignalF.Configuration;
+using SignalF.Configuration.Integration;
+using SignalF.Configuration.Devices;
 using SignalF.Controller.Hardware.Channels;
 using SignalF.Controller.Signals.Devices;
 using SignalF.Datamodel.Configuration;
 using SignalF.Datamodel.Signals;
 
 //namespace GeneratorTest
-namespace SignalF.Extensions.IotDevices.Class1
+namespace SourceGenerator.dev
 {
-    [Device(OptionsType=typeof(Test))]
+    [Device]
+    //[Device(OptionsType = typeof(MyOptions))]
     public class Class1 : IDevice
     {
         public Guid Id { get; }
@@ -28,8 +31,7 @@ namespace SignalF.Extensions.IotDevices.Class1
         }
     }
 
-    public class Test
+    public class MyOptions : DeviceOptions
     {
-        private Class1 x;
     }
 }
