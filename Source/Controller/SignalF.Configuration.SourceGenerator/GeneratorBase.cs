@@ -1,4 +1,5 @@
-﻿using Microsoft.CodeAnalysis;
+﻿using System.Diagnostics;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Mono.TextTemplating;
 
@@ -21,7 +22,7 @@ public abstract class GeneratorBase : IncrementalGenerator
 
     private void RegisterSourceOutputForAttribute(string attributeTypeName)
     {
-        //Debugger.Launch();
+        Debugger.Launch();
         var pipeline = Context.SyntaxProvider.ForAttributeWithMetadataName(
             attributeTypeName,
             static (syntaxNode, _) => syntaxNode is ClassDeclarationSyntax,
