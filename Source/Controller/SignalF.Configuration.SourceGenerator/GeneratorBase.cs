@@ -2,11 +2,12 @@
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Mono.TextTemplating;
 
+//using Mono.TextTemplating;
+
 namespace SignalF.Configuration.SourceGenerator;
 
 public abstract class GeneratorBase : IncrementalGenerator
 { 
-    private TemplateGenerator _generator = new ();
 
     protected override void OnInitialize()
     {
@@ -30,12 +31,18 @@ public abstract class GeneratorBase : IncrementalGenerator
 
     private void Execute(SourceProductionContext sourceContext, GeneratorAttributeSyntaxContext syntaxContext)
     {
-        //Debugger.Launch();
-        var symbol = syntaxContext.TargetSymbol;
+        TemplateGenerator _generator = new();
+
+    //Debugger.Launch();
+    var symbol = syntaxContext.TargetSymbol;
         var className = syntaxContext.TargetSymbol.Name;
-        var @namespace = symbol.ContainingNamespace.ToDisplayString();
+        var classNamespace = symbol.ContainingNamespace.ToDisplayString();
         var globalNamespace = syntaxContext.SemanticModel.Compilation.Assembly.Name;
 
+        _generator.AddParameter("", "", "className", className);
+        _generator.AddParameter("", "", "classNamespace", classNamespace);
+        _generator.AddParameter("", "", "globalNamespace", globalNamespace);
+        
         foreach (var templateName in GetTemplateNames())
         {
             var template = LoadTemplate(templateName);
@@ -46,14 +53,16 @@ public abstract class GeneratorBase : IncrementalGenerator
                 var parsed = _generator.ParseTemplate(templateName, template);
                 var settings = TemplatingEngine.GetSettings(_generator, parsed);
                 settings.CompilerOptions = "-nullable:enable";
+                
 
-                var (outputName, content, success) = _generator.ProcessTemplateAsync(templateName, template, $"{className}{templateName}.g")
+                var (outputName, content, success) = _generator.ProcessTemplateAsync(templateName, template, $"{className}{templateName}")
                     .GetAwaiter().GetResult();
 
                 if (success)
                 {
                     sourceContext.AddSource(outputName, content);
                 }
+                // sourceContext.AddSource($"{className}{templateName}.g.cs", content);
             }
         }
     }

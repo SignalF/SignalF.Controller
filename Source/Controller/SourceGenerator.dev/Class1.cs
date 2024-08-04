@@ -5,7 +5,7 @@ using SignalF.Datamodel.Configuration;
 using SignalF.Datamodel.Signals;
 
 //namespace GeneratorTest
-namespace SignalF.Extensions.IotDevices.Class1
+namespace SourceGenerator.dev
 {
     [Device]
     public class Class1 : IDevice

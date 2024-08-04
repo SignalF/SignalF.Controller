@@ -23,18 +23,24 @@
 
 	<ItemGroup>
 		<None Include="$(OutputPath)\net8.0\SignalF.Configuration.SourceGenerator.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+		<None Include="$(OutputPath)\net8.0\System.CodeDom.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+		<None Include="$(OutputPath)\net8.0\Mono.TextTemplating.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
 		<PackageReference Include="Scotec.Extensions.Linq" Version="1.0.0" />
+		<PackageReference Include="System.CodeDom" Version="8.0.0" OutputItemType="Analyzer" ReferenceOutputAssembly="true" PrivateAssets="all" />
+		<PackageReference Include="Mono.TextTemplating" Version="2.3.1" OutputItemType="Analyzer" ReferenceOutputAssembly="true" PrivateAssets="all" />
+
 	</ItemGroup>
 
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\Datamodel\SignalF.Datamodel.Abstractions\SignalF.Datamodel.Abstractions.csproj" />
 		<ProjectReference Include="..\SignalF.Configuration.Abstractions\SignalF.Configuration.Abstractions.csproj" />
-		<ProjectReference Include="..\SignalF.Configuration.SourceGenerator\SignalF.Configuration.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" PrivateAssets="All" />	</ItemGroup>
+		<ProjectReference Include="..\SignalF.Configuration.SourceGenerator\SignalF.Configuration.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" PrivateAssets="All" />	
+	</ItemGroup>
 
 
 </Project>

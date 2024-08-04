@@ -10,8 +10,12 @@
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<IncludeBuildOutput>false</IncludeBuildOutput>
 		<NoPackageAnalysis>true</NoPackageAnalysis>
-			<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+		<!--<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>-->
+		<Configurations>Debug;Release;GeneratorTest</Configurations>
+	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)'=='GeneratorTest'">
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -45,7 +49,12 @@
 
 
 	<ItemGroup>
-		<PackageReference Include="Mono.TextTemplating" Version="2.3.1"/>
+		<PackageReference Include="System.CodeDom" Version="5.0.0">
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="Mono.TextTemplating" Version="2.3.1">
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
 		<PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -56,11 +65,4 @@
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
 	</ItemGroup>
-
-
-
-	<ItemGroup>
-		<AdditionalFiles Include="Test.tt" />
-	</ItemGroup>
-
-</Project>
+		</Project>

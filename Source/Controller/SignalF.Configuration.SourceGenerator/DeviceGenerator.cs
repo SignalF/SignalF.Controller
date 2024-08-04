@@ -5,6 +5,7 @@ namespace SignalF.Configuration.SourceGenerator;
 [Generator(LanguageNames.CSharp)]
 public class DeviceGenerator : GeneratorBase
 {
+
     protected override string[] GetTemplateNames()
     {
         return new[]
