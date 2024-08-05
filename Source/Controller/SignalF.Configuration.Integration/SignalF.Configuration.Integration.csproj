@@ -16,13 +16,11 @@
 		<None Include="$(OutputPath)\SignalF.Configuration.SourceGenerator.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
 		<None Include="$(OutputPath)\System.CodeDom.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
 		<None Include="$(OutputPath)\Mono.TextTemplating.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
-		<!--<None Include="$(OutputPath)\NETStandard.Library.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />-->
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="System.CodeDom" Version="5.0.0" OutputItemType="Analyzer" ReferenceOutputAssembly="true" PrivateAssets="all" />
 		<PackageReference Include="Mono.TextTemplating" Version="2.3.1" OutputItemType="Analyzer" ReferenceOutputAssembly="true" PrivateAssets="all" />
-		<PackageReference Include="NETStandard.Library" Version="2.0.3"  />
 
 	</ItemGroup>
 
