@@ -11,25 +11,6 @@ public abstract class IncrementalGenerator : IIncrementalGenerator
 
     protected IncrementalGeneratorInitializationContext Context { get; private set; }
 
-    static IncrementalGenerator()
-    {
-        AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
-        {
-                //Debugger.Launch();
-        };
-        AppDomain.CurrentDomain.FirstChanceException+= (sender, args) =>
-        {
-                //Debugger.Launch();
-        };
-        AppDomain.CurrentDomain.AssemblyResolve += (sender, args) =>
-        {
-            //if (args.Name.Contains("CodeDom") && !args.Name.Contains("TextTemp"))
-            //{
-            //    Debugger.Launch();
-            //}
-            return null;
-        };
-    }
 
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
