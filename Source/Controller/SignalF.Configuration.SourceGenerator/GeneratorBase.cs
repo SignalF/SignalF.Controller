@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using Microsoft.CodeAnalysis;
+﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Mono.TextTemplating;
 
@@ -7,12 +6,12 @@ namespace SignalF.Configuration.SourceGenerator;
 
 public abstract class GeneratorBase : IncrementalGenerator
 {
-    readonly TemplateGenerator _generator = new();
-    readonly Dictionary<string, CompiledTemplate> _templates = new ();
+    private readonly TemplateGenerator _generator = new();
+    private readonly Dictionary<string, CompiledTemplate> _templates = new();
 
     protected override void OnInitialize()
     {
-      _generator.UseInProcessCompiler();
+        _generator.UseInProcessCompiler();
         //Debugger.Launch();
         var attributes = GetAttributes();
         foreach (var attribute in attributes)
@@ -44,11 +43,9 @@ public abstract class GeneratorBase : IncrementalGenerator
                 var settings = TemplatingEngine.GetSettings(_generator, parsed);
                 settings.CompilerOptions = "-nullable:enable";
 
-                
                 //var x = _generator.PreprocessTemplate(parsed, templateName, template, settings, out var references);
                 var compiled = _generator.CompileTemplateAsync(template).GetAwaiter().GetResult();
                 _templates.Add(templateName, compiled);
-                
             }
         }
     }
@@ -81,6 +78,7 @@ public abstract class GeneratorBase : IncrementalGenerator
                     sourceContext.AddSource($"{className}{template.Key}.g.cs", content);
                 }
             }
+
             _generator.ClearSession();
         }
     }
