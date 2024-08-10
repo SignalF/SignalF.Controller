@@ -15,14 +15,18 @@ public abstract class IncrementalGenerator : IIncrementalGenerator
     {
         AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
         {
-                Debugger.Launch();
+                //Debugger.Launch();
+        };
+        AppDomain.CurrentDomain.FirstChanceException+= (sender, args) =>
+        {
+                //Debugger.Launch();
         };
         AppDomain.CurrentDomain.AssemblyResolve += (sender, args) =>
         {
-            if (args.Name.Contains("CodeDom") && !args.Name.Contains("TextTemp"))
-            {
-                Debugger.Launch();
-            }
+            //if (args.Name.Contains("CodeDom") && !args.Name.Contains("TextTemp"))
+            //{
+            //    Debugger.Launch();
+            //}
             return null;
         };
     }

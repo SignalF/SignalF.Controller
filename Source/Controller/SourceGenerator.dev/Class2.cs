@@ -11,7 +11,7 @@ namespace SourceGenerator.dev
 {
     [Device]
     //[Device(OptionsType = typeof(MyOptions))]
-    public class Class1 : IDevice
+    public class Class2 : IDevice
     {
         public Guid Id { get; }
         public string Name { get; }
@@ -31,7 +31,5 @@ namespace SourceGenerator.dev
         }
     }
 
-    public class MyOptions : DeviceOptions
-    {
-    }
+
 }

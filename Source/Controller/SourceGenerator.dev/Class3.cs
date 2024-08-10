@@ -11,10 +11,11 @@ namespace SourceGenerator.dev
 {
     [Device]
     //[Device(OptionsType = typeof(MyOptions))]
-    public class Class1 : IDevice
+    public class Class3 : IDevice
     {
         public Guid Id { get; }
         public string Name { get; }
+
         public void Configure(ISignalProcessorConfiguration configuration)
         {
             throw new NotImplementedException();
@@ -30,8 +31,5 @@ namespace SourceGenerator.dev
             throw new NotImplementedException();
         }
     }
-
-    public class MyOptions : DeviceOptions
-    {
-    }
 }
+
