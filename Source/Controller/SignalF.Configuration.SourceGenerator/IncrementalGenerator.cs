@@ -22,6 +22,7 @@ public abstract class IncrementalGenerator : IIncrementalGenerator
         {
             return template;
         }
+
         var assembly = Assembly.GetExecutingAssembly();
         var resourcePath = assembly
                            .GetManifestResourceNames()
@@ -34,7 +35,7 @@ public abstract class IncrementalGenerator : IIncrementalGenerator
 
         using var stream = assembly.GetManifestResourceStream(resourcePath)!;
         using var reader = new StreamReader(stream);
-        template =  reader.ReadToEnd();
+        template = reader.ReadToEnd();
 
         Templates.TryAdd(templateName, template);
         return template;

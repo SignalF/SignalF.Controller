@@ -39,31 +39,27 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<EmbeddedResource Include="Resources\ConfigurationBuilder.template" />
 		<EmbeddedResource Include="Resources\TemplateBuilder.template" />
 		<EmbeddedResource Include="Resources\DefinitionBuilder.template" />
 		<EmbeddedResource Include="Resources\DeviceOptions.template" />
 		<EmbeddedResource Include="Resources\DeviceExtensions.template" />
-		<EmbeddedResource Include="Resources\ConfigurationBuilder.template">
-		</EmbeddedResource>
 	</ItemGroup>
 
 
 	<ItemGroup>
-		<PackageReference Include="System.CodeDom" Version="5.0.0">
-			<PrivateAssets>all</PrivateAssets>
-		</PackageReference>
-		<PackageReference Include="Mono.TextTemplating" Version="2.3.1">
-			<PrivateAssets>all</PrivateAssets>
-		</PackageReference>
-		<PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
+		<PackageReference Include="System.CodeDom" Version="6.0.0" PrivateAssets="all" />
+		<PackageReference Include="Mono.TextTemplating" Version="3.0.0-preview-0052-g5d0f76c785" PrivateAssets="all" />
+		<PackageReference Include="Mono.TextTemplating.Roslyn" Version="3.0.0-preview-0052-g5d0f76c785" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4" PrivateAssets="all" />
 		<!-- Visual Studio 2022 version 17.8 uses Roslyn 4.8.0. Using a newer version requires update of Visual Studio. -->
 		<!-- Visual Studio 17.8 is the first version supporting .NET8. -->
-		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="[4.8.0]">
-			<PrivateAssets>all</PrivateAssets>
-		</PackageReference>
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="[4.8.0]" PrivateAssets="all" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
 	</ItemGroup>
 
 </Project>

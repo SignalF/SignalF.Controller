@@ -1,18 +1,18 @@
-﻿using System.Diagnostics;
-using Microsoft.CodeAnalysis;
+﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Mono.TextTemplating;
-
-//using Mono.TextTemplating;
 
 namespace SignalF.Configuration.SourceGenerator;
 
 public abstract class GeneratorBase : IncrementalGenerator
 {
     private readonly TemplateGenerator _generator = new();
+    private readonly Dictionary<string, CompiledTemplate> _templates = new();
 
     protected override void OnInitialize()
     {
+        _generator.UseInProcessCompiler();
+        //Debugger.Launch();
         var attributes = GetAttributes();
         foreach (var attribute in attributes)
         {
@@ -22,7 +22,8 @@ public abstract class GeneratorBase : IncrementalGenerator
 
     private void RegisterSourceOutputForAttribute(string attributeTypeName)
     {
-        Debugger.Launch();
+        LoadTemplates();
+        //Debugger.Launch();
         var pipeline = Context.SyntaxProvider.ForAttributeWithMetadataName(
             attributeTypeName,
             static (syntaxNode, _) => syntaxNode is ClassDeclarationSyntax,
@@ -31,40 +32,54 @@ public abstract class GeneratorBase : IncrementalGenerator
         Context.RegisterSourceOutput(pipeline, Execute);
     }
 
-    private void Execute(SourceProductionContext sourceContext, GeneratorAttributeSyntaxContext syntaxContext)
+    private void LoadTemplates()
     {
-        //Debugger.Launch();
-        var symbol = syntaxContext.TargetSymbol;
-        var className = syntaxContext.TargetSymbol.Name;
-        var classNamespace = symbol.ContainingNamespace.ToDisplayString();
-        var globalNamespace = syntaxContext.SemanticModel.Compilation.Assembly.Name;
-
-        _generator.AddParameter("", "", "className", className);
-        _generator.AddParameter("", "", "classNamespace", classNamespace);
-        _generator.AddParameter("", "", "globalNamespace", globalNamespace);
-        
         foreach (var templateName in GetTemplateNames())
         {
             var template = LoadTemplate(templateName);
             if (!string.IsNullOrEmpty(template))
             {
-                //var content = string.Format(template, @namespace, className, globalNamespace);
-
                 var parsed = _generator.ParseTemplate(templateName, template);
                 var settings = TemplatingEngine.GetSettings(_generator, parsed);
                 settings.CompilerOptions = "-nullable:enable";
-                
 
-                var (outputName, content, success) = _generator.ProcessTemplateAsync(templateName, template, $"{className}{templateName}")
-                    .GetAwaiter().GetResult();
-
-                if (success)
-                {
-                    sourceContext.AddSource(outputName, content);
-                }
-                
-                // sourceContext.AddSource($"{className}{templateName}.g.cs", content);
+                //var x = _generator.PreprocessTemplate(parsed, templateName, template, settings, out var references);
+                var compiled = _generator.CompileTemplateAsync(template).GetAwaiter().GetResult();
+                _templates.Add(templateName, compiled);
             }
+        }
+    }
+
+    private void Execute(SourceProductionContext sourceContext, GeneratorAttributeSyntaxContext syntaxContext)
+    {
+        lock (_generator)
+        {
+            //Debugger.Launch();
+            var symbol = syntaxContext.TargetSymbol;
+            var className = syntaxContext.TargetSymbol.Name;
+            var classNamespace = symbol.ContainingNamespace.ToDisplayString();
+            var globalNamespace = syntaxContext.SemanticModel.Compilation.Assembly.Name;
+
+            var s = _generator.GetOrCreateSession();
+            s.Add("className", className);
+            s.Add("classNamespace", classNamespace);
+            s.Add("globalNamespace", globalNamespace);
+
+            //_generator.AddParameter("", "", "className", className);
+            //_generator.AddParameter("", "", "classNamespace", classNamespace);
+            //_generator.AddParameter("", "", "globalNamespace", globalNamespace);
+
+            foreach (var template in _templates)
+            {
+                if (template.Value != null)
+                {
+                    //var content = string.Format(template, @namespace, className, globalNamespace);
+                    var content = template.Value.Process();
+                    sourceContext.AddSource($"{className}{template.Key}.g.cs", content);
+                }
+            }
+
+            _generator.ClearSession();
         }
     }
 

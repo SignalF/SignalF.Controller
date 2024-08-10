@@ -13,23 +13,29 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Include="$(OutputPath)\SignalF.Configuration.SourceGenerator.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+		<None Include="$(OutputPath)\SignalF.Configuration.SourceGenerator.dll" Pack="true" PackagePath="analyzers/dotnet/cs"
+		      Visible="false" />
 		<None Include="$(OutputPath)\System.CodeDom.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
 		<None Include="$(OutputPath)\Mono.TextTemplating.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+		<None Include="$(OutputPath)\Mono.TextTemplating.Roslyn.dll" Pack="true" PackagePath="analyzers/dotnet/cs"
+		      Visible="false" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="System.CodeDom" Version="5.0.0" OutputItemType="Analyzer" ReferenceOutputAssembly="true" PrivateAssets="all" />
-		<PackageReference Include="Mono.TextTemplating" Version="2.3.1" OutputItemType="Analyzer" ReferenceOutputAssembly="true" PrivateAssets="all" />
+		<PackageReference Include="System.CodeDom" Version="6.0.0" OutputItemType="Analyzer" ReferenceOutputAssembly="true"
+		                  PrivateAssets="all" />
+		<PackageReference Include="Mono.TextTemplating" Version="3.0.0-preview-0052-g5d0f76c785" OutputItemType="Analyzer"
+		                  ReferenceOutputAssembly="true" PrivateAssets="all" />
+		<PackageReference Include="Mono.TextTemplating.Roslyn" Version="3.0.0-preview-0052-g5d0f76c785"
+		                  OutputItemType="Analyzer" ReferenceOutputAssembly="true" PrivateAssets="all" />
 
 	</ItemGroup>
 
 
 	<ItemGroup>
-		<ProjectReference Include="..\SignalF.Configuration.SourceGenerator\SignalF.Configuration.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" PrivateAssets="All" />
+		<ProjectReference Include="..\SignalF.Configuration.SourceGenerator\SignalF.Configuration.SourceGenerator.csproj"
+		                  OutputItemType="Analyzer" ReferenceOutputAssembly="true" PrivateAssets="All" />
 	</ItemGroup>
-
-
 
 
 </Project>
