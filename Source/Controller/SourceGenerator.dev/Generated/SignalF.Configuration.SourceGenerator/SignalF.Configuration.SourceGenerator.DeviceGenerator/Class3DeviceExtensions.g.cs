@@ -4,55 +4,52 @@
 
 using Microsoft.Extensions.DependencyInjection;
 using SignalF.Configuration;
-using SignalF.Configuration.Devices;
-using SignalF.Controller.Configuration;
-using SignalF.Datamodel.Hardware;
 
 namespace SourceGenerator.dev;
 
 public static partial class DeviceExtensions
 {
     // Configuration
-    public static ISignalFConfiguration AddClass3DeviceConfiguration(this ISignalFConfiguration configuration, Action<IClass3ConfigurationBuilder> builder)
+    public static ISignalFConfiguration AddClass3DeviceConfiguration(this ISignalFConfiguration configuration, Action<IClass3DeviceConfigurationBuilder> builder)
     {
-        return configuration.AddDeviceConfiguration<IClass3ConfigurationBuilder, Class3DeviceOptions>(builder);
+        return configuration.AddDeviceConfiguration<IClass3DeviceConfigurationBuilder, Class3DeviceOptions>(builder);
     }
 
-    public static ISignalFConfiguration AddClass3DeviceConfiguration<TType>(this ISignalFConfiguration configuration, Action<IClass3ConfigurationBuilder> builder)
+    public static ISignalFConfiguration AddClass3DeviceConfiguration<TType>(this ISignalFConfiguration configuration, Action<IClass3DeviceConfigurationBuilder> builder)
         where TType : Class3
     {
-        return configuration.AddDeviceConfiguration<IClass3ConfigurationBuilder, Class3DeviceOptions, TType>(builder);
+        return configuration.AddDeviceConfiguration<IClass3DeviceConfigurationBuilder, Class3DeviceOptions, TType>(builder);
     }
 
     // Definition
-    public static ISignalFConfiguration AddClass3DeviceDefinition(this ISignalFConfiguration configuration, Action<IClass3DefinitionBuilder> builder)
+    public static ISignalFConfiguration AddClass3DeviceDefinition(this ISignalFConfiguration configuration, Action<IClass3DeviceDefinitionBuilder> builder)
     {
-        return configuration.AddDeviceDefinition<IClass3DefinitionBuilder, Class3DeviceOptions>(builder);
+        return configuration.AddDeviceDefinition<IClass3DeviceDefinitionBuilder, Class3DeviceOptions>(builder);
     }
 
-    public static ISignalFConfiguration AddClass3DeviceDefinition<TType>(this ISignalFConfiguration configuration, Action<IClass3DefinitionBuilder> builder)
+    public static ISignalFConfiguration AddClass3DeviceDefinition<TType>(this ISignalFConfiguration configuration, Action<IClass3DeviceDefinitionBuilder> builder)
         where TType : Class3
     {
-        return configuration.AddDeviceDefinition<IClass3DefinitionBuilder, Class3DeviceOptions, TType>(builder);
+        return configuration.AddDeviceDefinition<IClass3DeviceDefinitionBuilder, Class3DeviceOptions, TType>(builder);
     }
 
     // Template
-    public static ISignalFConfiguration AddClass3DeviceTemplate(this ISignalFConfiguration configuration, Action<IClass3TemplateBuilder> builder)
+    public static ISignalFConfiguration AddClass3DeviceTemplate(this ISignalFConfiguration configuration, Action<IClass3DeviceTemplateBuilder> builder)
     {
-        return configuration.AddDeviceTemplate<IClass3TemplateBuilder, Class3DeviceOptions>(builder);
+        return configuration.AddDeviceTemplate<IClass3DeviceTemplateBuilder, Class3DeviceOptions>(builder);
     }
 
-    public static ISignalFConfiguration AddClass3DeviceTemplate<TType>(this ISignalFConfiguration configuration, Action<IClass3TemplateBuilder> builder)
+    public static ISignalFConfiguration AddClass3DeviceTemplate<TType>(this ISignalFConfiguration configuration, Action<IClass3DeviceTemplateBuilder> builder)
         where TType : Class3
     {
-        return configuration.AddDeviceTemplate<IClass3TemplateBuilder, Class3DeviceOptions, TType>(builder);
+        return configuration.AddDeviceTemplate<IClass3DeviceTemplateBuilder, Class3DeviceOptions, TType>(builder);
     }
 
     public static IServiceCollection AddClass3(this IServiceCollection services)
     {
         return services.AddTransient<Class3>()
-                       .AddTransient<IClass3ConfigurationBuilder, Class3ConfigurationBuilder>()
-                       .AddTransient<IClass3DefinitionBuilder, Class3DefinitionBuilder>()
-                       .AddTransient<IClass3TemplateBuilder, Class3TemplateBuilder>();
+                       .AddTransient<IClass3DeviceConfigurationBuilder, Class3DeviceConfigurationBuilder>()
+                       .AddTransient<IClass3DeviceDefinitionBuilder, Class3DeviceDefinitionBuilder>()
+                       .AddTransient<IClass3DeviceTemplateBuilder, Class3DeviceTemplateBuilder>();
     }
 }

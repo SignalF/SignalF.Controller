@@ -31,6 +31,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<None Remove="Resources\Calculator\CalculatorConfigurationBuilder.template" />
+		<None Remove="Resources\Calculator\CalculatorDefinitionBuilder.template" />
+		<None Remove="Resources\Calculator\CalculatorExtensions.template" />
+		<None Remove="Resources\Calculator\CalculatorOptions.template" />
+		<None Remove="Resources\Calculator\CalculatorTemplateBuilder.template" />
 		<None Remove="Resources\ConfigurationBuilder.template" />
 		<None Remove="Resources\DataOutputSender\DataOutputSenderConfigurationBuilder.template" />
 		<None Remove="Resources\DataOutputSender\DataOutputSenderExtensions.template" />
@@ -42,6 +47,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<EmbeddedResource Include="Resources\Calculator\CalculatorOptions.template" />
+		<EmbeddedResource Include="Resources\Calculator\CalculatorConfigurationBuilder.template" />
+		<EmbeddedResource Include="Resources\Calculator\CalculatorDefinitionBuilder.template" />
+		<EmbeddedResource Include="Resources\Calculator\CalculatorExtensions.template" />
+		<EmbeddedResource Include="Resources\Calculator\CalculatorTemplateBuilder.template" />
 		<EmbeddedResource Include="Resources\DataOutputSender\DataOutputSenderConfigurationBuilder.template" />
 		<EmbeddedResource Include="Resources\DataOutputSender\DataOutputSenderOptions.template" />
 		<EmbeddedResource Include="Resources\DataOutputSender\DataOutputSenderExtensions.template" />

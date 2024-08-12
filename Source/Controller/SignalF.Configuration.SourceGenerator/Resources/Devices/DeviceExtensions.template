@@ -9,55 +9,52 @@
 
 using Microsoft.Extensions.DependencyInjection;
 using SignalF.Configuration;
-using SignalF.Configuration.Devices;
-using SignalF.Controller.Configuration;
-using SignalF.Datamodel.Hardware;
 
 namespace <#= classNamespace #>;
 
 public static partial class DeviceExtensions
 {
     // Configuration
-    public static ISignalFConfiguration Add<#= className #>DeviceConfiguration(this ISignalFConfiguration configuration, Action<I<#= className #>ConfigurationBuilder> builder)
+    public static ISignalFConfiguration Add<#= className #>DeviceConfiguration(this ISignalFConfiguration configuration, Action<I<#= className #>DeviceConfigurationBuilder> builder)
     {
-        return configuration.AddDeviceConfiguration<I<#= className #>ConfigurationBuilder, <#= className #>DeviceOptions>(builder);
+        return configuration.AddDeviceConfiguration<I<#= className #>DeviceConfigurationBuilder, <#= className #>DeviceOptions>(builder);
     }
 
-    public static ISignalFConfiguration Add<#= className #>DeviceConfiguration<TType>(this ISignalFConfiguration configuration, Action<I<#= className #>ConfigurationBuilder> builder)
+    public static ISignalFConfiguration Add<#= className #>DeviceConfiguration<TType>(this ISignalFConfiguration configuration, Action<I<#= className #>DeviceConfigurationBuilder> builder)
         where TType : <#= className #>
     {
-        return configuration.AddDeviceConfiguration<I<#= className #>ConfigurationBuilder, <#= className #>DeviceOptions, TType>(builder);
+        return configuration.AddDeviceConfiguration<I<#= className #>DeviceConfigurationBuilder, <#= className #>DeviceOptions, TType>(builder);
     }
 
     // Definition
-    public static ISignalFConfiguration Add<#= className #>DeviceDefinition(this ISignalFConfiguration configuration, Action<I<#= className #>DefinitionBuilder> builder)
+    public static ISignalFConfiguration Add<#= className #>DeviceDefinition(this ISignalFConfiguration configuration, Action<I<#= className #>DeviceDefinitionBuilder> builder)
     {
-        return configuration.AddDeviceDefinition<I<#= className #>DefinitionBuilder, <#= className #>DeviceOptions>(builder);
+        return configuration.AddDeviceDefinition<I<#= className #>DeviceDefinitionBuilder, <#= className #>DeviceOptions>(builder);
     }
 
-    public static ISignalFConfiguration Add<#= className #>DeviceDefinition<TType>(this ISignalFConfiguration configuration, Action<I<#= className #>DefinitionBuilder> builder)
+    public static ISignalFConfiguration Add<#= className #>DeviceDefinition<TType>(this ISignalFConfiguration configuration, Action<I<#= className #>DeviceDefinitionBuilder> builder)
         where TType : <#= className #>
     {
-        return configuration.AddDeviceDefinition<I<#= className #>DefinitionBuilder, <#= className #>DeviceOptions, TType>(builder);
+        return configuration.AddDeviceDefinition<I<#= className #>DeviceDefinitionBuilder, <#= className #>DeviceOptions, TType>(builder);
     }
 
     // Template
-    public static ISignalFConfiguration Add<#= className #>DeviceTemplate(this ISignalFConfiguration configuration, Action<I<#= className #>TemplateBuilder> builder)
+    public static ISignalFConfiguration Add<#= className #>DeviceTemplate(this ISignalFConfiguration configuration, Action<I<#= className #>DeviceTemplateBuilder> builder)
     {
-        return configuration.AddDeviceTemplate<I<#= className #>TemplateBuilder, <#= className #>DeviceOptions>(builder);
+        return configuration.AddDeviceTemplate<I<#= className #>DeviceTemplateBuilder, <#= className #>DeviceOptions>(builder);
     }
 
-    public static ISignalFConfiguration Add<#= className #>DeviceTemplate<TType>(this ISignalFConfiguration configuration, Action<I<#= className #>TemplateBuilder> builder)
+    public static ISignalFConfiguration Add<#= className #>DeviceTemplate<TType>(this ISignalFConfiguration configuration, Action<I<#= className #>DeviceTemplateBuilder> builder)
         where TType : <#= className #>
     {
-        return configuration.AddDeviceTemplate<I<#= className #>TemplateBuilder, <#= className #>DeviceOptions, TType>(builder);
+        return configuration.AddDeviceTemplate<I<#= className #>DeviceTemplateBuilder, <#= className #>DeviceOptions, TType>(builder);
     }
 
     public static IServiceCollection Add<#= className #>(this IServiceCollection services)
     {
         return services.AddTransient<<#= className #>>()
-                       .AddTransient<I<#= className #>ConfigurationBuilder, <#= className #>ConfigurationBuilder>()
-                       .AddTransient<I<#= className #>DefinitionBuilder, <#= className #>DefinitionBuilder>()
-                       .AddTransient<I<#= className #>TemplateBuilder, <#= className #>TemplateBuilder>();
+                       .AddTransient<I<#= className #>DeviceConfigurationBuilder, <#= className #>DeviceConfigurationBuilder>()
+                       .AddTransient<I<#= className #>DeviceDefinitionBuilder, <#= className #>DeviceDefinitionBuilder>()
+                       .AddTransient<I<#= className #>DeviceTemplateBuilder, <#= className #>DeviceTemplateBuilder>();
     }
 }
