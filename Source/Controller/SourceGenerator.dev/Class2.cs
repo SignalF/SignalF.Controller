@@ -5,6 +5,7 @@ using SignalF.Controller.Hardware.Channels;
 using SignalF.Controller.Signals.Devices;
 using SignalF.Datamodel.Configuration;
 using SignalF.Datamodel.Signals;
+using SignalF.Configuration.DataOutput;
 
 //namespace GeneratorTest
 namespace SourceGenerator.dev

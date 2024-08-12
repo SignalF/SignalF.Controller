@@ -34,7 +34,7 @@ public abstract class GeneratorBase : IncrementalGenerator
 
     private void LoadTemplates()
     {
-        foreach (var templateName in GetTemplateNames())
+        foreach (var templateName                                                 in GetTemplateNames())
         {
             var template = LoadTemplate(templateName);
             if (!string.IsNullOrEmpty(template))
@@ -43,7 +43,6 @@ public abstract class GeneratorBase : IncrementalGenerator
                 var settings = TemplatingEngine.GetSettings(_generator, parsed);
                 settings.CompilerOptions = "-nullable:enable";
 
-                //var x = _generator.PreprocessTemplate(parsed, templateName, template, settings, out var references);
                 var compiled = _generator.CompileTemplateAsync(template).GetAwaiter().GetResult();
                 _templates.Add(templateName, compiled);
             }
@@ -64,10 +63,6 @@ public abstract class GeneratorBase : IncrementalGenerator
             s.Add("className", className);
             s.Add("classNamespace", classNamespace);
             s.Add("globalNamespace", globalNamespace);
-
-            //_generator.AddParameter("", "", "className", className);
-            //_generator.AddParameter("", "", "classNamespace", classNamespace);
-            //_generator.AddParameter("", "", "globalNamespace", globalNamespace);
 
             foreach (var template in _templates)
             {

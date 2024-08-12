@@ -10,9 +10,9 @@ public class DeviceGenerator : GeneratorBase
         return new[]
         {
             "DeviceOptions",
-            "ConfigurationBuilder",
-            "DefinitionBuilder",
-            "TemplateBuilder",
+            "DeviceConfigurationBuilder",
+            "DeviceDefinitionBuilder",
+            "DeviceTemplateBuilder",
             "DeviceExtensions"
         };
     }

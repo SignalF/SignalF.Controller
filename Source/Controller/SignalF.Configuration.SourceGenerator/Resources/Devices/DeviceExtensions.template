@@ -15,7 +15,7 @@ using SignalF.Datamodel.Hardware;
 
 namespace <#= classNamespace #>;
 
-public static partial class <#= className #>DeviceExtensions
+public static partial class DeviceExtensions
 {
     // Configuration
     public static ISignalFConfiguration Add<#= className #>DeviceConfiguration(this ISignalFConfiguration configuration, Action<I<#= className #>ConfigurationBuilder> builder)
