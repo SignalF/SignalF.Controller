@@ -5,13 +5,15 @@ using SignalF.Controller.Hardware.Channels;
 using SignalF.Controller.Signals.Devices;
 using SignalF.Datamodel.Configuration;
 using SignalF.Datamodel.Signals;
+using SignalF.Configuration.DataOutput;
+using SignalF.Controller.Signals.Calculators;
 
 //namespace GeneratorTest
 namespace SourceGenerator.dev
 {
-    [Device]
+    [Calculator]
     //[Device(OptionsType = typeof(MyOptions))]
-    public class Class2 : IDevice
+    public class Class2 : ICalculator
     {
         public Guid Id { get; }
         public string Name { get; }

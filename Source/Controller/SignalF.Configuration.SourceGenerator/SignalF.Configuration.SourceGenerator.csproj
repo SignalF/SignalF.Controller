@@ -31,7 +31,15 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<None Remove="Resources\Calculator\CalculatorConfigurationBuilder.template" />
+		<None Remove="Resources\Calculator\CalculatorDefinitionBuilder.template" />
+		<None Remove="Resources\Calculator\CalculatorExtensions.template" />
+		<None Remove="Resources\Calculator\CalculatorOptions.template" />
+		<None Remove="Resources\Calculator\CalculatorTemplateBuilder.template" />
 		<None Remove="Resources\ConfigurationBuilder.template" />
+		<None Remove="Resources\DataOutputSender\DataOutputSenderConfigurationBuilder.template" />
+		<None Remove="Resources\DataOutputSender\DataOutputSenderExtensions.template" />
+		<None Remove="Resources\DataOutputSender\DataOutputSenderOptions.template" />
 		<None Remove="Resources\DefinitionBuilder.template" />
 		<None Remove="Resources\DeviceExtensions.template" />
 		<None Remove="Resources\DeviceOptions.template" />
@@ -39,11 +47,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<EmbeddedResource Include="Resources\ConfigurationBuilder.template" />
-		<EmbeddedResource Include="Resources\TemplateBuilder.template" />
-		<EmbeddedResource Include="Resources\DefinitionBuilder.template" />
-		<EmbeddedResource Include="Resources\DeviceOptions.template" />
-		<EmbeddedResource Include="Resources\DeviceExtensions.template" />
+		<EmbeddedResource Include="Resources\Calculator\CalculatorOptions.template" />
+		<EmbeddedResource Include="Resources\Calculator\CalculatorConfigurationBuilder.template" />
+		<EmbeddedResource Include="Resources\Calculator\CalculatorDefinitionBuilder.template" />
+		<EmbeddedResource Include="Resources\Calculator\CalculatorExtensions.template" />
+		<EmbeddedResource Include="Resources\Calculator\CalculatorTemplateBuilder.template" />
+		<EmbeddedResource Include="Resources\DataOutputSender\DataOutputSenderConfigurationBuilder.template" />
+		<EmbeddedResource Include="Resources\DataOutputSender\DataOutputSenderOptions.template" />
+		<EmbeddedResource Include="Resources\DataOutputSender\DataOutputSenderExtensions.template" />
+		<EmbeddedResource Include="Resources\Devices\DeviceConfigurationBuilder.template" />
+		<EmbeddedResource Include="Resources\Devices\DeviceTemplateBuilder.template" />
+		<EmbeddedResource Include="Resources\Devices\DeviceDefinitionBuilder.template" />
+		<EmbeddedResource Include="Resources\Devices\DeviceOptions.template" />
+		<EmbeddedResource Include="Resources\Devices\DeviceExtensions.template" />
 	</ItemGroup>
 
 
