@@ -37,20 +37,21 @@ public abstract class GeneratorBase : IncrementalGenerator
         foreach (var templateName                                                 in GetTemplateNames())
         {
             var template = LoadTemplate(templateName);
-            if (!string.IsNullOrEmpty(template))
-            {
-                var parsed = _generator.ParseTemplate(templateName, template);
-                var settings = TemplatingEngine.GetSettings(_generator, parsed);
-                settings.CompilerOptions = "-nullable:enable";
+            //if (!string.IsNullOrEmpty(template))
+            //{
+            //    var parsed = _generator.ParseTemplate(templateName, template);
+            //    var settings = TemplatingEngine.GetSettings(_generator, parsed);
+            //    settings.CompilerOptions = "-nullable:enable";
 
-                var compiled = _generator.CompileTemplateAsync(template).GetAwaiter().GetResult();
-                _templates.Add(templateName, compiled);
-            }
+            //    var compiled = _generator.CompileTemplateAsync(template).GetAwaiter().GetResult();
+            //    _templates.Add(templateName, compiled);
+            //}
         }
     }
 
     private void Execute(SourceProductionContext sourceContext, GeneratorAttributeSyntaxContext syntaxContext)
     {
+        return;
         lock (_generator)
         {
             //Debugger.Launch();
