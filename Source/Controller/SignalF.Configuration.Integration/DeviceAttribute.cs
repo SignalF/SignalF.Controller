@@ -3,7 +3,7 @@
 namespace SignalF.Configuration.Integration;
 
 [AttributeUsage(AttributeTargets.Class)]
-[Conditional("NETFRAMEWORK")]
+[Conditional("SCOTECT4ATTRIBUTE")]
 public class DeviceAttribute : Attribute
 {
     public Type OptionsType { get; set; }
