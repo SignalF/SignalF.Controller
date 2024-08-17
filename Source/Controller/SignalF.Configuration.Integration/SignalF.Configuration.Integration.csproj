@@ -17,20 +17,14 @@
 		<None Include="$(OutputPath)\Scotec.T4.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
 		<None Include="$(OutputPath)\Microsoft.CodeAnalysis.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
 		<None Include="$(OutputPath)\Microsoft.CSharp.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
-		<None Include="$(OutputPath)\System.Runtime.Loader.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
-		<!--<None Include="$(OutputPath)\SignalF.Configuration.SourceGenerator.dll" Pack="true" PackagePath="analyzers/dotnet/cs"
-		      Visible="false" />
-		<None Include="$(OutputPath)\System.CodeDom.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
-		<None Include="$(OutputPath)\Mono.TextTemplating.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
-		<None Include="$(OutputPath)\Mono.TextTemplating.Roslyn.dll" Pack="true" PackagePath="analyzers/dotnet/cs"
-		      Visible="false" />-->
+		<!--<None Include="$(OutputPath)\System.Runtime.Loader.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />-->
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Scotec.T4" Version="2.0.0-dev.50" PrivateAssets="all" />
-		<PackageReference Include="Microsoft.CodeAnalysis" Version="4.10.0" PrivateAssets="all" />
+		<PackageReference Include="Scotec.T4" Version="2.0.0-dev.53" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.CodeAnalysis" Version="[4.8.0]" PrivateAssets="all" />
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" PrivateAssets="all" />
-		<PackageReference Include="System.Runtime.Loader" Version="4.0.0" PrivateAssets="all" />
+		<!--<PackageReference Include="System.Runtime.Loader" Version="4.0.0" PrivateAssets="all" />-->
 
 	</ItemGroup>
 
