@@ -12,7 +12,6 @@ public abstract class GeneratorBase : IncrementalGenerator
 
     protected override void OnInitialize()
     {
-        
         //Debugger.Launch();
         var attributes = GetAttributes();
         foreach (var attribute in attributes)
@@ -35,20 +34,28 @@ public abstract class GeneratorBase : IncrementalGenerator
 
     private void LoadTemplates()
     {
-        foreach (var templateName in GetTemplateNames())
+        try
         {
-            var template = LoadTemplate(templateName);
-            if (!string.IsNullOrEmpty(template))
+            foreach (var templateName in GetTemplateNames())
             {
-                var textGenerator = _generator.Build(T4Template.FromString(template, templateName));
-                //var parsed = _generator.ParseTemplate(templateName, template);
-                //var settings = TemplatingEngine.GetSettings(_generator, parsed);
-                //settings.CompilerOptions = "-nullable:enable";
+                var template = LoadTemplate(templateName);
+                if (!string.IsNullOrEmpty(template))
+                {
+                    var textGenerator = _generator.Build(T4Template.FromString(template, templateName));
+                    //var parsed = _generator.ParseTemplate(templateName, template);
+                    //var settings = TemplatingEngine.GetSettings(_generator, parsed);
+                    //settings.CompilerOptions = "-nullable:enable";
 
-                //var compiled = _generator.CompileTemplateAsync(template).GetAwaiter().GetResult();
-                _templates.Add(templateName, textGenerator);
+                    //var compiled = _generator.CompileTemplateAsync(template).GetAwaiter().GetResult();
+                    _templates.Add(templateName, textGenerator);
+                }
             }
         }
+        catch (Exception e)
+        {
+            throw new Exception("TESTTESTTESTTEST");
+        }
+
     }
 
     private void Execute(SourceProductionContext sourceContext, GeneratorAttributeSyntaxContext syntaxContext)
