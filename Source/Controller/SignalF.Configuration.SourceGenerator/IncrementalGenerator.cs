@@ -1,5 +1,6 @@
 ﻿using System.Collections.Concurrent;
 using System.Reflection;
+using System.Xml.Xsl;
 using Microsoft.CodeAnalysis;
 
 namespace SignalF.Configuration.SourceGenerator;
@@ -7,6 +8,21 @@ namespace SignalF.Configuration.SourceGenerator;
 public abstract class IncrementalGenerator : IIncrementalGenerator
 {
     private static readonly ConcurrentDictionary<string, string> Templates = new();
+
+    static IncrementalGenerator()
+    {
+        AppDomain.CurrentDomain.AssemblyResolve += (sender, args) =>
+        {
+            var name = new AssemblyName(args.Name).Name;
+            if(name.Equals("Scotec.T4", StringComparison.OrdinalIgnoreCase))
+            {
+                var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+                return assemblies.FirstOrDefault(a => a.FullName.Contains("Scotec.T4"));
+            }
+
+            return null;
+        };
+    }
 
     protected IncrementalGeneratorInitializationContext Context { get; private set; }
 

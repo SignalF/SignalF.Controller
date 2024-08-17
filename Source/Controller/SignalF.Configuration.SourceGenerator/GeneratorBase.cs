@@ -1,17 +1,18 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Mono.TextTemplating;
+using Scotec.T4;
+using System.Text;
 
 namespace SignalF.Configuration.SourceGenerator;
 
 public abstract class GeneratorBase : IncrementalGenerator
 {
-    private readonly TemplateGenerator _generator = new();
-    private readonly Dictionary<string, CompiledTemplate> _templates = new();
+    private readonly Generator _generator = new();
+    private readonly Dictionary<string, TextGenerator> _templates = new();
 
     protected override void OnInitialize()
     {
-        _generator.UseInProcessCompiler();
+        
         //Debugger.Launch();
         var attributes = GetAttributes();
         foreach (var attribute in attributes)
@@ -34,17 +35,18 @@ public abstract class GeneratorBase : IncrementalGenerator
 
     private void LoadTemplates()
     {
-        foreach (var templateName                                                 in GetTemplateNames())
+        foreach (var templateName in GetTemplateNames())
         {
             var template = LoadTemplate(templateName);
             if (!string.IsNullOrEmpty(template))
             {
-                var parsed = _generator.ParseTemplate(templateName, template);
-                var settings = TemplatingEngine.GetSettings(_generator, parsed);
-                settings.CompilerOptions = "-nullable:enable";
+                var textGenerator = _generator.Build(T4Template.FromString(template, templateName));
+                //var parsed = _generator.ParseTemplate(templateName, template);
+                //var settings = TemplatingEngine.GetSettings(_generator, parsed);
+                //settings.CompilerOptions = "-nullable:enable";
 
-                var compiled = _generator.CompileTemplateAsync(template).GetAwaiter().GetResult();
-                _templates.Add(templateName, compiled);
+                //var compiled = _generator.CompileTemplateAsync(template).GetAwaiter().GetResult();
+                _templates.Add(templateName, textGenerator);
             }
         }
     }
@@ -59,22 +61,28 @@ public abstract class GeneratorBase : IncrementalGenerator
             var classNamespace = symbol.ContainingNamespace.ToDisplayString();
             var globalNamespace = syntaxContext.SemanticModel.Compilation.Assembly.Name;
 
-            var s = _generator.GetOrCreateSession();
-            s.Add("className", className);
-            s.Add("classNamespace", classNamespace);
-            s.Add("globalNamespace", globalNamespace);
+            var parameters = new Dictionary<string, object>()
+            {
+                { "className", className },
+                { "classNamespace", classNamespace },
+                { "globalNamespace", globalNamespace }
+            };
 
             foreach (var template in _templates)
             {
                 if (template.Value != null)
                 {
-                    //var content = string.Format(template, @namespace, className, globalNamespace);
-                    var content = template.Value.Process();
+                    using var stream = new MemoryStream();
+                    using var textWriter = new StreamWriter(stream, Encoding.UTF32);
+                    template.Value.Generate(textWriter, parameters).GetAwaiter().GetResult();
+
+                    stream.Seek(0, SeekOrigin.Begin);
+                    using var textReader = new StreamReader(stream);
+
+                    var content = textReader.ReadToEnd();
                     sourceContext.AddSource($"{className}{template.Key}.g.cs", content);
                 }
             }
-
-            _generator.ClearSession();
         }
     }
 
