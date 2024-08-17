@@ -1,5 +1,4 @@
-﻿﻿<#@ template hostspecific="true" language="C#" #>
-<#@ output extension=".g.cs" #>
+﻿﻿<#@ template language="C#" #>
 <# string className = (string)Session["className"];#>
 <# string classNamespace = (string)Session["classNamespace"];#>
 <# string globalNamespace = (string)Session["globalNamespace"];#>
