@@ -64,7 +64,7 @@
 
 
 	<ItemGroup>
-		<PackageReference Include="Scotec.T4" Version="2.0.0-dev.53" PrivateAssets="all" />
+		<PackageReference Include="Scotec.T4" Version="1.0.0" PrivateAssets="all" />
 		<!-- Visual Studio 2022 version 17.8 uses Roslyn 4.8.0. Using a newer version requires update of Visual Studio. -->
 		<!-- Visual Studio 17.8 is the first version supporting .NET8. -->
 		<PackageReference Include="Microsoft.CodeAnalysis" Version="[4.8.0]" PrivateAssets="all" />
