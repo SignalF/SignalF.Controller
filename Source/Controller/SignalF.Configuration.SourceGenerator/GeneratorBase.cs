@@ -1,14 +1,29 @@
-﻿using Microsoft.CodeAnalysis;
+﻿using System.Collections;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Scotec.T4;
+using System.Linq;
+using System.Reflection;
 using System.Text;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace SignalF.Configuration.SourceGenerator;
 
+
 public abstract class GeneratorBase : IncrementalGenerator
 {
-    private readonly Generator _generator = new();
+    private readonly Generator _generator;
     private readonly Dictionary<string, TextGenerator> _templates = new();
+
+    public GeneratorBase()
+    {
+
+        _generator = new(new T4Options() { ReferencePaths = new List<string>
+        {
+            "/home/runner/work/SignalF.Devices/SignalF.Devices/packages/signalf.configuration.integration",
+            "/home/runner/work/SignalF.Devices/SignalF.Devices/packages/signalf.configuration.integration/*"
+        }, ReferenceAssemblies = new List<string>{"Scotec.T4.dll"} });
+    }
 
     protected override void OnInitialize()
     {
@@ -51,9 +66,34 @@ public abstract class GeneratorBase : IncrementalGenerator
                 }
             }
         }
+        catch (AggregateException e)
+        {
+            var builder = new StringBuilder();
+            foreach (var ex in e.InnerExceptions)
+            {
+                if (ex is T4CompilerException ce)
+                {
+                    //var text = ce.GeneratedCode.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                    //var text = ce.GeneratedCode.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                    //builder.Append($@"{string.Join("|", text)} "); 
+
+                    builder.Append($@"{string.Join(" | ", ce.Errors.Select(error => error.ToString()))} ");
+                }
+                else
+                {
+                    //var text = ex.StackTrace.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)
+                    //             .Skip(5).ToList();
+                    //var text = ex.Message.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)
+                    //             .Skip(0).ToList();
+                    builder.Append($@"{string.Join("|", ex.Message)} ");
+                    //builder.Append($"{AppDomain.CurrentDomain.BaseDirectory} | {AppDomain.CurrentDomain.DynamicDirectory}");
+                }
+            }
+            throw new Exception(builder.ToString());
+        }
         catch (Exception e)
         {
-            throw new Exception("TESTTESTTESTTEST");
+            throw new Exception($"Error {e.Message}");
         }
 
     }
@@ -81,7 +121,7 @@ public abstract class GeneratorBase : IncrementalGenerator
                 {
                     using var stream = new MemoryStream();
                     using var textWriter = new StreamWriter(stream, Encoding.UTF32);
-                    template.Value.Generate(textWriter, parameters).GetAwaiter().GetResult();
+                    template.Value.Generate(textWriter, parameters);
 
                     stream.Seek(0, SeekOrigin.Begin);
                     using var textReader = new StreamReader(stream);
