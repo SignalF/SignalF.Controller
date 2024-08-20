@@ -15,10 +15,9 @@ public abstract class GeneratorBase : IncrementalGenerator
     private readonly Generator _generator;
     private readonly Dictionary<string, TextGenerator> _templates = new();
 
-    public GeneratorBase()
+    protected GeneratorBase()
     {
-
-        _generator = new(new T4Options() { ReferencePaths = new List<string>
+        _generator = new Generator(new T4Options() { ReferencePaths = new List<string>
         {
             "/home/runner/work/SignalF.Devices/SignalF.Devices/packages/signalf.configuration.integration",
             "/home/runner/work/SignalF.Devices/SignalF.Devices/packages/signalf.configuration.integration/*"
@@ -57,6 +56,7 @@ public abstract class GeneratorBase : IncrementalGenerator
                 if (!string.IsNullOrEmpty(template))
                 {
                     var textGenerator = _generator.Build(T4Template.FromString(template, templateName));
+
                     //var parsed = _generator.ParseTemplate(templateName, template);
                     //var settings = TemplatingEngine.GetSettings(_generator, parsed);
                     //settings.CompilerOptions = "-nullable:enable";
@@ -114,7 +114,6 @@ public abstract class GeneratorBase : IncrementalGenerator
                 { "classNamespace", classNamespace },
                 { "globalNamespace", globalNamespace }
             };
-
             foreach (var template in _templates)
             {
                 if (template.Value != null)

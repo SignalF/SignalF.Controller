@@ -11,13 +11,17 @@ public abstract class IncrementalGenerator : IIncrementalGenerator
 
     static IncrementalGenerator()
     {
+        var searchPath = "/home/runner/work/SignalF.Devices/SignalF.Devices/packages/signalf.configuration.integration";
         AppDomain.CurrentDomain.AssemblyResolve += (sender, args) =>
         {
             var name = new AssemblyName(args.Name).Name;
-            if(name.Equals("Scotec.T4", StringComparison.OrdinalIgnoreCase))
+            var assemblyPath = Directory.GetFiles(searchPath, $"{name}.dll", SearchOption.AllDirectories).FirstOrDefault();
+
+            if(!string.IsNullOrEmpty(assemblyPath))
             {
-                var assemblies = AppDomain.CurrentDomain.GetAssemblies();
-                return assemblies.FirstOrDefault(a => a.FullName.Contains("Scotec.T4"));
+                //var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+                //return assemblies.FirstOrDefault(a => a.FullName.Contains("Scotec.T4"));
+                return Assembly.LoadFrom(assemblyPath);
             }
 
             return null;
