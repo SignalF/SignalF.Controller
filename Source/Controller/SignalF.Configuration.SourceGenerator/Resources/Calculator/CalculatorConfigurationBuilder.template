@@ -12,33 +12,33 @@ using SignalF.Datamodel.Calculation;
 namespace <#= classNamespace #>;
 
 public partial interface
-    I<#= className #>CalculatorConfigurationBuilder : I<#= className #>CalculatorConfigurationBuilder<I<#= className #>CalculatorConfigurationBuilder,
-        ICalculatorConfiguration, <#= className #>CalculatorOptions>
+    I<#= className #>ConfigurationBuilder : I<#= className #>ConfigurationBuilder<I<#= className #>ConfigurationBuilder,
+        ICalculatorConfiguration, <#= className #>Options>
 {
 }
 
 public partial interface
-    I<#= className #>CalculatorConfigurationBuilder<out TBuilder, in TConfiguration, in TOptions> : ICalculatorConfigurationBuilder<TBuilder, TConfiguration,
+    I<#= className #>ConfigurationBuilder<out TBuilder, in TConfiguration, in TOptions> : ICalculatorConfigurationBuilder<TBuilder, TConfiguration,
         TOptions>
     where TBuilder : ICalculatorConfigurationBuilder<TBuilder, TConfiguration, TOptions>
     where TConfiguration : ICalculatorConfiguration
-    where TOptions : <#= className #>CalculatorOptions
+    where TOptions : <#= className #>Options
 {
 }
 
-public partial class <#= className #>CalculatorConfigurationBuilder
-    : <#= className #>CalculatorConfigurationBuilder<<#= className #>CalculatorConfigurationBuilder, I<#= className #>CalculatorConfigurationBuilder,
-          ICalculatorConfiguration, <#= className #>CalculatorOptions>, I<#= className #>CalculatorConfigurationBuilder
+public partial class <#= className #>ConfigurationBuilder
+    : <#= className #>ConfigurationBuilder<<#= className #>ConfigurationBuilder, I<#= className #>ConfigurationBuilder,
+          ICalculatorConfiguration, <#= className #>Options>, I<#= className #>ConfigurationBuilder
 {
-    protected override I<#= className #>CalculatorConfigurationBuilder This => this;
+    protected override I<#= className #>ConfigurationBuilder This => this;
 }
 
-public abstract partial class <#= className #>CalculatorConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
+public abstract partial class <#= className #>ConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     : CalculatorConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
-      , I<#= className #>CalculatorConfigurationBuilder<TBuilder, TConfiguration, TOptions>
-    where TBuilder : I<#= className #>CalculatorConfigurationBuilder<TBuilder, TConfiguration, TOptions>
-    where TImpl : <#= className #>CalculatorConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
+      , I<#= className #>ConfigurationBuilder<TBuilder, TConfiguration, TOptions>
+    where TBuilder : I<#= className #>ConfigurationBuilder<TBuilder, TConfiguration, TOptions>
+    where TImpl : <#= className #>ConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     where TConfiguration : ICalculatorConfiguration
-    where TOptions : <#= className #>CalculatorOptions
+    where TOptions : <#= className #>Options
 {
 }

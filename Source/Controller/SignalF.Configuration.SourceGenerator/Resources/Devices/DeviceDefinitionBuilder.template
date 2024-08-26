@@ -12,33 +12,33 @@ using SignalF.Datamodel.Hardware;
 namespace <#= classNamespace #>;
 
 public partial interface
-    I<#= className #>DeviceDefinitionBuilder : I<#= className #>DeviceDefinitionBuilder<I<#= className #>DeviceDefinitionBuilder,
-        IDeviceDefinition, <#= className #>DeviceOptions>
+    I<#= className #>DefinitionBuilder : I<#= className #>DefinitionBuilder<I<#= className #>DefinitionBuilder,
+        IDeviceDefinition, <#= className #>Options>
 {
 }
 
 public partial interface
-    I<#= className #>DeviceDefinitionBuilder<out TBuilder, in TConfiguration, in TOptions> : IDeviceDefinitionBuilder<TBuilder, TConfiguration,
+    I<#= className #>DefinitionBuilder<out TBuilder, in TConfiguration, in TOptions> : IDeviceDefinitionBuilder<TBuilder, TConfiguration,
         TOptions>
     where TBuilder : IDeviceDefinitionBuilder<TBuilder, TConfiguration, TOptions>
     where TConfiguration : IDeviceDefinition
-    where TOptions : <#= className #>DeviceOptions
+    where TOptions : <#= className #>Options
 {
 }
 
-public partial class <#= className #>DeviceDefinitionBuilder
-    : <#= className #>DeviceDefinitionBuilder<<#= className #>DeviceDefinitionBuilder, I<#= className #>DeviceDefinitionBuilder,
-          IDeviceDefinition, <#= className #>DeviceOptions>, I<#= className #>DeviceDefinitionBuilder
+public partial class <#= className #>DefinitionBuilder
+    : <#= className #>DefinitionBuilder<<#= className #>DefinitionBuilder, I<#= className #>DefinitionBuilder,
+          IDeviceDefinition, <#= className #>Options>, I<#= className #>DefinitionBuilder
 {
-    protected override I<#= className #>DeviceDefinitionBuilder This => this;
+    protected override I<#= className #>DefinitionBuilder This => this;
 }
 
-public abstract partial class <#= className #>DeviceDefinitionBuilder<TImpl, TBuilder, TConfiguration, TOptions>
+public abstract partial class <#= className #>DefinitionBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     : DeviceDefinitionBuilder<TImpl, TBuilder, TConfiguration, TOptions>
-      , I<#= className #>DeviceDefinitionBuilder<TBuilder, TConfiguration, TOptions>
-    where TBuilder : I<#= className #>DeviceDefinitionBuilder<TBuilder, TConfiguration, TOptions>
-    where TImpl : <#= className #>DeviceDefinitionBuilder<TImpl, TBuilder, TConfiguration, TOptions>
+      , I<#= className #>DefinitionBuilder<TBuilder, TConfiguration, TOptions>
+    where TBuilder : I<#= className #>DefinitionBuilder<TBuilder, TConfiguration, TOptions>
+    where TImpl : <#= className #>DefinitionBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     where TConfiguration : IDeviceDefinition
-    where TOptions : <#= className #>DeviceOptions
+    where TOptions : <#= className #>Options
 {
 }

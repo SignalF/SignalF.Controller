@@ -20,24 +20,24 @@ public static class DataOutputSenderExtensions
     public static IServiceCollection Add<#= className #>(this IServiceCollection services)
     {
         return services.AddTransient<<#= className #>>()
-                       .AddTransient<IDataOutputSenderConfigurationBuilder<<#= className #>DataOutputSenderOptions>, DataOutputSenderConfigurationBuilder<<#= className #>DataOutputSenderOptions>>();
+                       .AddTransient<IDataOutputSenderConfigurationBuilder<<#= className #>Options>, DataOutputSenderConfigurationBuilder<<#= className #>Options>>();
     }
 
 
-    public static ISignalFConfiguration Add<#= className #>DataOutputSenderConfiguration<TOptions>(this ISignalFConfiguration configuration
-        , Action<I<#= className #>DataOutputSenderConfigurationBuilder<TOptions>> builder)
-    where TOptions : <#= className #>DataOutputSenderOptions
+    public static ISignalFConfiguration Add<#= className #>Configuration<TOptions>(this ISignalFConfiguration configuration
+        , Action<I<#= className #>ConfigurationBuilder<TOptions>> builder)
+    where TOptions : <#= className #>Options
     {
         return configuration
-            .AddDataOutputSenderConfiguration<I<#= className #>DataOutputSenderConfigurationBuilder<TOptions>
+            .AddDataOutputSenderConfiguration<I<#= className #>ConfigurationBuilder<TOptions>
                 , TOptions, IDataOutputSender>(builder);
     }
 
-    public static ISignalFConfiguration Add<#= className #>DataOutputSenderConfiguration(this ISignalFConfiguration configuration
-        , Action<I<#= className #>DataOutputSenderConfigurationBuilder<<#= className #>DataOutputSenderOptions>> builder)
+    public static ISignalFConfiguration Add<#= className #>Configuration(this ISignalFConfiguration configuration
+        , Action<I<#= className #>ConfigurationBuilder<<#= className #>Options>> builder)
     {
         return configuration
-            .AddDataOutputSenderConfiguration<I<#= className #>DataOutputSenderConfigurationBuilder<<#= className #>DataOutputSenderOptions>
-                , <#= className #>DataOutputSenderOptions, IDataOutputSender>(builder);
+            .AddDataOutputSenderConfiguration<I<#= className #>ConfigurationBuilder<<#= className #>Options>
+                , <#= className #>Options, IDataOutputSender>(builder);
     }
 }
