@@ -1,6 +1,5 @@
 ﻿using System.Collections.Concurrent;
 using System.Reflection;
-using System.Xml.Xsl;
 using Microsoft.CodeAnalysis;
 
 namespace SignalF.Configuration.SourceGenerator;
@@ -11,13 +10,25 @@ public abstract class IncrementalGenerator : IIncrementalGenerator
 
     static IncrementalGenerator()
     {
+        // The reference to the Scotec.T4 assembly cannot be resolved automatically if the
+        // source generator runs within a GitHub action. Therefor we need an assembly resolver
+        // that gets the assembly from the package directory.
+        var gitHubWorkspace = Environment.GetEnvironmentVariable("GITHUB_WORKSPACE");
+        if (string.IsNullOrEmpty(gitHubWorkspace))
+        {
+            return;
+        }
+        
+        var searchPath = gitHubWorkspace + "/packages/signalf.configuration.integration";
         AppDomain.CurrentDomain.AssemblyResolve += (sender, args) =>
         {
             var name = new AssemblyName(args.Name).Name;
-            if(name.Equals("Scotec.T4", StringComparison.OrdinalIgnoreCase))
+
+            var assemblyPath = Directory.GetFiles(searchPath, $"{name}.dll", SearchOption.AllDirectories).FirstOrDefault();
+
+            if (!string.IsNullOrEmpty(assemblyPath))
             {
-                var assemblies = AppDomain.CurrentDomain.GetAssemblies();
-                return assemblies.FirstOrDefault(a => a.FullName.Contains("Scotec.T4"));
+                return Assembly.LoadFrom(assemblyPath);
             }
 
             return null;

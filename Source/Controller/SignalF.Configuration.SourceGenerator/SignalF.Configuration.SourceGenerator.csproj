@@ -5,12 +5,12 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<LangVersion>Preview</LangVersion>
-		<EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
 		<IsRoslynComponent>true</IsRoslynComponent>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<IncludeBuildOutput>false</IncludeBuildOutput>
 		<NoPackageAnalysis>true</NoPackageAnalysis>
 		<Configurations>Debug;Release;GeneratorTest</Configurations>
+		<EnforceExtendedAnalyzerRules>false</EnforceExtendedAnalyzerRules>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)'=='GeneratorTest'">
@@ -64,20 +64,11 @@
 
 
 	<ItemGroup>
-		<PackageReference Include="Scotec.T4" Version="2.0.0-dev.53" PrivateAssets="all" />
+		<PackageReference Include="Scotec.T4" Version="2.0.0-dev.58" PrivateAssets="all" />
 		<!-- Visual Studio 2022 version 17.8 uses Roslyn 4.8.0. Using a newer version requires update of Visual Studio. -->
 		<!-- Visual Studio 17.8 is the first version supporting .NET8. -->
 		<PackageReference Include="Microsoft.CodeAnalysis" Version="[4.8.0]" PrivateAssets="all" />
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" PrivateAssets="all" />
-		<!--<PackageReference Include="System.Runtime.Loader" Version="4.0.0" PrivateAssets="all" />-->
-
-		<!--<PackageReference Include="System.CodeDom" Version="6.0.0" PrivateAssets="all" />-->
-		<!--<PackageReference Include="Mono.TextTemplating" Version="3.0.0-preview-0052-g5d0f76c785" PrivateAssets="all" />
-		<PackageReference Include="Mono.TextTemplating.Roslyn" Version="3.0.0-preview-0052-g5d0f76c785" PrivateAssets="all" />-->
-		<!--<PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4" PrivateAssets="all" />-->
-		<!-- Visual Studio 2022 version 17.8 uses Roslyn 4.8.0. Using a newer version requires update of Visual Studio. -->
-		<!-- Visual Studio 17.8 is the first version supporting .NET8. -->
-		<!--<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="[4.8.0]" PrivateAssets="all" />-->
 	</ItemGroup>
 
 
