@@ -11,46 +11,46 @@ using SignalF.Datamodel.DataOutput;
 
 namespace <#= classNamespace #>;
 
-public interface I<#= className #>DataOutputSenderConfigurationBuilder
-    : I<#= className #>DataOutputSenderConfigurationBuilder<<#= className #>DataOutputSenderOptions>
+public interface I<#= className #>ConfigurationBuilder
+    : I<#= className #>ConfigurationBuilder<<#= className #>Options>
 {
 }
 
-public interface I<#= className #>DataOutputSenderConfigurationBuilder<in TOptions>
-    : I<#= className #>DataOutputSenderConfigurationBuilder<I<#= className #>DataOutputSenderConfigurationBuilder<TOptions>, IDataOutputSenderConfiguration, TOptions>
-    where TOptions : <#= className #>DataOutputSenderOptions
+public interface I<#= className #>ConfigurationBuilder<in TOptions>
+    : I<#= className #>ConfigurationBuilder<I<#= className #>ConfigurationBuilder<TOptions>, IDataOutputSenderConfiguration, TOptions>
+    where TOptions : <#= className #>Options
 {
 }
 
-public interface I<#= className #>DataOutputSenderConfigurationBuilder<out TBuilder, in TConfiguration, in TOptions>
+public interface I<#= className #>ConfigurationBuilder<out TBuilder, in TConfiguration, in TOptions>
     : IDataOutputSenderConfigurationBuilder<TBuilder, TConfiguration, TOptions>
-    where TBuilder : I<#= className #>DataOutputSenderConfigurationBuilder<TBuilder, TConfiguration, TOptions>
+    where TBuilder : I<#= className #>ConfigurationBuilder<TBuilder, TConfiguration, TOptions>
     where TConfiguration : IDataOutputSenderConfiguration
-    where TOptions : <#= className #>DataOutputSenderOptions
+    where TOptions : <#= className #>Options
 {
 }
 
-public class <#= className #>DataOutputSenderConfigurationBuilder
-    : <#= className #>DataOutputSenderConfigurationBuilder<<#= className #>DataOutputSenderOptions>, I<#= className #>DataOutputSenderConfigurationBuilder
+public class <#= className #>ConfigurationBuilder
+    : <#= className #>ConfigurationBuilder<<#= className #>Options>, I<#= className #>ConfigurationBuilder
 {
-    protected override I<#= className #>DataOutputSenderConfigurationBuilder This => this;
+    protected override I<#= className #>ConfigurationBuilder This => this;
 }
 
-public class <#= className #>DataOutputSenderConfigurationBuilder<TOptions>
-    : <#= className #>DataOutputSenderConfigurationBuilder<<#= className #>DataOutputSenderConfigurationBuilder<TOptions>, I<#= className #>DataOutputSenderConfigurationBuilder<TOptions>,
+public class <#= className #>ConfigurationBuilder<TOptions>
+    : <#= className #>ConfigurationBuilder<<#= className #>ConfigurationBuilder<TOptions>, I<#= className #>ConfigurationBuilder<TOptions>,
           IDataOutputSenderConfiguration,
-          TOptions>, I<#= className #>DataOutputSenderConfigurationBuilder<TOptions>
-    where TOptions : <#= className #>DataOutputSenderOptions
+          TOptions>, I<#= className #>ConfigurationBuilder<TOptions>
+    where TOptions : <#= className #>Options
 {
-    protected override I<#= className #>DataOutputSenderConfigurationBuilder<TOptions> This => this;
+    protected override I<#= className #>ConfigurationBuilder<TOptions> This => this;
 }
 
-public abstract class <#= className #>DataOutputSenderConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
+public abstract class <#= className #>ConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     : DataOutputSenderConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
-      , I<#= className #>DataOutputSenderConfigurationBuilder<TBuilder, TConfiguration, TOptions>
-    where TBuilder : I<#= className #>DataOutputSenderConfigurationBuilder<TBuilder, TConfiguration, TOptions>
-    where TImpl : <#= className #>DataOutputSenderConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
+      , I<#= className #>ConfigurationBuilder<TBuilder, TConfiguration, TOptions>
+    where TBuilder : I<#= className #>ConfigurationBuilder<TBuilder, TConfiguration, TOptions>
+    where TImpl : <#= className #>ConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     where TConfiguration : IDataOutputSenderConfiguration
-    where TOptions : <#= className #>DataOutputSenderOptions
+    where TOptions : <#= className #>Options
 {
 }

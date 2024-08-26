@@ -12,33 +12,33 @@ using SignalF.Datamodel.Calculation;
 namespace <#= classNamespace #>;
 
 public partial interface
-    I<#= className #>CalculatorDefinitionBuilder : I<#= className #>CalculatorDefinitionBuilder<I<#= className #>CalculatorDefinitionBuilder,
-        ICalculatorDefinition, <#= className #>CalculatorOptions>
+    I<#= className #>DefinitionBuilder : I<#= className #>DefinitionBuilder<I<#= className #>DefinitionBuilder,
+        ICalculatorDefinition, <#= className #>Options>
 {
 }
 
 public partial interface
-    I<#= className #>CalculatorDefinitionBuilder<out TBuilder, in TConfiguration, in TOptions> : ICalculatorDefinitionBuilder<TBuilder, TConfiguration,
+    I<#= className #>DefinitionBuilder<out TBuilder, in TConfiguration, in TOptions> : ICalculatorDefinitionBuilder<TBuilder, TConfiguration,
         TOptions>
     where TBuilder : ICalculatorDefinitionBuilder<TBuilder, TConfiguration, TOptions>
     where TConfiguration : ICalculatorDefinition
-    where TOptions : <#= className #>CalculatorOptions
+    where TOptions : <#= className #>Options
 {
 }
 
-public partial class <#= className #>CalculatorDefinitionBuilder
-    : <#= className #>CalculatorDefinitionBuilder<<#= className #>CalculatorDefinitionBuilder, I<#= className #>CalculatorDefinitionBuilder,
-          ICalculatorDefinition, <#= className #>CalculatorOptions>, I<#= className #>CalculatorDefinitionBuilder
+public partial class <#= className #>DefinitionBuilder
+    : <#= className #>DefinitionBuilder<<#= className #>DefinitionBuilder, I<#= className #>DefinitionBuilder,
+          ICalculatorDefinition, <#= className #>Options>, I<#= className #>DefinitionBuilder
 {
-    protected override I<#= className #>CalculatorDefinitionBuilder This => this;
+    protected override I<#= className #>DefinitionBuilder This => this;
 }
 
-public abstract partial class <#= className #>CalculatorDefinitionBuilder<TImpl, TBuilder, TConfiguration, TOptions>
+public abstract partial class <#= className #>DefinitionBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     : CalculatorDefinitionBuilder<TImpl, TBuilder, TConfiguration, TOptions>
-      , I<#= className #>CalculatorDefinitionBuilder<TBuilder, TConfiguration, TOptions>
-    where TBuilder : I<#= className #>CalculatorDefinitionBuilder<TBuilder, TConfiguration, TOptions>
-    where TImpl : <#= className #>CalculatorDefinitionBuilder<TImpl, TBuilder, TConfiguration, TOptions>
+      , I<#= className #>DefinitionBuilder<TBuilder, TConfiguration, TOptions>
+    where TBuilder : I<#= className #>DefinitionBuilder<TBuilder, TConfiguration, TOptions>
+    where TImpl : <#= className #>DefinitionBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     where TConfiguration : ICalculatorDefinition
-    where TOptions : <#= className #>CalculatorOptions
+    where TOptions : <#= className #>Options
 {
 }

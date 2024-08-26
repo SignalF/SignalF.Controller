@@ -10,6 +10,6 @@ using SignalF.Configuration.DataOutput;
 
 namespace <#= classNamespace #>;
 
-public partial class <#= className #>DataOutputSenderOptions : DataOutputSenderOptions
+public partial class <#= className #>Options : DataOutputSenderOptions
 {
 }

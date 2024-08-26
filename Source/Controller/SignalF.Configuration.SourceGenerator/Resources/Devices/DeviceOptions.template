@@ -10,6 +10,6 @@ using SignalF.Configuration.Devices;
 
 namespace <#= classNamespace #>;
 
-public partial class <#= className #>DeviceOptions : DeviceOptions
+public partial class <#= className #>Options : DeviceOptions
 {
 }

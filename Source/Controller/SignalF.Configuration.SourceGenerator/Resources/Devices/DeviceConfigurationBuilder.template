@@ -12,33 +12,33 @@ using SignalF.Datamodel.Hardware;
 namespace <#= classNamespace #>;
 
 public partial interface
-    I<#= className #>DeviceConfigurationBuilder : I<#= className #>DeviceConfigurationBuilder<I<#= className #>DeviceConfigurationBuilder,
-        IDeviceConfiguration, <#= className #>DeviceOptions>
+    I<#= className #>ConfigurationBuilder : I<#= className #>ConfigurationBuilder<I<#= className #>ConfigurationBuilder,
+        IDeviceConfiguration, <#= className #>Options>
 {
 }
 
 public partial interface
-    I<#= className #>DeviceConfigurationBuilder<out TBuilder, in TConfiguration, in TOptions> : IDeviceConfigurationBuilder<TBuilder, TConfiguration,
+    I<#= className #>ConfigurationBuilder<out TBuilder, in TConfiguration, in TOptions> : IDeviceConfigurationBuilder<TBuilder, TConfiguration,
         TOptions>
     where TBuilder : IDeviceConfigurationBuilder<TBuilder, TConfiguration, TOptions>
     where TConfiguration : IDeviceConfiguration
-    where TOptions : <#= className #>DeviceOptions
+    where TOptions : <#= className #>Options
 {
 }
 
-public partial class <#= className #>DeviceConfigurationBuilder
-    : <#= className #>DeviceConfigurationBuilder<<#= className #>DeviceConfigurationBuilder, I<#= className #>DeviceConfigurationBuilder,
-          IDeviceConfiguration, <#= className #>DeviceOptions>, I<#= className #>DeviceConfigurationBuilder
+public partial class <#= className #>ConfigurationBuilder
+    : <#= className #>ConfigurationBuilder<<#= className #>ConfigurationBuilder, I<#= className #>ConfigurationBuilder,
+          IDeviceConfiguration, <#= className #>Options>, I<#= className #>ConfigurationBuilder
 {
-    protected override I<#= className #>DeviceConfigurationBuilder This => this;
+    protected override I<#= className #>ConfigurationBuilder This => this;
 }
 
-public abstract partial class <#= className #>DeviceConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
+public abstract partial class <#= className #>ConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     : DeviceConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
-      , I<#= className #>DeviceConfigurationBuilder<TBuilder, TConfiguration, TOptions>
-    where TBuilder : I<#= className #>DeviceConfigurationBuilder<TBuilder, TConfiguration, TOptions>
-    where TImpl : <#= className #>DeviceConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
+      , I<#= className #>ConfigurationBuilder<TBuilder, TConfiguration, TOptions>
+    where TBuilder : I<#= className #>ConfigurationBuilder<TBuilder, TConfiguration, TOptions>
+    where TImpl : <#= className #>ConfigurationBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     where TConfiguration : IDeviceConfiguration
-    where TOptions : <#= className #>DeviceOptions
+    where TOptions : <#= className #>Options
 {
 }

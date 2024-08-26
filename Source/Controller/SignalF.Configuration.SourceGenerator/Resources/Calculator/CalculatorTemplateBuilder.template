@@ -12,33 +12,33 @@ using SignalF.Datamodel.Calculation;
 namespace <#= classNamespace #>;
 
 public partial interface
-    I<#= className #>CalculatorTemplateBuilder : I<#= className #>CalculatorTemplateBuilder<I<#= className #>CalculatorTemplateBuilder,
-        ICalculatorTemplate, <#= className #>CalculatorOptions>
+    I<#= className #>TemplateBuilder : I<#= className #>TemplateBuilder<I<#= className #>TemplateBuilder,
+        ICalculatorTemplate, <#= className #>Options>
 {
 }
 
 public partial interface
-    I<#= className #>CalculatorTemplateBuilder<out TBuilder, in TConfiguration, in TOptions> : ICalculatorTemplateBuilder<TBuilder, TConfiguration,
+    I<#= className #>TemplateBuilder<out TBuilder, in TConfiguration, in TOptions> : ICalculatorTemplateBuilder<TBuilder, TConfiguration,
         TOptions>
     where TBuilder : ICalculatorTemplateBuilder<TBuilder, TConfiguration, TOptions>
     where TConfiguration : ICalculatorTemplate
-    where TOptions : <#= className #>CalculatorOptions
+    where TOptions : <#= className #>Options
 {
 }
 
-public partial class <#= className #>CalculatorTemplateBuilder
-    : <#= className #>CalculatorTemplateBuilder<<#= className #>CalculatorTemplateBuilder, I<#= className #>CalculatorTemplateBuilder,
-          ICalculatorTemplate, <#= className #>CalculatorOptions>, I<#= className #>CalculatorTemplateBuilder
+public partial class <#= className #>TemplateBuilder
+    : <#= className #>TemplateBuilder<<#= className #>TemplateBuilder, I<#= className #>TemplateBuilder,
+          ICalculatorTemplate, <#= className #>Options>, I<#= className #>TemplateBuilder
 {
-    protected override I<#= className #>CalculatorTemplateBuilder This => this;
+    protected override I<#= className #>TemplateBuilder This => this;
 }
 
-public abstract partial class <#= className #>CalculatorTemplateBuilder<TImpl, TBuilder, TConfiguration, TOptions>
+public abstract partial class <#= className #>TemplateBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     : CalculatorTemplateBuilder<TImpl, TBuilder, TConfiguration, TOptions>
-      , I<#= className #>CalculatorTemplateBuilder<TBuilder, TConfiguration, TOptions>
-    where TBuilder : I<#= className #>CalculatorTemplateBuilder<TBuilder, TConfiguration, TOptions>
-    where TImpl : <#= className #>CalculatorTemplateBuilder<TImpl, TBuilder, TConfiguration, TOptions>
+      , I<#= className #>TemplateBuilder<TBuilder, TConfiguration, TOptions>
+    where TBuilder : I<#= className #>TemplateBuilder<TBuilder, TConfiguration, TOptions>
+    where TImpl : <#= className #>TemplateBuilder<TImpl, TBuilder, TConfiguration, TOptions>
     where TConfiguration : ICalculatorTemplate
-    where TOptions : <#= className #>CalculatorOptions
+    where TOptions : <#= className #>Options
 {
 }
