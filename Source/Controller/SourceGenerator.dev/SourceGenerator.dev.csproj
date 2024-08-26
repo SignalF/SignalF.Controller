@@ -5,7 +5,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
-		<CompilerGeneratedFilesOutputPath>./Generated</CompilerGeneratedFilesOutputPath>
+		<!--<CompilerGeneratedFilesOutputPath>./Generated</CompilerGeneratedFilesOutputPath>-->
 		<Configurations>Debug;Release;GeneratorTest</Configurations>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<IsPackable>false</IsPackable>

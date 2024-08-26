@@ -5,7 +5,6 @@ using Scotec.T4;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace SignalF.Configuration.SourceGenerator;
 
@@ -14,14 +13,35 @@ public abstract class GeneratorBase : IncrementalGenerator
 {
     private readonly Generator _generator;
     private readonly Dictionary<string, TextGenerator> _templates = new();
+    private static readonly T4Options Options;
+    static GeneratorBase()
+    {
+        // The T4 templates cannot be compiled if the Scotec.T4 generator is executed within a GitHub
+        // action. The generated code references a class within the Scotec.T4 assembly. Therefore, the
+        // full path to the assembly must be passed to the compiler in the list of referenced files.
+        // Normally, the T4 generator determines the path by querying the location property of the
+        // Scotec.T4 assembly currently loaded in the process.
+        // Within the GitHub action, however, the assembly is not loaded in the usual way.The assembly
+        // file is first read in and then transferred to the Assembly.Load method as a byte array.
+        // It is then no longer possible to query the location property to determine the path to the assembly. 
+        Options = new T4Options();
+        var gitHubWorkspace = Environment.GetEnvironmentVariable("GITHUB_WORKSPACE");
+        if (!string.IsNullOrEmpty(gitHubWorkspace))
+        {
+            Options.ReferencePaths = new List<string>
+            {
+                gitHubWorkspace + "/packages/signalf.configuration.integration/*"
+            };
+            Options.ReferenceAssemblies = new List<string>
+            {
+                "Scotec.T4.dll"
+            };
+        }
+    }
 
     protected GeneratorBase()
     {
-        _generator = new Generator(new T4Options() { ReferencePaths = new List<string>
-        {
-            "/home/runner/work/SignalF.Devices/SignalF.Devices/packages/signalf.configuration.integration",
-            "/home/runner/work/SignalF.Devices/SignalF.Devices/packages/signalf.configuration.integration/*"
-        }, ReferenceAssemblies = new List<string>{"Scotec.T4.dll"} });
+        _generator = new Generator(Options);
     }
 
     protected override void OnInitialize()
@@ -56,12 +76,6 @@ public abstract class GeneratorBase : IncrementalGenerator
                 if (!string.IsNullOrEmpty(template))
                 {
                     var textGenerator = _generator.Build(T4Template.FromString(template, templateName));
-
-                    //var parsed = _generator.ParseTemplate(templateName, template);
-                    //var settings = TemplatingEngine.GetSettings(_generator, parsed);
-                    //settings.CompilerOptions = "-nullable:enable";
-
-                    //var compiled = _generator.CompileTemplateAsync(template).GetAwaiter().GetResult();
                     _templates.Add(templateName, textGenerator);
                 }
             }
@@ -100,7 +114,7 @@ public abstract class GeneratorBase : IncrementalGenerator
 
     private void Execute(SourceProductionContext sourceContext, GeneratorAttributeSyntaxContext syntaxContext)
     {
-        lock (_generator)
+        //lock (_generator)
         {
             //Debugger.Launch();
             var symbol = syntaxContext.TargetSymbol;

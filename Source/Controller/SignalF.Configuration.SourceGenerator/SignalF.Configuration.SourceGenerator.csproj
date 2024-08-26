@@ -31,7 +31,15 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<None Remove="Resources\Calculator\CalculatorConfigurationBuilder.template" />
+		<None Remove="Resources\Calculator\CalculatorDefinitionBuilder.template" />
+		<None Remove="Resources\Calculator\CalculatorExtensions.template" />
+		<None Remove="Resources\Calculator\CalculatorOptions.template" />
+		<None Remove="Resources\Calculator\CalculatorTemplateBuilder.template" />
 		<None Remove="Resources\ConfigurationBuilder.template" />
+		<None Remove="Resources\DataOutputSender\DataOutputSenderConfigurationBuilder.template" />
+		<None Remove="Resources\DataOutputSender\DataOutputSenderExtensions.template" />
+		<None Remove="Resources\DataOutputSender\DataOutputSenderOptions.template" />
 		<None Remove="Resources\DefinitionBuilder.template" />
 		<None Remove="Resources\DeviceExtensions.template" />
 		<None Remove="Resources\DeviceOptions.template" />
@@ -39,117 +47,33 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Include="Resources\Calculator\CalculatorConfigurationBuilder.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>CalculatorConfigurationBuilder.tt</DependentUpon>
-	  </None>
+		<EmbeddedResource Include="Resources\Calculator\CalculatorOptions.template" />
+		<EmbeddedResource Include="Resources\Calculator\CalculatorConfigurationBuilder.template" />
+		<EmbeddedResource Include="Resources\Calculator\CalculatorDefinitionBuilder.template" />
+		<EmbeddedResource Include="Resources\Calculator\CalculatorExtensions.template" />
+		<EmbeddedResource Include="Resources\Calculator\CalculatorTemplateBuilder.template" />
+		<EmbeddedResource Include="Resources\DataOutputSender\DataOutputSenderConfigurationBuilder.template" />
+		<EmbeddedResource Include="Resources\DataOutputSender\DataOutputSenderOptions.template" />
+		<EmbeddedResource Include="Resources\DataOutputSender\DataOutputSenderExtensions.template" />
+		<EmbeddedResource Include="Resources\Devices\DeviceConfigurationBuilder.template" />
+		<EmbeddedResource Include="Resources\Devices\DeviceTemplateBuilder.template" />
+		<EmbeddedResource Include="Resources\Devices\DeviceDefinitionBuilder.template" />
+		<EmbeddedResource Include="Resources\Devices\DeviceOptions.template" />
+		<EmbeddedResource Include="Resources\Devices\DeviceExtensions.template" />
 	</ItemGroup>
 
 
 	<ItemGroup>
-		<PackageReference Include="Scotec.T4" Version="1.0.0" PrivateAssets="all" />
+		<PackageReference Include="Scotec.T4" Version="2.0.0-dev.58" PrivateAssets="all" />
 		<!-- Visual Studio 2022 version 17.8 uses Roslyn 4.8.0. Using a newer version requires update of Visual Studio. -->
 		<!-- Visual Studio 17.8 is the first version supporting .NET8. -->
 		<PackageReference Include="Microsoft.CodeAnalysis" Version="[4.8.0]" PrivateAssets="all" />
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" PrivateAssets="all" />
-		<!--<PackageReference Include="System.Runtime.Loader" Version="4.0.0" PrivateAssets="all" />-->
-
-		<PackageReference Include="System.CodeDom" Version="6.0.0" PrivateAssets="all" />
-		<!--<PackageReference Include="Mono.TextTemplating" Version="3.0.0-preview-0052-g5d0f76c785" PrivateAssets="all" />
-		<PackageReference Include="Mono.TextTemplating.Roslyn" Version="3.0.0-preview-0052-g5d0f76c785" PrivateAssets="all" />-->
-		<!--<PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4" PrivateAssets="all" />-->
-		<!-- Visual Studio 2022 version 17.8 uses Roslyn 4.8.0. Using a newer version requires update of Visual Studio. -->
-		<!-- Visual Studio 17.8 is the first version supporting .NET8. -->
-		<!--<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="[4.8.0]" PrivateAssets="all" />-->
 	</ItemGroup>
 
 
 	<ItemGroup>
 		<Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
-	</ItemGroup>
-
-
-	<ItemGroup>
-	  <Compile Update="Resources\Devices\DeviceConfigurationBuilder.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>DeviceConfigurationBuilder.tt</DependentUpon>
-	  </Compile>
-	  <Compile Update="Resources\Devices\DeviceDefinitionBuilder.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>DeviceDefinitionBuilder.tt</DependentUpon>
-	  </Compile>
-	  <Compile Update="Resources\Devices\DeviceExtensions.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>DeviceExtensions.tt</DependentUpon>
-	  </Compile>
-	  <Compile Update="Resources\Devices\DeviceOptions.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>DeviceOptions.tt</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-
-	<ItemGroup>
-	  <None Update="Resources\Calculator\CalculatorConfigurationBuilder.tt">
-	    <Generator></Generator>
-	    <CustomToolNamespace>TextTemplatingFilePreprocessor</CustomToolNamespace>
-	  </None>
-	  <None Update="Resources\Calculator\CalculatorDefinitionBuilder.tt">
-	    <Generator></Generator>
-	    <CustomToolNamespace>TextTemplatingFilePreprocessor</CustomToolNamespace>
-	  </None>
-	  <None Update="Resources\Calculator\CalculatorExtensions.tt">
-	    <Generator></Generator>
-	    <CustomToolNamespace>TextTemplatingFilePreprocessor</CustomToolNamespace>
-	  </None>
-	  <None Update="Resources\Calculator\CalculatorOptions.tt">
-	    <Generator></Generator>
-	    <CustomToolNamespace>TextTemplatingFilePreprocessor</CustomToolNamespace>
-	  </None>
-	  <None Update="Resources\Calculator\CalculatorTemplateBuilder.tt">
-	    <Generator></Generator>
-	    <CustomToolNamespace>TextTemplatingFilePreprocessor</CustomToolNamespace>
-	  </None>
-	  <None Update="Resources\DataOutputSender\DataOutputSenderConfigurationBuilder.tt">
-	    <Generator></Generator>
-	    <CustomToolNamespace>TextTemplatingFilePreprocessor</CustomToolNamespace>
-	  </None>
-	  <None Update="Resources\DataOutputSender\DataOutputSenderExtensions.tt">
-	    <Generator></Generator>
-	    <CustomToolNamespace>TextTemplatingFilePreprocessor</CustomToolNamespace>
-	  </None>
-	  <None Update="Resources\DataOutputSender\DataOutputSenderOptions.tt">
-	    <Generator></Generator>
-	    <CustomToolNamespace>TextTemplatingFilePreprocessor</CustomToolNamespace>
-	  </None>
-	  <None Update="Resources\Devices\DeviceConfigurationBuilder.tt">
-	    <Generator>TextTemplatingFileGenerator</Generator>
-	    <LastGenOutput>DeviceConfigurationBuilder.cs</LastGenOutput>
-	    <CustomToolNamespace>TextTemplatingFilePreprocessor</CustomToolNamespace>
-	  </None>
-	  <None Update="Resources\Devices\DeviceDefinitionBuilder.tt">
-	    <Generator>TextTemplatingFileGenerator</Generator>
-	    <LastGenOutput>DeviceDefinitionBuilder.cs</LastGenOutput>
-	  </None>
-	  <None Update="Resources\Devices\DeviceExtensions.tt">
-	    <Generator>TextTemplatingFilePreprocessor</Generator>
-	    <LastGenOutput>DeviceExtensions.cs</LastGenOutput>
-	    <CustomToolNamespace>TextTemplatingFilePreprocessor</CustomToolNamespace>
-	  </None>
-	  <None Update="Resources\Devices\DeviceOptions.tt">
-	    <Generator>TextTemplatingFileGenerator</Generator>
-	    <LastGenOutput>DeviceOptions.cs</LastGenOutput>
-	    <CustomToolNamespace>TextTemplatingFilePreprocessor</CustomToolNamespace>
-	  </None>
-	  <None Update="Resources\Devices\DeviceTemplateBuilder.tt">
-	    <Generator></Generator>
-	    <CustomToolNamespace>TextTemplatingFilePreprocessor</CustomToolNamespace>
-	  </None>
 	</ItemGroup>
 
 </Project>
