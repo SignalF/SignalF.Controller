@@ -18,8 +18,8 @@
 		<dependencies>
 			<group targetFramework="netstandard2.1">
 				<dependency id="SignalF.Datamodel.Abstractions" version="$PackageVersion$" />
-				<dependency id="Scotec.Math.Units" version="1.0.0" />
-				<dependency id="Scotec.XmlDatabase" version="1.0.0" />
+				<dependency id="Scotec.Math.Units" version="1.0.1" />
+				<dependency id="Scotec.XmlDatabase" version="1.0.1" />
 			</group>
 		</dependencies>
 		<contentFiles>
