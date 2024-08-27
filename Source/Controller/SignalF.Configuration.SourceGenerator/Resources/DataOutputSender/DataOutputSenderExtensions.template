@@ -20,7 +20,7 @@ public static class DataOutputSenderExtensions
     public static IServiceCollection Add<#= className #>(this IServiceCollection services)
     {
         return services.AddTransient<<#= className #>>()
-                       .AddTransient<IDataOutputSenderConfigurationBuilder<<#= className #>Options>, DataOutputSenderConfigurationBuilder<<#= className #>Options>>();
+                       .AddTransient<I<#= className #>ConfigurationBuilder<<#= className #>Options>, <#= className #>ConfigurationBuilder<<#= className #>Options>>();
     }
 
 
