@@ -40,7 +40,7 @@ public static partial class DeviceExtensions
     // Template
     public static ISignalFConfiguration Add<#= className #>Template(this ISignalFConfiguration configuration, Action<I<#= className #>TemplateBuilder> builder)
     {
-        return configuration.AddDeviceTemplate<I<#= className #>TemplateBuilder, <#= className #>Options>(builder);
+        return configuration.Add<#= className #>Template<<#= className #>>(builder);
     }
 
     public static ISignalFConfiguration Add<#= className #>Template<TType>(this ISignalFConfiguration configuration, Action<I<#= className #>TemplateBuilder> builder)

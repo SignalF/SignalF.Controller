@@ -5,7 +5,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
-		<!--<CompilerGeneratedFilesOutputPath>./Generated</CompilerGeneratedFilesOutputPath>-->
+		<CompilerGeneratedFilesOutputPath>Generated</CompilerGeneratedFilesOutputPath>
 		<Configurations>Debug;Release;GeneratorTest</Configurations>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<IsPackable>false</IsPackable>
@@ -13,7 +13,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\Datamodel\SignalF.Datamodel.Calculation.Abstractions\SignalF.Datamodel.Calculation.Abstractions.csproj" />
+		<ProjectReference Include="..\..\Datamodel\SignalF.Datamodel.DataOutput.Abstractions\SignalF.Datamodel.DataOutput.Abstractions.csproj" />
+		<ProjectReference Include="..\SignalF.Configuration.Abstractions\SignalF.Configuration.Abstractions.csproj" />
 		<ProjectReference Include="..\SignalF.Configuration\SignalF.Configuration.csproj" />
+		<ProjectReference Include="..\SignalF.Controller.Abstractions\SignalF.Controller.Abstractions.csproj" />
+		<ProjectReference Include="..\SignalF.Controller\SignalF.Controller.csproj" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(Configuration)'!='GeneratorTest'">

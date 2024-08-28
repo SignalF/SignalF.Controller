@@ -11,6 +11,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Configuration", "..
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Configuration.Integration", "..\SignalF.Configuration.Integration\SignalF.Configuration.Integration.csproj", "{14A00010-DF0A-421C-B191-24A1A5624A44}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Controller", "..\SignalF.Controller\SignalF.Controller.csproj", "{BD26EBD2-F304-4F3C-AAC5-2C55511EB812}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Configuration.Abstractions", "..\SignalF.Configuration.Abstractions\SignalF.Configuration.Abstractions.csproj", "{83746B47-5316-4222-BDB6-5BCC924AB29E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Controller.Abstractions", "..\SignalF.Controller.Abstractions\SignalF.Controller.Abstractions.csproj", "{5AF70C1A-0892-479F-87D6-48183C610121}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.DataOutput.Abstractions", "..\..\Datamodel\SignalF.Datamodel.DataOutput.Abstractions\SignalF.Datamodel.DataOutput.Abstractions.csproj", "{7528D3A8-C732-44DE-9172-8486DA14177C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Calculation.Abstractions", "..\..\Datamodel\SignalF.Datamodel.Calculation.Abstractions\SignalF.Datamodel.Calculation.Abstractions.csproj", "{06AF084B-D9DD-4AFB-9C8A-AC2920D98D37}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +52,36 @@ Global
 		{14A00010-DF0A-421C-B191-24A1A5624A44}.GeneratorTest|Any CPU.Build.0 = Debug|Any CPU
 		{14A00010-DF0A-421C-B191-24A1A5624A44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14A00010-DF0A-421C-B191-24A1A5624A44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD26EBD2-F304-4F3C-AAC5-2C55511EB812}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD26EBD2-F304-4F3C-AAC5-2C55511EB812}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD26EBD2-F304-4F3C-AAC5-2C55511EB812}.GeneratorTest|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD26EBD2-F304-4F3C-AAC5-2C55511EB812}.GeneratorTest|Any CPU.Build.0 = Debug|Any CPU
+		{BD26EBD2-F304-4F3C-AAC5-2C55511EB812}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD26EBD2-F304-4F3C-AAC5-2C55511EB812}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83746B47-5316-4222-BDB6-5BCC924AB29E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83746B47-5316-4222-BDB6-5BCC924AB29E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83746B47-5316-4222-BDB6-5BCC924AB29E}.GeneratorTest|Any CPU.ActiveCfg = Debug|Any CPU
+		{83746B47-5316-4222-BDB6-5BCC924AB29E}.GeneratorTest|Any CPU.Build.0 = Debug|Any CPU
+		{83746B47-5316-4222-BDB6-5BCC924AB29E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83746B47-5316-4222-BDB6-5BCC924AB29E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AF70C1A-0892-479F-87D6-48183C610121}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AF70C1A-0892-479F-87D6-48183C610121}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AF70C1A-0892-479F-87D6-48183C610121}.GeneratorTest|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AF70C1A-0892-479F-87D6-48183C610121}.GeneratorTest|Any CPU.Build.0 = Debug|Any CPU
+		{5AF70C1A-0892-479F-87D6-48183C610121}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AF70C1A-0892-479F-87D6-48183C610121}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7528D3A8-C732-44DE-9172-8486DA14177C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7528D3A8-C732-44DE-9172-8486DA14177C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7528D3A8-C732-44DE-9172-8486DA14177C}.GeneratorTest|Any CPU.ActiveCfg = Debug|Any CPU
+		{7528D3A8-C732-44DE-9172-8486DA14177C}.GeneratorTest|Any CPU.Build.0 = Debug|Any CPU
+		{7528D3A8-C732-44DE-9172-8486DA14177C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7528D3A8-C732-44DE-9172-8486DA14177C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06AF084B-D9DD-4AFB-9C8A-AC2920D98D37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06AF084B-D9DD-4AFB-9C8A-AC2920D98D37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06AF084B-D9DD-4AFB-9C8A-AC2920D98D37}.GeneratorTest|Any CPU.ActiveCfg = Debug|Any CPU
+		{06AF084B-D9DD-4AFB-9C8A-AC2920D98D37}.GeneratorTest|Any CPU.Build.0 = Debug|Any CPU
+		{06AF084B-D9DD-4AFB-9C8A-AC2920D98D37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06AF084B-D9DD-4AFB-9C8A-AC2920D98D37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

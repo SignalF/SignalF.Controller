@@ -32,9 +32,9 @@ public abstract class SignalProcessor<TConfiguration> : ISignalProcessor
     protected IDictionary<string, int> SignalNameToIndexMapping { get; } = new Dictionary<string, int>();
 
     /// <summary>
-    ///     Configuration data provided by the signal processor configuration (template, definition, configuration).
+    ///     Configuration provided by the signal processor configuration (template, definition, and configuration).
     /// </summary>
-    protected IConfigurationRoot ConfigurationData { get; private set; }
+    protected IConfiguration Configuration { get; private set; }
 
     /// <summary>
     ///     Get access to the logger.
@@ -178,7 +178,7 @@ public abstract class SignalProcessor<TConfiguration> : ISignalProcessor
                       .AddJsonStream(stream1)
                       .AddJsonStream(stream2)
                       .AddJsonStream(stream3);
-        ConfigurationData = builder.Build();
+        Configuration = builder.Build();
         return;
         //Test
         //var data = ConfigurationData.GetSection("name");
