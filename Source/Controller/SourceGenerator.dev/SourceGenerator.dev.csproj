@@ -30,4 +30,8 @@
 		<ProjectReference Include="..\SignalF.Configuration.Integration\SignalF.Configuration.Integration.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Generated\" />
+	</ItemGroup>
+
 </Project>
