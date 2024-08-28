@@ -8,8 +8,6 @@
 
 using Microsoft.Extensions.DependencyInjection;
 using SignalF.Configuration;
-using SignalF.Configuration.DataOutput;
-using SignalF.Controller.DataOutput;
 
 namespace <#= classNamespace #>;
 
@@ -24,20 +22,17 @@ public static class DataOutputSenderExtensions
     }
 
 
-    public static ISignalFConfiguration Add<#= className #>Configuration<TOptions>(this ISignalFConfiguration configuration
-        , Action<I<#= className #>ConfigurationBuilder<TOptions>> builder)
-    where TOptions : <#= className #>Options
+    public static ISignalFConfiguration Add<#= className #>Configuration<TType>(this ISignalFConfiguration configuration
+        , Action<I<#= className #>ConfigurationBuilder<<#= className #>Options>> builder)
+    where TType : <#= className #>
     {
         return configuration
-            .AddDataOutputSenderConfiguration<I<#= className #>ConfigurationBuilder<TOptions>
-                , TOptions, IDataOutputSender>(builder);
+            .AddDataOutputSenderConfiguration<I<#= className #>ConfigurationBuilder<<#= className #>Options>, <#= className #>Options, TType>(builder);
     }
 
     public static ISignalFConfiguration Add<#= className #>Configuration(this ISignalFConfiguration configuration
         , Action<I<#= className #>ConfigurationBuilder<<#= className #>Options>> builder)
     {
-        return configuration
-            .AddDataOutputSenderConfiguration<I<#= className #>ConfigurationBuilder<<#= className #>Options>
-                , <#= className #>Options, IDataOutputSender>(builder);
+        return configuration.Add<#= className #>Configuration<<#= className #>>(builder);
     }
 }
