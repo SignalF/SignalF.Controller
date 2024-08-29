@@ -185,8 +185,6 @@ public abstract class SignalProcessor<TConfiguration> : ISignalProcessor
                       .AddJsonStream(stream3);
         Configuration = builder.Build();
         return;
-        //Test
-        //var data = ConfigurationData.GetSection("name");
 
         string CheckJson(string json)
         {
