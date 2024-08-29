@@ -53,7 +53,10 @@ public class SignalHub : ISignalHub
             //signalValues[signal.SignalIndex] = signal.Value;
             //signals[i] = signal;
             var signalIndex = signals[i].SignalIndex;
-            signals[i] = _signals[signalIndex];
+            if (signalIndex >= 0)
+            {
+                signals[i] = _signals[signalIndex];
+            }
         }
     }
 

@@ -36,6 +36,11 @@ public abstract class SignalProcessor<TConfiguration> : ISignalProcessor
     /// </summary>
     protected IConfiguration Configuration { get; private set; }
 
+    protected TOptions GetOptions<TOptions>() where TOptions : class
+    {
+        return Configuration.Get<TOptions>();
+    }
+
     /// <summary>
     ///     Get access to the logger.
     /// </summary>

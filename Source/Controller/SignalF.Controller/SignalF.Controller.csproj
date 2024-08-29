@@ -13,7 +13,6 @@
 		<Title>SignalF.Controller</Title>
 	</PropertyGroup>
 
-
 	<ItemGroup>
 		<Compile Remove="Hardware\Channels\I2c\I2cDeviceBinding.cs" />
 		<Compile Remove="Hardware\Channels\Tcp\TcpDeviceBinding.cs" />
