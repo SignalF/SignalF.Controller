@@ -30,14 +30,22 @@
 
 	<PropertyGroup>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<!--<IsPackable>true</IsPackable>-->
 		<DebugSymbols>true</DebugSymbols>
-		<IncludeSymbols>true</IncludeSymbols>
-		<DebugType>embedded</DebugType>
-		<!-- <SymbolPackageFormat>snupkg</SymbolPackageFormat> -->
 		<!--<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>-->
 		<EmbedAllSources>true</EmbedAllSources>
 	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+		<DebugType>embedded</DebugType>
+		<IncludeSymbols>false</IncludeSymbols>
+	</PropertyGroup>
+
+	<PropertyGroup  Condition="'$(Configuration)' == 'Release'">
+		<DebugType>portable</DebugType>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	</PropertyGroup>
+
 
 	<!-- The CI property is define in GitHub Actions and is always set to 'true'. -->
 	<PropertyGroup Condition="'$(CI)' == 'true'">
