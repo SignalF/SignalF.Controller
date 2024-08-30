@@ -1,5 +1,7 @@
 ﻿#region
 
+using Iot.Device.DHTxx;
+using Iot.Device.OneWire;
 using SignalF.Datamodel.Hardware;
 
 #endregion
@@ -8,14 +10,27 @@ namespace SignalF.Controller.Hardware.DeviceBindings;
 
 public class OneWireDeviceBinding : DeviceBinding<IOneWireDeviceBindingConfiguration>, IOneWireDeviceBinding
 {
+    private OneWireBus _bus;
+    private List<string> _devices;
+
+
     public override void Open()
     {
-        throw new NotImplementedException();
+        var busId = "/sys/bus/w1/devices/w1_bus_master1";
+        _bus = new OneWireBus(busId);
+
+        // Scan for devices
+        _bus.ScanForDeviceChanges();
+
+        // Enumerate devices
+        _devices = _bus.EnumerateDeviceIds().ToList();
+        var d = new OneWireDevice(busId, "DEVICE_ID");
     }
 
     public override void Close()
     {
-        throw new NotImplementedException();
+        _devices = null;
+        _bus = null;
     }
 
     public void Read(Span<byte> buffer)

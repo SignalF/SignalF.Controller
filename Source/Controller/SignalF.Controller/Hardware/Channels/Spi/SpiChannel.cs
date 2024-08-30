@@ -4,7 +4,7 @@ namespace SignalF.Controller.Hardware.Channels.Spi;
 
 public class SpiChannel : Channel<ISpiChannelConfiguration>, ISpiChannel
 {
-    public void Read(byte[] buffer)
+    public void Read(Span<byte> readBuffer)
     {
         throw new NotImplementedException();
     }
