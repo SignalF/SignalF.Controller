@@ -170,10 +170,6 @@ public class ControllerModule : Autofac.Module
                    .SingleInstance();
         }
 
-        //builder.RegisterType<I2cChannelGroup>()
-        //       .As<II2cChannelGroup>()
-        //       .InstancePerDependency();
-
         builder.RegisterType<I2cChannel>()
                .As<II2cChannel>()
                .InstancePerDependency();

@@ -44,15 +44,12 @@ public class SignalHub : ISignalHub
     /// <inheritdoc />
     public void ReadSignals(Span<Signal> signals)
     {
-        //var signalValues = _signals.AsSpan();
         var length = signals.Length;
         for (var i = 0; i < length; i++)
         {
-            //var signal = signals[i];
-            //signal.Value = signalValues[signal.SignalIndex];
-            //signalValues[signal.SignalIndex] = signal.Value;
-            //signals[i] = signal;
             var signalIndex = signals[i].SignalIndex;
+
+            // Signal index is -1 for not connected signal sinks.
             if (signalIndex >= 0)
             {
                 signals[i] = _signals[signalIndex];
