@@ -4,6 +4,7 @@ using System.Device.Spi;
 using Scotec.Extensions.Linq;
 using SignalF.Controller.Hardware.Channels.Spi;
 using SignalF.Datamodel.Hardware;
+using SpiDevice = System.Device.Spi.SpiDevice;
 
 #endregion
 

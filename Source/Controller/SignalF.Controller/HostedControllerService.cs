@@ -11,7 +11,6 @@ public class HostedControllerService : IHostedService
     private readonly IApplicationArgumentCollection _applicationArgumentCollection;
     private readonly IServiceScopeFactory _scopeFactory;
 
-    private ISignalFConfigurationManager _configurationManager;
     private IControlInterface _controlInterface;
     private IServiceScope _scope;
 
@@ -26,10 +25,10 @@ public class HostedControllerService : IHostedService
 
     /// <summary>
     ///     The controller can be started in either online or offline mode.
-    ///     In offline mode, the controller executes the test program specified in the CLI parameters.External control is not
+    ///     In offline mode, the controller executes the process control specified in the CLI parameters. External control is not
     ///     possible in offline mode.
     ///     To control the controller externally, e.g. via the Azure Cloud, the controller must be started in online mode.
-    ///     In online mode, test programs can be specified, started or stopped from outside.
+    ///     In online mode, process control programs can be specified, started or stopped from outside.
     /// </summary>
     public Task StartAsync(CancellationToken cancellationToken)
     {
@@ -39,7 +38,6 @@ public class HostedControllerService : IHostedService
         _scope = _scopeFactory.CreateScope();
 
         _controlInterface = _scope.ServiceProvider.GetRequiredService<IControlInterface>();
-        _configurationManager = _scope.ServiceProvider.GetService<ISignalFConfigurationManager>();
 
         var configuration = options.Configuration ?? DefaultConfiguration;
         var procedureName = options.ProcedureName ?? nameof(DefaultProcedure);
@@ -69,7 +67,6 @@ public class HostedControllerService : IHostedService
         _controlInterface.Stop();
 
         _controlInterface = null;
-        _configurationManager = null;
         _scope.Dispose();
         _scope = null;
 

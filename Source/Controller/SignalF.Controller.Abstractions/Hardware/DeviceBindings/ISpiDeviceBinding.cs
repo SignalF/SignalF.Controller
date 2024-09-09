@@ -1,6 +1,4 @@
-﻿#region
-
-#endregion
+﻿using System.Device.Spi;
 
 namespace SignalF.Controller.Hardware.DeviceBindings;
 

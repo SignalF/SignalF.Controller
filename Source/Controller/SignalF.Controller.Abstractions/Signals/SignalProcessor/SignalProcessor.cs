@@ -36,6 +36,11 @@ public abstract class SignalProcessor<TConfiguration> : ISignalProcessor
     /// </summary>
     protected IConfiguration Configuration { get; private set; }
 
+    protected TOptions GetOptions<TOptions>() where TOptions : class
+    {
+        return Configuration.Get<TOptions>();
+    }
+
     /// <summary>
     ///     Get access to the logger.
     /// </summary>
@@ -180,8 +185,6 @@ public abstract class SignalProcessor<TConfiguration> : ISignalProcessor
                       .AddJsonStream(stream3);
         Configuration = builder.Build();
         return;
-        //Test
-        //var data = ConfigurationData.GetSection("name");
 
         string CheckJson(string json)
         {

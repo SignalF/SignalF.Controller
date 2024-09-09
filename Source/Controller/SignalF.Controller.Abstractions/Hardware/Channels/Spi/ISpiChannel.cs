@@ -6,7 +6,7 @@ public interface ISpiChannel : IChannel
     ///     Reads from the connected device.
     /// </summary>
     /// <param name="buffer">Array containing data read from the device.</param>
-    void Read(byte[] buffer);
+    void Read(Span<byte> readBuffer);
 
     /// <summary>
     ///     Transfer data using a full duplex communication system. Full duplex allows both the master and the slave to

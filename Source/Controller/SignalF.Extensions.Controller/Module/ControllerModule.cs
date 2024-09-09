@@ -170,10 +170,6 @@ public class ControllerModule : Autofac.Module
                    .SingleInstance();
         }
 
-        builder.RegisterType<I2cChannelGroup>()
-               .As<II2cChannelGroup>()
-               .InstancePerDependency();
-
         builder.RegisterType<I2cChannel>()
                .As<II2cChannel>()
                .InstancePerDependency();
@@ -185,21 +181,21 @@ public class ControllerModule : Autofac.Module
         builder.RegisterType<SpiChannelGroup>()
                .As<ISpiChannelGroup>()
                .As<IChannelGroup>()
-               .SingleInstance();
+               .InstancePerDependency();
 
         builder.RegisterType<I2cChannelGroup>()
                .As<II2cChannelGroup>()
                .As<IChannelGroup>()
-               .SingleInstance();
+               .InstancePerDependency();
 
         builder.RegisterType<TcpChannelGroup>()
                .As<ITcpChannelGroup>()
                .As<IChannelGroup>()
-               .SingleInstance();
+               .InstancePerDependency();
 
         builder.RegisterType<OneWireChannelGroup>()
                .As<IOneWireChannelGroup>()
                .As<IChannelGroup>()
-               .SingleInstance();
+               .InstancePerDependency();
     }
 }

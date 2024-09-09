@@ -59,6 +59,10 @@ public class TaskScheduler : ITaskScheduler
     public void Run()
     {
         _initTasks.ForAll(task => task.Execute());
+
+        // The init tasks may write initial values to the signal hub.
+        // Therefore the signal hub needs to be informed that a new cycle has started.
+        _signalHub.NewCycle();
         _timer.Start();
     }
 
