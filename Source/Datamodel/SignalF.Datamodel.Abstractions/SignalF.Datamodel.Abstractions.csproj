@@ -8,8 +8,8 @@
 
 
 	<ItemGroup>
-		<PackageReference Include="Scotec.Math.Units" Version="1.0.1" />
-		<PackageReference Include="Scotec.XmlDatabase" Version="1.0.1" />
+		<PackageReference Include="Scotec.Math.Units" Version="1.0.2-dev.2" />
+		<PackageReference Include="Scotec.XmlDatabase" Version="1.0.2-dev.2" />
 	</ItemGroup>
 
 	<ItemGroup>
