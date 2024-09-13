@@ -25,32 +25,37 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.Base.xsd" Link="Schemas\SignalF.Datamodel.Base.xsd">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		<!-- SignalF.Datamodel.Units.xsd is not included as embedded resource when the project is built on GitHub. -->
+		<!-- Building in Visual Studio works fine. This cóuld be a problem with the current culture on the build system. -->
+		<!-- However, adding the attribute WithCulture="false". soves the problem. -->
+		<!-- See also: https://github.com/dotnet/msbuild/issues/9287-->
+		<!-- See also: https://github.com/dotnet/msbuild/issues/9152-->
+	  <EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.Base.xsd" Link="Schemas\SignalF.Datamodel.Base.xsd" WithCulture="false">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
-	  <EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.Calculation.xsd" Link="Schemas\SignalF.Datamodel.Calculation.xsd">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  <EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.Calculation.xsd" Link="Schemas\SignalF.Datamodel.Calculation.xsd" WithCulture="false">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
-	  <EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.Configuration.xsd" Link="Schemas\SignalF.Datamodel.Configuration.xsd">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  <EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.Configuration.xsd" Link="Schemas\SignalF.Datamodel.Configuration.xsd" WithCulture="false">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
-	  <EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.DataOutput.xsd" Link="Schemas\SignalF.Datamodel.DataOutput.xsd">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  <EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.DataOutput.xsd" Link="Schemas\SignalF.Datamodel.DataOutput.xsd" WithCulture="false">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
-	  <EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.Devices.xsd" Link="Schemas\SignalF.Datamodel.Devices.xsd">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  <EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.Devices.xsd" Link="Schemas\SignalF.Datamodel.Devices.xsd" WithCulture="false">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
-	  <EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.Hardware.xsd" Link="Schemas\SignalF.Datamodel.Hardware.xsd">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  <EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.Hardware.xsd" Link="Schemas\SignalF.Datamodel.Hardware.xsd" WithCulture="false">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
-		<EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.ProcessControl.xsd" Link="Schemas\SignalF.Datamodel.ProcessControl.xsd">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		<EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.ProcessControl.xsd" Link="Schemas\SignalF.Datamodel.ProcessControl.xsd" WithCulture="false">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
-	  <EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.Signals.xsd" Link="Schemas\SignalF.Datamodel.Signals.xsd">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  <EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.Signals.xsd" Link="Schemas\SignalF.Datamodel.Signals.xsd" WithCulture="false">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
-	  <EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.Units.xsd" Link="Schemas\SignalF.Datamodel.Units.xsd">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.Units.xsd" Link="Schemas\SignalF.Datamodel.Units.xsd" WithCulture="false">
+		<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	</ItemGroup>
 
