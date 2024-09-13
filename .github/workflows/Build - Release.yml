@@ -40,3 +40,9 @@ jobs:
 #      run: dotnet test --no-restore --no-build --verbosity normal ./Source/SignalF.Controller.sln
     - name: Push project
       run: dotnet nuget push LocalPackages/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET_API_KEY}} --skip-duplicate
+    - name: Archive packages      
+      uses: actions/upload-artifact@v4
+      with:
+        name: Packages
+        retention-days: 1
+        path: LocalPackages/*.nupkg
