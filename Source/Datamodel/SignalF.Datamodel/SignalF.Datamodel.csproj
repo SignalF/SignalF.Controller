@@ -25,6 +25,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<!-- SignalF.Datamodel.Units.xsd is not included as embedded resource when the project is built on GitHub. -->
+		<!-- Building in Visual Studio works fine. This cóuld be a problem with the current culture on the build system. -->
+		<!-- However, adding the attribute WithCulture="false". soves the problem. -->
+		<!-- See also: https://github.com/dotnet/msbuild/issues/9287-->
+		<!-- See also: https://github.com/dotnet/msbuild/issues/9152-->
 	  <EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.Base.xsd" Link="Schemas\SignalF.Datamodel.Base.xsd" WithCulture="false">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
