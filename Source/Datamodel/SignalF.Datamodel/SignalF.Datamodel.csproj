@@ -46,11 +46,11 @@
 		<EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.ProcessControl.xsd" Link="Schemas\SignalF.Datamodel.ProcessControl.xsd" WithCulture="false">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
-	  <EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.Units.xsd" Link="Schemas\SignalF.Datamodel.Units.xsd" WithCulture="false">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
 	  <EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.Signals.xsd" Link="Schemas\SignalF.Datamodel.Signals.xsd" WithCulture="false">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+      <EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.Units.xsd" Link="Schemas\SignalF.Datamodel.Units.xsd" WithCulture="false">
+		<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	</ItemGroup>
 
