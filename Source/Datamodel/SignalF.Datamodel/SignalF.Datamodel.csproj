@@ -7,6 +7,24 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Autofac" Version="8.0.0" />
+		<PackageReference Include="Scotec.XmlDatabase" Version="1.0.2-dev.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\SignalF.Datamodel.Abstractions\SignalF.Datamodel.Abstractions.csproj" />
+		<ProjectReference Include="..\SignalF.Datamodel.Configuration\SignalF.Datamodel.Configuration.csproj" />
+		<ProjectReference Include="..\SignalF.Datamodel.Base\SignalF.Datamodel.Base.csproj" />
+		<ProjectReference Include="..\SignalF.Datamodel.ProcessControl\SignalF.Datamodel.ProcessControl.csproj" />
+		<ProjectReference Include="..\SignalF.Datamodel.Units\SignalF.Datamodel.Units.csproj" />
+		<ProjectReference Include="..\SignalF.Datamodel.Signals\SignalF.Datamodel.Signals.csproj" />
+		<ProjectReference Include="..\SignalF.Datamodel.Calculation\SignalF.Datamodel.Calculation.csproj" />
+		<ProjectReference Include="..\SignalF.Datamodel.Devices\SignalF.Datamodel.Devices.csproj" />
+		<ProjectReference Include="..\SignalF.Datamodel.Hardware\SignalF.Datamodel.Hardware.csproj" />
+		<ProjectReference Include="..\SignalF.Datamodel.DataOutput\SignalF.Datamodel.DataOutput.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.Base.xsd" Link="Schemas\SignalF.Datamodel.Base.xsd">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </EmbeddedResource>
@@ -34,25 +52,6 @@
 	  <EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.Units.xsd" Link="Schemas\SignalF.Datamodel.Units.xsd">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </EmbeddedResource>
-	</ItemGroup>
-
-
-	<ItemGroup>
-	  <PackageReference Include="Autofac" Version="8.0.0" />
-	  <PackageReference Include="Scotec.XmlDatabase" Version="1.0.2-dev.2" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<ProjectReference Include="..\SignalF.Datamodel.Abstractions\SignalF.Datamodel.Abstractions.csproj" />
-		<ProjectReference Include="..\SignalF.Datamodel.Configuration\SignalF.Datamodel.Configuration.csproj" />
-		<ProjectReference Include="..\SignalF.Datamodel.Base\SignalF.Datamodel.Base.csproj" />
-		<ProjectReference Include="..\SignalF.Datamodel.ProcessControl\SignalF.Datamodel.ProcessControl.csproj" />
-		<ProjectReference Include="..\SignalF.Datamodel.Units\SignalF.Datamodel.Units.csproj" />
-		<ProjectReference Include="..\SignalF.Datamodel.Signals\SignalF.Datamodel.Signals.csproj" />
-		<ProjectReference Include="..\SignalF.Datamodel.Calculation\SignalF.Datamodel.Calculation.csproj" />
-		<ProjectReference Include="..\SignalF.Datamodel.Devices\SignalF.Datamodel.Devices.csproj" />
-		<ProjectReference Include="..\SignalF.Datamodel.Hardware\SignalF.Datamodel.Hardware.csproj" />
-		<ProjectReference Include="..\SignalF.Datamodel.DataOutput\SignalF.Datamodel.DataOutput.csproj" />
 	</ItemGroup>
 
 </Project>	
