@@ -17,8 +17,8 @@
 		<readme>$PackageReadmeFile$</readme>
 		<dependencies>
 			<group targetFramework="netstandard2.1">
-				<dependency id="Scotec.Math.Units" version="1.0.2-dev.5" />
-				<dependency id="Scotec.XmlDatabase" version="1.0.2-dev.5" />
+				<dependency id="Scotec.Math.Units" version="1.0.3" />
+				<dependency id="Scotec.XmlDatabase" version="1.0.3" />
 			</group>
 		</dependencies>
 		<contentFiles>

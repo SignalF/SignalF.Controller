@@ -22,8 +22,8 @@
 				<dependency id="Microsoft.Extensions.Configuration.Binder" version="8.0.1" />
 				<dependency id="Microsoft.Extensions.Hosting.Abstractions" version="8.0.0" />
 				<dependency id="Mono.Options" version="6.12.0.148" />
-				<dependency id="Scotec.Extensions.Linq" version="1.0.2-dev.5" />
-				<dependency id="Scotec.RingBuffer" version="1.0.2-dev.5" />
+				<dependency id="Scotec.Extensions.Linq" version="1.0.3" />
+				<dependency id="Scotec.RingBuffer" version="1.0.3" />
 			</group>
 		</dependencies>
 		<contentFiles>
