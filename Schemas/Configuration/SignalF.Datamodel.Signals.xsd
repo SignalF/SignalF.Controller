@@ -246,7 +246,7 @@
 			<xs:element name="SignalSource" type="SignalF.Datamodel.Signals.SignalSourceConfigurationRefType"/>
 			<xs:element name="SignalSink" type="SignalF.Datamodel.Signals.SignalSinkConfigurationRefType"/>
 		</xs:sequence>
-		<xs:attribute name="Id" type="SignalF.Datamodel.Base.IdentifierType" use="required"/>
+		<xs:attribute name="id" type="SignalF.Datamodel.Base.IdentifierType" use="required"/>
 	</xs:complexType>
 	<xs:complexType name="SignalF.Datamodel.Signals.SignalConnectionListType">
 		<xs:sequence>

@@ -9,7 +9,7 @@ namespace SignalF.Datamodel.Signals
 		#region Properties
 
 		
-		private const string ID_PROPERTY_NAME = "Id";		
+		private const string ID_PROPERTY_NAME = "id";		
 		System.Guid ISignalConnection.Id
 		{
 			get
