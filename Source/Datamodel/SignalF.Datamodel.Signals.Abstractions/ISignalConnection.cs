@@ -9,6 +9,8 @@ namespace SignalF.Datamodel.Signals
 
 		#region Properties
 
+		System.Guid Id { get; }
+
 		SignalF.Datamodel.Signals.ISignalSinkConfiguration SignalSink { get; set; }
 
 		SignalF.Datamodel.Signals.ISignalSourceConfiguration SignalSource { get; set; }

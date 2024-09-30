@@ -9,6 +9,26 @@ namespace SignalF.Datamodel.Signals
 		#region Properties
 
 		
+		private const string ID_PROPERTY_NAME = "Id";		
+		System.Guid ISignalConnection.Id
+		{
+			get
+			{
+				try
+				{
+					return ((SignalF.Datamodel.Base.IIdentifier)BusinessSession.Factory.GetBusinessAttribute(DataObject.GetAttribute(ID_PROPERTY_NAME))).Value;
+				}
+				catch(Scotec.XMLDatabase.DataException e)
+				{
+					throw new BusinessException((EBusinessError)e.DataError, e.Message, e);
+				}
+				catch(Exception e)
+				{
+					throw new BusinessException(EBusinessError.Document, "Caught unhandled exception.", e);
+				}
+			}
+		}
+		
 		private const string SIGNALSINK_PROPERTY_NAME = "SignalSink";		
 		SignalF.Datamodel.Signals.ISignalSinkConfiguration ISignalConnection.SignalSink
 		{
