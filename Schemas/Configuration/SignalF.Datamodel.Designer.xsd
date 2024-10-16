@@ -17,16 +17,18 @@
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="SignalF.Datamodel.Designer.DesignerElementType" abstract="true">
-		<xs:sequence>
-			<xs:element name="SignalProcessor" type="SignalF.Datamodel.Signals.SignalProcessorConfigurationRefType"/>
-			<xs:element name="Position" type="SignalF.Datamodel.Designer.PositionType"/>
-			<xs:element name="Size" type="SignalF.Datamodel.Designer.SizeType" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Size is optional. Elements will be autosized if Size is null.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
 		<xs:attribute name="id" type="SignalF.Datamodel.Base.IdentifierType" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Designer.SignalProcessorElementType" abstract="false">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Designer.DesignerElementType">
+				<xs:sequence>
+					<xs:element name="SignalProcessor" type="SignalF.Datamodel.Signals.SignalProcessorConfigurationRefType"/>
+					<xs:element name="Position" type="SignalF.Datamodel.Designer.PositionType"/>
+					<xs:element name="Size" type="SignalF.Datamodel.Designer.SizeType"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="SignalF.Datamodel.Designer.PositionType" abstract="true">
 		<xs:attribute name="X" type="SignalF.Datamodel.Base.DoubleType" use="required"/>
