@@ -11,22 +11,10 @@ namespace SignalF.Datamodel.Designer
 
 		System.Guid Id { get; }
 
-		SignalF.Datamodel.Designer.IPosition Position { get; }
-
-		SignalF.Datamodel.Signals.ISignalProcessorConfiguration SignalProcessor { get; set; }
-
-		SignalF.Datamodel.Designer.ISize Size { get; }
-
 		#endregion Properties
 
 
 		#region Methods
-
-
-
-		bool HasSize();
-		TSize CreateSize<TSize>() where TSize : SignalF.Datamodel.Designer.ISize;
-		void DeleteSize();
 
 		#endregion Methods
 
