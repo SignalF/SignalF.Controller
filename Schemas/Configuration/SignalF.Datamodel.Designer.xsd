@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Name: Name of the project to generate with business object generator
+		 TargetPath: The path where to create the project
+     Version: The version of the generated project	-->
+<?XMLDatabase Name="SignalF.Datamodel.Designer" Namespace="SignalF.Datamodel.Designer" ProjectFolder="" Version="1.3.1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:SignalF.1.0" targetNamespace="urn:SignalF.1.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="SignalF.Datamodel.Signals.xsd"/>
+	<xs:element name="DesignerConfiguration" type="SignalF.Datamodel.Designer.DesignerConfigurationType"/>
+	<xs:complexType name="SignalF.Datamodel.Designer.DesignerConfigurationType">
+		<xs:sequence>
+			<xs:element name="Elements" type="SignalF.Datamodel.Designer.DesignerElementListType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Designer.DesignerElementListType">
+		<xs:sequence>
+			<xs:element name="DesignerElement" type="SignalF.Datamodel.Designer.DesignerElementType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Designer.DesignerElementType" abstract="true">
+		<xs:sequence>
+			<xs:element name="SignalProcessor" type="SignalF.Datamodel.Signals.SignalProcessorConfigurationRefType"/>
+			<xs:element name="Position" type="SignalF.Datamodel.Designer.PositionType"/>
+			<xs:element name="Size" type="SignalF.Datamodel.Designer.SizeType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Size is optional. Elements will be autosized if Size is null.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="id" type="SignalF.Datamodel.Base.IdentifierType" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Designer.PositionType" abstract="true">
+		<xs:attribute name="X" type="SignalF.Datamodel.Base.DoubleType" use="required"/>
+		<xs:attribute name="Y" type="SignalF.Datamodel.Base.DoubleType" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Designer.SizeType" abstract="true">
+		<xs:attribute name="Width" type="SignalF.Datamodel.Base.DoubleType" use="required"/>
+		<xs:attribute name="Height" type="SignalF.Datamodel.Base.DoubleType" use="required"/>
+	</xs:complexType>
+</xs:schema>
