@@ -12,6 +12,7 @@
 	<xs:include schemaLocation="SignalF.Datamodel.Hardware.xsd"/>
 	<xs:include schemaLocation="SignalF.Datamodel.ProcessControl.xsd"/>
 	<xs:include schemaLocation="SignalF.Datamodel.DataOutput.xsd"/>
+	<xs:include schemaLocation="SignalF.Datamodel.Designer.xsd"/>
 	<xs:element name="ControllerConfiguration" type="SignalF.Datamodel.Configuration.ControllerConfigurationType"/>
 	<xs:complexType name="SignalF.Datamodel.Configuration.ControllerConfigurationType">
 		<xs:sequence>
@@ -26,6 +27,7 @@
 			<xs:element name="ChannelToDeviceMappings" type="SignalF.Datamodel.Hardware.ChannelToDevicesMappingListType"/>
 			<xs:element name="ChannelToSignalEndpointsMappings" type="SignalF.Datamodel.Hardware.ChannelToSignalEndpointsMappingListType"/>
 			<xs:element name="DeviceBindings" type="SignalF.Datamodel.Hardware.DeviceBindingConfigurationListType"/>
+			<xs:element name="DesignerConfiguration" type="SignalF.Datamodel.Designer.DesignerConfigurationType" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="SignalF.Datamodel.Base.IdentifierType" use="required"/>
 	</xs:complexType>
