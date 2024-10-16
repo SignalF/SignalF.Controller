@@ -19,6 +19,8 @@ namespace SignalF.Datamodel.Configuration
 
 		SignalF.Datamodel.DataOutput.IDataOutputSenderConfigurationList DataOutputSenderConfigurations { get; }
 
+		SignalF.Datamodel.Designer.IDesignerConfiguration DesignerConfiguration { get; }
+
 		SignalF.Datamodel.Hardware.IDeviceBindingConfigurationList DeviceBindings { get; }
 
 		SignalF.Datamodel.Hardware.IHardwareConfiguration HardwareConfiguration { get; }
@@ -42,6 +44,11 @@ namespace SignalF.Datamodel.Configuration
 
 
 
+
+		bool HasDesignerConfiguration();
+		SignalF.Datamodel.Designer.IDesignerConfiguration CreateDesignerConfiguration();
+		TDesignerConfiguration CreateDesignerConfiguration<TDesignerConfiguration>() where TDesignerConfiguration : SignalF.Datamodel.Designer.IDesignerConfiguration;
+		void DeleteDesignerConfiguration();
 
 
 

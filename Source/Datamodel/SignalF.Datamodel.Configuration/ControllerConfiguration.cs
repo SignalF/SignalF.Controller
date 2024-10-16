@@ -104,6 +104,25 @@ namespace SignalF.Datamodel.Configuration
 			}
 		}
 		
+		SignalF.Datamodel.Designer.IDesignerConfiguration IControllerConfiguration.DesignerConfiguration
+		{
+			get
+			{
+				try
+				{
+					return (SignalF.Datamodel.Designer.IDesignerConfiguration)BusinessSession.Factory.GetBusinessObject(DataObject.GetDataObject("DesignerConfiguration"));
+				}
+				catch(Scotec.XMLDatabase.DataException e)
+				{
+					throw new BusinessException((EBusinessError)e.DataError, e.Message, e);
+				}
+				catch(Exception e)
+				{
+					throw new BusinessException(EBusinessError.Document, "Caught unhandled exception.", e);
+				}
+			}
+		}
+		
 		SignalF.Datamodel.Hardware.IDeviceBindingConfigurationList IControllerConfiguration.DeviceBindings
 		{
 			get
@@ -245,6 +264,77 @@ namespace SignalF.Datamodel.Configuration
 
 
 
+
+
+		bool  IControllerConfiguration.HasDesignerConfiguration()
+		{
+			try
+			{
+				return DataObject.HasDataObject("DesignerConfiguration");
+			}
+			catch(Scotec.XMLDatabase.DataException e)
+			{
+				throw new BusinessException((EBusinessError)e.DataError, e.Message, e);
+			}
+			catch(Exception e)
+			{
+				throw new BusinessException(EBusinessError.Document, "Caught unhandled exception.", e);
+			}
+		}
+
+		SignalF.Datamodel.Designer.IDesignerConfiguration IControllerConfiguration.CreateDesignerConfiguration()
+		{
+			try
+			{
+				AddModifiedProperty( "DesignerConfiguration" );
+				return (SignalF.Datamodel.Designer.IDesignerConfiguration)BusinessSession.Factory.GetBusinessObject(DataObject.CreateDataObject("DesignerConfiguration"));
+			}
+			catch(Scotec.XMLDatabase.DataException e)
+			{
+				throw new BusinessException((EBusinessError)e.DataError, e.Message, e);
+			}
+			catch(Exception e)
+			{
+				throw new BusinessException(EBusinessError.Document, "Caught unhandled exception.", e);
+			}
+		}
+
+		TDesignerConfiguration IControllerConfiguration.CreateDesignerConfiguration<TDesignerConfiguration>()
+		{
+			try
+			{
+				Type type = typeof(TDesignerConfiguration);
+				string typeName = string.Format("{0}.{1}Type", type.Namespace, type.Name.Substring(1));
+
+				AddModifiedProperty( "DesignerConfiguration" );
+				return (TDesignerConfiguration)BusinessSession.Factory.GetBusinessObject(DataObject.CreateDataObject("DesignerConfiguration", typeName));
+			}
+			catch(Scotec.XMLDatabase.DataException e)
+			{
+				throw new BusinessException((EBusinessError)e.DataError, e.Message, e);
+			}
+			catch(Exception e)
+			{
+				throw new BusinessException(EBusinessError.Document, "Caught unhandled exception.", e);
+			}
+		}
+
+		void  IControllerConfiguration.DeleteDesignerConfiguration()
+		{
+			try
+			{
+				AddModifiedProperty( "DesignerConfiguration" );
+				DataObject.DeleteDataObject("DesignerConfiguration");
+			}
+			catch(Scotec.XMLDatabase.DataException e)
+			{
+				throw new BusinessException((EBusinessError)e.DataError, e.Message, e);
+			}
+			catch(Exception e)
+			{
+				throw new BusinessException(EBusinessError.Document, "Caught unhandled exception.", e);
+			}
+		}
 
 
 

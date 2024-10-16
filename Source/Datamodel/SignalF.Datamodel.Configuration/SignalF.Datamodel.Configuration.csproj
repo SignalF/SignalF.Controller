@@ -21,6 +21,7 @@
     <ProjectReference Include="..\SignalF.Datamodel.Hardware.Abstractions\SignalF.Datamodel.Hardware.Abstractions.csproj" />
     <ProjectReference Include="..\SignalF.Datamodel.ProcessControl.Abstractions\SignalF.Datamodel.ProcessControl.Abstractions.csproj" />
     <ProjectReference Include="..\SignalF.Datamodel.DataOutput.Abstractions\SignalF.Datamodel.DataOutput.Abstractions.csproj" />
+    <ProjectReference Include="..\SignalF.Datamodel.Designer.Abstractions\SignalF.Datamodel.Designer.Abstractions.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +33,7 @@
     <ProjectReference Include="..\SignalF.Datamodel.Hardware\SignalF.Datamodel.Hardware.csproj" />
     <ProjectReference Include="..\SignalF.Datamodel.ProcessControl\SignalF.Datamodel.ProcessControl.csproj" />
     <ProjectReference Include="..\SignalF.Datamodel.DataOutput\SignalF.Datamodel.DataOutput.csproj" />
+    <ProjectReference Include="..\SignalF.Datamodel.Designer\SignalF.Datamodel.Designer.csproj" />
   </ItemGroup>
 
 
