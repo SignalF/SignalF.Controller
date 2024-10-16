@@ -18,6 +18,7 @@
 	  <ProjectReference Include="..\SignalF.Datamodel.Configuration.Abstractions\SignalF.Datamodel.Configuration.Abstractions.csproj" />
 	  <ProjectReference Include="..\SignalF.Datamodel.DataOutput.Abstractions\SignalF.Datamodel.DataOutput.Abstractions.csproj" />
 	  <ProjectReference Include="..\SignalF.Datamodel.Devices.Abstractions\SignalF.Datamodel.Devices.Abstractions.csproj" />
+	  <ProjectReference Include="..\SignalF.Datamodel.Designer.Abstractions\SignalF.Datamodel.Designer.Abstractions.csproj" />
 	  <ProjectReference Include="..\SignalF.Datamodel.Hardware.Abstractions\SignalF.Datamodel.Hardware.Abstractions.csproj" />
 	  <ProjectReference Include="..\SignalF.Datamodel.ProcessControl.Abstractions\SignalF.Datamodel.ProcessControl.Abstractions.csproj" />
 	  <ProjectReference Include="..\SignalF.Datamodel.Signals.Abstractions\SignalF.Datamodel.Signals.Abstractions.csproj" />

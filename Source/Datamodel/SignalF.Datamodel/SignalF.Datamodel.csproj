@@ -22,6 +22,7 @@
 		<ProjectReference Include="..\SignalF.Datamodel.Devices\SignalF.Datamodel.Devices.csproj" />
 		<ProjectReference Include="..\SignalF.Datamodel.Hardware\SignalF.Datamodel.Hardware.csproj" />
 		<ProjectReference Include="..\SignalF.Datamodel.DataOutput\SignalF.Datamodel.DataOutput.csproj" />
+		<ProjectReference Include="..\SignalF.Datamodel.Designer\SignalF.Datamodel.Designer.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -43,6 +44,9 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.Devices.xsd" Link="Schemas\SignalF.Datamodel.Devices.xsd" WithCulture="false">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.Designer.xsd" Link="Schemas\SignalF.Datamodel.Designer.xsd" WithCulture="false">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="..\..\..\Schemas\Configuration\SignalF.Datamodel.Hardware.xsd" Link="Schemas\SignalF.Datamodel.Hardware.xsd" WithCulture="false">

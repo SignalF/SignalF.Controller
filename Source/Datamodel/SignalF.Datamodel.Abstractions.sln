@@ -26,6 +26,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.DataOutpu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Devices.Abstractions", "SignalF.Datamodel.Devices.Abstractions\SignalF.Datamodel.Devices.Abstractions.csproj", "{D8BA17E9-9448-4E35-9341-2E2FA2ECC1F5}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.Designer.Abstractions", "SignalF.Datamodel.Designer.Abstractions\SignalF.Datamodel.Designer.Abstractions.csproj", "{09E732FC-B014-420D-8BEF-14F416DD050F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalF.Datamodel.ProcessControl.Abstractions", "SignalF.Datamodel.ProcessControl.Abstractions\SignalF.Datamodel.ProcessControl.Abstractions.csproj", "{BAE0CC33-9644-4284-9573-A0AD1303E355}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +72,14 @@ Global
 		{D8BA17E9-9448-4E35-9341-2E2FA2ECC1F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8BA17E9-9448-4E35-9341-2E2FA2ECC1F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8BA17E9-9448-4E35-9341-2E2FA2ECC1F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09E732FC-B014-420D-8BEF-14F416DD050F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09E732FC-B014-420D-8BEF-14F416DD050F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09E732FC-B014-420D-8BEF-14F416DD050F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09E732FC-B014-420D-8BEF-14F416DD050F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAE0CC33-9644-4284-9573-A0AD1303E355}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAE0CC33-9644-4284-9573-A0AD1303E355}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAE0CC33-9644-4284-9573-A0AD1303E355}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAE0CC33-9644-4284-9573-A0AD1303E355}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
