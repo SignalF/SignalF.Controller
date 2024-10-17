@@ -30,11 +30,11 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="SignalF.Datamodel.Designer.PositionType" abstract="true">
+	<xs:complexType name="SignalF.Datamodel.Designer.PositionType">
 		<xs:attribute name="X" type="SignalF.Datamodel.Base.DoubleType" use="required"/>
 		<xs:attribute name="Y" type="SignalF.Datamodel.Base.DoubleType" use="required"/>
 	</xs:complexType>
-	<xs:complexType name="SignalF.Datamodel.Designer.SizeType" abstract="true">
+	<xs:complexType name="SignalF.Datamodel.Designer.SizeType">
 		<xs:attribute name="Width" type="SignalF.Datamodel.Base.DoubleType" use="required"/>
 		<xs:attribute name="Height" type="SignalF.Datamodel.Base.DoubleType" use="required"/>
 	</xs:complexType>

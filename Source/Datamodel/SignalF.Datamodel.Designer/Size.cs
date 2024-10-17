@@ -4,7 +4,7 @@ using Scotec.XMLDatabase;
 
 namespace SignalF.Datamodel.Designer
 {
-	public abstract partial class Size : BusinessObject, SignalF.Datamodel.Designer.ISize
+	public partial class Size : BusinessObject, SignalF.Datamodel.Designer.ISize
 	{
 		#region Properties
 
