@@ -248,6 +248,11 @@
 		</xs:sequence>
 		<xs:attribute name="id" type="SignalF.Datamodel.Base.IdentifierType" use="required"/>
 	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Signals.SignalConnectionRefType">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Base.ReferenceType"/>
+		</xs:complexContent>
+	</xs:complexType>
 	<xs:complexType name="SignalF.Datamodel.Signals.SignalConnectionListType">
 		<xs:sequence>
 			<xs:element name="Connection" type="SignalF.Datamodel.Signals.SignalConnectionType" minOccurs="0" maxOccurs="unbounded"/>
