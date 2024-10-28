@@ -9,7 +9,7 @@ namespace SignalF.Datamodel.Designer
 
 		#region Properties
 
-		SignalF.Datamodel.Designer.IPosition Position { get; }
+		SignalF.Datamodel.Designer.IPoint Position { get; }
 
 		SignalF.Datamodel.Signals.ISignalProcessorConfiguration SignalProcessor { get; set; }
 

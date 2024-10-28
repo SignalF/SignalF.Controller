@@ -9,13 +9,13 @@ namespace SignalF.Datamodel.Designer
 		#region Properties
 
 		
-		SignalF.Datamodel.Designer.IPosition ISignalProcessorElement.Position
+		SignalF.Datamodel.Designer.IPoint ISignalProcessorElement.Position
 		{
 			get
 			{
 				try
 				{
-					return (SignalF.Datamodel.Designer.IPosition)BusinessSession.Factory.GetBusinessObject(DataObject.GetDataObject("Position"));
+					return (SignalF.Datamodel.Designer.IPoint)BusinessSession.Factory.GetBusinessObject(DataObject.GetDataObject("Position"));
 				}
 				catch(Scotec.XMLDatabase.DataException e)
 				{

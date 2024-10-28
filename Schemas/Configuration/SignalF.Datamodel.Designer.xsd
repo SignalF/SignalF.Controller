@@ -24,15 +24,30 @@
 			<xs:extension base="SignalF.Datamodel.Designer.DesignerElementType">
 				<xs:sequence>
 					<xs:element name="SignalProcessor" type="SignalF.Datamodel.Signals.SignalProcessorConfigurationRefType"/>
-					<xs:element name="Position" type="SignalF.Datamodel.Designer.PositionType"/>
+					<xs:element name="Position" type="SignalF.Datamodel.Designer.PointType"/>
 					<xs:element name="Size" type="SignalF.Datamodel.Designer.SizeType"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="SignalF.Datamodel.Designer.PositionType">
+	<xs:complexType name="SignalF.Datamodel.Designer.LinkElementType" abstract="false">
+		<xs:complexContent>
+			<xs:extension base="SignalF.Datamodel.Designer.DesignerElementType">
+				<xs:sequence>
+					<xs:element name="Connection" type="SignalF.Datamodel.Signals.SignalConnectionRefType"/>
+					<xs:element name="Vertices" type="SignalF.Datamodel.Designer.PointListType"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Designer.PointType">
 		<xs:attribute name="X" type="SignalF.Datamodel.Base.DoubleType" use="required"/>
 		<xs:attribute name="Y" type="SignalF.Datamodel.Base.DoubleType" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="SignalF.Datamodel.Designer.PointListType">
+		<xs:sequence>
+			<xs:element name="Point" type="SignalF.Datamodel.Designer.PointType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="SignalF.Datamodel.Designer.SizeType">
 		<xs:attribute name="Width" type="SignalF.Datamodel.Base.DoubleType" use="required"/>
